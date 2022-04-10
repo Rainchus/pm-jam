@@ -1,0 +1,10 @@
+sprite/npc/cache/
+map/temp/
+image/cache/
+battle/formation/temp/
+battle/item/temp/
+battle/partner/temp/
+editor/
+out/
+sprite/player/cache/
+sprite/player/temp/
