@@ -1,0 +1,26 @@
+%removes mario's ability to move on the Z axis on the overworld
+
+@Hook:Global 800E1FAC {
+    LAW t0, $YAxisBool
+    LB v0, 0044 (v1) %load Y magnitude of stick
+    BNEL t0, r0, .lockYMagnitude
+    ORI v0, r0, 0 %only ran if YAxisBool is set
+    .lockYMagnitude
+    J 800E1FB4
+    SW	V0, 00EC (A0)
+}
+
+#export:Data $YAxisBool { 0 }
+
+#export:Function $ScrApi_Set2DBool {
+    PUSH ra
+
+    LW a1, 000C (a0) %load script ptr to args
+    JAL ~Func:get_variable
+    LW a1, 0000 (a1) %get variable
+    SAW v0, $YAxisBool
+
+    POP ra
+    JR RA
+    ORI v0, r0, .scrApi_Done2
+}

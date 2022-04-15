@@ -26,14 +26,14 @@
 	</RasterList>
 	<AnimationList>
 		<Animation name="Anim_00">
-			<Component name="Comp_00" xyz="0,34,0">
+			<Component name="Comp_00" xyz="0,0,0">
 				<Command val="1005"/>
 				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
 		</Animation>
 		<Animation name="Anim_01">
-			<Component name="Comp_00" xyz="0,33,0">
+			<Component name="Comp_00" xyz="0,0,0">
 				<Command val="1005"/>
 				<Command val="30"/>
 				<Command val="1006"/>

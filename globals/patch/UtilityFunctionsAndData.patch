@@ -1,0 +1,42 @@
+#export .scrApi_Done2 2
+#export .scrApi_Done1 1
+#export .scrApi_Block 0
+
+
+#export:Function $ScrApi_XORVar { %arg0 = Var to XOR, arg1 = value to XOR with
+    PUSH s0, s1, s2, ra
+    ADDU s0, a0, r0 %move script pointer to s0
+    LW s1, 000C (s0) %load ptr to script args
+
+    JAL ~Func:get_variable
+    LW a1, 0000 (s1) %load script args
+
+    ADDU s2, v0, r0 %returned value of Var
+
+    ADDU a0, s0, r0 %copy script ptr back to a0
+    JAL ~Func:get_variable
+    LW a1, 0004 (s1) %load script arg1
+
+    XOR a2, s2, v0 %arg0 ^ arg1
+    
+    ADDU a0, s0, r0 %copy script ptr back to a0
+    JAL ~Func:set_variable
+    LW a1, 0000 (s1) %load variable constant
+
+    POP s0, s1, s2, ra
+    JR RA
+    ORI v0, r0, .scrApi_Done2
+}
+
+#export:Function $ScrApi_Set2DBool {
+    PUSH ra
+
+    LW a1, 000C (a0) %load script ptr to args
+    JAL ~Func:get_variable
+    LW a1, 0000 (a1) %get variable
+    SAW v0, $YAxisBool
+
+    POP ra
+    JR RA
+    ORI v0, r0, .scrApi_Done2
+}

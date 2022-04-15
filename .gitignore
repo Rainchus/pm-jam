@@ -1,11 +1,13 @@
+mod.cfg
 sprite/npc/cache/
 map/temp/
 image/cache/
-battle/formation/temp/
+battle/formation/temp/**
 battle/formation/import/
-battle/item/temp/
+battle/item/temp/**
 battle/partner/temp/
 editor/
 out/
-sprite/player/cache/
+sprite/player/cache/**
 sprite/player/temp/
+world/partner/temp/

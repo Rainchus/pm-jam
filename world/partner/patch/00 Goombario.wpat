@@ -12,3 +12,11 @@
 %/
 
 %dont touch any scripts in the parnter files because doing so is extremely broken
+
+@ $Function_802BD1D0 {
+    [30] JAL       ~Func:partner_flying_enable
+    [6C] JAL       ~Func:partner_flying_update_player_tracking
+    [74] JAL       ~Func:partner_flying_update_motion
+    [344] JAL      ~Func:partner_flying_update_player_tracking
+    [34C] JAL      ~Func:partner_flying_update_motion
+}

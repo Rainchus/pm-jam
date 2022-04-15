@@ -1,0 +1,32 @@
+%80283F34
+@Data 1B2814 { 0000001E } %goombario starting height in battle (was 0)
+
+% %80283F48
+% @Data 1B2828 { 0000001E } %kooper starting height in battle
+
+% %80283F5C
+% @Data 1B283C { 0000001E } %bombette starting height in battle
+
+% %80283F70
+% @Data 1B2850 { 0000001E } %parakarry starting height in battle
+
+% %80283F84
+% @Data 1B2864 { 0000001E } %goompa starting height in battle
+
+% %80283F98
+% @Data 1B2878 { 00000014 } %watt starting height in battle
+
+% %80283FAC
+% @Data 1B288C { 0000001E } %sushie starting height in battle
+
+% %80283FC0
+% @Data 1B28A0 { 0000000A } %lakilester starting height in battle
+
+% %80283FD4
+% @Data 1B28B4 { 00000014 } %bow starting height in battle
+
+% %80283FE8
+% @Data 1B28C8 { 00000000 } %goombaria starting height in battle
+
+% %80283FFC
+% @Data 1B28DC { 0000001E } %twink starting height in battle

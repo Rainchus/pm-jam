@@ -1,0 +1,45 @@
+%rest of code is in Goombario.wpat
+%allows both R and C-down to activate partner
+@Hook:Global 800DFA3C {
+    LW v1, 00E0 (a1) %get input
+    ANDI v0, v1, 4 %c-down input
+    BNE v0, r0, .buttonPressed
+    NOP
+    %check if partner is goombario for R input check
+    LUI v0, 8011
+    LB v0, F2A2 (v0)
+    ORI t0, r0, 1 %goombario partner ID
+    BNE t0, v0, .notGoombario
+    NOP
+    ANDI v0, v1, 0010 %r button input
+    BNE v0, r0, .buttonPressed
+    NOP
+    .notGoombario
+    J 800DFAA0
+    NOP
+    .buttonPressed
+    J 800DFA4C
+    NOP
+}
+
+#export:Function $setMarioHealth {
+    ORI t0, r0, 2
+    SW t0, 0084 (a0) %store 2 to var0
+
+    ORI t0, r0, 69`
+    SAB t0, 8010F292
+    JR RA
+    ORI v0, r0, 2 %return 2 for script
+}
+
+/%
+#export:Function $newAbility {
+    ADDIU sp, sp, -20
+    SW ra, 0018 (sp)
+    JAL 802BD1D0 %run vanilla partner function
+    NOP
+    LW ra, 0018 (sp)
+    JR RA
+    ADDIU sp, sp, 20
+}
+%/
