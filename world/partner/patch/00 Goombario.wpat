@@ -1,0 +1,14 @@
+%800F803C wPartners table
+
+/%
+@Data 91548 { %goombario use ability function ptr
+    $newGoombarioAbility
+}
+
+#new:Function $newGoombarioAbility {
+    JR RA
+    NOP
+}
+%/
+
+%dont touch any scripts in the parnter files because doing so is extremely broken

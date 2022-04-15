@@ -568,6 +568,9 @@
 		<Map name="tst_13" nickname="Partners and Shockwave"/>
 		<Map name="tst_20" nickname="Pipes Gallery"/>
 	</Area>
+	<Area name="bis" nickname="bis">
+		<Map name="bis_00" nickname="testBISMap"/>
+	</Area>
 	<Resource name="mac_tex" compressed="false"/>
 	<Resource name="tik_tex" compressed="false"/>
 	<Resource name="kgr_tex" compressed="false"/>
