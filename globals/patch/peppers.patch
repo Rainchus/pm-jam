@@ -1,0 +1,116 @@
+@Hook:Battle 8023E138 { %initialize_battle hook
+    SAW r0, $arrowPositionIterator
+    SAW r0, $redPepperTurnCount
+    SAW r0, $bluePepperTurnCount
+    LUI s3, 8011
+    J 8023E140
+    ADDIU s3, s3, F290
+}
+
+@Hook:Battle 80244B88 { %hook fading of screen after battle
+    SAW r0, $arrowPositionIterator
+    SAW r0, $redPepperTurnCount
+    SAW r0, $bluePepperTurnCount   
+    ADDIU v0, r0, 00FF
+    J 80244B90
+    LUI a0, 800E
+}
+
+%@Hook:Battle 80243AD4 %after enemy turn ran once
+@Hook:Battle 80243AD4 {
+    LAW t0, $redPepperTurnCount
+    BEQ t0, r0, .skipRedPepperDecrement
+    NOP
+    ADDIU t0, t0, FFFF
+    SAW t0, $redPepperTurnCount
+
+    .skipRedPepperDecrement
+    LAW t0, $bluePepperTurnCount
+    BEQ t0, r0, .skipBluePepperDecrement
+    NOP
+    ADDIU t0, t0, FFFF
+    SAW t0, $bluePepperTurnCount
+
+    .skipBluePepperDecrement
+    JAL 8024E40C %restore from hook
+    ADDIU a0, r0, 0002 %restore from hook
+    J 80243ADC
+    NOP
+}
+
+@Hook:Global 800E86B8 { %hook draw box
+    SAW r0, $arrowPositionIterator
+    LAW t0, $redPepperTurnCount
+    BEQ t0, r0, .checkBluePepper
+    NOP
+    %draw red arrow underneath c-up menu
+    %draw code
+    LIO a0, $ImageDataRedArrow
+    LIO t0, $arrowIconPositions
+    LIO t1, $arrowPositionIterator
+    LW t2, 0000 (t1) %load iterator position
+    SLL t3, t2, 3 %multiply by 8 (size of X and Y combined)
+    ADDU t0, t0, t3
+    LW a1, 0000 (t0) %load X pos
+    LW a2, 0004 (t0) %load Y pos
+    ADDIU t2, t2, 1 %increment arrow iterator
+    SW t2, 0000 (t1) %store new arrow iterator value
+    JAL $DrawImageUI_CI4
+    ORI a3, r0, 00FF
+
+    .checkBluePepper
+    LAW t0, $bluePepperTurnCount
+    BEQ t0, r0, .exit
+    NOP
+    %draw green arrow underneath c-up menu
+    %draw code
+    LIO a0, $ImageDataBlueArrow
+    LIO t0, $arrowIconPositions
+    LIO t1, $arrowPositionIterator
+    LW t2, 0000 (t1) %load iterator position
+    SLL t3, t2, 3 %multiply by 8 (size of X and Y combined)
+    ADDU t0, t0, t3
+    LW a1, 0000 (t0) %load X pos
+    LW a2, 0004 (t0) %load Y pos
+    ADDIU t2, t2, 1 %increment arrow iterator
+    SW t2, 0000 (t1) %store new arrow iterator value
+    JAL $DrawImageUI_CI4
+    ORI a3, r0, 00FF
+    .exit
+    DADDU a0, r0, r0 %restore from hook
+    J 800E86C0
+    ADDIU a1, r0, 6 %restore from hook
+}
+
+#export:Data $ImageDataRedArrow
+{
+    $IMG_RedArrow   % raster
+    $PAL_RedArrow  % palette -- ignored if format is not CI
+    16`         % height
+    16`         % width
+}
+
+#export:Data $ImageDataBlueArrow
+{
+    $IMG_BlueArrow   % raster
+    $PAL_BlueArrow  % palette -- ignored if format is not CI
+    16`         % height
+    16`         % width
+}
+
+
+
+#new:Data $arrowIconPositions {
+    %X, Y
+    20` 50`
+    35` 50`
+    00` 00`
+}
+
+#new:Data $IMG_RedArrow { ~RasterFile:CI-4:red_arrow.png }
+#new:Data $PAL_RedArrow { ~PaletteFile:CI-4:red_arrow.png }
+#new:Data $IMG_BlueArrow { ~RasterFile:CI-4:blue_arrow.png }
+#new:Data $PAL_BlueArrow { ~PaletteFile:CI-4:blue_arrow.png }
+#new:Data $arrowPositionIterator { 0 }
+#export:Data $redPepperTurnCount { 0 }
+#export:Data $bluePepperTurnCount { 0 }

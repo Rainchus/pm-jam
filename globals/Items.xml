@@ -135,7 +135,7 @@
 	<Item index="084" nameMsg="26-003" desc1Msg="23-003" desc2Msg="25-003" typeFlags="1006" targetFlags="8003" name="ThunderBolt" sellValue="4" powA="5"/>
 	<Item index="085" nameMsg="26-006" desc1Msg="23-006" desc2Msg="25-006" typeFlags="1006" targetFlags="8003" name="Pebble" sellValue="1" powA="1"/>
 	<Item index="086" nameMsg="26-005" desc1Msg="23-005" desc2Msg="25-005" typeFlags="1006" targetFlags="8003" name="DustyHammer" sellValue="1" powA="1"/>
-	<Item index="087" nameMsg="00-000" desc1Msg="00-000" desc2Msg="00-000" typeFlags="1006" targetFlags="8003" name="InsecticideHerb" sellValue="1"/>
+	<Item index="087" nameMsg="00-000" desc1Msg="00-000" desc2Msg="00-000" typeFlags="1006" targetFlags="0008" name="InsecticideHerb" sellValue="1"/>
 	<Item index="088" nameMsg="26-007" desc1Msg="23-007" desc2Msg="25-007" typeFlags="1006" targetFlags="0008" name="StoneCap" sellValue="15" powA="3"/>
 	<Item index="089" nameMsg="26-00E" desc1Msg="23-00E" desc2Msg="25-00E" typeFlags="1187" targetFlags="0009" name="TastyTonic" sellValue="1"/>
 	<Item index="08A" nameMsg="26-009" desc1Msg="23-009" desc2Msg="25-009" typeFlags="1087" targetFlags="0009" name="Mushroom" sellValue="2" powA="5"/>

@@ -11,7 +11,7 @@
 }
 %/
 
-%dont touch any scripts in the parnter files because doing so is extremely broken
+%dont change the size of any scripts in the parnter files because doing so is extremely broken
 
 @ $Function_802BD1D0 {
     [30] JAL       ~Func:partner_flying_enable
