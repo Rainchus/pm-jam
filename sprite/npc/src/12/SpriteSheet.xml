@@ -7,6 +7,9 @@
 		<Raster id="0" palette="0" src="idle1.png"/>
 		<Raster id="1" palette="0" src="idle2.png"/>
 		<Raster id="2" palette="0" src="idle3.png"/>
+		<Raster id="3" name="talk1" palette="0" src="talk1.png"/>
+		<Raster id="4" name="talk2" palette="0" src="talk2.png"/>
+		<Raster id="5" name="talk3" palette="0" src="talk3.png"/>
 	</RasterList>
 	<AnimationList>
 		<Animation name="still">
@@ -80,6 +83,21 @@
 				<Command val="0"/>
 				<Command val="6"/>
 				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="talk">
+			<Component name="main" xyz="0,-2,0">
+				<Command val="1003"/>
+				<Command val="8"/>
+				<Command val="1004"/>
+				<Command val="4"/>
+				<Command val="1005"/>
+				<Command val="8"/>
+				<Command val="1004"/>
+				<Command val="4"/>
+				<Command val="2000"/>
+			</Component>
+			<Component name="motion" xyz="0,0,0">
 			</Component>
 		</Animation>
 	</AnimationList>
