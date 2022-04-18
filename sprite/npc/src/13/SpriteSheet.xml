@@ -5,23 +5,28 @@
 	</PaletteList>
 	<RasterList>
 		<Raster id="0" name="cidle" palette="0" src="cidle.png"/>
-		<Raster id="1" palette="0" src="idle1.png"/>
-		<Raster id="2" palette="0" src="idle2.png"/>
-		<Raster id="3" palette="0" src="idle3.png"/>
-		<Raster id="4" name="talk1" palette="0" src="talk1.png"/>
-		<Raster id="5" name="talk2" palette="0" src="talk2.png"/>
-		<Raster id="6" name="talk3" palette="0" src="talk3.png"/>
-		<Raster id="7" name="talk4" palette="0" src="talk4.png"/>
-		<Raster id="8" name="talk5" palette="0" src="talk5.png"/>
-		<Raster id="9" name="talk6" palette="0" src="talk6.png"/>
-		<Raster id="A" name="talk7" palette="0" src="talk7.png"/>
-		<Raster id="B" name="talk8" palette="0" src="talk8.png"/>
+		<Raster id="1" name="open1" palette="0" src="open1.png"/>
+		<Raster id="2" name="open2" palette="0" src="open2.png"/>
+		<Raster id="3" name="open3" palette="0" src="open3.png"/>
+		<Raster id="4" name="open4" palette="0" src="open4.png"/>
+		<Raster id="5" name="open5" palette="0" src="open5.png"/>
+		<Raster id="6" palette="0" src="idle1.png"/>
+		<Raster id="7" palette="0" src="idle2.png"/>
+		<Raster id="8" palette="0" src="idle3.png"/>
+		<Raster id="9" name="talk1" palette="0" src="talk1.png"/>
+		<Raster id="A" name="talk2" palette="0" src="talk2.png"/>
+		<Raster id="B" name="talk3" palette="0" src="talk3.png"/>
+		<Raster id="C" name="talk4" palette="0" src="talk4.png"/>
+		<Raster id="D" name="talk5" palette="0" src="talk5.png"/>
+		<Raster id="E" name="talk6" palette="0" src="talk6.png"/>
+		<Raster id="F" name="talk7" palette="0" src="talk7.png"/>
+		<Raster id="10" name="talk8" palette="0" src="talk8.png"/>
 	</RasterList>
 	<AnimationList>
 		<Animation name="still">
 			<Component name="main" xyz="0,0,0">
-				<Command val="8101"/>
-				<Command val="1002"/>
+				<Command val="8100"/>
+				<Command val="1007"/>
 			</Component>
 			<Component name="motion" xyz="0,0,0">
 			</Component>
@@ -80,21 +85,21 @@
 		<Animation name="idle">
 			<Component name="main" xyz="0,0,0">
 				<Command val="8101"/>
-				<Command val="1002"/>
+				<Command val="1007"/>
 				<Command val="4"/>
-				<Command val="1002"/>
+				<Command val="1007"/>
 				<Command val="6"/>
-				<Command val="1003"/>
+				<Command val="1008"/>
 				<Command val="E"/>
-				<Command val="1002"/>
+				<Command val="1007"/>
 				<Command val="6"/>
-				<Command val="1002"/>
+				<Command val="1007"/>
 				<Command val="4"/>
-				<Command val="1002"/>
+				<Command val="1007"/>
 				<Command val="6"/>
-				<Command val="1001"/>
+				<Command val="1006"/>
 				<Command val="E"/>
-				<Command val="1002"/>
+				<Command val="1007"/>
 				<Command val="6"/>
 				<Command val="2000"/>
 			</Component>
@@ -145,23 +150,61 @@
 		<Animation name="talk">
 			<Component name="main" xyz="0,0,0">
 				<Command val="8101"/>
-				<Command val="1004"/>
-				<Command val="8"/>
-				<Command val="1005"/>
-				<Command val="4"/>
-				<Command val="1006"/>
-				<Command val="8"/>
-				<Command val="1007"/>
-				<Command val="4"/>
-				<Command val="1008"/>
-				<Command val="8"/>
 				<Command val="1009"/>
-				<Command val="4"/>
-				<Command val="100A"/>
 				<Command val="8"/>
+				<Command val="100A"/>
+				<Command val="4"/>
 				<Command val="100B"/>
+				<Command val="8"/>
+				<Command val="100C"/>
+				<Command val="4"/>
+				<Command val="100D"/>
+				<Command val="8"/>
+				<Command val="100E"/>
+				<Command val="4"/>
+				<Command val="100F"/>
+				<Command val="8"/>
+				<Command val="1010"/>
 				<Command val="4"/>
 				<Command val="2001"/>
+			</Component>
+			<Component name="motion" xyz="0,0,0">
+			</Component>
+		</Animation>
+		<Animation name="open">
+			<Component name="main" xyz="0,0,0">
+				<Command val="8101"/>
+				<Command val="1001"/>
+				<Command val="7"/>
+				<Command val="1002"/>
+				<Command val="5"/>
+				<Command val="1003"/>
+				<Command val="3"/>
+				<Command val="1004"/>
+				<Command val="2"/>
+				<Command val="1005"/>
+				<Command val="2"/>
+				<Command val="1006"/>
+				<Command val="2"/>
+			</Component>
+			<Component name="motion" xyz="0,0,0">
+			</Component>
+		</Animation>
+		<Animation name="shut">
+			<Component name="main" xyz="0,0,0">
+				<Command val="8101"/>
+				<Command val="1005"/>
+				<Command val="7"/>
+				<Command val="1004"/>
+				<Command val="5"/>
+				<Command val="1003"/>
+				<Command val="3"/>
+				<Command val="1002"/>
+				<Command val="2"/>
+				<Command val="1001"/>
+				<Command val="2"/>
+				<Command val="1000"/>
+				<Command val="2"/>
 			</Component>
 			<Component name="motion" xyz="0,0,0">
 			</Component>
