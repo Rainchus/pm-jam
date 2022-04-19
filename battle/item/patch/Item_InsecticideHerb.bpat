@@ -317,7 +317,7 @@
 
 @ $Script_UseItem
 {
-    0:  SetConst  *VarA  00000089
+    0:  SetConst  *VarA  00000087
    10:  ExecWait  $Script_802A12E0
    1C:  Call  InitTargetIterator ( )
    28:  Call  GetOwnerTarget    ( *Var0 *Var1 )

@@ -1,0 +1,15 @@
+#string:2F:000 {
+Red Pepper[END]
+}
+
+#string:2F:001 {
+A red pepper that boost attack[BR]
+by 1 for 3 turns.[END]}
+
+#string:2F:002 {
+Blue Pepper[END]
+}
+
+#string:2F:003 {
+A blue pepper that boost defense[BR]
+by 1 for 3 turns.[END]}
