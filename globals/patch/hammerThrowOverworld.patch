@@ -25,18 +25,33 @@
     ORI v0, r0, .scrApi_Done2
 }
 
+#new:Data $hammerThrowActive { 0 }
+
+#new:Function $setHammerThrowBool {
+    LW t0, 000C (a0) %load ptr to script args
+    LW t1, 0000 (t0)
+    SAW t1, $hammerThrowActive
+    JR RA
+    ORI v0, r0, .scrApi_Done2
+}
+
 #new:Function $startScriptHammerThrow {
     PUSH ra
+    LAW t0, $hammerThrowActive
+    BNE t0, r0, .exit
+    NOP
     LA        A0, $hammerThrowOverworld
     LI        A1, A
     JAL       ~Func:start_script
     CLEAR     A2
+    .exit
     POP ra
     JR RA
     ORI v0, r0, .scrApi_Done2
 }
 
 #new:Script:Map $hammerThrowOverworld {
+    Call $setHammerThrowBool ( 1 )
     Call $getHammerUpgradeValue ( *Var1 )
     Switch  *Var1
     Case  ==  .Item:Nothing % 0
@@ -67,6 +82,7 @@
     Call  VirtualEntityJumpTo   ( *VarA *Var0 *Var1 *Var2  21` )
     Call  VirtualEntityLandJump ( *VarA )
     Call  DeleteVirtualEntity   ( *VarA )
+    Call $setHammerThrowBool ( 0 )
     Return
     End
 }
