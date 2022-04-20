@@ -18,6 +18,14 @@
 
 #new:Data $switchHitBool { 0 }
 
+#new:Function $ScrApi_SetSwitchHitBool {
+	LW t0, 000C (a0)
+	LW v0, 0000 (t0)
+	SAW v0, $switchHitBool
+	JR RA
+	ORI v0, r0, 2
+}
+
 #new:Function $ScrAPI_checkIfSwitchHit {
 	PUSH s0, ra
 	LW s0, 000C (a0)
@@ -125,7 +133,10 @@
 #new:Data $hammerThrowActive { 0 }
 
 @Hook:Global 801385D4 { %hook update_enter_map_screen_overlay
+	SAW r0, $switchHitBool
 	SAW r0, $hammerThrowActive
+	ADDIU t0, r0, FFFF
+	SAW t0, $hammerThrowVirtualEntityIndex
 	LUI v1, 8015
 	J 801385DC
 	LW v1, C6F0 (v1)
@@ -298,6 +309,7 @@ Facing Right[END]
 			If *Var7 == 1 %switch has been hit
 				Call  $clearHammerThrowVirtualEntityIndex
 				Call  $setHammerThrowBool ( .False )
+				Call $ScrApi_SetSwitchHitBool ( .False )
 				Return
 			EndIf
 			Wait 1`
