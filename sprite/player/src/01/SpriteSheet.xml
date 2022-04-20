@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<SpriteSheet maxComponents="1" paletteGroups="7">
+<SpriteSheet maxComponents="2" paletteGroups="9">
 	<PaletteList>
 		<Palette id="0" src="Palette_00.png"/>
 		<Palette id="1" src="Palette_01.png"/>
@@ -28,6 +28,8 @@
 		<Palette id="18" src="Palette_18.png"/>
 		<Palette id="19" src="Palette_19.png"/>
 		<Palette id="1A" src="Palette_1A.png"/>
+		<Palette id="1B" src="Palette_1B.png"/>
+		<Palette id="1C" src="Palette_1C.png"/>
 	</PaletteList>
 	<RasterList>
 		<Raster id="0" palette="0" src="00B80.png"/>
@@ -124,6 +126,15 @@
 		<Raster id="5B" palette="1A" src="2CF50.png"/>
 		<Raster id="5C" palette="1A" src="36950.png"/>
 		<Raster id="5D" palette="1A" src="2C950.png"/>
+		<Raster id="5E" palette="0" src="33350.png"/>
+		<Raster id="5F" palette="0" src="33890.png"/>
+		<Raster id="60" palette="0" src="33DD0.png"/>
+		<Raster id="61" palette="0" src="34250.png"/>
+		<Raster id="62" palette="0" src="33DD0.png"/>
+		<Raster id="63" palette="1B" src="2E450.png"/>
+		<Raster id="64" palette="1B" src="2DE50.png"/>
+		<Raster id="65" palette="1C" src="2FE90.png"/>
+		<Raster id="66" palette="1C" src="2F350.png"/>
 	</RasterList>
 	<AnimationList>
 		<Animation name="Anim_00">
@@ -934,7 +945,7 @@
 				<Command val="0"/>
 				<Command val="0"/>
 				<Command val="1057"/>
-				<Command val="4"/>
+				<Command val="2"/>
 				<Command val="3000"/>
 				<Command val="0"/>
 				<Command val="0"/>
@@ -971,7 +982,7 @@
 				<Command val="2"/>
 				<Command val="0"/>
 				<Command val="105B"/>
-				<Command val="4"/>
+				<Command val="2"/>
 				<Command val="3000"/>
 				<Command val="FFE4"/>
 				<Command val="FFFF"/>
@@ -1004,6 +1015,308 @@
 				<Command val="105D"/>
 				<Command val="2"/>
 				<Command val="201F"/>
+			</Component>
+		</Animation>
+		<Animation name="Anim_HammerThrowNormalThrow">
+			<Component name="Hammer" xyz="0,0,-2">
+				<Command val="3001"/>
+				<Command val="19"/>
+				<Command val="2A"/>
+				<Command val="0"/>
+				<Command val="105D"/>
+				<Command val="4"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="5"/>
+				<Command val="3001"/>
+				<Command val="16"/>
+				<Command val="2F"/>
+				<Command val="0"/>
+				<Command val="105D"/>
+				<Command val="2"/>
+				<Command val="1FFF"/>
+				<Command val="6"/>
+				<Command val="200F"/>
+			</Component>
+			<Component name="Mario" xyz="-6,0,0">
+				<Command val="3001"/>
+				<Command val="FFFA"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="105E"/>
+				<Command val="4"/>
+				<Command val="3001"/>
+				<Command val="FFFA"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="105F"/>
+				<Command val="2"/>
+				<Command val="3001"/>
+				<Command val="FFFB"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="1062"/>
+				<Command val="2"/>
+				<Command val="3001"/>
+				<Command val="FFFA"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="1061"/>
+				<Command val="4"/>
+			</Component>
+		</Animation>
+		<Animation name="Anim_HammerThrowSuperStart">
+			<Component xyz="0,3,0">
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="1057"/>
+				<Command val="2"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="1058"/>
+				<Command val="8"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="1059"/>
+				<Command val="4"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="105A"/>
+				<Command val="2"/>
+				<Command val="8201"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="105A"/>
+				<Command val="2"/>
+				<Command val="2019"/>
+			</Component>
+			<Component name="SuperHammer" xyz="0,-1,-2">
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="8"/>
+				<Command val="3000"/>
+				<Command val="FFDD"/>
+				<Command val="2"/>
+				<Command val="0"/>
+				<Command val="1063"/>
+				<Command val="2"/>
+				<Command val="3000"/>
+				<Command val="FFE4"/>
+				<Command val="FFFF"/>
+				<Command val="0"/>
+				<Command val="1063"/>
+				<Command val="8"/>
+				<Command val="3000"/>
+				<Command val="19"/>
+				<Command val="30"/>
+				<Command val="0"/>
+				<Command val="1064"/>
+				<Command val="4"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF8"/>
+				<Command val="3000"/>
+				<Command val="1B"/>
+				<Command val="2D"/>
+				<Command val="0"/>
+				<Command val="1064"/>
+				<Command val="2"/>
+				<Command val="8201"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF8"/>
+				<Command val="3000"/>
+				<Command val="1B"/>
+				<Command val="2D"/>
+				<Command val="0"/>
+				<Command val="1064"/>
+				<Command val="2"/>
+				<Command val="201F"/>
+			</Component>
+		</Animation>
+		<Animation name="Anim_HammerThrowSuperThrow">
+			<Component name="Hammer" xyz="0,0,-2">
+				<Command val="3001"/>
+				<Command val="19"/>
+				<Command val="2A"/>
+				<Command val="0"/>
+				<Command val="1064"/>
+				<Command val="4"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="5"/>
+				<Command val="3001"/>
+				<Command val="16"/>
+				<Command val="2F"/>
+				<Command val="0"/>
+				<Command val="1064"/>
+				<Command val="2"/>
+				<Command val="1FFF"/>
+				<Command val="6"/>
+				<Command val="200F"/>
+			</Component>
+			<Component name="Mario" xyz="-6,0,0">
+				<Command val="3001"/>
+				<Command val="FFFA"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="105E"/>
+				<Command val="4"/>
+				<Command val="3001"/>
+				<Command val="FFFA"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="105F"/>
+				<Command val="2"/>
+				<Command val="3001"/>
+				<Command val="FFFB"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="1062"/>
+				<Command val="2"/>
+				<Command val="3001"/>
+				<Command val="FFFA"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="1061"/>
+				<Command val="4"/>
+			</Component>
+		</Animation>
+		<Animation name="Anim_HammerThrowUltraStart">
+			<Component xyz="0,3,0">
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="1057"/>
+				<Command val="2"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="1058"/>
+				<Command val="8"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="1059"/>
+				<Command val="4"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="105A"/>
+				<Command val="2"/>
+				<Command val="8201"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="105A"/>
+				<Command val="2"/>
+				<Command val="2019"/>
+			</Component>
+			<Component name="UltraHammer" xyz="0,-1,-2">
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="8"/>
+				<Command val="3000"/>
+				<Command val="FFDD"/>
+				<Command val="2"/>
+				<Command val="0"/>
+				<Command val="1065"/>
+				<Command val="2"/>
+				<Command val="3000"/>
+				<Command val="FFE4"/>
+				<Command val="FFFF"/>
+				<Command val="0"/>
+				<Command val="1065"/>
+				<Command val="8"/>
+				<Command val="3000"/>
+				<Command val="19"/>
+				<Command val="30"/>
+				<Command val="0"/>
+				<Command val="1066"/>
+				<Command val="4"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF8"/>
+				<Command val="3000"/>
+				<Command val="1B"/>
+				<Command val="2D"/>
+				<Command val="0"/>
+				<Command val="1066"/>
+				<Command val="2"/>
+				<Command val="8201"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF8"/>
+				<Command val="3000"/>
+				<Command val="1B"/>
+				<Command val="2D"/>
+				<Command val="0"/>
+				<Command val="1066"/>
+				<Command val="2"/>
+				<Command val="201F"/>
+			</Component>
+		</Animation>
+		<Animation name="Anim_HammerThrowUltraThrow">
+			<Component name="Hammer" xyz="0,0,-2">
+				<Command val="3001"/>
+				<Command val="19"/>
+				<Command val="2A"/>
+				<Command val="0"/>
+				<Command val="1066"/>
+				<Command val="4"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="5"/>
+				<Command val="3001"/>
+				<Command val="16"/>
+				<Command val="2F"/>
+				<Command val="0"/>
+				<Command val="1066"/>
+				<Command val="2"/>
+				<Command val="1FFF"/>
+				<Command val="6"/>
+				<Command val="200F"/>
+			</Component>
+			<Component name="Mario" xyz="-6,0,0">
+				<Command val="3001"/>
+				<Command val="FFFA"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="105E"/>
+				<Command val="4"/>
+				<Command val="3001"/>
+				<Command val="FFFA"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="105F"/>
+				<Command val="2"/>
+				<Command val="3001"/>
+				<Command val="FFFB"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="1062"/>
+				<Command val="2"/>
+				<Command val="3001"/>
+				<Command val="FFFA"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="1061"/>
+				<Command val="4"/>
 			</Component>
 		</Animation>
 	</AnimationList>

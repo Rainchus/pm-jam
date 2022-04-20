@@ -271,29 +271,26 @@ Facing Right[END]
     Call $getHammerUpgradeValue ( *Var1 )
     Switch  *Var1
     Case  ==  .Item:Nothing % 0
-		%Call  SetPlayerAnimation  ( 00040017 )
-		%Call  SetAnimation (.Actor:Player 00000000 00040017)
-		Wait 4`
-		%Call  SetPlayerAnimation  ( 0004001B )
-		%Call  SetAnimation (.Actor:Player 00000000 0004001B)
-		Wait 4`
-        Call  CreateVirtualEntity   ( *VarA $EntityModelScript_802A3CE4 )
-    Case  ==  .Item:Jump % 1
 		Call  SetPlayerAnimation  ( 00010033 )
-		%Call  SetAnimation (.Actor:Player 00000000 0004001D)
-		Wait 4`
-		%Call  SetPlayerAnimation  ( 00040021 )
-		%Call  SetAnimation (.Actor:Player 00000000 00040021)
-		Wait 4`
+		Wait 6`
+		Call  SetPlayerAnimation  ( 00010034 )
+		Wait 5`
+        Call  CreateVirtualEntity   ( *VarA $EntityModelScript_802A3CE4 )
+		Call  SetPlayerAnimation  ( 00010002 )
+    Case  ==  .Item:Jump % 1
+		Call  SetPlayerAnimation  ( 00010035 )
+		Wait 6`
+		Call  SetPlayerAnimation  ( 00010036 )
+		Wait 5`
         Call  CreateVirtualEntity   ( *VarA $EntityModelScript_802A3D00 )
+		Call  SetPlayerAnimation  ( 00010002 )
     Case  ==  .Item:SpinJump % 2
-		%Call  SetPlayerAnimation  ( 00040023 )
-		%Call  SetAnimation (.Actor:Player 00000000 00040023)
-		Wait 4`
-		%Call  SetPlayerAnimation  ( 00040027 )
-		%Call  SetAnimation (.Actor:Player 00000000 00040027)
-		Wait 4`
+		Call  SetPlayerAnimation  ( 00010037 )
+		Wait 6`
+		Call  SetPlayerAnimation  ( 00010038 )
+		Wait 5`
         Call  CreateVirtualEntity   ( *VarA $EntityModelScript_802A3D1C )
+		Call  SetPlayerAnimation  ( 00010002 )
     EndSwitch
 	Call  $storeHammerThrowVirtualEntityIndex ( *VarA )
     Call  GetPlayerPos ( *Var0 *Var1 *Var2 )
