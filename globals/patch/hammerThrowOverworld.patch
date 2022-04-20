@@ -1,3 +1,136 @@
+#define .gWorldEntityList 80151380
+#define .PlayerStatus 8010EFC8
+
+#define .ACTION_STATE_IDLE 0
+#define .ACTION_STATE_WALK 1
+#define .ACTION_STATE_RUN 2
+
+#define .ENTITY_TYPE_BLUE_SWITCH 7
+#define .ENTITY_TYPE_RED_SWITCH 8
+
+%to active a switch, load pointer to switch from 80151380
+%set offset 0x06 to 0x80 and the switch will be hit
+%check for this flag is at 802E16F0
+
+#new:Data $hammerThrowVirtualEntityIndex {
+	-1
+}
+
+#new:Data $switchHitBool { 0 }
+
+#new:Function $ScrAPI_checkIfSwitchHit {
+	PUSH s0, ra
+	LW s0, 000C (a0)
+	LAW t0, $switchHitBool
+	ORI a2, r0, 0
+	BNEL t0, r0, .switchHit
+	ORI a2, r0, 1
+	.switchHit
+	JAL ~Func:set_variable
+	LW a1, 0000 (s0)
+
+	POP s0, ra
+	JR RA
+	ORI v0, r0, 2
+}
+
+#new:Function $checkIfHammerHitEntity {
+	PUSH[20] s0, s1, s2, f12, f14, ra
+	SAW r0, $switchHitBool
+	%s0 currently holds entity pointer
+	LAW s1, $hammerThrowVirtualEntityIndex
+	LI s2, 802DB7C0 %virtual entity array pointers
+	LW s2, 0000 (s2)
+	SLL t0, s1, 2 %multiply by sizeof(ptr)
+	ADDU t0, t0, s2 %pointer to current virutal entity ptr
+	LW s2, 0000 (t0) %load pointer to hammer throw virtual entity
+	LWC1 f12, 0004 (s2) %load x pos of hammer
+	LWC1 f14, 0008 (s2) %load y pos of hammer
+	LW a2, 000C (s2) %load z pos of hammer
+	LW a3, 0048 (s0) %load x pos of switch entity
+	LW t0, 004C (s0) %load y pos of switch entity
+	SW t0, 0010 (sp)
+	LW t0, 0050 (s0) %load z pos of switch entity
+	SW t0, 0014 (sp)
+	JAL ~Func:dist3D
+	NOP
+	LIF f4, 50.0
+	C.LT.S f0, f4
+	ORI v0, r0, 0 %didnt hit switch
+	BC1TL .hitSwitch
+	ORI v0, r0, 1 %hit switch
+	.hitSwitch
+	SAW v0, $switchHitBool
+	BEQ v0, r0, .exit
+	NOP
+	%delete virtual entity
+	JAL ~Func:free_entity_model_by_index
+	LW a0, 0000 (s2)
+	ADDIU t0, r0, FFFF
+	SW t0, 0000 (s2) %set entityModelIndex to -1
+	.exit
+	POP[20] s0, s1, s2, f12, f14, ra
+	JR RA
+	NOP
+}
+
+@Hook:Global 8010F870 {
+	LAW t0, $hammerThrowActive
+	BEQ t0, r0, .exit
+	NOP
+	PUSH v0
+	%s0 holds current entity pointer
+	%s1 holds current entity index?
+	BEQ s0, r0, .nullPointer
+	NOP
+	LBU t0, 000A (s0) %entity type
+	ORI t1, r0, .ENTITY_TYPE_BLUE_SWITCH
+	BEQ t0, t1, .isSwitch
+	ORI t1, r0, .ENTITY_TYPE_RED_SWITCH
+	BEQ t0, t1, .isSwitch
+	NOP
+	BEQ r0, r0, .notSwitch
+	NOP
+
+	.isSwitch
+	JAL $checkIfHammerHitEntity
+	NOP
+	BEQ v0, r0, .didntHitEntity
+	ADDU t0, v0, r0
+	POP v0
+	%did hit switch
+	%JAL ~Func:free_entity_model_by_index
+	ORI v0, r0, 0080 %activate switch
+
+	BEQ r0, r0, .exit
+	NOP
+	
+
+	.nullPointer
+	.didntHitEntity
+	.notSwitch
+	POP v0
+
+	.exit
+	SB v0, 0006 (s0)
+	J 8010F878
+	ANDI v0, v0, 00FF
+}
+
+#export:Data $hammerThrowPosition { -2000.0 -2000.0 -2000.0 }
+
+%800E5C30 action state jump table
+%800E5B70 set s1 to jump table pointer
+
+#new:Data $hammerThrowActive { 0 }
+
+@Hook:Global 801385D4 { %hook update_enter_map_screen_overlay
+	SAW r0, $hammerThrowActive
+	LUI v1, 8015
+	J 801385DC
+	LW v1, C6F0 (v1)
+}
+
 @Hook:Global 800E92B0 {
     LAH t0, 80074036
     ANDI t0, t0, 0010 %R button
@@ -25,8 +158,6 @@
     ORI v0, r0, .scrApi_Done2
 }
 
-#new:Data $hammerThrowActive { 0 }
-
 #new:Function $setHammerThrowBool {
     LW t0, 000C (a0) %load ptr to script args
     LW t1, 0000 (t0)
@@ -40,18 +171,88 @@
     LAW t0, $hammerThrowActive
     BNE t0, r0, .exit
     NOP
-    LA        A0, $hammerThrowOverworld
-    LI        A1, A
-    JAL       ~Func:start_script
-    CLEAR     A2
+	LI t0, .PlayerStatus
+	LBU t1, 00B4 (t0) %actionState
+	ORI t2, r0, .ACTION_STATE_IDLE
+	BEQ t1, t2, .startScript
+	ORI t2, r0, .ACTION_STATE_WALK
+	BEQ t1, t2, .startScript
+	ORI t2, r0, .ACTION_STATE_RUN
+	BEQ t1, t2, .startScript
+	NOP
+	BEQ r0, r0, .exit
+	NOP
+	.startScript
+    LA A0, $hammerThrowOverworld
+    LI A1, A
+    JAL ~Func:start_script
+    CLEAR A2
     .exit
     POP ra
     JR RA
     ORI v0, r0, .scrApi_Done2
 }
 
+
+
+#new:String $facingLeftText {
+Facing Left[END]
+}
+
+#new:String $facingRightText {
+Facing Right[END]
+}
+
+#new:Function $ScrAPI_checkIfHammerHitEntity {
+	PUSH[20] s0, ra
+
+	POP[20] s0, ra
+	JR RA
+	ORI v0, r0, .scrApi_Done2
+}
+
+#new:Function $ScrAPI_getFacingDirection {
+	PUSH s0, ra
+	LIO s0, .PlayerStatus
+	LI t0, $facingLeftText
+	%LWC1 f0, 00A8 (s0) %spriteFacingAngle
+	LWC1 f0, 0080 (s0) %targetYaw
+	LIF f2, 180.0
+	C.LT.S f0, f2
+	BC1T .facingRight
+	ORI a2, r0, 0 %facing right value
+	%facing left
+	ORI a2, r0, 1 %facing left value
+	.facingRight
+	LW t0, 000C (a0)
+	JAL ~Func:set_variable
+	LW a1, 0000 (t0)
+
+	POP s0, ra
+	JR RA
+	ORI v0, r0, .scrApi_Done2
+}
+
+#new:Function $clearHammerThrowVirtualEntityIndex {
+	ADDIU t0, r0, FFFF
+	SAW t0, $hammerThrowVirtualEntityIndex
+	JR RA
+	ORI v0, r0, 2
+}
+
+#new:Function $storeHammerThrowVirtualEntityIndex {
+	PUSH ra
+	LW t0, 000C (a0)
+	JAL ~Func:get_variable
+	LW a1, 0000 (t0)
+	SAW v0, $hammerThrowVirtualEntityIndex
+	POP ra
+	JR RA
+	ORI v0, r0, 2
+}
+
 #new:Script:Map $hammerThrowOverworld {
-    Call $setHammerThrowBool ( 1 )
+    Call $setHammerThrowBool ( .True )
     Call $getHammerUpgradeValue ( *Var1 )
     Switch  *Var1
     Case  ==  .Item:Nothing % 0
@@ -61,28 +262,56 @@
     Case  ==  .Item:SpinJump % 2
         Call  CreateVirtualEntity   ( *VarA $EntityModelScript_802A3D1C )
     EndSwitch
+	Call  $storeHammerThrowVirtualEntityIndex ( *VarA )
     Call  GetPlayerPos ( *Var0 *Var1 *Var2 )
-    Add   *Var0  00000014
-    Add   *Var1  0000002A
-    Add   *Var2  00000005
-    Call  SetVirtualEntityPosition  ( *VarA *Var0 *Var1 *Var2 )
-    Call  SetVirtualEntityScale     ( *VarA *Fixed[0.8] *Fixed[0.8] *Fixed[0.8] )
-    Call  GetPlayerPos ( *Var0 *Var1 *Var2 )
-    Add   *Var0 100`
+	Call  $ScrAPI_getFacingDirection ( *Var3 )
+	If *Var3 == 0 %if facing right
+	    Add   *Var0  00000014
+    	Add   *Var1  0000002A
+    	Add   *Var2  00000005
+    	Call  SetVirtualEntityPosition  ( *VarA *Var0 *Var1 *Var2 )
+		Add *Var0 100`
+		Set *Var5 FFFFFFC4
+	Else
+	    Add   *Var0  FFFFFFEC
+    	Add   *Var1  0000002A
+    	Add   *Var2  00000005
+    	Call  SetVirtualEntityPosition ( *VarA *Var0 *Var1 *Var2 )
+		Sub *Var0 100`
+		Set *Var5 0000003C
+    EndIf
+	Call  SetVirtualEntityScale     ( *VarA *Fixed[0.8] *Fixed[0.8] *Fixed[0.8] )
+
     Thread
-        Set   *Var0  00000000
-        Loop  30`
-            Add   *Var0  0000003C
-            Call  SetVirtualEntityRotation  ( *VarA 00000000 00000000 *Var0 )
+        Set   *Var6  00000000
+        Loop
+            Add   *Var6  *Var5
+            Call  SetVirtualEntityRotation  ( *VarA 00000000 00000000 *Var6 )
             Wait  1`
         EndLoop
     EndThread
+
+	%check if entity should be deleted due to hitting switch
+	Thread
+		Loop
+			Call $ScrAPI_checkIfSwitchHit ( *Var7 )
+			If *Var7 == 1 %switch has been hit
+				Call  $clearHammerThrowVirtualEntityIndex
+				Call  $setHammerThrowBool ( .False )
+				Return
+			EndIf
+			Wait 1`
+		EndLoop
+	EndThread
+
     Call  SetVirtualEntityJumpGravity   ( *VarA *Fixed[1.3] )
     Add   *Var2  00000005
-    Call  VirtualEntityJumpTo   ( *VarA *Var0 *Var1 *Var2  21` )
-    Call  VirtualEntityLandJump ( *VarA )
+	Add   *Var1  FFFFFFC0 %-40
+    Call  VirtualEntityJumpTo   ( *VarA *Var0 *Var1 *Var2  28` )
+    %Call  VirtualEntityLandJump ( *VarA )
     Call  DeleteVirtualEntity   ( *VarA )
-    Call $setHammerThrowBool ( 0 )
+	Call  $clearHammerThrowVirtualEntityIndex
+    Call  $setHammerThrowBool ( .False )
     Return
     End
 }
