@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<SpriteSheet maxComponents="2" paletteGroups="9">
+<SpriteSheet maxComponents="2" paletteGroups="6">
 	<PaletteList>
 		<Palette id="0" src="Palette_00.png"/>
 		<Palette id="1" src="Palette_01.png"/>
@@ -1230,31 +1230,34 @@
 			<Component name="UltraHammer" xyz="0,-1,-2">
 				<Command val="4000"/>
 				<Command val="0"/>
-				<Command val="8"/>
-				<Command val="3000"/>
+				<Command val="6"/>
+				<Command val="3001"/>
 				<Command val="FFDD"/>
-				<Command val="2"/>
+				<Command val="FFFD"/>
 				<Command val="0"/>
 				<Command val="1065"/>
-				<Command val="2"/>
-				<Command val="3000"/>
-				<Command val="FFE4"/>
-				<Command val="FFFF"/>
+				<Command val="4"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="8"/>
+				<Command val="3001"/>
+				<Command val="FFE1"/>
+				<Command val="FFFD"/>
 				<Command val="0"/>
 				<Command val="1065"/>
 				<Command val="8"/>
-				<Command val="3000"/>
-				<Command val="19"/>
-				<Command val="30"/>
+				<Command val="3001"/>
+				<Command val="17"/>
+				<Command val="2E"/>
 				<Command val="0"/>
 				<Command val="1066"/>
 				<Command val="4"/>
 				<Command val="4000"/>
 				<Command val="0"/>
 				<Command val="FFF8"/>
-				<Command val="3000"/>
-				<Command val="1B"/>
-				<Command val="2D"/>
+				<Command val="3001"/>
+				<Command val="19"/>
+				<Command val="2B"/>
 				<Command val="0"/>
 				<Command val="1066"/>
 				<Command val="2"/>
@@ -1262,13 +1265,13 @@
 				<Command val="4000"/>
 				<Command val="0"/>
 				<Command val="FFF8"/>
-				<Command val="3000"/>
-				<Command val="1B"/>
-				<Command val="2D"/>
+				<Command val="3001"/>
+				<Command val="19"/>
+				<Command val="2B"/>
 				<Command val="0"/>
 				<Command val="1066"/>
 				<Command val="2"/>
-				<Command val="201F"/>
+				<Command val="2022"/>
 			</Component>
 		</Animation>
 		<Animation name="Anim_HammerThrowUltraThrow">
@@ -1289,7 +1292,7 @@
 				<Command val="1066"/>
 				<Command val="2"/>
 				<Command val="1FFF"/>
-				<Command val="6"/>
+				<Command val="2"/>
 				<Command val="200F"/>
 			</Component>
 			<Component name="Mario" xyz="-6,0,0">
