@@ -1063,6 +1063,7 @@
 				<Command val="0"/>
 				<Command val="1061"/>
 				<Command val="4"/>
+				<Command val="2016"/>
 			</Component>
 		</Animation>
 		<Animation name="Anim_HammerThrowSuperStart">
@@ -1190,6 +1191,7 @@
 				<Command val="0"/>
 				<Command val="1061"/>
 				<Command val="4"/>
+				<Command val="2016"/>
 			</Component>
 		</Animation>
 		<Animation name="Anim_HammerThrowUltraStart">

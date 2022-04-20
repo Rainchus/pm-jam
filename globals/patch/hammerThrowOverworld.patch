@@ -277,16 +277,18 @@ Facing Right[END]
 			Wait 6`
 			Call  SetPlayerAnimation  ( 00010034 )
 			Wait 12`
+			Call  SetPlayerAnimation  ( 00010002 ) %set idle animation
 		Case  ==  .Item:Jump % 1
 			Call  CreateVirtualEntity   ( *VarA $EntityModelScript_802A3D00 ) %create stone hammer sprite
 			Call  SetPlayerAnimation  ( 00010035 )
 			Wait 6`
 			Call  SetPlayerAnimation  ( 00010036 )
 			Wait 12`
+			Call  SetPlayerAnimation  ( 00010002 ) %set idle animation
 		EndSwitch
 	EndThread
-	Wait 11` %total frames of above animation
-	Call  SetPlayerAnimation  ( 00010002 ) %set idle animation
+	Wait 11`
+	
 
 	Call  $storeHammerThrowVirtualEntityIndex ( *VarA )
     Call  GetPlayerPos ( *Var0 *Var1 *Var2 )
