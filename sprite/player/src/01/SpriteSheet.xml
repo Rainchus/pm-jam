@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<SpriteSheet maxComponents="1" paletteGroups="6">
+<SpriteSheet maxComponents="1" paletteGroups="7">
 	<PaletteList>
 		<Palette id="0" src="Palette_00.png"/>
 		<Palette id="1" src="Palette_01.png"/>
@@ -27,6 +27,7 @@
 		<Palette id="17" src="Palette_17.png"/>
 		<Palette id="18" src="Palette_18.png"/>
 		<Palette id="19" src="Palette_19.png"/>
+		<Palette id="1A" src="Palette_1A.png"/>
 	</PaletteList>
 	<RasterList>
 		<Raster id="0" palette="0" src="00B80.png"/>
@@ -116,6 +117,13 @@
 		<Raster id="54" palette="0" src="19AC0.png"/>
 		<Raster id="55" palette="0" src="1A000.png"/>
 		<Raster id="56" palette="0" src="1A540.png"/>
+		<Raster id="57" palette="0" src="2B7D0.png"/>
+		<Raster id="58" palette="0" src="2BC50.png"/>
+		<Raster id="59" palette="0" src="290D0.png"/>
+		<Raster id="5A" palette="0" src="29610.png"/>
+		<Raster id="5B" palette="1A" src="2CF50.png"/>
+		<Raster id="5C" palette="1A" src="36950.png"/>
+		<Raster id="5D" palette="1A" src="2C950.png"/>
 	</RasterList>
 	<AnimationList>
 		<Animation name="Anim_00">
@@ -917,6 +925,85 @@
 				<Command val="2"/>
 				<Command val="8201"/>
 				<Command val="200C"/>
+			</Component>
+		</Animation>
+		<Animation name="Anim_HammerThrowNormalStart">
+			<Component xyz="0,3,0">
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="1057"/>
+				<Command val="4"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="1058"/>
+				<Command val="8"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="1059"/>
+				<Command val="4"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="105A"/>
+				<Command val="2"/>
+				<Command val="8201"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="105A"/>
+				<Command val="2"/>
+				<Command val="2019"/>
+			</Component>
+			<Component name="NormalHammer" xyz="0,-1,-2">
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="8"/>
+				<Command val="3000"/>
+				<Command val="FFDD"/>
+				<Command val="2"/>
+				<Command val="0"/>
+				<Command val="105B"/>
+				<Command val="4"/>
+				<Command val="3000"/>
+				<Command val="FFE4"/>
+				<Command val="FFFF"/>
+				<Command val="0"/>
+				<Command val="105C"/>
+				<Command val="8"/>
+				<Command val="3000"/>
+				<Command val="19"/>
+				<Command val="30"/>
+				<Command val="0"/>
+				<Command val="105D"/>
+				<Command val="4"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF8"/>
+				<Command val="3000"/>
+				<Command val="1B"/>
+				<Command val="2D"/>
+				<Command val="0"/>
+				<Command val="105D"/>
+				<Command val="2"/>
+				<Command val="8201"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF8"/>
+				<Command val="3000"/>
+				<Command val="1B"/>
+				<Command val="2D"/>
+				<Command val="0"/>
+				<Command val="105D"/>
+				<Command val="2"/>
+				<Command val="201F"/>
 			</Component>
 		</Animation>
 	</AnimationList>

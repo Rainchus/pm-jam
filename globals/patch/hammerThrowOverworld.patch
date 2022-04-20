@@ -279,7 +279,7 @@ Facing Right[END]
 		Wait 4`
         Call  CreateVirtualEntity   ( *VarA $EntityModelScript_802A3CE4 )
     Case  ==  .Item:Jump % 1
-		%Call  SetPlayerAnimation  ( 0004001D )
+		Call  SetPlayerAnimation  ( 00010033 )
 		%Call  SetAnimation (.Actor:Player 00000000 0004001D)
 		Wait 4`
 		%Call  SetPlayerAnimation  ( 00040021 )
