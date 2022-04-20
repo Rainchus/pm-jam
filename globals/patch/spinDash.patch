@@ -1,0 +1,57 @@
+%dont slow down spins
+@Function E25DD0 % Normal spin duration frames (25 is vanilla)
+{
+    ADDIU v0, r0, 25`
+}
+
+@Function E25E10 % Normal spin frame # to begin slowing down
+{
+    ADDIU v0, r0, 25`
+}
+
+@Function E25E7C % Speedy spin duration frames
+{
+    ADDIU v0, r0, 35`
+}
+
+@Function E25EA4 % Speedy spin frame # to begin slowing down
+{
+    ADDIU v0, r0, 35`
+}
+
+%/* E26184 802B6424 C6000010 */  lwc1      $f0, 0x10($s0) only ran when mario should fall
+
+#new:Data $spinHoverBool { 1 }
+
+@Hook E26184 { %802B6424
+    LAW t0, $spinHoverBool
+    BEQ t0, r0, .noHover
+    NOP
+    JAL ~Func:set_action_state
+    ORI a0, r0, 8 %falling state
+    .noHover
+    LWC1 f0, 0010 (s0) %restore from hook
+    LUI at, 3F80 %restore from hook
+    J 802B642C
+    NOP
+}
+
+%ACTION_STATE_FALLING %00000008
+
+@Hook:Global 800E4A9C { %remove gravity
+    LAW t0, $spinHoverBool
+    BEQ t0, r0, .noHover
+    NOP
+    LIO t0, 8010EFC8
+    LBU t1, 00B4 (t0) %load action state
+    ORI t2, r0, 001A %spinning
+    BEQ t1, t2, .isSpinning
+    NOP
+    %do gravity
+    .noHover
+    JAL 800E5DA4
+    NOP
+    .isSpinning
+    J 800E4AA4
+    NOP
+}

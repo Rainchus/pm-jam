@@ -47,6 +47,9 @@
 	SAW r0, $switchHitBool
 	%s0 currently holds entity pointer
 	LAW s1, $hammerThrowVirtualEntityIndex
+	ADDIU t0, r0, FFFF
+	BEQ t0, s1, .virtualEntityDoesntExist
+	ORI v0, r0, 0
 	LI s2, 802DB7C0 %virtual entity array pointers
 	LW s2, 0000 (s2)
 	SLL t0, s1, 2 %multiply by sizeof(ptr)
@@ -68,6 +71,7 @@
 	BC1TL .hitSwitch
 	ORI v0, r0, 1 %hit switch
 	.hitSwitch
+	.virtualEntityDoesntExist
 	SAW v0, $switchHitBool
 	BEQ v0, r0, .exit
 	NOP
@@ -267,10 +271,28 @@ Facing Right[END]
     Call $getHammerUpgradeValue ( *Var1 )
     Switch  *Var1
     Case  ==  .Item:Nothing % 0
+		%Call  SetPlayerAnimation  ( 00040017 )
+		%Call  SetAnimation (.Actor:Player 00000000 00040017)
+		Wait 4`
+		%Call  SetPlayerAnimation  ( 0004001B )
+		%Call  SetAnimation (.Actor:Player 00000000 0004001B)
+		Wait 4`
         Call  CreateVirtualEntity   ( *VarA $EntityModelScript_802A3CE4 )
     Case  ==  .Item:Jump % 1
+		%Call  SetPlayerAnimation  ( 0004001D )
+		%Call  SetAnimation (.Actor:Player 00000000 0004001D)
+		Wait 4`
+		%Call  SetPlayerAnimation  ( 00040021 )
+		%Call  SetAnimation (.Actor:Player 00000000 00040021)
+		Wait 4`
         Call  CreateVirtualEntity   ( *VarA $EntityModelScript_802A3D00 )
     Case  ==  .Item:SpinJump % 2
+		%Call  SetPlayerAnimation  ( 00040023 )
+		%Call  SetAnimation (.Actor:Player 00000000 00040023)
+		Wait 4`
+		%Call  SetPlayerAnimation  ( 00040027 )
+		%Call  SetAnimation (.Actor:Player 00000000 00040027)
+		Wait 4`
         Call  CreateVirtualEntity   ( *VarA $EntityModelScript_802A3D1C )
     EndSwitch
 	Call  $storeHammerThrowVirtualEntityIndex ( *VarA )
