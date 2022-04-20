@@ -269,29 +269,25 @@ Facing Right[END]
 #new:Script:Map $hammerThrowOverworld {
     Call $setHammerThrowBool ( .True )
     Call $getHammerUpgradeValue ( *Var1 )
-    Switch  *Var1
-    Case  ==  .Item:Nothing % 0
-		Call  SetPlayerAnimation  ( 00010033 )
-		Wait 6`
-		Call  SetPlayerAnimation  ( 00010034 )
-		Wait 5`
-        Call  CreateVirtualEntity   ( *VarA $EntityModelScript_802A3CE4 )
-		Call  SetPlayerAnimation  ( 00010002 )
-    Case  ==  .Item:Jump % 1
-		Call  SetPlayerAnimation  ( 00010035 )
-		Wait 6`
-		Call  SetPlayerAnimation  ( 00010036 )
-		Wait 5`
-        Call  CreateVirtualEntity   ( *VarA $EntityModelScript_802A3D00 )
-		Call  SetPlayerAnimation  ( 00010002 )
-    Case  ==  .Item:SpinJump % 2
-		Call  SetPlayerAnimation  ( 00010037 )
-		Wait 6`
-		Call  SetPlayerAnimation  ( 00010038 )
-		Wait 5`
-        Call  CreateVirtualEntity   ( *VarA $EntityModelScript_802A3D1C )
-		Call  SetPlayerAnimation  ( 00010002 )
-    EndSwitch
+	Thread
+		Switch  *Var1
+		Case  ==  .Item:Nothing % 0
+			Call  CreateVirtualEntity   ( *VarA $EntityModelScript_802A3CE4 ) %create wood hammer sprite
+			Call  SetPlayerAnimation  ( 00010033 )
+			Wait 6`
+			Call  SetPlayerAnimation  ( 00010034 )
+			Wait 12`
+		Case  ==  .Item:Jump % 1
+			Call  CreateVirtualEntity   ( *VarA $EntityModelScript_802A3D00 ) %create stone hammer sprite
+			Call  SetPlayerAnimation  ( 00010035 )
+			Wait 6`
+			Call  SetPlayerAnimation  ( 00010036 )
+			Wait 12`
+		EndSwitch
+	EndThread
+	Wait 11` %total frames of above animation
+	Call  SetPlayerAnimation  ( 00010002 ) %set idle animation
+
 	Call  $storeHammerThrowVirtualEntityIndex ( *VarA )
     Call  GetPlayerPos ( *Var0 *Var1 *Var2 )
 	Call  $ScrAPI_getFacingDirection ( *Var3 )

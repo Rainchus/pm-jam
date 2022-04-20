@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<SpriteSheet maxComponents="2" paletteGroups="6">
+<SpriteSheet maxComponents="2" paletteGroups="7">
 	<PaletteList>
 		<Palette id="0" src="Palette_00.png"/>
 		<Palette id="1" src="Palette_01.png"/>
@@ -1035,7 +1035,7 @@
 				<Command val="105D"/>
 				<Command val="2"/>
 				<Command val="1FFF"/>
-				<Command val="6"/>
+				<Command val="A"/>
 				<Command val="200F"/>
 			</Component>
 			<Component name="Mario" xyz="-6,0,0">
@@ -1162,7 +1162,7 @@
 				<Command val="1064"/>
 				<Command val="2"/>
 				<Command val="1FFF"/>
-				<Command val="6"/>
+				<Command val="A"/>
 				<Command val="200F"/>
 			</Component>
 			<Component name="Mario" xyz="-6,0,0">
