@@ -8,6 +8,18 @@
 		<Raster id="1" palette="0" src="idle1.png"/>
 		<Raster id="2" palette="0" src="idle2.png"/>
 		<Raster id="3" palette="0" src="idle3.png"/>
+		<Raster id="4" name="sidle1" palette="0" src="sidle1.png"/>
+		<Raster id="5" name="sidle2" palette="0" src="sidle2.png"/>
+		<Raster id="6" name="sidle3" palette="0" src="sidle3.png"/>
+		<Raster id="7" name="nidle1" palette="0" src="nidle1.png"/>
+		<Raster id="8" name="nidle2" palette="0" src="nidle2.png"/>
+		<Raster id="9" name="nidle3" palette="0" src="nidle3.png"/>
+		<Raster id="A" name="aidle1" palette="0" src="aidle1.png"/>
+		<Raster id="B" name="aidle2" palette="0" src="aidle2.png"/>
+		<Raster id="C" name="aidle3" palette="0" src="aidle3.png"/>
+		<Raster id="D" name="midle1" palette="0" src="midle1.png"/>
+		<Raster id="E" name="midle2" palette="0" src="midle2.png"/>
+		<Raster id="F" name="midle3" palette="0" src="midle3.png"/>
 	</RasterList>
 	<AnimationList>
 		<Animation name="still">
@@ -102,7 +114,7 @@
 				<Command val="2000"/>
 			</Component>
 		</Animation>
-		<Animation name="idle">
+		<Animation name="hidle">
 			<Component name="body" xyz="0,-12,0">
 				<Command val="8102"/>
 				<Command val="1002"/>
@@ -112,6 +124,170 @@
 				<Command val="1002"/>
 				<Command val="6"/>
 				<Command val="1001"/>
+				<Command val="14"/>
+				<Command val="2001"/>
+			</Component>
+			<Component name="star" xyz="1,20,0">
+				<Command val="1000"/>
+				<Command val="8102"/>
+			</Component>
+			<Component name="motion" xyz="0,0,0">
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="6"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="FFFE"/>
+				<Command val="0"/>
+				<Command val="14"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="6"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="2"/>
+				<Command val="0"/>
+				<Command val="14"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="sidle">
+			<Component name="body" xyz="0,-12,0">
+				<Command val="8102"/>
+				<Command val="1005"/>
+				<Command val="6"/>
+				<Command val="1006"/>
+				<Command val="14"/>
+				<Command val="1005"/>
+				<Command val="6"/>
+				<Command val="1004"/>
+				<Command val="14"/>
+				<Command val="2001"/>
+			</Component>
+			<Component name="star" xyz="1,20,0">
+				<Command val="1000"/>
+				<Command val="8102"/>
+			</Component>
+			<Component name="motion" xyz="0,0,0">
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="6"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="FFFE"/>
+				<Command val="0"/>
+				<Command val="14"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="6"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="2"/>
+				<Command val="0"/>
+				<Command val="14"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="nidle">
+			<Component name="body" xyz="0,-12,0">
+				<Command val="8102"/>
+				<Command val="1008"/>
+				<Command val="6"/>
+				<Command val="1009"/>
+				<Command val="14"/>
+				<Command val="1008"/>
+				<Command val="6"/>
+				<Command val="1007"/>
+				<Command val="14"/>
+				<Command val="2001"/>
+			</Component>
+			<Component name="star" xyz="1,20,0">
+				<Command val="1000"/>
+				<Command val="8102"/>
+			</Component>
+			<Component name="motion" xyz="0,0,0">
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="6"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="FFFE"/>
+				<Command val="0"/>
+				<Command val="14"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="6"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="2"/>
+				<Command val="0"/>
+				<Command val="14"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="aidle">
+			<Component name="body" xyz="0,-12,0">
+				<Command val="8102"/>
+				<Command val="100B"/>
+				<Command val="6"/>
+				<Command val="100C"/>
+				<Command val="14"/>
+				<Command val="100B"/>
+				<Command val="6"/>
+				<Command val="100A"/>
+				<Command val="14"/>
+				<Command val="2001"/>
+			</Component>
+			<Component name="star" xyz="1,20,0">
+				<Command val="1000"/>
+				<Command val="8102"/>
+			</Component>
+			<Component name="motion" xyz="0,0,0">
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="6"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="FFFE"/>
+				<Command val="0"/>
+				<Command val="14"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="6"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="2"/>
+				<Command val="0"/>
+				<Command val="14"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="midle">
+			<Component name="body" xyz="0,-12,0">
+				<Command val="8102"/>
+				<Command val="100E"/>
+				<Command val="6"/>
+				<Command val="100F"/>
+				<Command val="14"/>
+				<Command val="100E"/>
+				<Command val="6"/>
+				<Command val="100D"/>
 				<Command val="14"/>
 				<Command val="2001"/>
 			</Component>
