@@ -4,7 +4,7 @@
 		<Palette id="0" src="Palette_00.png"/>
 	</PaletteList>
 	<RasterList>
-		<Raster id="0" name="cidle" palette="0" src="cidle.png"/>
+		<Raster id="0" name="closed" palette="0" src="cidle.png"/>
 		<Raster id="1" name="open1" palette="0" src="open1.png"/>
 		<Raster id="2" name="open2" palette="0" src="open2.png"/>
 		<Raster id="3" name="open3" palette="0" src="open3.png"/>
@@ -21,6 +21,17 @@
 		<Raster id="E" name="talk6" palette="0" src="talk6.png"/>
 		<Raster id="F" name="talk7" palette="0" src="talk7.png"/>
 		<Raster id="10" name="talk8" palette="0" src="talk8.png"/>
+		<Raster id="11" name="sidle1" palette="0" src="sidle1.png"/>
+		<Raster id="12" name="sidle2" palette="0" src="sidle2.png"/>
+		<Raster id="13" name="sidle3" palette="0" src="sidle3.png"/>
+		<Raster id="14" name="stalk1" palette="0" src="stalk1.png"/>
+		<Raster id="15" name="stalk2" palette="0" src="stalk2.png"/>
+		<Raster id="16" name="stalk3" palette="0" src="stalk3.png"/>
+		<Raster id="17" name="stalk4" palette="0" src="stalk4.png"/>
+		<Raster id="18" name="stalk5" palette="0" src="stalk5.png"/>
+		<Raster id="19" name="stalk6" palette="0" src="stalk6.png"/>
+		<Raster id="1A" name="stalk7" palette="0" src="stalk7.png"/>
+		<Raster id="1B" name="stalk8" palette="0" src="stalk8.png"/>
 	</RasterList>
 	<AnimationList>
 		<Animation name="still">
@@ -147,6 +158,71 @@
 				<Command val="2000"/>
 			</Component>
 		</Animation>
+		<Animation name="sidle">
+			<Component name="main" xyz="0,0,0">
+				<Command val="8101"/>
+				<Command val="1012"/>
+				<Command val="4"/>
+				<Command val="1012"/>
+				<Command val="6"/>
+				<Command val="1013"/>
+				<Command val="E"/>
+				<Command val="1012"/>
+				<Command val="6"/>
+				<Command val="1012"/>
+				<Command val="4"/>
+				<Command val="1012"/>
+				<Command val="6"/>
+				<Command val="1011"/>
+				<Command val="E"/>
+				<Command val="1012"/>
+				<Command val="6"/>
+				<Command val="2000"/>
+			</Component>
+			<Component name="motion" xyz="0,0,0">
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="4"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="FFFE"/>
+				<Command val="0"/>
+				<Command val="6"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="FFFD"/>
+				<Command val="0"/>
+				<Command val="E"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="FFFE"/>
+				<Command val="0"/>
+				<Command val="6"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="0"/>
+				<Command val="4"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="2"/>
+				<Command val="0"/>
+				<Command val="6"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="3"/>
+				<Command val="0"/>
+				<Command val="E"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="2"/>
+				<Command val="0"/>
+				<Command val="6"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
 		<Animation name="talk">
 			<Component name="main" xyz="0,0,0">
 				<Command val="8101"/>
@@ -165,6 +241,30 @@
 				<Command val="100F"/>
 				<Command val="8"/>
 				<Command val="1010"/>
+				<Command val="4"/>
+				<Command val="2001"/>
+			</Component>
+			<Component name="motion" xyz="0,0,0">
+			</Component>
+		</Animation>
+		<Animation name="stalk">
+			<Component name="main" xyz="0,0,0">
+				<Command val="8101"/>
+				<Command val="1014"/>
+				<Command val="8"/>
+				<Command val="1015"/>
+				<Command val="4"/>
+				<Command val="1016"/>
+				<Command val="8"/>
+				<Command val="1017"/>
+				<Command val="4"/>
+				<Command val="1018"/>
+				<Command val="8"/>
+				<Command val="1019"/>
+				<Command val="4"/>
+				<Command val="101A"/>
+				<Command val="8"/>
+				<Command val="101B"/>
 				<Command val="4"/>
 				<Command val="2001"/>
 			</Component>
