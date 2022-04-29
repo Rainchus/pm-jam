@@ -8,18 +8,28 @@
 		<Raster id="1" palette="0" src="idle1.png"/>
 		<Raster id="2" palette="0" src="idle2.png"/>
 		<Raster id="3" palette="0" src="idle3.png"/>
-		<Raster id="4" name="sidle1" palette="0" src="sidle1.png"/>
-		<Raster id="5" name="sidle2" palette="0" src="sidle2.png"/>
-		<Raster id="6" name="sidle3" palette="0" src="sidle3.png"/>
-		<Raster id="7" name="nidle1" palette="0" src="nidle1.png"/>
-		<Raster id="8" name="nidle2" palette="0" src="nidle2.png"/>
-		<Raster id="9" name="nidle3" palette="0" src="nidle3.png"/>
-		<Raster id="A" name="aidle1" palette="0" src="aidle1.png"/>
-		<Raster id="B" name="aidle2" palette="0" src="aidle2.png"/>
-		<Raster id="C" name="aidle3" palette="0" src="aidle3.png"/>
-		<Raster id="D" name="midle1" palette="0" src="midle1.png"/>
-		<Raster id="E" name="midle2" palette="0" src="midle2.png"/>
-		<Raster id="F" name="midle3" palette="0" src="midle3.png"/>
+		<Raster id="4" name="htalk1" palette="0" src="htalk1.png"/>
+		<Raster id="5" name="htalk2" palette="0" src="htalk2.png"/>
+		<Raster id="6" name="sidle1" palette="0" src="sidle1.png"/>
+		<Raster id="7" name="sidle2" palette="0" src="sidle2.png"/>
+		<Raster id="8" name="sidle3" palette="0" src="sidle3.png"/>
+		<Raster id="9" name="stalk1" palette="0" src="stalk1.png"/>
+		<Raster id="A" name="stalk2" palette="0" src="stalk2.png"/>
+		<Raster id="B" name="nidle1" palette="0" src="nidle1.png"/>
+		<Raster id="C" name="nidle2" palette="0" src="nidle2.png"/>
+		<Raster id="D" name="nidle3" palette="0" src="nidle3.png"/>
+		<Raster id="E" name="ntalk1" palette="0" src="ntalk1.png"/>
+		<Raster id="F" name="ntalk2" palette="0" src="ntalk2.png"/>
+		<Raster id="10" name="aidle1" palette="0" src="aidle1.png"/>
+		<Raster id="11" name="aidle2" palette="0" src="aidle2.png"/>
+		<Raster id="12" name="aidle3" palette="0" src="aidle3.png"/>
+		<Raster id="13" name="atalk1" palette="0" src="atalk1.png"/>
+		<Raster id="14" name="atalk2" palette="0" src="atalk2.png"/>
+		<Raster id="15" name="midle1" palette="0" src="midle1.png"/>
+		<Raster id="16" name="midle2" palette="0" src="midle2.png"/>
+		<Raster id="17" name="midle3" palette="0" src="midle3.png"/>
+		<Raster id="18" name="mtalk1" palette="0" src="mtalk1.png"/>
+		<Raster id="19" name="mtalk2" palette="0" src="mtalk2.png"/>
 	</RasterList>
 	<AnimationList>
 		<Animation name="still">
@@ -127,9 +137,14 @@
 				<Command val="14"/>
 				<Command val="2001"/>
 			</Component>
-			<Component name="star" xyz="1,20,0">
+			<Component name="star" xyz="2,19,0">
 				<Command val="1000"/>
 				<Command val="8102"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF4"/>
+				<Command val="2"/>
+				<Command val="2002"/>
 			</Component>
 			<Component name="motion" xyz="0,0,0">
 				<Command val="3000"/>
@@ -153,24 +168,80 @@
 				<Command val="0"/>
 				<Command val="14"/>
 				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="htalk">
+			<Component name="body" xyz="0,-12,0">
+				<Command val="1004"/>
+				<Command val="6"/>
+				<Command val="1005"/>
+				<Command val="2"/>
+				<Command val="1001"/>
+				<Command val="6"/>
+				<Command val="1005"/>
+				<Command val="2"/>
+				<Command val="2000"/>
+			</Component>
+			<Component name="star" xyz="2,19,0">
+				<Command val="1000"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFEC"/>
+				<Command val="6"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF0"/>
+				<Command val="2"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF4"/>
+				<Command val="6"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF8"/>
+				<Command val="2"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFFC"/>
+				<Command val="6"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF8"/>
+				<Command val="2"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF4"/>
+				<Command val="6"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF0"/>
+				<Command val="2"/>
+				<Command val="2000"/>
+			</Component>
+			<Component name="motion" xyz="0,0,0">
 			</Component>
 		</Animation>
 		<Animation name="sidle">
 			<Component name="body" xyz="0,-12,0">
 				<Command val="8102"/>
-				<Command val="1005"/>
+				<Command val="1007"/>
+				<Command val="6"/>
+				<Command val="1008"/>
+				<Command val="14"/>
+				<Command val="1007"/>
 				<Command val="6"/>
 				<Command val="1006"/>
 				<Command val="14"/>
-				<Command val="1005"/>
-				<Command val="6"/>
-				<Command val="1004"/>
-				<Command val="14"/>
 				<Command val="2001"/>
 			</Component>
-			<Component name="star" xyz="1,20,0">
+			<Component name="star" xyz="2,19,0">
 				<Command val="1000"/>
 				<Command val="8102"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF4"/>
+				<Command val="2"/>
+				<Command val="2002"/>
 			</Component>
 			<Component name="motion" xyz="0,0,0">
 				<Command val="3000"/>
@@ -194,24 +265,80 @@
 				<Command val="0"/>
 				<Command val="14"/>
 				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="stalk">
+			<Component name="body" xyz="0,-12,0">
+				<Command val="1009"/>
+				<Command val="6"/>
+				<Command val="100A"/>
+				<Command val="2"/>
+				<Command val="1006"/>
+				<Command val="6"/>
+				<Command val="100A"/>
+				<Command val="2"/>
+				<Command val="2000"/>
+			</Component>
+			<Component name="star" xyz="2,19,0">
+				<Command val="1000"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFEC"/>
+				<Command val="6"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF0"/>
+				<Command val="2"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF4"/>
+				<Command val="6"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF8"/>
+				<Command val="2"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFFC"/>
+				<Command val="6"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF8"/>
+				<Command val="2"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF4"/>
+				<Command val="6"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF0"/>
+				<Command val="2"/>
+				<Command val="2000"/>
+			</Component>
+			<Component name="motion" xyz="0,0,0">
 			</Component>
 		</Animation>
 		<Animation name="nidle">
 			<Component name="body" xyz="0,-12,0">
 				<Command val="8102"/>
-				<Command val="1008"/>
+				<Command val="100C"/>
 				<Command val="6"/>
-				<Command val="1009"/>
+				<Command val="100D"/>
 				<Command val="14"/>
-				<Command val="1008"/>
+				<Command val="100C"/>
 				<Command val="6"/>
-				<Command val="1007"/>
+				<Command val="100B"/>
 				<Command val="14"/>
 				<Command val="2001"/>
 			</Component>
-			<Component name="star" xyz="1,20,0">
+			<Component name="star" xyz="2,19,0">
 				<Command val="1000"/>
 				<Command val="8102"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF4"/>
+				<Command val="2"/>
+				<Command val="2002"/>
 			</Component>
 			<Component name="motion" xyz="0,0,0">
 				<Command val="3000"/>
@@ -235,24 +362,80 @@
 				<Command val="0"/>
 				<Command val="14"/>
 				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="ntalk">
+			<Component name="body" xyz="0,-12,0">
+				<Command val="100E"/>
+				<Command val="6"/>
+				<Command val="100F"/>
+				<Command val="2"/>
+				<Command val="100B"/>
+				<Command val="6"/>
+				<Command val="100F"/>
+				<Command val="2"/>
+				<Command val="2000"/>
+			</Component>
+			<Component name="star" xyz="2,19,0">
+				<Command val="1000"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFEC"/>
+				<Command val="6"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF0"/>
+				<Command val="2"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF4"/>
+				<Command val="6"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF8"/>
+				<Command val="2"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFFC"/>
+				<Command val="6"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF8"/>
+				<Command val="2"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF4"/>
+				<Command val="6"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF0"/>
+				<Command val="2"/>
+				<Command val="2000"/>
+			</Component>
+			<Component name="motion" xyz="0,0,0">
 			</Component>
 		</Animation>
 		<Animation name="aidle">
 			<Component name="body" xyz="0,-12,0">
 				<Command val="8102"/>
-				<Command val="100B"/>
+				<Command val="1011"/>
 				<Command val="6"/>
-				<Command val="100C"/>
+				<Command val="1012"/>
 				<Command val="14"/>
-				<Command val="100B"/>
+				<Command val="1011"/>
 				<Command val="6"/>
-				<Command val="100A"/>
+				<Command val="1010"/>
 				<Command val="14"/>
 				<Command val="2001"/>
 			</Component>
-			<Component name="star" xyz="1,20,0">
+			<Component name="star" xyz="2,19,0">
 				<Command val="1000"/>
 				<Command val="8102"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF4"/>
+				<Command val="2"/>
+				<Command val="2002"/>
 			</Component>
 			<Component name="motion" xyz="0,0,0">
 				<Command val="3000"/>
@@ -278,22 +461,78 @@
 				<Command val="2000"/>
 			</Component>
 		</Animation>
+		<Animation name="atalk">
+			<Component name="body" xyz="0,-12,0">
+				<Command val="1013"/>
+				<Command val="6"/>
+				<Command val="1014"/>
+				<Command val="2"/>
+				<Command val="1010"/>
+				<Command val="6"/>
+				<Command val="1014"/>
+				<Command val="2"/>
+				<Command val="2000"/>
+			</Component>
+			<Component name="star" xyz="2,19,0">
+				<Command val="1000"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFEC"/>
+				<Command val="6"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF0"/>
+				<Command val="2"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF4"/>
+				<Command val="6"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF8"/>
+				<Command val="2"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFFC"/>
+				<Command val="6"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF8"/>
+				<Command val="2"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF4"/>
+				<Command val="6"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF0"/>
+				<Command val="2"/>
+				<Command val="2000"/>
+			</Component>
+			<Component name="motion" xyz="0,0,0">
+			</Component>
+		</Animation>
 		<Animation name="midle">
 			<Component name="body" xyz="0,-12,0">
 				<Command val="8102"/>
-				<Command val="100E"/>
+				<Command val="1016"/>
 				<Command val="6"/>
-				<Command val="100F"/>
+				<Command val="1017"/>
 				<Command val="14"/>
-				<Command val="100E"/>
+				<Command val="1016"/>
 				<Command val="6"/>
-				<Command val="100D"/>
+				<Command val="1015"/>
 				<Command val="14"/>
 				<Command val="2001"/>
 			</Component>
-			<Component name="star" xyz="1,20,0">
+			<Component name="star" xyz="2,19,0">
 				<Command val="1000"/>
 				<Command val="8102"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF4"/>
+				<Command val="2"/>
+				<Command val="2002"/>
 			</Component>
 			<Component name="motion" xyz="0,0,0">
 				<Command val="3000"/>
@@ -317,6 +556,57 @@
 				<Command val="0"/>
 				<Command val="14"/>
 				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="mtalk">
+			<Component name="body" xyz="0,-12,0">
+				<Command val="1018"/>
+				<Command val="6"/>
+				<Command val="1019"/>
+				<Command val="2"/>
+				<Command val="1015"/>
+				<Command val="6"/>
+				<Command val="1019"/>
+				<Command val="2"/>
+				<Command val="2000"/>
+			</Component>
+			<Component name="star" xyz="2,19,0">
+				<Command val="1000"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFEC"/>
+				<Command val="6"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF0"/>
+				<Command val="2"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF4"/>
+				<Command val="6"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF8"/>
+				<Command val="2"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFFC"/>
+				<Command val="6"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF8"/>
+				<Command val="2"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF4"/>
+				<Command val="6"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF0"/>
+				<Command val="2"/>
+				<Command val="2000"/>
+			</Component>
+			<Component name="motion" xyz="0,0,0">
 			</Component>
 		</Animation>
 	</AnimationList>
