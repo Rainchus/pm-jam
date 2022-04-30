@@ -266,25 +266,25 @@ Facing Right[END]
 	ORI v0, r0, 2
 }
 
-#new:Script:Map $hammerThrowOverworld {
+#new:Script:Map $hammerThrowOverworld { %TODO: fix animation crashing
     Call $setHammerThrowBool ( .True )
     Call $getHammerUpgradeValue ( *Var1 )
 	Thread
 		Switch  *Var1
 		Case  ==  .Item:Nothing % 0
 			Call  CreateVirtualEntity   ( *VarA $EntityModelScript_802A3CE4 ) %create wood hammer sprite
-			Call  SetPlayerAnimation  ( 00010033 )
-			Wait 6`
-			Call  SetPlayerAnimation  ( 00010034 )
-			Wait 12`
-			Call  SetPlayerAnimation  ( 00010002 ) %set idle animation
+			% Call  SetPlayerAnimation  ( 00010033 )
+			% Wait 6`
+			% Call  SetPlayerAnimation  ( 00010034 )
+			% Wait 12`
+			% Call  SetPlayerAnimation  ( 00010002 ) %set idle animation
 		Case  ==  .Item:Jump % 1
 			Call  CreateVirtualEntity   ( *VarA $EntityModelScript_802A3D00 ) %create stone hammer sprite
-			Call  SetPlayerAnimation  ( 00010035 )
-			Wait 6`
-			Call  SetPlayerAnimation  ( 00010036 )
-			Wait 12`
-			Call  SetPlayerAnimation  ( 00010002 ) %set idle animation
+			% Call  SetPlayerAnimation  ( 00010035 )
+			% Wait 6`
+			% Call  SetPlayerAnimation  ( 00010036 )
+			% Wait 12`
+			% Call  SetPlayerAnimation  ( 00010002 ) %set idle animation
 		EndSwitch
 	EndThread
 	Wait 11`
@@ -585,4 +585,85 @@ Facing Right[END]
 	    15`s    -16`s      0`s    0000s    1024`s      0`s      00b 00b 00b FFb   %  1
 	    15`s     15`s      0`s    0000s    1024`s   1024`s      00b 00b 00b FFb   %  2
 	   -16`s     15`s      0`s    0000s       0`s   1024`s      00b 00b 00b FFb   %  3
+}
+
+% gWorldNPCList 800A0990
+
+@Hook:Global 800EB5E4 { %hook partner_test_enemy_collision
+	PUSH[28] ra, s0, s1, s2, s3
+	LAW t0, $hammerThrowActive
+	BEQ t0, r0, .partnerCheck
+	NOP
+	%hammerthrow code
+	% LIO s0, 800B0F10 %0x24 into this struct begins encounterlist pointers
+	% DADDU s1, r0, r0 %loop counter
+	% .loop
+	% LW t0, 0028 (s0) %load Encounter*
+	% BEQ t0, r0, .incrementLoop %null pointer check
+	% ADDIU s1, s1, 1
+
+	
+	% LHU t1, 0044 (s0) %check if npc has battle id associated with it
+	% BEQL t1, r0, .loop
+	% ADDIU s0, s0, 4
+	% %npc has battle associated with them, check distance from thrown hammer
+	
+	% LI s2, 802DB7C0 %virtual entity array pointers
+	% LW s2, 0000 (s2)
+	% SLL t0, s1, 2 %multiply by sizeof(ptr)
+	% ADDU t0, t0, s2 %pointer to current virutal entity ptr
+	% LW s2, 0000 (t0) %load pointer to hammer throw virtual entity
+	% LWC1 f12, 0004 (s2) %load x pos of hammer
+	% LWC1 f14, 0008 (s2) %load y pos of hammer
+	% LW a2, 000C (s2) %load z pos of hammer
+	% %TODO: find some way to get position of enemy in relation to encounterlist entry
+
+	% % LW a3, 0048 (s0) %load x pos of switch entity
+	% % LW t0, 004C (s0) %load y pos of switch entity
+	% % SW t0, 0010 (sp)
+	% % LW t0, 0050 (s0) %load z pos of switch entity
+	% % SW t0, 0014 (sp)
+	% JAL ~Func:dist3D
+	% NOP
+	% LIF f4, 50.0
+	% C.LT.S f0, f4
+	% ORI v0, r0, 0 %didnt hit enemy
+	% BC1TL .hitEnemy
+	% ORI v0, r0, 1 %hit enemy
+
+	% .incrementLoop
+	% SLTI t2, s1, 25 %24 enemies total (we added 1 before checking the value so we compare against 25)
+	% BNE t2, r0, .loop
+	% ADDIU s0, s0, 4
+	% BEQ r0, r0, .partnerCheck
+	% NOP
+
+
+	% .hitEnemy
+	% %cod
+
+
+	.partnerCheck
+	LUI v0, 8011
+	LW v0, CFD8 (v0)
+	DADDU a1, a0, r0
+	BEQ v0, r0, .return0 %if partner id is 0, exit and return 0
+	NOP
+	LUI v0, 8011
+	LW v0, CFEC (v0)
+	LW v0, 0028 (v0)
+	BEQL v0, r0, .exit %if function pointer for first strike check is null, return 0 and exit
+	DADDU v0, r0, r0
+	LUI a0, 8011
+	LW a0, C930 (a0)
+	JALR v0, ra %star rod gets registers backwards...
+	NOP
+	BEQ r0, r0, .exit
+	NOP
+	.return0
+	DADDU v0, r0, r0
+	.exit
+	POP[28] ra, s0, s1, s2, s3
+	JR RA
+	NOP
 }
