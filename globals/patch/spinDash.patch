@@ -27,8 +27,22 @@
     LAW t0, $spinHoverBool
     BEQ t0, r0, .noHover
     NOP
+    %read mario's shadow Y position and compare to his Y position to see if we should fall
+    LI t0, 80151658
+    LW t0, 0000 (t0) %load shadow list pointer
+    LW t0, 0000 (t0) %load mario's shadow pointer
+    LWC1 f0, 0014 (t0) %load mario's shadow Y pos
+    LI t1, 8010EFF4
+    LWC1 f2, 0000 (t1) %load mario's actual Y position
+    C.LT.S f0, f2
+
+    BC1F .skip %if shadow is less than
+    NOP
+
+    .fallState
     JAL ~Func:set_action_state
     ORI a0, r0, 8 %falling state
+    .skip
     .noHover
     LWC1 f0, 0010 (s0) %restore from hook
     LUI at, 3F80 %restore from hook

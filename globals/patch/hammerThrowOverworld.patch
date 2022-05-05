@@ -228,15 +228,30 @@ Facing Right[END]
 	ORI v0, r0, .scrApi_Done2
 }
 
+#new:Function $ScrAPI_getFacingDirectionAngle {
+	PUSH s0, ra
+	LIO s0, .PlayerStatus
+	LI t0, $facingLeftText
+	LWC1 f0, 00A8 (s0) %spriteFacingAngle
+	MFC1 a2, f0
+	LW t0, 000C (a0)
+	JAL ~Func:set_variable
+	LW a1, 0000 (t0)
+
+	POP s0, ra
+	JR RA
+	ORI v0, r0, .scrApi_Done2
+}
+
 #new:Function $ScrAPI_getFacingDirection {
 	PUSH s0, ra
 	LIO s0, .PlayerStatus
 	LI t0, $facingLeftText
-	%LWC1 f0, 00A8 (s0) %spriteFacingAngle
-	LWC1 f0, 0080 (s0) %targetYaw
+	LWC1 f0, 00A8 (s0) %spriteFacingAngle
+	%LWC1 f0, 0080 (s0) %targetYaw
 	LIF f2, 180.0
 	C.LT.S f0, f2
-	BC1T .facingRight
+	BC1F .facingRight
 	ORI a2, r0, 0 %facing right value
 	%facing left
 	ORI a2, r0, 1 %facing left value
@@ -269,24 +284,33 @@ Facing Right[END]
 }
 
 #new:Script:Map $hammerThrowOverworld { %TODO: fix animation crashing
+	Call $ScrAPI_getFacingDirectionAngle ( *Var1 )
+	Switch *Var1
+	Case == 0
+	Case == 43340000
+	Default
+		Return
+	EndSwitch
+
+
     Call $setHammerThrowBool ( .True )
     Call $getHammerUpgradeValue ( *Var1 )
 	Thread
 		Switch  *Var1
 		Case  ==  .Item:Nothing % 0
-			Call  CreateVirtualEntity   ( *VarA $EntityModelScript_802A3CE4 ) %create wood hammer sprite
-			% Call  SetPlayerAnimation  ( 00010033 )
-			% Wait 6`
-			% Call  SetPlayerAnimation  ( 00010034 )
-			% Wait 12`
-			% Call  SetPlayerAnimation  ( 00010002 ) %set idle animation
+			% Call  CreateVirtualEntity   ( *VarA $EntityModelScript_802A3CE4 ) %create wood hammer sprite
+			Call  SetPlayerAnimation  ( 00010033 )
+			Wait 6`
+			Call  SetPlayerAnimation  ( 00010034 )
+			Wait 12`
+			Call  SetPlayerAnimation  ( 00010002 ) %set idle animation
 		Case  ==  .Item:Jump % 1
-			Call  CreateVirtualEntity   ( *VarA $EntityModelScript_802A3D00 ) %create stone hammer sprite
-			% Call  SetPlayerAnimation  ( 00010035 )
-			% Wait 6`
-			% Call  SetPlayerAnimation  ( 00010036 )
-			% Wait 12`
-			% Call  SetPlayerAnimation  ( 00010002 ) %set idle animation
+			% Call  CreateVirtualEntity   ( *VarA $EntityModelScript_802A3D00 ) %create stone hammer sprite
+			Call  SetPlayerAnimation  ( 00010035 )
+			Wait 6`
+			Call  SetPlayerAnimation  ( 00010036 )
+			Wait 12`
+			Call  SetPlayerAnimation  ( 00010002 ) %set idle animation
 		EndSwitch
 	EndThread
 	Wait 11`
@@ -294,11 +318,12 @@ Facing Right[END]
 
 	Call  $storeHammerThrowVirtualEntityIndex ( *VarA )
     Call  GetPlayerPos ( *Var0 *Var1 *Var2 )
-	Call  $ScrAPI_getFacingDirection ( *Var3 )
+	Call  $ScrAPI_getFacingDirection ( *Var3 ) %returns 0 if right, 1 if left
 	If *Var3 == 0 %if facing right
 	    Add   *Var0  00000014
     	Add   *Var1  0000002A
     	Add   *Var2  00000005
+		Call  CreateVirtualEntity   ( *VarA $EntityModelScript_802A3D00 ) %create stone hammer sprite
     	Call  SetVirtualEntityPosition  ( *VarA *Var0 *Var1 *Var2 )
 		Add *Var0 100`
 		Set *Var5 FFFFFFC4
@@ -306,11 +331,12 @@ Facing Right[END]
 	    Add   *Var0  FFFFFFEC
     	Add   *Var1  0000002A
     	Add   *Var2  00000005
+		Call  CreateVirtualEntity   ( *VarA $EntityModelScript_802A3D00 ) %create stone hammer sprite
     	Call  SetVirtualEntityPosition ( *VarA *Var0 *Var1 *Var2 )
 		Sub *Var0 100`
 		Set *Var5 0000003C
     EndIf
-	Call  SetVirtualEntityScale     ( *VarA *Fixed[0.8] *Fixed[0.8] *Fixed[0.8] )
+	Call  SetVirtualEntityScale     ( *VarA *Fixed[0.75] *Fixed[0.75] *Fixed[0.75] )
 
     Thread
         Set   *Var6  00000000
@@ -338,7 +364,7 @@ Facing Right[END]
     Call  SetVirtualEntityJumpGravity   ( *VarA *Fixed[1.3] )
     Add   *Var2  00000005
 	Add   *Var1  FFFFFFC0 %-40
-    Call  VirtualEntityJumpTo   ( *VarA *Var0 *Var1 *Var2  28` )
+    Call  VirtualEntityJumpTo   ( *VarA *Var0 *Var1 *Var2  25` )
     %Call  VirtualEntityLandJump ( *VarA )
     Call  DeleteVirtualEntity   ( *VarA )
 	Call  $clearHammerThrowVirtualEntityIndex

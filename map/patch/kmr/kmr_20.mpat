@@ -9,7 +9,7 @@
 
 #new:Function $GiveBootsAndHammer {
 	LIO t0, 8010F290
-	ORI t1, r0, 0202
+	ORI t1, r0, 0101
 	SH t1, 0000 (t0)
 	JR RA
 	ORI v0, r0, 0002

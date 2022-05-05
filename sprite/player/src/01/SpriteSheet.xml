@@ -1020,7 +1020,7 @@
 		<Animation name="Anim_HammerThrowNormalThrow">
 			<Component name="Hammer" xyz="0,0,-2">
 				<Command val="3001"/>
-				<Command val="19"/>
+				<Command val="11"/>
 				<Command val="2A"/>
 				<Command val="0"/>
 				<Command val="105D"/>
@@ -1148,7 +1148,7 @@
 		<Animation name="Anim_HammerThrowSuperThrow">
 			<Component name="Hammer" xyz="0,0,-2">
 				<Command val="3001"/>
-				<Command val="19"/>
+				<Command val="14"/>
 				<Command val="2A"/>
 				<Command val="0"/>
 				<Command val="1064"/>
