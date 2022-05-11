@@ -673,7 +673,7 @@
 			<Component name="motion" xyz="0,0,0">
 			</Component>
 		</Animation>
-		<Animation name="still (copy)">
+		<Animation name="stillc1">
 			<Component name="body" xyz="0,-12,0">
 				<Command val="1001"/>
 			</Component>
@@ -683,7 +683,7 @@
 			<Component name="motion" xyz="0,0,0">
 			</Component>
 		</Animation>
-		<Animation name="still (copy)">
+		<Animation name="stillc2">
 			<Component name="body" xyz="0,-12,0">
 				<Command val="1001"/>
 			</Component>
