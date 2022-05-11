@@ -9,3 +9,370 @@
     [1EC]  LTB  V1, V0 ($Global_ActorOffsetsTable[1])
     [210]  LTB  A0, V0 ($Global_ActorOffsetsTable[2])
 }
+
+@ $Script_Init_802392F0
+{
+    0:  Call  BindTakeTurn  ( .Actor:Partner $Script_TakeTurn_802396D8 )
+   14:  Call  BindIdle      ( .Actor:Partner $Script_Idle_80239350 )
+   28:  Call  BindHandleEvent   ( .Actor:Partner $Script_HandleEvent_80239360 )
+   3C:  Call  BindNextTurn  ( .Actor:Partner $Script_NextTurn_New )
+   50:  Return
+   58:  End
+}
+
+% 8C:  	Case  ==  00000095
+%     98:  		Call  SetBattleFlagBits ( 00004000 .False )
+%     AC:  		Set   *VarE  00000001
+%     BC:  		Set   *VarF  00000002
+%     CC:  		ExecWait  $Script_8023A4D4
+%     D8:  	Case  ==  00000096
+%     E4:  		Call  SetBattleFlagBits ( 00004000 .False )
+%     F8:  		Set   *VarE  00000002
+%    108:  		Set   *VarF  00000003
+%    118:  		ExecWait  $Script_8023A4D4
+%    124:  	Case  ==  00000097
+%    130:  		Call  SetBattleFlagBits ( 00004000 .False )
+%    144:  		Set   *VarE  00000004
+%    154:  		Set   *VarF  00000005
+%    164:  		ExecWait  $Script_8023A4D4
+
+@ $Script_802397E0 {
+    Call  GetMenuSelection  ( *Var0 *Var1 *Var2 )
+    Call  802694A4  ( 00000001 )
+    Call  SetBattleFlagBits ( 00004000 .False )
+    Switch  *Var0
+        Case  ==  00000008
+            Call  LoadStarPowerScript ( )
+            ExecWait  *Var0
+            Return
+        Case  ==  00000002
+            Call  LoadItemScript ( )
+            ExecWait  *Var0
+            Return
+    EndSwitch
+    Switch  *Var2
+        Case  ==  00000083 %sky dive power 1
+            Call  SetBattleFlagBits ( 00004000 .False )
+            Set   *VarE  00000001
+            Set   *VarF  00000002
+            ExecWait  $Script_ShellShot
+        Case  ==  00000084 %sky dive power 2
+            Call  SetBattleFlagBits ( 00004000 .False )
+            Set   *VarE  00000002
+            Set   *VarF  00000003
+            ExecWait  $Script_ShellShot
+        Case  ==  00000085  %sky dive power 3
+            Call  SetBattleFlagBits ( 00004000 .False )
+            Set   *VarE  00000004
+            Set   *VarF  00000005
+            ExecWait  $Script_ShellShot
+        Case  ==  00000086
+            ExecWait  $Script_Tattle
+        Case  ==  00000087
+            Call  SetBattleFlagBits ( 00004000 .False )
+            ExecWait  $Script_OuttaSight
+        Case  ==  00000088
+            ExecWait  $Script_8023BB9C
+    EndSwitch
+    Return
+    End
+}
+
+#new:Script $Script_OuttaSight
+{
+    0:  Call  SetActorFlagBits      ( .Actor:Player 20000000 .True )
+   18:  Call  SetActorFlagBits      ( .Actor:Player 04000000 .False )
+   30:  Call  UseBattleCamPreset    ( 00000013 )
+   40:  Call  SetBattleCamTarget    (  -129`  28`  0` )
+   58:  Call  SetBattleCamOffsetZ   (  15` )
+   68:  Call  SetBattleCamZoom      (  260` )
+   78:  Call  MoveBattleCamOver     (  40` )
+   88:  Thread
+   90:  	Call  GetActorPos   ( .Actor:Partner *Var0 *Var1 *Var2 )
+   AC:  	Add   *Var1  00000005
+   BC:  	Call  SetGoalPos    ( .Actor:Partner *Var0 *Var1 *Var2 )
+   D8:  	Call  FlyToGoal     ( .Actor:Partner  10`  0` .Easing:CosInOut )
+   F4:  EndThread
+   FC:  Set   *Var0  00000000
+  10C:  Loop  0000000A
+  118:  	Add   *Var0  00000012
+  128:  	Call  SetActorYaw   ( .Actor:Partner *Var0 )
+  13C:  	Wait  1`
+  148:  EndLoop
+  150:  Wait  10`
+  15C:  Call  GetActorPos   ( .Actor:Player *Var0 *Var1 *Var2 )
+  178:  Add   *Var0  FFFFFFE2
+  188:  Add   *Var1  0000001E
+  198:  Call  SetGoalPos    ( .Actor:Partner *Var0 *Var1 *Var2 )
+  1B4:  Call  FlyToGoal     ( .Actor:Partner  20`  30` .Easing:CosInOut )
+  1D0:  Thread
+  1D8:  	Set   *Var0  000000B4
+  1E8:  	Loop  0000000A
+  1F4:  		Sub   *Var0  00000012
+  204:  		Call  SetActorYaw   ( .Actor:Partner *Var0 )
+  218:  		Wait  1`
+  224:  	EndLoop
+  22C:  EndThread
+  234:  Thread
+  23C:  	Set   *Var0  000000FF
+  24C:  	Loop  0000001E
+  258:  		Sub   *Var0  00000005
+  268:  		Call  SetPartAlpha  ( .Actor:Partner FFFFFFFF *Var0 )
+  280:  		Wait  1`
+  28C:  	EndLoop
+  294:  EndThread
+  29C:  Call  GetActorPos   ( .Actor:Player *Var0 *Var1 *Var2 )
+  2B8:  Call  $Function_802380E4_Starlow    ( FFFFFFF6 00000014 )
+  2CC:  Add   *Var2  00000005
+  2DC:  Call  SetGoalPos    ( .Actor:Partner *Var0 *Var1 *Var2 )
+  2F8:  Call  FlyToGoal     ( .Actor:Partner  20`  0` .Easing:Linear )
+  314:  Call  $Function_80238198_Starlow ( )
+  320:  If  *Var0  ==  00000000
+  330:  	Call  SetAnimation  ( .Actor:Player 00000000 00010014 )
+  348:  EndIf
+  350:  Call  PlaySoundAtActor  ( .Actor:Partner .Sound:BowVanish )
+  364:  Set   *Var0  000000FF
+  374:  Loop  0000000F
+  380:  	Sub   *Var0  0000000A
+  390:  	Call  SetPartAlpha  ( .Actor:Player 00000001 *Var0 )
+  3A8:  	Wait  1`
+  3B4:  EndLoop
+  3BC:  Wait  15`
+  3C8:  Call  UseBattleCamPreset    ( 00000002 )
+  3D8:  Call  MoveBattleCamOver     (  30` )
+  3E8:  Call  $Function_8023808C_Starlow ( )
+  3F4:  Call  SetActorFlagBits      ( .Actor:Player 20000000 .False )
+  40C:  Return
+  414:  End
+}
+
+#new:Function $Function_80238000_BowCopy
+{
+    0:  LAB       V0, 800DC10A
+    8:  SW        V0, 84 (A0)
+    C:  JR        RA
+   10:  LI        V0, 2
+}
+
+#new:Script $Script_80239F5C_BowAfterTurnOuttaSight
+{
+    0:  Call  UseBattleCamPreset    ( 00000002 )
+   10:  Wait  20`
+   1C:  Call  PlaySoundAtActor      ( .Actor:Partner .Sound:BowAppear )
+   30:  Thread
+   38:  	Wait  10`
+   44:  	Set   *Var0  00000069
+   54:  	Loop  0000001E
+   60:  		Add   *Var0  00000005
+   70:  		Call  SetPartAlpha  ( .Actor:Player 00000001 *Var0 )
+   88:  		Wait  1`
+   94:  	EndLoop
+   9C:  EndThread
+   A4:  Thread
+   AC:  	Set   *Var0  00000069
+   BC:  	Loop  0000001E
+   C8:  		Add   *Var0  00000005
+   D8:  		Call  SetPartAlpha  ( .Actor:Partner FFFFFFFF *Var0 )
+   F0:  		Wait  1`
+   FC:  	EndLoop
+  104:  EndThread
+  10C:  Call  80280818 ( )
+  118:  Call  UseBattleCamPreset    ( 00000002 )
+  128:  Call  MoveBattleCamOver (  40` )
+  138:  Call  SetGoalToHome     ( .Actor:Partner )
+  148:  Call  FlyToGoal ( .Actor:Partner  20`  0` .Easing:CosInOut )
+  164:  Call  $Function_802381C8_AnotherBowCopiedScript ( )
+  170:  Wait  20`
+  17C:  Return
+  184:  End
+}
+
+#new:Function $Function_802381C8_AnotherBowCopiedScript
+{
+    0:  LAW       V0, 800DC148
+    8:  LW        V1, 1F4 (V0)
+    C:  LA        V0, 80283238
+   14:  SW        V0, 94 (V1)
+   18:  JR        RA
+   1C:  LI        V0, 2
+}
+
+#new:Script $Script_NextTurn_New
+{
+    0:  Call  GetBattlePhase    ( *Var0 )
+   10:  Switch  *Var0
+   1C:  	Case  ==  0000000C
+   28:  		Call  $Function_80238000_BowCopy ( )
+   34:  		If  *Var0  !=  00000000
+   44:  			ExecWait  $Script_80239F5C_BowAfterTurnOuttaSight
+   50:  		EndIf
+   58:  EndSwitch
+   60:  Return
+   68:  End
+}
+
+#new:Script $Script_ShellShot
+{
+    0:  Call  UseIdleAnimation  ( .Actor:Partner .False )
+   14:  Call  SetAnimation      ( .Actor:Partner FFFFFFFF 00090007 )
+   2C:  Wait  15`
+   38:  Call  InitTargetIterator ( )
+   44:  Call  SetAnimation      ( .Actor:Partner FFFFFFFF 00090008 )
+   5C:  Call  $Function_80238000_Parakarry ( )
+   68:  Call  StopSound ( 00000311 )
+   78:  Call  PlaySoundAtActor  ( .Actor:Partner 00002006 )
+   8C:  Call  GetActionResult   ( *Var0 )
+   9C:  Call  PartnerTestEnemy  ( *VarA ~Flags:DamageType:0 00000014 00000000  1` 00000010 )
+   C0:  If  *VarA  ==  .HitResult:Miss % 6
+   D0:  	Set   *Var0  FFFFFFFE
+   E0:  EndIf
+   E8:  Switch  *Var0
+   F4:  	Case  ==  00000001
+  100:  		Call  UseBattleCamPreset    ( 00000034 )
+  110:  		Call  MoveBattleCamOver (  5` )
+  120:  		Call  EnableActorBlur   ( .Actor:Partner 00000001 )
+  134:  		Call  SetGoalToTarget   ( .Actor:Partner )
+  144:  		Call  SetAnimation      ( .Actor:Partner FFFFFFFF 0009000A )
+  15C:  		Call  FlyToGoal ( .Actor:Partner  7`  0` .Easing:Linear )
+  178:  		Call  EnableActorBlur   ( .Actor:Partner 00000000 )
+  18C:  	Case  ==  FFFFFFFF
+  198:  		Call  UseBattleCamPreset    ( 00000034 )
+  1A8:  		Call  MoveBattleCamOver (  5` )
+  1B8:  		Call  EnableActorBlur   ( .Actor:Partner 00000001 )
+  1CC:  		Call  SetGoalToTarget   ( .Actor:Partner )
+  1DC:  		Call  AddGoalPos        ( .Actor:Partner  50`  -50`  0` )
+  1F8:  		Call  SetAnimation      ( .Actor:Partner FFFFFFFF 0009000A )
+  210:  		Call  FlyToGoal ( .Actor:Partner  7`  0` 00000064 )
+  22C:  		Call  EnableActorBlur   ( .Actor:Partner 00000000 )
+  240:  	Case  ==  00000000
+  24C:  		Call  UseBattleCamPreset    ( 00000034 )
+  25C:  		Call  MoveBattleCamOver (  5` )
+  26C:  		Call  EnableActorBlur   ( .Actor:Partner 00000001 )
+  280:  		Call  SetGoalToTarget   ( .Actor:Partner )
+  290:  		Call  AddGoalPos        ( .Actor:Partner  50`  50`  0` )
+  2AC:  		Call  SetAnimation      ( .Actor:Partner FFFFFFFF 0009000A )
+  2C4:  		Call  FlyToGoal ( .Actor:Partner  7`  0` .Easing:Linear )
+  2E0:  		Call  EnableActorBlur   ( .Actor:Partner 00000000 )
+  2F4:  	Case  ==  FFFFFFFE
+  300:  		Call  UseBattleCamPreset    ( 00000034 )
+  310:  		Call  MoveBattleCamOver (  5` )
+  320:  		Call  EnableActorBlur   ( .Actor:Partner 00000001 )
+  334:  		Call  SetGoalToTarget   ( .Actor:Partner )
+  344:  		Call  AddGoalPos        ( .Actor:Partner  40`  0`  0` )
+  360:  		Call  SetAnimation      ( .Actor:Partner FFFFFFFF 0009000A )
+  378:  		Call  FlyToGoal ( .Actor:Partner  7`  0` .Easing:Linear )
+  394:  		Call  EnableActorBlur   ( .Actor:Partner 00000000 )
+  3A8:  EndSwitch
+  3B0:  Call  $Function_80238C88_ShellShot ( )
+  3BC:  Switch  *Var0
+  3C8:  	Case  >  00000000
+  3D4:  		Call  PartnerDamageEnemy    ( *Var0 ~Flags:DamageType:0 0000009F 00000000 *VarF 00000070 )
+  3F8:  		Call  PlaySoundAtActor      ( .Actor:Partner 00000110 )
+  40C:  	Default
+  414:  		Set   *Var0  00000002
+  424:  EndSwitch
+  42C:  Call  PlaySoundAtActor  ( .Actor:Partner 00000000 )
+  440:  Label  A
+  44C:  Switch  *Var0
+  458:  	CaseOR  ==  00000000
+  464:  	CaseOR  ==  00000002
+  470:  		If  *Flag[00]  ==  .True
+  480:  			%SetConst  *VarA  000C000D
+                    SetConst  *VarA  0009000D %hurt animation
+  490:  		Else
+  498:  			%SetConst  *VarA  000C0017
+                    SetConst  *VarA  00090002
+  4A8:  		EndIf
+  4B0:  		ExecWait  $Script_Animation1
+  4BC:  	EndCaseGroup
+  4C4:  	CaseOR  ==  00000001
+  4D0:  	CaseOR  ==  00000003
+  4DC:  		SetConst  *VarA  00090008
+  4EC:  		ExecWait  $Script_Animation2
+  4F8:  	EndCaseGroup
+  500:  EndSwitch
+  508:  Return
+  510:  End
+}
+
+#new:Script $Script_Animation1
+{
+    0:  Call  80280818 ( )
+    C:  Call  UseBattleCamPreset    ( 00000033 )
+   1C:  Call  SetAnimation  ( .Actor:Partner FFFFFFFF *VarA )
+   34:  Call  SetActorJumpGravity   ( .Actor:Partner *Fixed[1.0] )
+   48:  Call  AddGoalPos    ( .Actor:Partner  -30`  0`  0` )
+   64:  Call  JumpToGoal    ( .Actor:Partner  15` .False .False .False )
+   84:  Call  SetAnimation  ( .Actor:Partner FFFFFFFF 00090000 )
+   9C:  ChildThread
+   A4:  	Wait  4`
+   B0:  	Call  SetAnimation  ( .Actor:Partner FFFFFFFF 00090003 )
+   C8:  EndChildThread
+   D0:  Call  AddGoalPos    ( .Actor:Partner  -20`  0`  0` )
+   EC:  Call  JumpWithBounce    ( .Actor:Partner  5` *Fixed[4.0] )
+  104:  Call  SetAnimation  ( .Actor:Partner FFFFFFFF 00090001 )
+  11C:  Wait  2`
+  128:  Call  SetGoalToHome ( .Actor:Partner )
+  138:  Call  SetActorSpeed ( .Actor:Partner *Fixed[8.0] )
+  14C:  Call  SetAnimation  ( .Actor:Partner FFFFFFFF 00090003 )
+  164:  Call  FlyToGoal     ( .Actor:Partner  0`  -5` .Easing:Linear )
+  180:  Call  SetAnimation  ( .Actor:Partner FFFFFFFF 00090002 )
+  198:  Return
+  1A0:  End
+}
+
+#new:Script $Script_Animation2
+{
+    0:  Call  80280818 ( )
+    C:  Call  UseBattleCamPreset    ( 00000004 )
+   1C:  Call  SetAnimation  ( .Actor:Partner FFFFFFFF *VarA )
+   34:  Call  SetActorJumpGravity   ( .Actor:Partner *Fixed[1.4] )
+   48:  Call  AddGoalPos    ( .Actor:Partner  -50`  0`  0` )
+   64:  Call  JumpToGoal    ( .Actor:Partner  15` .False .False .False )
+   84:  Call  SetAnimation  ( .Actor:Partner FFFFFFFF 00090000 )
+   9C:  ChildThread
+   A4:  	Wait  4`
+   B0:  	Call  SetAnimation  ( .Actor:Partner FFFFFFFF 00090003 )
+   C8:  EndChildThread
+   D0:  Call  AddGoalPos    ( .Actor:Partner  -30`  0`  0` )
+   EC:  Call  JumpWithBounce    ( .Actor:Partner  5` *Fixed[4.0] )
+  104:  Call  SetAnimation  ( .Actor:Partner FFFFFFFF 00090001 )
+  11C:  Wait  2`
+  128:  Call  SetGoalToHome ( .Actor:Partner )
+  138:  Call  SetActorSpeed ( .Actor:Partner *Fixed[8.0] )
+  14C:  Call  SetAnimation  ( .Actor:Partner FFFFFFFF 00090003 )
+  164:  Call  FlyToGoal     ( .Actor:Partner  0`  -5` .Easing:Linear )
+  180:  Call  SetAnimation  ( .Actor:Partner FFFFFFFF 00090002 )
+  198:  Return
+  1A0:  End
+}
+
+#new:Function $Function_80238C88_ShellShot
+{
+    0:  LAW       V0, 800DC14C
+    8:  LW        V0, 8 (V0)
+    C:  LBU       V1, 6 (V0)
+   10:  LI        V0, 1
+   14:  BEQ       V1, V0, .o48
+   18:  CLEAR     A1
+   1C:  SLTI      V0, V1, 2
+   20:  BEQ       V0, R0, .o38
+   24:  LI        V0, 2
+   28:  BEQL      V1, R0, .o4C
+   2C:  LI        A1, 5
+   30:  JR        RA
+   34:  SW        A1, C0 (A0)
+        .o38
+   38:  BEQL      V1, V0, .o4C
+   3C:  LI        A1, 7
+   40:  JR        RA
+   44:  SW        A1, C0 (A0)
+        .o48
+   48:  LI        A1, 6
+        .o4C
+   4C:  SW        A1, C0 (A0)
+   50:  JR        RA
+   54:  LI        V0, 2
+}
+
+#alias $Script_8023C5B8 $Script_Tattle

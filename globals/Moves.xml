@@ -135,7 +135,7 @@
 	<Move index="084" nameMsg="2B-000" desc1Msg="28-002" desc2Msg="28-008" flags="00054881" category="0B" inputPopup="02" fp="00" bp="00" name="Headbonk2"/>
 	<Move index="085" nameMsg="2B-000" desc1Msg="28-002" desc2Msg="28-009" flags="00054881" category="0B" inputPopup="02" fp="00" bp="00" name="Headbonk3"/>
 	<Move index="086" nameMsg="2B-001" desc1Msg="28-003" desc2Msg="28-00A" flags="00038003" category="0B" inputPopup="FF" fp="00" bp="00" name="Tattle"/>
-	<Move index="087" nameMsg="2B-002" desc1Msg="28-004" desc2Msg="28-00B" flags="00000100" category="0B" inputPopup="FF" fp="01" bp="00" name="Charge"/>
+	<Move index="087" nameMsg="2B-011" desc1Msg="28-037" desc2Msg="28-03E" flags="00000008" category="0B" inputPopup="FF" fp="02" bp="00" name="Charge"/>
 	<Move index="088" nameMsg="2B-003" desc1Msg="28-005" desc2Msg="28-00C" flags="00054881" category="0B" inputPopup="02" fp="03" bp="00" name="Multibonk"/>
 	<Move index="089" nameMsg="2B-004" desc1Msg="28-00F" desc2Msg="28-014" flags="00012005" category="0B" inputPopup="01" fp="00" bp="00" name="ShellToss1"/>
 	<Move index="08A" nameMsg="2B-004" desc1Msg="28-00F" desc2Msg="28-015" flags="00012005" category="0B" inputPopup="01" fp="00" bp="00" name="ShellToss2"/>

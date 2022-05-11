@@ -1,0 +1,879 @@
+#new:Data $End2 {
+    0 0 0 0 0 0 0 0
+    0 0 0 0 0 0 0 0
+    0 0 0 0 0 0 0 0
+    0 0 0 0 0 0 0 0
+    0 0 0 0 0 0 0 0
+    0 0 0 0 0 0 0 0
+}
+
+#export:Function:Battle $Function_8023808C_Starlow
+{
+    0:  LA        A0, 800DC070
+    8:  LW        V0, D8 (A0)
+    C:  LW        A1, 1F4 (V0)
+   10:  LW        V0, 4 (A0)
+   14:  LI        V1, 1
+   18:  ANDI      V0, V0, 2
+   1C:  BNE       V0, R0, .o2C
+   20:  SB        V1, 9A (A0)
+   24:  LI        V0, FFFF
+   28:  SB        V0, 9A (A0)
+        .o2C
+   2C:  LUI       V0, FBFF
+   30:  LA        V1, 80283370
+   38:  SW        V1, 94 (A1)
+   3C:  LW        V1, 0 (A0)
+   40:  ORI       V0, V0, FFFF
+   44:  SB        R0, 8B (A0)
+   48:  AND       V1, V1, V0
+   4C:  LI        V0, 2
+   50:  JR        RA
+   54:  SW        V1, 0 (A0)
+}
+
+#export:Function:Battle $Function_80238198_Starlow
+{
+    0:  LAW       V1, 800DC148
+    8:  LBU       V0, 210 (V1)
+    C:  LB        V1, 214 (V1)
+   10:  ADDIU     V0, V0, FFFD
+   14:  SLTIU     A1, V0, 6
+   18:  LI        V0, C
+   1C:  BEQL      V1, V0, .o24
+   20:  LI        A1, 1
+        .o24
+   24:  SW        A1, 84 (A0)
+   28:  JR        RA
+   2C:  LI        V0, 2
+}
+
+#export:Function:Battle $Function_802380E4_Starlow
+{
+    0:  ADDIU     SP, SP, FFD8
+    4:  SW        S1, 14 (SP)
+    8:  COPY      S1, A0
+    C:  SW        RA, 1C (SP)
+   10:  SW        S2, 18 (SP)
+   14:  SW        S0, 10 (SP)
+   18:  SDC1      F20, 20 (SP)
+   1C:  LW        S0, C (S1)
+   20:  LAW       S2, 800DC148
+   28:  LW        A1, 0 (S0)
+   2C:  JAL       ~Func:get_variable
+   30:  ADDIU     S0, S0, 4
+   34:  MTC1      V0, F20
+   38:  NOP
+   3C:  CVT.S.W   F20, F20
+   40:  LW        A1, 0 (S0)
+   44:  JAL       ~Func:get_variable
+   48:  COPY      A0, S1
+   4C:  LWC1      F0, 188 (S2)
+   50:  MUL.S     F20, F20, F0
+   54:  NOP
+   58:  MTC1      V0, F2
+   5C:  NOP
+   60:  CVT.S.W   F2, F2
+   64:  MUL.S     F2, F2, F0
+   68:  NOP
+   6C:  LWC1      F4, 84 (S1)
+   70:  CVT.S.W   F4, F4
+   74:  ADD.S     F4, F4, F20
+   78:  LWC1      F0, 88 (S1)
+   7C:  CVT.S.W   F0, F0
+   80:  ADD.S     F0, F0, F2
+   84:  TRUNC.W.S F6, F4
+   88:  SWC1      F6, 84 (S1)
+   8C:  TRUNC.W.S F6, F0
+   90:  SWC1      F6, 88 (S1)
+   94:  LW        RA, 1C (SP)
+   98:  LW        S2, 18 (SP)
+   9C:  LW        S1, 14 (SP)
+   A0:  LW        S0, 10 (SP)
+   A4:  LDC1      F20, 20 (SP)
+   A8:  LI        V0, 2
+   AC:  JR        RA
+   B0:  ADDIU     SP, SP, 28
+}
+
+#export:Function:Battle $Function_80238000_Parakarry
+{
+    0:  ADDIU     SP, SP, FF80
+    4:  SW        S7, 5C (SP)
+    8:  COPY      S7, A0
+    C:  SW        S6, 58 (SP)
+   10:  LA        S6, 800DC070
+   18:  SW        RA, 60 (SP)
+   1C:  SW        S5, 54 (SP)
+   20:  SW        S4, 50 (SP)
+   24:  SW        S3, 4C (SP)
+   28:  SW        S2, 48 (SP)
+   2C:  SW        S1, 44 (SP)
+   30:  SW        S0, 40 (SP)
+   34:  SDC1      F24, 78 (SP)
+   38:  SDC1      F22, 70 (SP)
+   3C:  SDC1      F20, 68 (SP)
+   40:  LW        S5, DC (S6)
+   44:  LA        A0, 8029FBE0
+   4C:  BEQ       A1, R0, .o58
+   50:  ADDIU     S4, S5, C
+   54:  SW        R0, 70 (S7)
+        .o58
+   58:  LW        V1, 70 (S7)
+   5C:  LI        V0, 1
+   60:  BEQ       V1, V0, .o6D0
+   64:  SLTI      V0, V1, 2
+   68:  BEQ       V0, R0, .o80
+   6C:  LI        V0, 2
+   70:  BEQ       V1, R0, .o98
+   74:  SLTI      V0, V1, 3
+   78:  BEQ       R0, R0, .o9B4
+   7C:  NOP
+        .o80
+   80:  BEQ       V1, V0, .o758
+   84:  LI        V0, 3
+   88:  BEQ       V1, V0, .o854
+   8C:  NOP
+   90:  BEQ       R0, R0, .o9AC
+   94:  NOP
+        .o98
+   98:  LA        A0, 80293014
+   A0:  JAL       ~Func:create_hud_element
+   A4:  NOP
+   A8:  COPY      S3, V0
+   AC:  COPY      A0, S3
+   B0:  LI        A1, A
+   B4:  LA        S0, $End2[8]
+   BC:  JAL       ~Func:set_hud_element_render_depth
+   C0:  SW        S3, 0 (S0)
+   C4:  COPY      A0, S3
+   C8:  LI        A1, FF9C
+   CC:  JAL       ~Func:set_hud_element_render_pos
+   D0:  COPY      A2, A1
+   D4:  LA        A0, 80292F7C
+   DC:  JAL       ~Func:create_hud_element
+   E0:  NOP
+   E4:  COPY      S3, V0
+   E8:  COPY      A0, S3
+   EC:  LI        A1, A
+   F0:  JAL       ~Func:set_hud_element_render_depth
+   F4:  SW        S3, 4 (S0)
+   F8:  COPY      A0, S3
+   FC:  LI        A1, FF9C
+  100:  JAL       ~Func:set_hud_element_render_pos
+  104:  COPY      A2, A1
+  108:  LA        A0, 80292EE4
+  110:  JAL       ~Func:create_hud_element
+  114:  NOP
+  118:  COPY      S3, V0
+  11C:  COPY      A0, S3
+  120:  LI        A1, A
+  124:  JAL       ~Func:set_hud_element_render_depth
+  128:  SW        S3, 8 (S0)
+  12C:  COPY      A0, S3
+  130:  LI        A1, FF9C
+  134:  JAL       ~Func:set_hud_element_render_pos
+  138:  COPY      A2, A1
+  13C:  LA        A0, 80292E4C
+  144:  JAL       ~Func:create_hud_element
+  148:  NOP
+  14C:  COPY      S3, V0
+  150:  COPY      A0, S3
+  154:  LI        A1, A
+  158:  JAL       ~Func:set_hud_element_render_depth
+  15C:  SW        S3, C (S0)
+  160:  COPY      A0, S3
+  164:  LI        A1, FF9C
+  168:  JAL       ~Func:set_hud_element_render_pos
+  16C:  COPY      A2, A1
+  170:  LA        A0, 80292DB4
+  178:  JAL       ~Func:create_hud_element
+  17C:  NOP
+  180:  COPY      S3, V0
+  184:  COPY      A0, S3
+  188:  LI        A1, A
+  18C:  JAL       ~Func:set_hud_element_render_depth
+  190:  SW        S3, 10 (S0)
+  194:  COPY      A0, S3
+  198:  LI        A1, FF9C
+  19C:  JAL       ~Func:set_hud_element_render_pos
+  1A0:  COPY      A2, A1
+  1A4:  LA        A0, 80292D1C
+  1AC:  JAL       ~Func:create_hud_element
+  1B0:  NOP
+  1B4:  COPY      S3, V0
+  1B8:  COPY      A0, S3
+  1BC:  LI        A1, A
+  1C0:  JAL       ~Func:set_hud_element_render_depth
+  1C4:  SW        S3, 14 (S0)
+  1C8:  COPY      A0, S3
+  1CC:  LI        A1, FF9C
+  1D0:  JAL       ~Func:set_hud_element_render_pos
+  1D4:  COPY      A2, A1
+  1D8:  LA        A0, 8029369C
+  1E0:  JAL       ~Func:create_hud_element
+  1E4:  NOP
+  1E8:  COPY      S3, V0
+  1EC:  COPY      A0, S3
+  1F0:  LI        A1, A
+  1F4:  JAL       ~Func:set_hud_element_render_depth
+  1F8:  SW        S3, 18 (S0)
+  1FC:  COPY      A0, S3
+  200:  LI        A1, FF9C
+  204:  JAL       ~Func:set_hud_element_render_pos
+  208:  COPY      A2, A1
+  20C:  LA        A0, 802934D4
+  214:  JAL       ~Func:create_hud_element
+  218:  NOP
+  21C:  COPY      S3, V0
+  220:  COPY      A0, S3
+  224:  LI        A1, 9
+  228:  LA        S0, $End2[28]
+  230:  JAL       ~Func:set_hud_element_render_depth
+  234:  SW        S3, 0 (S0)
+  238:  COPY      A0, S3
+  23C:  LI        A1, FF9C
+  240:  JAL       ~Func:set_hud_element_render_pos
+  244:  COPY      A2, A1
+  248:  LA        A0, 8029343C
+  250:  JAL       ~Func:create_hud_element
+  254:  NOP
+  258:  COPY      S3, V0
+  25C:  COPY      A0, S3
+  260:  LI        A1, 9
+  264:  JAL       ~Func:set_hud_element_render_depth
+  268:  SW        S3, 4 (S0)
+  26C:  COPY      A0, S3
+  270:  LI        A1, FF9C
+  274:  JAL       ~Func:set_hud_element_render_pos
+  278:  COPY      A2, A1
+  27C:  LA        A0, 802933A4
+  284:  JAL       ~Func:create_hud_element
+  288:  NOP
+  28C:  COPY      S3, V0
+  290:  COPY      A0, S3
+  294:  LI        A1, 9
+  298:  JAL       ~Func:set_hud_element_render_depth
+  29C:  SW        S3, 8 (S0)
+  2A0:  COPY      A0, S3
+  2A4:  LI        A1, FF9C
+  2A8:  JAL       ~Func:set_hud_element_render_pos
+  2AC:  COPY      A2, A1
+  2B0:  LA        A0, 8029330C
+  2B8:  JAL       ~Func:create_hud_element
+  2BC:  NOP
+  2C0:  COPY      S3, V0
+  2C4:  COPY      A0, S3
+  2C8:  LI        A1, 9
+  2CC:  JAL       ~Func:set_hud_element_render_depth
+  2D0:  SW        S3, C (S0)
+  2D4:  COPY      A0, S3
+  2D8:  LI        A1, FF9C
+  2DC:  JAL       ~Func:set_hud_element_render_pos
+  2E0:  COPY      A2, A1
+  2E4:  LA        A0, 80293274
+  2EC:  JAL       ~Func:create_hud_element
+  2F0:  NOP
+  2F4:  COPY      S3, V0
+  2F8:  COPY      A0, S3
+  2FC:  LI        A1, 9
+  300:  JAL       ~Func:set_hud_element_render_depth
+  304:  SW        S3, 10 (S0)
+  308:  COPY      A0, S3
+  30C:  LI        A1, FF9C
+  310:  JAL       ~Func:set_hud_element_render_pos
+  314:  COPY      A2, A1
+  318:  LA        A0, 802931DC
+  320:  JAL       ~Func:create_hud_element
+  324:  NOP
+  328:  COPY      S3, V0
+  32C:  COPY      A0, S3
+  330:  LI        A1, 9
+  334:  JAL       ~Func:set_hud_element_render_depth
+  338:  SW        S3, 14 (S0)
+  33C:  COPY      A0, S3
+  340:  LI        A1, FF9C
+  344:  JAL       ~Func:set_hud_element_render_pos
+  348:  COPY      A2, A1
+  34C:  LA        A0, 802936D4
+  354:  JAL       ~Func:create_hud_element
+  358:  NOP
+  35C:  COPY      S3, V0
+  360:  COPY      A0, S3
+  364:  LI        A1, A
+  368:  LA        S2, $End2[44]
+  370:  JAL       ~Func:set_hud_element_render_depth
+  374:  SW        S3, 0 (S2)
+  378:  LW        A0, 0 (S2)
+  37C:  JAL       ~Func:create_hud_element_transform_A
+  380:  NOP
+  384:  COPY      A0, S3
+  388:  LI        A1, FF9C
+  38C:  JAL       ~Func:set_hud_element_render_pos
+  390:  COPY      A2, A1
+  394:  LA        A0, 80108E48
+  39C:  LA        S1, $End2[54]
+  3A4:  LI        V0, FFD0
+  3A8:  LA        S0, $End2[58]
+  3B0:  SW        V0, 0 (S1)
+  3B4:  LI        V0, 50
+  3B8:  JAL       ~Func:create_hud_element
+  3BC:  SW        V0, 0 (S0)
+  3C0:  COPY      S3, V0
+  3C4:  LW        A1, 0 (S1)
+  3C8:  LW        A2, 0 (S0)
+  3CC:  SAW       S3, $End2[50]
+  3D4:  JAL       ~Func:set_hud_element_render_pos
+  3D8:  COPY      A0, S3
+  3DC:  COPY      A0, S3
+  3E0:  JAL       ~Func:set_hud_element_render_depth
+  3E4:  CLEAR     A1
+  3E8:  LH        A1, 428 (S5)
+  3EC:  LB        A2, 426 (S5)
+  3F0:  JAL       ~Func:set_goal_pos_to_part
+        %JAL	      80269754
+  3F4:  COPY      A0, S4
+  3F8:  LH        A0, 428 (S5)
+  3FC:  JAL       ~Func:get_actor
+  400:  CLEAR     S1
+  404:  COPY      S0, V0
+  408:  LB        A1, 426 (S5)
+  40C:  JAL       ~Func:get_actor_part
+  410:  COPY      A0, S0
+  414:  LB        V1, 75 (V0)
+  418:  LWC1      F0, 188 (S0)
+  41C:  MTC1      V1, F2
+  420:  NOP
+  424:  CVT.S.W   F2, F2
+  428:  MUL.S     F2, F2, F0
+  42C:  NOP
+  430:  LWC1      F0, 18 (S5)
+  434:  ADD.S     F0, F0, F2
+  438:  SWC1      F0, 18 (S5)
+  43C:  LB        V1, 76 (V0)
+  440:  LWC1      F2, 188 (S0)
+  444:  MTC1      V1, F0
+  448:  NOP
+  44C:  CVT.S.W   F0, F0
+  450:  MUL.S     F0, F0, F2
+  454:  NOP
+  458:  LWC1      F2, 1C (S5)
+  45C:  ADD.S     F2, F2, F0
+  460:  LWC1      F0, 20 (S5)
+  464:  SWC1      F2, 1C (S5)
+  468:  LBU       V1, 73 (V0)
+  46C:  LBU       V0, 72 (V0)
+  470:  LIF       F3, 2.875
+  478:  MTC1      R0, F2
+  47C:  ADDU      V1, V1, V0
+  480:  SRA       V1, V1, 1
+  484:  MTC1      V1, F0
+  488:  NOP
+  48C:  CVT.D.W   F0, F0
+  490:  DIV.D     F0, F0, F2
+  494:  CVT.S.D   F0, F0
+  498:  SWC1      F0, 30 (S5)
+  49C:  LWC1      F2, 188 (S0)
+  4A0:  MUL.S     F0, F0, F2
+  4A4:  NOP
+  4A8:  LW        A0, 0 (S2)
+  4AC:  MFC1      A1, F0
+  4B0:  LIF       F22, 1.0
+  4B8:  JAL       ~Func:set_hud_element_scale
+  4BC:  NOP
+  4C0:  ADDIU     S3, SP, 28
+  4C4:  LW        A2, 18 (S5)
+  4C8:  LWC1      F0, 144 (S5)
+  4CC:  LIF       F2, 8.0
+  4D4:  LIF       F4, 16.0
+  4DC:  ADD.S     F0, F0, F2
+  4E0:  LWC1      F2, 148 (S5)
+  4E4:  LW        A3, 1C (S5)
+  4E8:  ADD.S     F2, F2, F4
+  4EC:  SWC1      F0, C (S5)
+  4F0:  MOV.S     F12, F0
+  4F4:  LWC1      F0, 14C (S5)
+  4F8:  ADDIU     S2, SP, 2C
+  4FC:  SWC1      F2, 10 (S5)
+  500:  MOV.S     F14, F2
+  504:  JAL       ~Func:atan2
+  508:  SWC1      F0, 14 (S5)
+  50C:  SWC1      F0, 54 (S5)
+  510:  MOV.S     F4, F0
+  514:  LIF       F2, 116.0
+  51C:  ADDIU     S0, SP, 30
+  520:  SWC1      F0, 5C (S5)
+  524:  SWC1      F4, 24 (S5)
+  528:  SWC1      F2, 58 (S5)
+        .o52C
+  52C:  LWC1      F12, 18 (S4)
+  530:  SUB.S     F12, F12, F22
+  534:  JAL       ~Func:clamp_angle
+  538:  SWC1      F12, 18 (S4)
+  53C:  ADDIU     A0, SP, 20
+  540:  LWC1      F20, 8 (S4)
+  544:  LW        A2, 4C (S4)
+  548:  MFC1      A3, F0
+  54C:  LWC1      F0, 0 (S4)
+  550:  LWC1      F2, 4 (S4)
+  554:  ADDIU     A1, SP, 24
+  558:  SWC1      F0, 20 (SP)
+  55C:  JAL       ~Func:add_vec2D_polar
+  560:  SWC1      F2, 24 (SP)
+  564:  LAW       A0, 80077410
+  56C:  MFC1      A3, F20
+  570:  LWC1      F0, 20 (SP)
+  574:  LWC1      F2, 24 (SP)
+  578:  MFC1      A1, F0
+  57C:  MFC1      A2, F2
+  580:  SW        S3, 10 (SP)
+  584:  SW        S2, 14 (SP)
+  588:  JAL       ~Func:get_screen_coords
+  58C:  SW        S0, 18 (SP)
+  590:  LW        V0, 2C (SP)
+  594:  SLTI      V0, V0, B5
+  598:  BEQ       V0, R0, .o5AC
+  59C:  ADDIU     S1, S1, 1
+  5A0:  SLTI      V0, S1, 1E
+  5A4:  BNE       V0, R0, .o52C
+  5A8:  NOP
+        .o5AC
+  5AC:  CLEAR     S1
+  5B0:  ADDIU     S3, SP, 28
+  5B4:  ADDIU     S2, SP, 2C
+  5B8:  LIF       F22, 1.0
+  5C0:  LWC1      F0, 48 (S4)
+  5C4:  ADDIU     S0, SP, 30
+  5C8:  SWC1      F0, 1C (S4)
+        .o5CC
+  5CC:  LWC1      F12, 1C (S4)
+  5D0:  ADD.S     F12, F12, F22
+  5D4:  JAL       ~Func:clamp_angle
+  5D8:  SWC1      F12, 1C (S4)
+  5DC:  ADDIU     A0, SP, 20
+  5E0:  LWC1      F20, 8 (S4)
+  5E4:  LW        A2, 4C (S4)
+  5E8:  MFC1      A3, F0
+  5EC:  LWC1      F0, 0 (S4)
+  5F0:  LWC1      F2, 4 (S4)
+  5F4:  ADDIU     A1, SP, 24
+  5F8:  SWC1      F0, 20 (SP)
+  5FC:  JAL       ~Func:add_vec2D_polar
+  600:  SWC1      F2, 24 (SP)
+  604:  LAW       A0, 80077410
+  60C:  MFC1      A3, F20
+  610:  LWC1      F0, 20 (SP)
+  614:  LWC1      F2, 24 (SP)
+  618:  MFC1      A1, F0
+  61C:  MFC1      A2, F2
+  620:  SW        S3, 10 (SP)
+  624:  SW        S2, 14 (SP)
+  628:  JAL       ~Func:get_screen_coords
+  62C:  SW        S0, 18 (SP)
+  630:  LW        V0, 2C (SP)
+  634:  SLTI      V0, V0, 1E
+  638:  BNE       V0, R0, .o64C
+  63C:  ADDIU     S1, S1, 1
+  640:  SLTI      V0, S1, 1E
+  644:  BNE       V0, R0, .o5CC
+  648:  NOP
+        .o64C
+  64C:  LWC1      F2, 1C (S4)
+  650:  LWC1      F0, 18 (S4)
+  654:  SUB.S     F2, F2, F0
+  658:  LIF       F0, 2.0
+  660:  NOP
+  664:  SUB.S     F2, F2, F0
+  668:  LI        V0, 78
+  66C:  TRUNC.W.S F8, F2
+  670:  MFC1      A0, F8
+  674:  JAL       ~Func:rand_int
+  678:  SH        V0, 64 (S4)
+  67C:  MTC1      V0, F4
+  680:  NOP
+  684:  CVT.S.W   F4, F4
+  688:  LWC1      F0, 18 (S4)
+  68C:  LIF       F2, 3.0
+  694:  LI        V0, 5A
+  698:  SAW       R0, $End2[48]
+  6A0:  ADD.S     F0, F0, F4
+  6A4:  SAW       V0, $End2[4C]
+  6AC:  SWC1      F2, 44 (S4)
+  6B0:  SWC1      F0, 48 (S4)
+  6B4:  JAL       80268858
+  6B8:  SB        R0, 86 (S6)
+  6BC:  JAL       80269118
+  6C0:  NOP
+  6C4:  LI        V0, 1
+  6C8:  BEQ       R0, R0, .o9AC
+  6CC:  SW        V0, 70 (S7)
+        .o6D0
+  6D0:  LB        V0, 5E (A0)
+  6D4:  BNE       V0, R0, .o6EC
+  6D8:  LUI       V1, 4
+  6DC:  LW        V0, 210 (S6)
+  6E0:  AND       V0, V0, V1
+  6E4:  BEQ       V0, R0, .o6F4
+  6E8:  NOP
+        .o6EC
+  6EC:  SAW       R0, $End2[4C]
+        .o6F4
+  6F4:  LA        V1, $End2[4C]
+  6FC:  LW        V0, 0 (V1)
+  700:  BEQ       V0, R0, .o738
+  704:  ADDIU     V0, V0, FFFF
+  708:  BNE       V0, R0, .o9AC
+  70C:  SW        V0, 0 (V1)
+  710:  JAL       ~Func:rand_int
+  714:  LI        A0, 64
+  718:  SLTI      V0, V0, 32
+  71C:  BEQ       V0, R0, .o730
+  720:  NOP
+  724:  LWC1      F0, 18 (S4)
+  728:  BEQ       R0, R0, .o738
+  72C:  SWC1      F0, 48 (S4)
+        .o730
+  730:  LWC1      F0, 1C (S4)
+  734:  SWC1      F0, 48 (S4)
+        .o738
+  738:  JAL       ~Func:sfx_play_sound
+  73C:  LI        A0, 311
+  740:  LI        V0, 3C
+  744:  SAW       V0, $End2[4C]
+  74C:  LI        V0, 2
+  750:  BEQ       R0, R0, .o9AC
+  754:  SW        V0, 70 (S7)
+        .o758
+  758:  LB        V0, 5E (A0)
+  75C:  BNE       V0, R0, .o77C
+  760:  LUI       V1, 4
+  764:  LW        V0, 210 (S6)
+  768:  AND       V0, V0, V1
+  76C:  BNE       V0, R0, .o7EC
+  770:  LI        V0, 3
+  774:  BEQ       R0, R0, .o9AC
+  778:  SW        V0, 70 (S7)
+        .o77C
+  77C:  LA        V1, $End2[4C]
+  784:  LW        V0, 0 (V1)
+  788:  BNE       V0, R0, .o7E8
+  78C:  ADDIU     V0, V0, FFFF
+  790:  LH        A0, 428 (S5)
+  794:  JAL       ~Func:get_actor
+  798:  NOP
+  79C:  LWC1      F12, 54 (S5)
+  7A0:  LWC1      F14, 5C (S5)
+  7A4:  JAL       ~Func:get_clamped_angle_diff
+  7A8:  COPY      S0, V0
+  7AC:  ABS.S     F0, F0
+  7B0:  LWC1      F2, 30 (S5)
+  7B4:  LWC1      F4, 188 (S0)
+  7B8:  DIV.S     F0, F0, F2
+  7BC:  MUL.S     F2, F0, F4
+  7C0:  NOP
+  7C4:  LIF       F0, 3.0
+  7CC:  NOP
+  7D0:  C.LT.S    F2, F0
+  7D4:  NOP
+  7D8:  BC1F      .o7EC
+  7DC:  LI        V0, 3
+  7E0:  BEQ       R0, R0, .o9AC
+  7E4:  SW        V0, 70 (S7)
+        .o7E8
+  7E8:  SW        V0, 0 (V1)
+        .o7EC
+  7EC:  LWC1      F0, 48 (S4)
+  7F0:  LWC1      F2, 44 (S4)
+  7F4:  ADD.S     F0, F0, F2
+  7F8:  LWC1      F4, 18 (S4)
+  7FC:  C.LE.S    F0, F4
+  800:  NOP
+  804:  BC1F      .o820
+  808:  SWC1      F0, 48 (S4)
+  80C:  MTC1      R0, F0
+  810:  NOP
+  814:  SUB.S     F0, F0, F2
+  818:  SWC1      F4, 48 (S4)
+  81C:  SWC1      F0, 44 (S4)
+        .o820
+  820:  LWC1      F0, 48 (S4)
+  824:  LWC1      F4, 1C (S4)
+  828:  C.LE.S    F4, F0
+  82C:  NOP
+  830:  BC1F      .o9AC
+  834:  NOP
+  838:  LWC1      F2, 44 (S4)
+  83C:  MTC1      R0, F0
+  840:  NOP
+  844:  SUB.S     F0, F0, F2
+  848:  SWC1      F4, 48 (S4)
+  84C:  BEQ       R0, R0, .o9AC
+  850:  SWC1      F0, 44 (S4)
+        .o854
+  854:  LH        A0, 428 (S5)
+  858:  JAL       ~Func:get_actor
+  85C:  NOP
+  860:  LWC1      F12, 54 (S5)
+  864:  LWC1      F14, 5C (S5)
+  868:  JAL       ~Func:get_clamped_angle_diff
+  86C:  COPY      S0, V0
+  870:  MOV.S     F6, F0
+  874:  ABS.S     F0, F6
+  878:  LWC1      F2, 30 (S5)
+  87C:  LWC1      F4, 188 (S0)
+  880:  DIV.S     F0, F0, F2
+  884:  MUL.S     F2, F0, F4
+  888:  NOP
+  88C:  LWC1      F0, 50 (S5)
+  890:  MTC1      R0, F4
+  894:  NOP
+  898:  C.LE.S    F4, F0
+  89C:  NOP
+  8A0:  BC1F      .o8C0
+  8A4:  NOP
+  8A8:  C.LT.S    F6, F4
+  8AC:  NOP
+  8B0:  BC1TL     .o8DC
+  8B4:  SB        R0, 86 (S6)
+  8B8:  BEQ       R0, R0, .o8D0
+  8BC:  LI        V0, FFFF
+        .o8C0
+  8C0:  C.LT.S    F6, F4
+  8C4:  NOP
+  8C8:  BC1F      .o8D8
+  8CC:  LI        V0, FFFF
+        .o8D0
+  8D0:  BEQ       R0, R0, .o8DC
+  8D4:  SB        V0, 86 (S6)
+        .o8D8
+  8D8:  SB        R0, 86 (S6)
+        .o8DC
+  8DC:  LIF       F0, 7.0
+  8E4:  NOP
+  8E8:  C.LT.S    F2, F0
+  8EC:  NOP
+  8F0:  BC1F      .o910
+  8F4:  SB        R0, 84 (S6)
+  8F8:  LI        V0, 1
+  8FC:  SB        V0, 84 (S6)
+  900:  JAL       80269160
+  904:  SB        V0, 86 (S6)
+  908:  BEQ       R0, R0, .o930
+  90C:  CLEAR     S1
+        .o910
+  910:  LWC1      F2, 48 (S4)
+  914:  LWC1      F0, 50 (S4)
+  918:  C.LT.S    F2, F0
+  91C:  NOP
+  920:  BC1F      .o92C
+  924:  LI        V0, FFFF
+  928:  SB        V0, 84 (S6)
+        .o92C
+  92C:  CLEAR     S1
+        .o930
+  930:  LA        S0, $End2[8]
+        .o938
+  938:  LW        A0, 0 (S0)
+  93C:  ADDIU     S0, S0, 4
+  940:  JAL       ~Func:free_hud_element
+  944:  ADDIU     S1, S1, 1
+  948:  SLTI      V0, S1, 7
+  94C:  BNE       V0, R0, .o938
+  950:  NOP
+  954:  CLEAR     S1
+  958:  LA        S0, $End2[28]
+        .o960
+  960:  LW        A0, 0 (S0)
+  964:  ADDIU     S0, S0, 4
+  968:  JAL       ~Func:free_hud_element
+  96C:  ADDIU     S1, S1, 1
+  970:  SLTI      V0, S1, 6
+  974:  BNE       V0, R0, .o960
+  978:  NOP
+  97C:  LAW       A0, $End2[44]
+  984:  JAL       ~Func:free_hud_element
+  988:  NOP
+  98C:  LAW       A0, $End2[50]
+  994:  JAL       ~Func:free_hud_element
+  998:  NOP
+  99C:  JAL       ~Func:btl_set_popup_duration
+  9A0:  CLEAR     A0
+  9A4:  BEQ       R0, R0, .oC50
+  9A8:  LI        V0, 2
+        .o9AC
+  9AC:  LW        V1, 70 (S7)
+  9B0:  SLTI      V0, V1, 3
+        .o9B4
+  9B4:  BEQL      V0, R0, .oA78
+  9B8:  ADDIU     S5, SP, 28
+  9BC:  BLEZL     V1, .oA78
+  9C0:  ADDIU     S5, SP, 28
+  9C4:  LH        A0, 428 (S5)
+  9C8:  LAW       S3, $End2[50]
+  9D0:  JAL       ~Func:get_actor
+  9D4:  NOP
+  9D8:  LWC1      F12, 48 (S4)
+  9DC:  LWC1      F14, 50 (S4)
+  9E0:  JAL       ~Func:get_clamped_angle_diff
+  9E4:  COPY      S0, V0
+  9E8:  ABS.S     F0, F0
+  9EC:  LWC1      F2, 24 (S4)
+  9F0:  LWC1      F4, 188 (S0)
+  9F4:  DIV.S     F0, F0, F2
+  9F8:  MUL.S     F2, F0, F4
+  9FC:  NOP
+  A00:  LIF       F0, 7.0
+  A08:  NOP
+  A0C:  C.LT.S    F2, F0
+  A10:  NOP
+  A14:  BC1F      .oA2C
+  A18:  COPY      A0, S3
+  A1C:  LA        A1, 80108E1C
+  A24:  BEQ       R0, R0, .oA34
+  A28:  NOP
+        .oA2C
+  A2C:  LA        A1, 80108E48
+        .oA34
+  A34:  JAL       ~Func:set_hud_element_script
+  A38:  NOP
+  A3C:  LA        A1, $End2[54]
+  A44:  LW        V0, 0 (A1)
+  A48:  ADDIU     V0, V0, 14
+  A4C:  SW        V0, 0 (A1)
+  A50:  SLTI      V0, V0, 33
+  A54:  BNE       V0, R0, .oA60
+  A58:  LI        V0, 32
+  A5C:  SW        V0, 0 (A1)
+        .oA60
+  A60:  LW        A1, 0 (A1)
+  A64:  LAW       A2, $End2[58]
+  A6C:  JAL       ~Func:set_hud_element_render_pos
+  A70:  COPY      A0, S3
+  A74:  ADDIU     S5, SP, 28
+        .oA78
+  A78:  ADDIU     S2, SP, 2C
+  A7C:  LAW       A0, 80077410
+  A84:  ADDIU     V0, SP, 30
+  A88:  SW        S5, 10 (SP)
+  A8C:  SW        S2, 14 (SP)
+  A90:  SW        V0, 18 (SP)
+  A94:  LW        A1, C (S4)
+  A98:  LW        A2, 10 (S4)
+  A9C:  JAL       ~Func:get_screen_coords
+  AA0:  LW        A3, 14 (S4)
+  AA4:  LAW       S3, $End2[44]
+  AAC:  LW        A1, 28 (SP)
+  AB0:  LW        A2, 2C (SP)
+  AB4:  JAL       ~Func:set_hud_element_render_pos
+  AB8:  COPY      A0, S3
+  ABC:  COPY      A0, S3
+  AC0:  LA        S0, $End2[48]
+  AC8:  MTC1      R0, F0
+  ACC:  LWC1      F8, 0 (S0)
+  AD0:  CVT.S.W   F8, F8
+  AD4:  MFC1      A1, F0
+  AD8:  MFC1      A3, F8
+  ADC:  JAL       ~Func:set_hud_element_transform_rotation
+  AE0:  COPY      A2, A1
+  AE4:  LW        V0, 0 (S0)
+  AE8:  ADDIU     V0, V0, FFF6
+  AEC:  MTC1      V0, F12
+  AF0:  NOP
+  AF4:  CVT.S.W   F12, F12
+  AF8:  JAL       ~Func:clamp_angle
+  AFC:  SW        V0, 0 (S0)
+  B00:  LW        A0, 70 (S7)
+  B04:  TRUNC.W.S F8, F0
+  B08:  SWC1      F8, 0 (S0)
+  B0C:  SLTI      V0, A0, 2
+  B10:  BNE       V0, R0, .oC50
+  B14:  CLEAR     V0
+  B18:  SLTI      V0, A0, 3
+  B1C:  BEQ       V0, R0, .oC4C
+  B20:  CLEAR     S1
+  B24:  LWC1      F12, 48 (S4)
+  B28:  LIF       F22, 6.0
+  B30:  JAL       ~Func:clamp_angle
+  B34:  COPY      S3, S2
+  B38:  ADDIU     A0, SP, 34
+  B3C:  LW        A2, 4C (S4)
+  B40:  MFC1      A3, F0
+  B44:  LWC1      F0, 0 (S4)
+  B48:  LWC1      F2, 4 (S4)
+  B4C:  SWC1      F0, 34 (SP)
+  B50:  SWC1      F2, 38 (SP)
+  B54:  LWC1      F24, 8 (S4)
+  B58:  JAL       ~Func:add_vec2D_polar
+  B5C:  ADDIU     A1, SP, 38
+  B60:  LWC1      F20, 8 (S4)
+  B64:  LWC1      F0, 0 (S4)
+  B68:  LWC1      F2, 4 (S4)
+  B6C:  LA        S2, $End2[8]
+  B74:  SWC1      F0, 20 (SP)
+  B78:  SWC1      F2, 24 (SP)
+        .oB7C
+  B7C:  LWC1      F2, 34 (SP)
+  B80:  LWC1      F0, 0 (S4)
+  B84:  SUB.S     F2, F2, F0
+  B88:  LWC1      F6, 20 (SP)
+  B8C:  LWC1      F0, 4 (S4)
+  B90:  DIV.S     F2, F2, F22
+  B94:  ADD.S     F6, F6, F2
+  B98:  LWC1      F2, 38 (SP)
+  B9C:  SUB.S     F2, F2, F0
+  BA0:  LWC1      F0, 8 (S4)
+  BA4:  SUB.S     F0, F24, F0
+  BA8:  LWC1      F4, 24 (SP)
+  BAC:  DIV.S     F2, F2, F22
+  BB0:  ADD.S     F4, F4, F2
+  BB4:  LAW       A0, 80077410
+  BBC:  DIV.S     F0, F0, F22
+  BC0:  ADD.S     F20, F20, F0
+  BC4:  MFC1      A1, F6
+  BC8:  MFC1      A2, F4
+  BCC:  MFC1      A3, F20
+  BD0:  ADDIU     V0, SP, 30
+  BD4:  SW        A1, 20 (SP)
+  BD8:  SW        A2, 24 (SP)
+  BDC:  SW        S5, 10 (SP)
+  BE0:  SW        S3, 14 (SP)
+  BE4:  JAL       ~Func:get_screen_coords
+  BE8:  SW        V0, 18 (SP)
+  BEC:  SLL       S0, S1, 2
+  BF0:  LW        A0, 0 (S2)
+  BF4:  LW        A1, 28 (SP)
+  BF8:  LW        A2, 2C (SP)
+  BFC:  JAL       ~Func:set_hud_element_render_pos
+  C00:  ADDIU     S1, S1, 1
+  C04:  LTW       A0, S0 ($End2[28])
+  C10:  LW        A1, 28 (SP)
+  C14:  LW        A2, 2C (SP)
+  C18:  JAL       ~Func:set_hud_element_render_pos
+  C1C:  ADDIU     S2, S2, 4
+  C20:  SLTI      V0, S1, 6
+  C24:  BNE       V0, R0, .oB7C
+  C28:  SLL       V0, S1, 2
+  C2C:  LTW       A0, V0 ($End2[8])
+  C38:  LW        A1, 28 (SP)
+  C3C:  JAL       ~Func:set_hud_element_render_pos
+  C40:  LW        A2, 2C (SP)
+  C44:  JAL       ~Func:btl_set_popup_duration
+  C48:  LI        A0, 63
+        .oC4C
+  C4C:  CLEAR     V0
+        .oC50
+  C50:  LW        RA, 60 (SP)
+  C54:  LW        S7, 5C (SP)
+  C58:  LW        S6, 58 (SP)
+  C5C:  LW        S5, 54 (SP)
+  C60:  LW        S4, 50 (SP)
+  C64:  LW        S3, 4C (SP)
+  C68:  LW        S2, 48 (SP)
+  C6C:  LW        S1, 44 (SP)
+  C70:  LW        S0, 40 (SP)
+  C74:  LDC1      F24, 78 (SP)
+  C78:  LDC1      F22, 70 (SP)
+  C7C:  LDC1      F20, 68 (SP)
+  C80:  JR        RA
+  C84:  ADDIU     SP, SP, 80
+}
