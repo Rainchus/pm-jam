@@ -97,16 +97,24 @@
 				<Command val="1000"/>
 				<Command val="18"/>
 				<Command val="100A"/>
-				<Command val="6"/>
+				<Command val="4"/>
 				<Command val="100B"/>
-				<Command val="6"/>
+				<Command val="4"/>
 				<Command val="100C"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="1"/>
+				<Command val="0"/>
 				<Command val="2"/>
 				<Command val="100D"/>
+				<Command val="3000"/>
+				<Command val="0"/>
+				<Command val="1"/>
+				<Command val="0"/>
 				<Command val="2"/>
 				<Command val="100E"/>
 				<Command val="6"/>
-				<Command val="200A"/>
+				<Command val="2012"/>
 			</Component>
 			<Component name="boo" xyz="64,16,0">
 				<Command val="1029"/>
