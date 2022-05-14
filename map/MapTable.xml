@@ -570,6 +570,7 @@
 	</Area>
 	<Area name="bis" nickname="bis">
 		<Map name="bis_00" nickname="testBISMap"/>
+		<Map name="bis_01" nickname="Toad Square"/>
 	</Area>
 	<Resource name="mac_tex" compressed="false"/>
 	<Resource name="tik_tex" compressed="false"/>
