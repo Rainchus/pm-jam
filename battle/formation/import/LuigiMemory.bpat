@@ -1,32 +1,30 @@
-#define .marioStill     00A20000
-#define .marioIdle      00A20001
-#define .marioRun       00A20002
-#define .marioJump      00A20003
-#define .marioRaiseMushroom 00A20004
-#define .marioThrowMushroom 00A20005
-#define .blockMushroom  00A20006
-#define .marioRaiseStar 00A20007
-#define .marioThrowStar 00A20008
-#define .blockStar      00A20009
-#define .marioHurt      00A2000A
-#define .marioDead      00A2000B
-#define .marioBurnHurt  00A2000C
-#define .marioBurnDead  00A2000D
-#define .marioDizzy     00A2000E
-#define .marioSleep     00A2000F
+#define .luigiStill     00A30000
+#define .luigiIdle      00A30001
+#define .luigiWalk      00A30002
+#define .luigiScared    00A30003
+#define .luigiRun       00A30004
+#define .luigiRaise     00A30005
+#define .luigiThrow     00A30006
+#define .hammerSpin     00A30007
+#define .luigiHurt      00A30008
+#define .luigiDead      00A30009
+#define .luigiBurnHurt  00A3000A
+#define .luigiBurnDead  00A3000B
+#define .luigiDizzy     00A3000C
+#define .luigiSleep     00A3000D
 
-#new:Actor $MarioMemory {
+#new:Actor $LuigiMemory {
     % stats
     [Index]         7b 
     [Level]         5`b 
     [MaxHP]         50`b 
     [Coins]         1`b 
     [Flags]       00000000 
-    [StatusTable] $StatusTable_MemoryMario 
+    [StatusTable] $StatusTable_MemoryLuigi
     % ai
     [PartsCount]    1`s 
-    [PartsTable]  $PartsTable_MemoryMario0
-    [Script]      $Script_Init_MemoryMario 
+    [PartsTable]  $PartsTable_MemoryLuigi0
+    [Script]      $Script_Init_MemoryLuigi
     % move effectiveness
     [Escape]       90`b 
     [Item]        100`b 
@@ -42,12 +40,12 @@
     [StatusIcon]   10`b  20`b % dx dy
 }
 
-#new:DefenseTable $DefenseTable_MemoryMario {
+#new:DefenseTable $DefenseTable_MemoryLuigi {
 .Element:Normal 00000000
 .Element:End
 }
 
-#new:StatusTable $StatusTable_MemoryMario {
+#new:StatusTable $StatusTable_MemoryLuigi {
 .Status:Normal      0`
 .Status:Default     0`
 .Status:Sleep     100`
@@ -72,14 +70,14 @@
 .Status:End
 }
 
-#new:PartsTable $PartsTable_MemoryMario0 { %ActorPartBlueprint struct in decomp
+#new:PartsTable $PartsTable_MemoryLuigi0 { %ActorPartBlueprint struct in decomp
 /% s32 flags %/                 00800000
 /% s8 index %/                  01b
 /% Vec3b posOffset %/           00b 00b 00b
-/% Vec2b targetOffset %/        00b 2Bb %for cursor when selecting to attack in battle
+/% Vec2b targetOffset %/        00b 30b %for cursor when selecting to attack in battle
 /% s16 opacity %/               00FFs
-/% s32* IdleAnimations %/       $IdleAnimations_MemoryMario
-/% s32* defenseTable %/         $DefenseTable_MemoryMario
+/% s32* IdleAnimations %/       $IdleAnimations_MemoryLuigi
+/% s32* defenseTable %/         $DefenseTable_MemoryLuigi
 /% s32 eventFlags %/            00000000
 /% s32 elementImmunityFlags %/  00000000
 /% s8 unk_1C %/                 00b
@@ -89,33 +87,33 @@
 /% s8 unk_20 %/                 00000000 
 }
 
-#new:IdleAnimations $IdleAnimations_MemoryMario {
-.Status:Normal    .marioIdle
-.Status:Stone     .marioIdle
-.Status:Sleep     .marioSleep
-.Status:Poison    .marioIdle
-.Status:Stop      .marioStill
-.Status:Static    .marioIdle
-.Status:Paralyze  .marioIdle
-.Status:Dizzy     .marioDizzy
-.Status:Fear      .marioIdle
+#new:IdleAnimations $IdleAnimations_MemoryLuigi {
+.Status:Normal    .luigiIdle
+.Status:Stone     .luigiIdle
+.Status:Sleep     .luigiSleep
+.Status:Poison    .luigiIdle
+.Status:Stop      .luigiStill
+.Status:Static    .luigiIdle
+.Status:Paralyze  .luigiIdle
+.Status:Dizzy     .luigiDizzy
+.Status:Fear      .luigiIdle
 .Status:End
 }
 
-#new:Script $Script_Init_MemoryMario {
-    0:  Call  BindTakeTurn      ( .Actor:Self $Script_TakeTurn_MemoryMario )
-    14:  Call  BindIdle  ( .Actor:Self $Script_Idle_MemoryMario )
-    28:  Call  BindHandleEvent   ( .Actor:Self $Script_HandleEvent_MemoryMario )
+#new:Script $Script_Init_MemoryLuigi {
+    0:  Call  BindTakeTurn      ( .Actor:Self $Script_TakeTurn_MemoryLuigi )
+    14:  Call  BindIdle  ( .Actor:Self $Script_Idle_MemoryLuigi )
+    28:  Call  BindHandleEvent   ( .Actor:Self $Script_HandleEvent_MemoryLuigi )
     3C:  Return
     44:  End
 }
 
-#new:Script $Script_Idle_MemoryMario {
+#new:Script $Script_Idle_MemoryLuigi {
     Return
     End
 }
 
-#new:Script $Script_HandleEvent_MemoryMario {
+#new:Script $Script_HandleEvent_MemoryLuigi {
     0:  Call  UseIdleAnimation  ( .Actor:Self .False )
     14:  Call  EnableIdleScript  ( .Actor:Self 00000000 )
     28:  Call  SetActorScale     ( .Actor:Self *Fixed[1.0] *Fixed[1.0] *Fixed[1.0] )
@@ -124,21 +122,21 @@
     64:  	CaseOR  ==  .Event:HitCombo % 9
     70:  	CaseOR  ==  .Event:Hit % A
     7C:  		SetConst  *Var0  00000001 
-    8C:  		SetConst  *Var1  .marioHurt 
+    8C:  		SetConst  *Var1  .luigiHurt 
     9C:  		ExecWait  DoNormalHit 
     A8:  	EndCaseGroup 
     B0:  	Case  ==  .Event:BurnHit % E
     BC:  		SetConst  *Var0  00000001 
-    CC:  		SetConst  *Var1  .marioBurnHurt 
-    DC:  		SetConst  *Var2  .marioBurnDead 
+    CC:  		SetConst  *Var1  .luigiBurnHurt 
+    DC:  		SetConst  *Var2  .luigiBurnDead 
     EC:  		ExecWait  DoBurnHit 
     F8:  	Case  ==  .Event:BurnDeath % 24
     104:  		SetConst  *Var0  00000001 
-    114:  		SetConst  *Var1  .marioBurnHurt 
-    124:  		SetConst  *Var2  .marioBurnDead 
+    114:  		SetConst  *Var1  .luigiBurnHurt 
+    124:  		SetConst  *Var2  .luigiBurnDead 
     134:  		ExecWait  DoBurnHit 
     140:  		SetConst  *Var0  00000001 
-    150:  		SetConst  *Var1  .marioBurnDead 
+    150:  		SetConst  *Var1  .luigiBurnDead 
     160:  		ExecWait  DoDeath 
     16C:  		Return
         EndSwitch %temp
@@ -190,11 +188,11 @@
     % 440:  	EndCaseGroup
     % 448:  	Case  ==  .Event:Death % 20
     % 454:  		SetConst  *Var0  00000001 
-    % 464:  		SetConst  *Var1  .marioHurt 
+    % 464:  		SetConst  *Var1  .luigiHurt 
     % 474:  		ExecWait  DoNormalHit 
     % 480:  		Wait  10`
     % 48C:  		SetConst  *Var0  00000001 
-    % 49C:  		SetConst  *Var1  .marioDeath
+    % 49C:  		SetConst  *Var1  .luigiDeath
     % 4AC:  		ExecWait  DoDeath 
     % 4B8:  		Return
     % 4C0:  	Case  ==  .Event:EndFirstStrike % 35
@@ -226,14 +224,14 @@
     % 658:  		Return
     % 660:  	Default
     % 668:  EndSwitch
-    670:  Call  SetAnimation      ( .Actor:Self 00000001 .marioIdle )
+    670:  Call  SetAnimation      ( .Actor:Self 00000001 .luigiIdle )
     688:  Call  EnableIdleScript  ( .Actor:Self 00000001 )
     69C:  Call  UseIdleAnimation  ( .Actor:Self .True )
     6B0:  Return
     6B8:  End
 }
 
-#new:FloatTable $FloatTable_MemoryMario {
+#new:FloatTable $FloatTable_MemoryLuigi {
 0.0      0.017452 0.034899 0.052336 0.069756 0.087156 0.104528 0.121869
 0.139173 0.156434 0.173648 0.190809 0.207912 0.224951 0.241922 0.258819
 0.275637 0.292372 0.309017 0.325568 0.34202  0.358368 0.374607 0.390731
@@ -248,7 +246,7 @@
 0.999391 0.999848 1.0
 }
 
-#new:Script $Script_TakeTurn_MemoryMario {
+#new:Script $Script_TakeTurn_MemoryLuigi {
     Call  EnableIdleScript  ( .Actor:Self 00000001 )
     Call  UseIdleAnimation  ( .Actor:Self .True )
     Return
