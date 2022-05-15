@@ -72,7 +72,7 @@
             Call  SetBattleFlagBits ( 00004000 .False )
             ExecWait  $Script_OuttaSight
         Case  ==  00000088
-            ExecWait  $Script_8023BB9C
+            ExecWait  $Script_TidalWave
     EndSwitch
     Return
     End

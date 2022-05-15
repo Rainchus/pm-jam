@@ -1,0 +1,19 @@
+@ $Script_Main {
+    Set   *GB_WorldLocation  .Location:GoombaRoad
+    Call  SetCamPerspective  ( .Cam:Default 00000003 00000019 00000010 00001000 )
+    Call  SetCamBGColor      ( .Cam:Default 00000000 00000000 00000000 )
+    Call  SetCamEnabled      ( .Cam:Default .True
+    Call  SetCamLeadPlayer   ( .Cam:Default .False )
+    % Set *Var0 1
+    % Thread
+    %     Loop
+    %         Call  $ScrApi_Set2DBool ( *Var0 )
+    %         Wait 60`
+    %         Call $ScrApi_XORVar ( *Var0 1 ) %Var0 ^ 1
+    %     EndLoop
+    % EndThread
+    Exec  $Script_SetupMusic
+    Exec  $Script_EnterMap
+    Return
+    End
+}

@@ -131,12 +131,12 @@
 	<Move index="080" nameMsg="1D-01D" desc1Msg="1D-029" desc2Msg="00-000" flags="00008002" category="0A" inputPopup="FF" fp="00" bp="00" name="PeachBeam"/>
 	<Move index="081" nameMsg="1D-01E" desc1Msg="1D-020" desc2Msg="00-000" flags="00000100" category="0A" inputPopup="FF" fp="00" bp="00" name="PeachFocus"/>
 	<Move index="082" nameMsg="1D-01F" desc1Msg="1D-020" desc2Msg="00-000" flags="00008003" category="0A" inputPopup="FF" fp="00" bp="00" name="TwinkDash"/>
-	<Move index="083" nameMsg="2B-000" desc1Msg="28-002" desc2Msg="28-007" flags="00054881" category="0B" inputPopup="02" fp="00" bp="00" name="Headbonk1"/>
-	<Move index="084" nameMsg="2B-000" desc1Msg="28-002" desc2Msg="28-008" flags="00054881" category="0B" inputPopup="02" fp="00" bp="00" name="Headbonk2"/>
-	<Move index="085" nameMsg="2B-000" desc1Msg="28-002" desc2Msg="28-009" flags="00054881" category="0B" inputPopup="02" fp="00" bp="00" name="Headbonk3"/>
-	<Move index="086" nameMsg="2B-001" desc1Msg="28-003" desc2Msg="28-00A" flags="00038003" category="0B" inputPopup="FF" fp="00" bp="00" name="Tattle"/>
-	<Move index="087" nameMsg="2B-011" desc1Msg="28-037" desc2Msg="28-03E" flags="00000008" category="0B" inputPopup="FF" fp="02" bp="00" name="Charge"/>
-	<Move index="088" nameMsg="2B-003" desc1Msg="28-005" desc2Msg="28-00C" flags="00054881" category="0B" inputPopup="02" fp="03" bp="00" name="Multibonk"/>
+	<Move index="083" nameMsg="2F-004" desc1Msg="2F-005" desc2Msg="2F-005" flags="00054881" category="0B" inputPopup="02" fp="00" bp="00" name="Headbonk1"/>
+	<Move index="084" nameMsg="2F-004" desc1Msg="2F-005" desc2Msg="2F-005" flags="00054881" category="0B" inputPopup="02" fp="00" bp="00" name="Headbonk2"/>
+	<Move index="085" nameMsg="2F-004" desc1Msg="2F-005" desc2Msg="2F-005" flags="00054881" category="0B" inputPopup="02" fp="00" bp="00" name="Headbonk3"/>
+	<Move index="086" nameMsg="2F-00A" desc1Msg="2F-00B" desc2Msg="2F-00B" flags="00038003" category="0B" inputPopup="FF" fp="00" bp="00" name="Tattle"/>
+	<Move index="087" nameMsg="2F-006" desc1Msg="2F-007" desc2Msg="2F-007" flags="00000008" category="0B" inputPopup="FF" fp="02" bp="00" name="Charge"/>
+	<Move index="088" nameMsg="2F-008" desc1Msg="2F-009" desc2Msg="2F-009" flags="00054881" category="0B" inputPopup="02" fp="03" bp="00" name="Multibonk"/>
 	<Move index="089" nameMsg="2B-004" desc1Msg="28-00F" desc2Msg="28-014" flags="00012005" category="0B" inputPopup="01" fp="00" bp="00" name="ShellToss1"/>
 	<Move index="08A" nameMsg="2B-004" desc1Msg="28-00F" desc2Msg="28-015" flags="00012005" category="0B" inputPopup="01" fp="00" bp="00" name="ShellToss2"/>
 	<Move index="08B" nameMsg="2B-004" desc1Msg="28-00F" desc2Msg="28-016" flags="00012005" category="0B" inputPopup="01" fp="00" bp="00" name="ShellToss3"/>

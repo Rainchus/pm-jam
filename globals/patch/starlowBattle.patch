@@ -7,6 +7,15 @@
     0 0 0 0 0 0 0 0
 }
 
+#new:Data $End3 {
+      0 0 0 0 0 0 0 0
+      0 0 0 0 0 0 0 0
+      0 0 0 0 0 0 0 0
+      0 0 0 0 0 0 0 0
+      0 0 0 0 0 0 0 0
+      0 0 0 0 0 0 0 0
+  }
+
 #export:Function:Battle $Function_8023808C_Starlow
 {
     0:  LA        A0, 800DC070
@@ -876,4 +885,722 @@
   C7C:  LDC1      F20, 68 (SP)
   C80:  JR        RA
   C84:  ADDIU     SP, SP, 80
+}
+
+
+
+
+#export:Script:Battle $Script_TidalWave
+{
+    0:  Call  UseIdleAnimation  ( .Actor:Partner .False )
+   14:  Call  LoadActionCommand ( .ActionCommand:TidalWave )
+   24:  Call  802A9000 ( )
+   30:  Call  SetupMashMeter    ( 00000005 00000014 0000001E 0000003C 00000050 00000064 )
+   54:  Call  InitTargetIterator ( )
+   60:  Call  UseBattleCamPreset    ( 00000013 )
+   70:  Call  SetBattleCamTarget    (  -65`  53`  10` )
+   88:  Call  SetBattleCamOffsetZ   (  16` )
+   98:  Call  SetBattleCamZoom  (  214` )
+   A8:  Call  MoveBattleCamOver (  20` )
+   B8:  Call  SetAnimation      ( .Actor:Partner FFFFFFFF 000F0003 )
+   D0:  Call  SetActorJumpGravity   ( .Actor:Partner *Fixed[0.5] )
+   E4:  Call  GetActorPos       ( .Actor:Partner *Var0 *Var1 *Var2 )
+  100:  Call  SetGoalPos        ( .Actor:Partner *Var0 *Var1 *Var2 )
+  11C:  Call  JumpToGoal        ( .Actor:Partner  5` .False .True .False )
+  13C:  Call  SetActorJumpGravity   ( .Actor:Partner *Fixed[1.0] )
+  150:  Call  AddGoalPos        ( .Actor:Partner  30`  40`  0` )
+  16C:  Call  JumpToGoal        ( .Actor:Partner  15` .False .True .False )
+  18C:  Call  SetAnimation      ( .Actor:Partner FFFFFFFF 000F0001 )
+  1A4:  Call  SetAnimation      ( .Actor:Partner FFFFFFFF 000F000B )
+  1BC:  Call  802A9138  ( 00000000 00000064 00000003 )
+  1D4:  Call  SetActorRotationOffset    ( .Actor:Partner 00000000 0000000C 00000000 )
+  1F0:  Thread
+  1F8:  	Wait  54`
+  204:  	Loop  00000008
+  210:  		Call  SetActorDispOffset    ( .Actor:Partner 00000000 00000000 00000000 )
+  22C:  		Wait  1`
+  238:  		Call  SetActorDispOffset    ( .Actor:Partner FFFFFFFF 00000000 00000000 )
+  254:  		Wait  1`
+  260:  	EndLoop
+  268:  	Loop  00000007
+  274:  		Call  SetActorDispOffset    ( .Actor:Partner 00000001 00000000 00000000 )
+  290:  		Wait  1`
+  29C:  		Call  SetActorDispOffset    ( .Actor:Partner FFFFFFFF 00000000 00000000 )
+  2B8:  		Wait  1`
+  2C4:  	EndLoop
+  2CC:  	Loop  00000008
+  2D8:  		Call  SetActorDispOffset    ( .Actor:Partner 00000001 00000000 00000000 )
+  2F4:  		Wait  1`
+  300:  		Call  SetActorDispOffset    ( .Actor:Partner FFFFFFFE 00000000 00000000 )
+  31C:  		Wait  1`
+  328:  	EndLoop
+  330:  	Call  SetActorDispOffset    ( .Actor:Partner 00000000 00000000 00000000 )
+  34C:  EndThread
+  354:  Loop  00000064
+  360:  	Call  GetActionResult   ( *Var0 )
+  370:  	Call  $Function_TidalWave_Func1 ( )
+  37C:  	Wait  1`
+  388:  EndLoop
+  390:  Call  UseBattleCamPreset    ( 00000002 )
+  3A0:  Call  MoveBattleCamOver (  5` )
+  3B0:  Wait  10`
+  3BC:  Call  EnableActorBlur   ( .Actor:Partner 00000001 )
+  3D0:  Call  $Function_TidalWave_Func2 ( )
+  3DC:  Call  SetActorPos       ( .Actor:Partner  -220`  0`  0` )
+  3F8:  Call  EnableActorBlur   ( .Actor:Partner 00000000 )
+  40C:  Wait  15`
+  418:  Call  UseBattleCamPreset    ( 00000003 )
+  428:  Call  MoveBattleCamOver (  20` )
+  438:  Call  GetActionSuccessCopy  ( *Var0 )
+  448:  Set   *VarE  *Var0
+  458:  Set   *VarF  *Var0
+  468:  Call  InitTargetIterator ( )
+  474:  Loop
+  480:  	Call  SetGoalToTarget   ( .Actor:Self )
+  490:  	Call  PartnerTestEnemy  ( *Var0 ~Flags:DamageType:0 00000014 00000000  2` 00000010 )
+  4B4:  	If  *Var0  ==  .HitResult:Miss % 6
+  4C4:  		Goto  A
+  4D0:  	EndIf
+  4D8:  	Switch  *VarE
+  4E4:  		Case  >=  00000006
+  4F0:  			Call  PartnerDamageEnemy    ( *Var0 ~Flags:DamageType:NoContact|NoOtherDamagePopups|Water 00000000 00000000 *VarF 00000070 )
+  514:  		Default
+  51C:  			Call  PartnerDamageEnemy    ( *Var0 ~Flags:DamageType:NoContact|NoOtherDamagePopups|Water 00000000 00000000 *VarF 00000030 )
+  540:  	EndSwitch
+  548:  	Wait  5`
+  554:  	Label  A
+  560:  	Call  ChooseNextTarget  ( .Iter:Next *Var0 )
+  574:  	If  *Var0  ==  FFFFFFFF
+  584:  		BreakLoop
+  58C:  	EndIf
+  594:  EndLoop
+  59C:  Call  80280818 ( )
+  5A8:  Call  SetGoalToHome ( .Actor:Partner )
+  5B8:  Call  AddGoalPos    ( .Actor:Partner  0`  150`  0` )
+  5D4:  Call  GetGoalPos    ( .Actor:Partner *Var0 *Var1 *Var2 )
+  5F0:  Call  SetActorPos   ( .Actor:Partner *Var0 *Var1 *Var2 )
+  60C:  Call  SetActorRotationOffset    ( .Actor:Partner 00000000 00000000 00000000 )
+  628:  Call  SetActorJumpGravity       ( .Actor:Partner *Fixed[1.0] )
+  63C:  Call  SetGoalToHome ( .Actor:Partner )
+  64C:  Call  SetAnimation  ( .Actor:Partner FFFFFFFF 000F0001 )
+  664:  Call  JumpToGoal    ( .Actor:Partner  40` .False .True .False )
+  684:  Call  SetActorJumpGravity       ( .Actor:Partner *Fixed[0.7] )
+  698:  Call  JumpToGoal    ( .Actor:Partner  20` .False .True .False )
+  6B8:  Call  JumpToGoal    ( .Actor:Partner  10` .False .True .False )
+  6D8:  Return
+  6E0:  End
+}
+
+#export:Function $Function_TidalWave_Func1
+{
+    0:  LIF       F3, 2.125
+    8:  MTC1      R0, F2
+    C:  LWC1      F0, 84 (A0)
+   10:  CVT.D.W   F0, F0
+   14:  MUL.D     F0, F0, F2
+   18:  NOP
+   1C:  LIF       F3, 3.390625
+   24:  MTC1      R0, F2
+   28:  NOP
+   2C:  DIV.D     F0, F0, F2
+   30:  LIF       F3, 1.875
+   38:  MTC1      R0, F2
+   3C:  LAW       V0, 800DC14C
+   44:  ADD.D     F0, F0, F2
+   48:  LWC1      F10, 170 (V0)
+   4C:  CVT.S.D   F0, F0
+   50:  SUB.S     F2, F0, F10
+   54:  LIF       F8, 3.0
+   5C:  NOP
+   60:  DIV.S     F2, F2, F8
+   64:  ADD.S     F10, F10, F2
+   68:  LWC1      F6, 174 (V0)
+   6C:  SUB.S     F2, F0, F6
+   70:  LWC1      F4, 178 (V0)
+   74:  SUB.S     F0, F0, F4
+   78:  DIV.S     F2, F2, F8
+   7C:  ADD.S     F6, F6, F2
+   80:  DIV.S     F0, F0, F8
+   84:  ADD.S     F4, F4, F0
+   88:  SWC1      F10, 170 (V0)
+   8C:  SWC1      F6, 174 (V0)
+   90:  SWC1      F4, 178 (V0)
+   94:  JR        RA
+   98:  LI        V0, 2
+}
+
+#export:Function $Function_TidalWave_Func2
+{
+    0:  ADDIU     SP, SP, FFC8
+    4:  SW        S1, 24 (SP)
+    8:  LAW       S1, 800DC14C
+   10:  SW        S2, 28 (SP)
+   14:  COPY      S2, A0
+   18:  SW        RA, 2C (SP)
+   1C:  SW        S0, 20 (SP)
+   20:  SDC1      F20, 30 (SP)
+   24:  BEQ       A1, R0, .o30
+   28:  ADDIU     S0, S1, C
+   2C:  SW        R0, 70 (S2)
+        .o30
+   30:  LW        V1, 70 (S2)
+   34:  BEQ       V1, R0, .o4C
+   38:  LI        V0, 1
+   3C:  BEQ       V1, V0, .oF0
+   40:  LI        V0, 2
+   44:  BEQ       R0, R0, .o7D8
+   48:  NOP
+        .o4C
+   4C:  LWC1      F0, 144 (S1)
+   50:  LWC1      F2, 148 (S1)
+   54:  LWC1      F4, 14C (S1)
+   58:  LIF       F6, 313.0
+   64:  LIF       F8, 32.0
+   6C:  LIF       F10, 1.0
+   74:  LI        V0, 5A
+   78:  SW        R0, 5C (S1)
+   7C:  SH        V0, 70 (S1)
+   80:  SWC1      F0, C (S1)
+   84:  SWC1      F2, 10 (S1)
+   88:  SWC1      F4, 14 (S1)
+   8C:  SWC1      F6, 54 (S1)
+   90:  SWC1      F8, 4C (S1)
+   94:  SW        R0, 74 (S2)
+   98:  SW        R0, 78 (S2)
+   9C:  SWC1      F10, 10 (SP)
+   A0:  SW        R0, 14 (SP)
+   A4:  LW        A1, C (S1)
+   A8:  LW        A2, 10 (S1)
+   AC:  LW        A3, 14 (S1)
+   B0:  JAL       ~Func:playFX_5C
+   B4:  LI        A0, 1
+   B8:  LW        V1, C (V0)
+   BC:  LWC1      F0, 54 (S1)
+   C0:  SWC1      F0, 38 (V1)
+   C4:  LW        V1, C (V0)
+   C8:  LWC1      F0, 170 (S1)
+   CC:  SAW       V0, $End3[0]
+   D4:  SWC1      F0, 3C (V1)
+   D8:  LW        V1, C (V0)
+   DC:  LWC1      F0, 170 (S1)
+   E0:  LI        V0, 1
+   E4:  SWC1      F0, 40 (V1)
+   E8:  BEQ       R0, R0, .o7D0
+   EC:  SW        V0, 70 (S2)
+        .oF0
+   F0:  COPY      A0, S0
+   F4:  LW        A2, 4C (S1)
+   F8:  LW        A3, 54 (S1)
+   FC:  JAL       ~Func:add_vec2D_polar
+  100:  ADDIU     A1, S1, 10
+  104:  LWC1      F2, C (S1)
+  108:  LIF       F0, -160.0
+  110:  NOP
+  114:  C.LT.S    F2, F0
+  118:  NOP
+  11C:  BC1F      .o228
+  120:  NOP
+  124:  LW        V0, 74 (S2)
+  128:  BNEL      V0, R0, .o4E8
+  12C:  LI        V0, 2
+  130:  LWC1      F2, 54 (S1)
+  134:  LIF       F0, 270.0
+  13C:  NOP
+  140:  C.LE.S    F0, F2
+  144:  NOP
+  148:  BC1F      .o1B0
+  14C:  NOP
+  150:  LIF       F0, 360.0
+  158:  NOP
+  15C:  C.LT.S    F2, F0
+  160:  NOP
+  164:  BC1F      .o1B0
+  168:  NOP
+  16C:  LIF       F12, 180.0
+  174:  JAL       ~Func:clamp_angle
+  178:  ADD.S     F12, F2, F12
+  17C:  LIF       F2, 90.0
+  184:  NOP
+  188:  SUB.S     F0, F2, F0
+  18C:  ADD.S     F0, F0, F2
+  190:  LI        A0, 4
+  194:  JAL       ~Func:rand_int
+  198:  SWC1      F0, 54 (S1)
+  19C:  ADDIU     V0, V0, FFFE
+  1A0:  MTC1      V0, F0
+  1A4:  NOP
+  1A8:  CVT.S.W   F0, F0
+  1AC:  SWC1      F0, 5C (S1)
+        .o1B0
+  1B0:  LWC1      F12, 48 (S0)
+  1B4:  LIF       F2, 180.0
+  1BC:  NOP
+  1C0:  C.LE.S    F2, F12
+  1C4:  NOP
+  1C8:  BC1F      .o228
+  1CC:  NOP
+  1D0:  LIF       F0, 270.0
+  1D8:  NOP
+  1DC:  C.LT.S    F12, F0
+  1E0:  NOP
+  1E4:  BC1F      .o228
+  1E8:  NOP
+  1EC:  JAL       ~Func:clamp_angle
+  1F0:  ADD.S     F12, F12, F2
+  1F4:  LIF       F2, 90.0
+  1FC:  NOP
+  200:  SUB.S     F0, F0, F2
+  204:  SUB.S     F2, F2, F0
+  208:  LI        A0, 4
+  20C:  JAL       ~Func:rand_int
+  210:  SWC1      F2, 48 (S0)
+  214:  ADDIU     V0, V0, FFFE
+  218:  MTC1      V0, F0
+  21C:  NOP
+  220:  CVT.S.W   F0, F0
+  224:  SWC1      F0, 50 (S0)
+        .o228
+  228:  LWC1      F2, 0 (S0)
+  22C:  LIF       F0, 160.0
+  234:  NOP
+  238:  C.LT.S    F0, F2
+  23C:  NOP
+  240:  BC1F      .o380
+  244:  NOP
+  248:  LW        V0, 74 (S2)
+  24C:  BEQ       V0, R0, .o28C
+  250:  LI        V0, 2
+  254:  BEQ       R0, R0, .o7D0
+  258:  SW        V0, 70 (S2)
+        .o25C
+  25C:  LIF       F12, 180.0
+  264:  JAL       ~Func:clamp_angle
+  268:  ADD.S     F12, F2, F12
+  26C:  LIF       F2, 270.0
+  274:  NOP
+  278:  SUB.S     F0, F2, F0
+  27C:  ADD.S     F0, F0, F2
+  280:  LI        A0, 4
+  284:  BEQ       R0, R0, .o320
+  288:  SWC1      F0, 48 (S0)
+        .o28C
+  28C:  LWC1      F2, 48 (S0)
+  290:  MTC1      R0, F0
+  294:  NOP
+  298:  C.LE.S    F0, F2
+  29C:  NOP
+  2A0:  BC1F      .o2C4
+  2A4:  NOP
+  2A8:  LIF       F0, 90.0
+  2B0:  NOP
+  2B4:  C.LT.S    F2, F0
+  2B8:  NOP
+  2BC:  BC1T      .o25C
+  2C0:  NOP
+        .o2C4
+  2C4:  LIF       F0, 90.0
+  2CC:  NOP
+  2D0:  C.LE.S    F0, F2
+  2D4:  NOP
+  2D8:  BC1F      .o33C
+  2DC:  NOP
+  2E0:  LIF       F0, 180.0
+  2E8:  NOP
+  2EC:  C.LT.S    F2, F0
+  2F0:  NOP
+  2F4:  BC1F      .o33C
+  2F8:  NOP
+  2FC:  JAL       ~Func:clamp_angle
+  300:  ADD.S     F12, F2, F0
+  304:  LIF       F2, 270.0
+  30C:  NOP
+  310:  SUB.S     F0, F0, F2
+  314:  SUB.S     F2, F2, F0
+  318:  LI        A0, 4
+  31C:  SWC1      F2, 48 (S0)
+        .o320
+  320:  JAL       ~Func:rand_int
+  324:  NOP
+  328:  ADDIU     V0, V0, FFFE
+  32C:  MTC1      V0, F0
+  330:  NOP
+  334:  CVT.S.W   F0, F0
+  338:  SWC1      F0, 50 (S0)
+        .o33C
+  33C:  LW        V0, 78 (S2)
+  340:  BEQ       V0, R0, .o354
+  344:  LI        A0, 29B
+  348:  LWC1      F0, 8 (S0)
+  34C:  BEQ       R0, R0, .o360
+  350:  SWC1      F0, 10 (SP)
+        .o354
+  354:  LWC1      F0, 8 (S0)
+  358:  LI        A0, 29C
+  35C:  SWC1      F0, 10 (SP)
+        .o360
+  360:  LW        A2, 0 (S0)
+  364:  LW        A3, 4 (S0)
+  368:  JAL       ~Func:sfx_play_sound_at_position
+  36C:  CLEAR     A1
+  370:  LW        V1, 78 (S2)
+  374:  LI        V0, 1
+  378:  SUBU      V0, V0, V1
+  37C:  SW        V0, 78 (S2)
+        .o380
+  380:  LWC1      F0, 4 (S0)
+  384:  MTC1      R0, F2
+  388:  NOP
+  38C:  C.LT.S    F0, F2
+  390:  NOP
+  394:  BC1F      .o4BC
+  398:  NOP
+  39C:  LW        V0, 74 (S2)
+  3A0:  BEQ       V0, R0, .o3D4
+  3A4:  LI        V0, 2
+  3A8:  BEQ       R0, R0, .o7D0
+  3AC:  SW        V0, 70 (S2)
+        .o3B0
+  3B0:  LIF       F20, 180.0
+  3B8:  JAL       ~Func:clamp_angle
+  3BC:  ADD.S     F12, F12, F20
+  3C0:  SUB.S     F0, F20, F0
+  3C4:  ADD.S     F0, F0, F20
+  3C8:  LI        A0, 4
+  3CC:  BEQ       R0, R0, .o45C
+  3D0:  SWC1      F0, 48 (S0)
+        .o3D4
+  3D4:  LWC1      F12, 48 (S0)
+  3D8:  LIF       F0, 270.0
+  3E0:  NOP
+  3E4:  C.LE.S    F0, F12
+  3E8:  NOP
+  3EC:  BC1F      .o410
+  3F0:  NOP
+  3F4:  LIF       F0, 360.0
+  3FC:  NOP
+  400:  C.LT.S    F12, F0
+  404:  NOP
+  408:  BC1T      .o3B0
+  40C:  NOP
+        .o410
+  410:  C.LE.S    F2, F12
+  414:  NOP
+  418:  BC1F      .o478
+  41C:  NOP
+  420:  LIF       F0, 90.0
+  428:  NOP
+  42C:  C.LT.S    F12, F0
+  430:  NOP
+  434:  BC1F      .o478
+  438:  NOP
+  43C:  LIF       F20, 180.0
+  444:  JAL       ~Func:clamp_angle
+  448:  ADD.S     F12, F12, F20
+  44C:  SUB.S     F0, F0, F20
+  450:  SUB.S     F20, F20, F0
+  454:  LI        A0, 4
+  458:  SWC1      F20, 48 (S0)
+        .o45C
+  45C:  JAL       ~Func:rand_int
+  460:  NOP
+  464:  ADDIU     V0, V0, FFFE
+  468:  MTC1      V0, F0
+  46C:  NOP
+  470:  CVT.S.W   F0, F0
+  474:  SWC1      F0, 50 (S0)
+        .o478
+  478:  LW        V0, 78 (S2)
+  47C:  BEQ       V0, R0, .o490
+  480:  LI        A0, 29B
+  484:  LWC1      F0, 8 (S0)
+  488:  BEQ       R0, R0, .o49C
+  48C:  SWC1      F0, 10 (SP)
+        .o490
+  490:  LWC1      F0, 8 (S0)
+  494:  LI        A0, 29C
+  498:  SWC1      F0, 10 (SP)
+        .o49C
+  49C:  LW        A2, 0 (S0)
+  4A0:  LW        A3, 4 (S0)
+  4A4:  JAL       ~Func:sfx_play_sound_at_position
+  4A8:  CLEAR     A1
+  4AC:  LW        V1, 78 (S2)
+  4B0:  LI        V0, 1
+  4B4:  SUBU      V0, V0, V1
+  4B8:  SW        V0, 78 (S2)
+        .o4BC
+  4BC:  LWC1      F2, 4 (S0)
+  4C0:  LIF       F0, 130.0
+  4C8:  NOP
+  4CC:  C.LT.S    F0, F2
+  4D0:  NOP
+  4D4:  BC1F      .o610
+  4D8:  NOP
+  4DC:  LW        V0, 74 (S2)
+  4E0:  BEQ       V0, R0, .o518
+  4E4:  LI        V0, 2
+        .o4E8
+  4E8:  BEQ       R0, R0, .o7D0
+  4EC:  SW        V0, 70 (S2)
+        .o4F0
+  4F0:  JAL       ~Func:clamp_angle
+  4F4:  ADD.S     F12, F12, F0
+  4F8:  LIF       F2, 360.0
+  500:  NOP
+  504:  SUB.S     F0, F2, F0
+  508:  ADD.S     F0, F0, F2
+  50C:  LI        A0, 4
+  510:  BEQ       R0, R0, .o5B0
+  514:  SWC1      F0, 48 (S0)
+        .o518
+  518:  LWC1      F12, 48 (S0)
+  51C:  LIF       F0, 90.0
+  524:  NOP
+  528:  C.LE.S    F0, F12
+  52C:  NOP
+  530:  BC1F      .o554
+  534:  NOP
+  538:  LIF       F0, 180.0
+  540:  NOP
+  544:  C.LT.S    F12, F0
+  548:  NOP
+  54C:  BC1T      .o4F0
+  550:  NOP
+        .o554
+  554:  LIF       F2, 180.0
+  55C:  NOP
+  560:  C.LE.S    F2, F12
+  564:  NOP
+  568:  BC1F      .o5CC
+  56C:  NOP
+  570:  LIF       F0, 270.0
+  578:  NOP
+  57C:  C.LT.S    F12, F0
+  580:  NOP
+  584:  BC1F      .o5CC
+  588:  NOP
+  58C:  JAL       ~Func:clamp_angle
+  590:  ADD.S     F12, F12, F2
+  594:  LIF       F2, 360.0
+  59C:  NOP
+  5A0:  SUB.S     F0, F0, F2
+  5A4:  SUB.S     F2, F2, F0
+  5A8:  LI        A0, 4
+  5AC:  SWC1      F2, 48 (S0)
+        .o5B0
+  5B0:  JAL       ~Func:rand_int
+  5B4:  NOP
+  5B8:  ADDIU     V0, V0, FFFE
+  5BC:  MTC1      V0, F0
+  5C0:  NOP
+  5C4:  CVT.S.W   F0, F0
+  5C8:  SWC1      F0, 50 (S0)
+        .o5CC
+  5CC:  LW        V0, 78 (S2)
+  5D0:  BEQ       V0, R0, .o5E4
+  5D4:  LI        A0, 29B
+  5D8:  LWC1      F0, 8 (S0)
+  5DC:  BEQ       R0, R0, .o5F0
+  5E0:  SWC1      F0, 10 (SP)
+        .o5E4
+  5E4:  LWC1      F0, 8 (S0)
+  5E8:  LI        A0, 29C
+  5EC:  SWC1      F0, 10 (SP)
+        .o5F0
+  5F0:  LW        A2, 0 (S0)
+  5F4:  LW        A3, 4 (S0)
+  5F8:  JAL       ~Func:sfx_play_sound_at_position
+  5FC:  CLEAR     A1
+  600:  LW        V1, 78 (S2)
+  604:  LI        V0, 1
+  608:  SUBU      V0, V0, V1
+  60C:  SW        V0, 78 (S2)
+        .o610
+  610:  LWC1      F0, 50 (S0)
+  614:  LIF       F3, 1.75
+  61C:  MTC1      R0, F2
+  620:  CVT.D.S   F0, F0
+  624:  MUL.D     F0, F0, F2
+  628:  NOP
+  62C:  LWC1      F12, 48 (S0)
+  630:  CVT.D.S   F12, F12
+  634:  ADD.D     F12, F12, F0
+  638:  JAL       ~Func:clamp_angle
+  63C:  CVT.S.D   F12, F12
+  640:  LIF       F12, 313.0
+  64C:  NOP
+  650:  SUB.S     F12, F0, F12
+  654:  JAL       ~Func:clamp_angle
+  658:  SWC1      F0, 48 (S0)
+  65C:  LWC1      F2, 170 (S1)
+  660:  LAD       F4, $ConstDouble_TidalWave_1
+  668:  CVT.D.S   F2, F2
+  66C:  SUB.D     F2, F2, F4
+  670:  SWC1      F0, 164 (S1)
+  674:  CVT.S.D   F2, F2
+  678:  SWC1      F2, 170 (S1)
+  67C:  MOV.S     F0, F2
+  680:  SWC1      F2, 174 (S1)
+  684:  SWC1      F2, 178 (S1)
+  688:  LIF       F3, 1.875
+  690:  MTC1      R0, F2
+  694:  CVT.D.S   F0, F0
+  698:  C.LT.D    F0, F2
+  69C:  NOP
+  6A0:  BC1F      .o6C0
+  6A4:  NOP
+  6A8:  LIF       F0, 1.0
+  6B0:  NOP
+  6B4:  SWC1      F0, 170 (S1)
+  6B8:  SWC1      F0, 174 (S1)
+  6BC:  SWC1      F0, 178 (S1)
+        .o6C0
+  6C0:  LWC1      F2, 170 (S1)
+  6C4:  LIF       F0, -15.0
+  6CC:  NOP
+  6D0:  MUL.S     F2, F2, F0
+  6D4:  NOP
+  6D8:  ADDIU     A0, SP, 18
+  6DC:  LW        A3, 48 (S0)
+  6E0:  MTC1      R0, F20
+  6E4:  MFC1      A2, F2
+  6E8:  ADDIU     A1, SP, 1C
+  6EC:  SWC1      F20, 18 (SP)
+  6F0:  JAL       ~Func:add_vec2D_polar
+  6F4:  SWC1      F20, 1C (SP)
+  6F8:  LWC1      F0, 0 (S0)
+  6FC:  LWC1      F2, 18 (SP)
+  700:  LAW       V1, $End3[0]
+  708:  ADD.S     F0, F0, F2
+  70C:  LW        V0, C (V1)
+  710:  SWC1      F0, 4 (V0)
+  714:  LWC1      F0, 4 (S0)
+  718:  LWC1      F2, 1C (SP)
+  71C:  LW        V0, C (V1)
+  720:  ADD.S     F0, F0, F2
+  724:  LIF       F2, 5.0
+  72C:  SWC1      F0, 8 (V0)
+  730:  LWC1      F0, 8 (S0)
+  734:  ADD.S     F0, F0, F2
+  738:  LW        V0, C (V1)
+  73C:  SWC1      F0, C (V0)
+  740:  LW        V0, C (V1)
+  744:  LWC1      F0, 48 (S0)
+  748:  SWC1      F0, 38 (V0)
+  74C:  LW        V0, C (V1)
+  750:  LWC1      F0, 170 (S1)
+  754:  SWC1      F0, 3C (V0)
+  758:  LW        V0, C (V1)
+  75C:  LWC1      F0, 170 (S1)
+  760:  SWC1      F0, 40 (V0)
+  764:  LH        V1, 64 (S0)
+  768:  LI        V0, 46
+  76C:  BNE       V1, V0, .o7B0
+  770:  LI        A0, 29D
+  774:  MFC1      A2, F20
+  778:  MFC1      A3, F20
+  77C:  CLEAR     A1
+  780:  JAL       ~Func:sfx_play_sound_at_position
+  784:  SWC1      F20, 10 (SP)
+  788:  CLEAR     A0
+  78C:  LUI       A1, C248
+  790:  LUI       A2, 41A0
+  794:  MFC1      A3, F20
+  798:  LIF       F0, 1.0
+  7A0:  LI        V0, 78
+  7A4:  SW        V0, 14 (SP)
+  7A8:  JAL       ~Func:playFX_5D
+  7AC:  SWC1      F0, 10 (SP)
+        .o7B0
+  7B0:  LH        V0, 64 (S0)
+  7B4:  LHU       V1, 64 (S0)
+  7B8:  BEQ       V0, R0, .o7C8
+  7BC:  ADDIU     V0, V1, FFFF
+  7C0:  BEQ       R0, R0, .o7D0
+  7C4:  SH        V0, 64 (S0)
+        .o7C8
+  7C8:  LI        V0, 1
+  7CC:  SW        V0, 74 (S2)
+        .o7D0
+  7D0:  LW        V1, 70 (S2)
+  7D4:  LI        V0, 2
+        .o7D8
+  7D8:  BEQ       V1, V0, .o7F0
+  7DC:  LI        V0, 3
+  7E0:  BEQ       V1, V0, .o804
+  7E4:  COPY      A0, S0
+  7E8:  BEQ       R0, R0, .o890
+  7EC:  NOP
+        .o7F0
+  7F0:  LI        V0, 5
+  7F4:  SH        V0, 64 (S0)
+  7F8:  LI        V0, 3
+  7FC:  SW        V0, 70 (S2)
+  800:  COPY      A0, S0
+        .o804
+  804:  LW        A2, 40 (S0)
+  808:  LW        A3, 48 (S0)
+  80C:  JAL       ~Func:add_vec2D_polar
+  810:  ADDIU     A1, S0, 4
+  814:  LAW       A0, $End3[0]
+  81C:  LWC1      F0, 0 (S0)
+  820:  LW        V0, C (A0)
+  824:  SWC1      F0, 4 (V0)
+  828:  LW        V0, C (A0)
+  82C:  LWC1      F0, 4 (S0)
+  830:  SWC1      F0, 8 (V0)
+  834:  LW        V0, C (A0)
+  838:  LWC1      F0, 8 (S0)
+  83C:  SWC1      F0, C (V0)
+  840:  LW        V0, C (A0)
+  844:  LWC1      F0, 48 (S0)
+  848:  SWC1      F0, 38 (V0)
+  84C:  LW        V0, C (A0)
+  850:  LWC1      F0, 170 (S1)
+  854:  SWC1      F0, 3C (V0)
+  858:  LW        V0, C (A0)
+  85C:  LWC1      F0, 170 (S1)
+  860:  SWC1      F0, 40 (V0)
+  864:  LH        V0, 64 (S0)
+  868:  LHU       V1, 64 (S0)
+  86C:  BNE       V0, R0, .o88C
+  870:  ADDIU     V0, V1, FFFF
+  874:  SW        R0, 164 (S1)
+  878:  LW        V1, 0 (A0)
+  87C:  LI        V0, 2
+  880:  ORI       V1, V1, 10
+  884:  BEQ       R0, R0, .o8D4
+  888:  SW        V1, 0 (A0)
+        .o88C
+  88C:  SH        V0, 64 (S0)
+        .o890
+  890:  LWC1      F0, 0 (S0)
+  894:  LIF       F2, 1.0
+  89C:  SWC1      F0, 144 (S1)
+  8A0:  LWC1      F0, 4 (S0)
+  8A4:  SWC1      F0, 148 (S1)
+  8A8:  LWC1      F0, 8 (S0)
+  8AC:  LI        V0, A
+  8B0:  SWC1      F0, 14C (S1)
+  8B4:  SWC1      F2, 10 (SP)
+  8B8:  SW        V0, 14 (SP)
+  8BC:  LW        A1, 144 (S1)
+  8C0:  LW        A2, 148 (S1)
+  8C4:  LW        A3, 14C (S1)
+  8C8:  JAL       ~Func:playFX_5F
+  8CC:  LI        A0, 3
+  8D0:  CLEAR     V0
+        .o8D4
+  8D4:  LW        RA, 2C (SP)
+  8D8:  LW        S2, 28 (SP)
+  8DC:  LW        S1, 24 (SP)
+  8E0:  LW        S0, 20 (SP)
+  8E4:  LDC1      F20, 30 (SP)
+  8E8:  JR        RA
+  8EC:  ADDIU     SP, SP, 38
+}
+
+#new:ConstDouble $ConstDouble_TidalWave_1
+{
+	0.060000d
 }

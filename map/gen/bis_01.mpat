@@ -5,7 +5,7 @@
 	[MainScript] $Script_Main
 	[Background] 80200000
 	[EntryList] $EntryList
-	[EntryCount] 4
+	[EntryCount] 3
 }
 
 #new:EntryList $EntryList
@@ -89,7 +89,7 @@
 {
 	[DelayOff][STYLE:SIGN]
 	[CenterX:FF]
-	[Down:03]Put Map Information Here.
+	[Down:03]Write message here.
 	[DelayOn][WAIT][END]
 }
 

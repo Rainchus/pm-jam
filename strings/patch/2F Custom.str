@@ -4,7 +4,8 @@ Red Pepper[END]
 
 #string:2F:001 {
 A red pepper that boosts attack[BR]
-by 1 for 3 turns.[END]}
+by 1 for 3 turns.[END]
+}
 
 #string:2F:002 {
 Blue Pepper[END]
@@ -12,4 +13,37 @@ Blue Pepper[END]
 
 #string:2F:003 {
 A blue pepper that boosts defense[BR]
-by 1 for 3 turns.[END]}
+by 1 for 3 turns.[END]
+}
+
+#string:2F:004 {%name of replaced headbonk move
+[Color 0x2E] Star Dash[END]
+}
+
+#string:2F:005 {%desc of replaced headbonk move
+Starlow dashes them or something[END]
+}
+
+#string:2F:006 {
+[Color 0x2D] Star Cloak[END]
+}
+
+#string:2F:007 {
+Cloak Description[END]
+}
+
+#string:2F:008 {
+[Color 0x28] Supernova[END]
+}
+
+#string:2F:009 {
+Supernova Description[END]
+}
+
+#string:2F:00A {
+[Color 0x2C] Tattle[END]
+}
+
+#string:2F:00B {
+Tattle Description[END]
+}
