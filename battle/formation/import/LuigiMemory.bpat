@@ -310,7 +310,7 @@
     Call SetGoalToTarget ( .Actor:Self )
     Call SetActorSpeed ( .Actor:Self *Fixed[7.0] )
     Call RunToGoal ( .Actor:Self 0` .True )
-    Call EnemyDamageTarget ( .Actor:Self *Var0 ~Flags:DamageType:NoContact 00000000 00000000 .luigiDashDamage 00000020 )
+    Call EnemyDamageTarget ( .Actor:Self *Var0 ~Flags:DamageType:NoContact 00000000 00000000 .luigiDashDamage 00000030 )
 
 
     %boo attacking player after
@@ -318,7 +318,7 @@
     Call SetActorSpeed ( .Actor:Self *Fixed[7.0] )
     Call RunToGoal ( .Actor:Self 0` .True )
     Call SetGoalToTarget ( .Actor:Self )
-    Call EnemyDamageTarget ( .Actor:Self *Var0 ~Flags:DamageType:NoContact 00000000 00000000 .luigiDashDamage 00000020 )
+    Call EnemyDamageTarget ( .Actor:Self *Var0 ~Flags:DamageType:NoContact 00000000 00000000 .booDashDamage 00000030 )
 
     %run off screen
     Call AddGoalPos ( .Actor:Self -150` 0` 0` )
