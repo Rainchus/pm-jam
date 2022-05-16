@@ -13,6 +13,11 @@
 #define .luigiDizzy     00A3000C
 #define .luigiSleep     00A3000D
 
+#define .hammerThrowDamage 5
+
+#define .luigiPart 1
+#define .hammerPart 2
+
 #define .dashAttackID 1
 #define .hammerAttackID 2
 
@@ -277,7 +282,22 @@
     Call  SetAnimation ( .Actor:Self 1` .luigiRaise )
     Wait 28`
     Call  SetAnimation ( .Actor:Self 1` .luigiThrow )
-    Wait 30`
+    Wait 15`
+
+    Call  GetActorPos ( .Actor:Self *Var0 *Var1 *Var2 )
+    Add *Var1 -10`
+    Add *Var1 20`
+    Call  SetPartPos        ( .Actor:Self .hammerPart  *Var0  *Var1  *Var2 )
+    Call  SetPartScale  ( .Actor:Self .hammerPart *Fixed[1.0] *Fixed[1.0] *Fixed[1.0] )
+    Call  SetPartJumpGravity    ( .Actor:Self .hammerPart *Fixed[1.3] )
+    Call  SetPartFlagBits   ( .Actor:Self .hammerPart 00000001 .False )
+    Call  SetGoalToTarget   ( .Actor:Self )
+    Call  GetGoalPos        ( .Actor:Self *Var0 *Var1 *Var2 )
+    Call  JumpPartTo        ( .Actor:Self .hammerPart *Var0 *Var1 *Var2  15` .True )
+    Call  SetPartFlagBits   ( .Actor:Self .hammerPart 00000001 .True )
+    Wait  2`
+    Call  EnemyDamageTarget ( .Actor:Self *Var0 ~Flags:DamageType:NoContact 00000000 00000000 .hammerThrowDamage 00000020 )
+
     Call  EnableIdleScript  ( .Actor:Self .True )
     Call  UseIdleAnimation  ( .Actor:Self .True )
     Return
