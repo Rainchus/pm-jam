@@ -301,48 +301,37 @@
 }
 
 #new:Script $LuigiRunAttack {
-    % Call  SetTargetActor ( .Actor:Self .Actor:Player )
-    % Call  SetAnimation ( .Actor:Self 1` .luigiRun )
-    % Call  SetGoalToTarget ( .Actor:Self )
-    % Call  GetGoalPos ( .Actor:Self *Var0 *Var1 *Var2 )
-    % Call  SetGoalPos ( .Actor:Self *Var0 *Var1 *Var2 )
-    % Sub *Var0 20`
-    % Call SetActorSpeed ( #actorID moveSpeed )
-    % Call  RunToGoal ( .Actor:Self .True )
     Call  SetTargetActor    ( .Actor:Self .Actor:Player )
-
     Call SetAnimation ( .Actor:Self .luigiPart .luigiScared )
     Wait 24`
 
-    Thread
-        Call SetAnimation( .Actor:Self .luigiPart .luigiRun)
-        Call SetGoalToTarget ( .Actor:Self )
-        Call AddGoalPos ( .Actor:Self 0` 0` 0` )
-        Call SetActorSpeed ( .Actor:Self *Fixed[7.0] )
-        Call RunToGoal ( .Actor:Self 0` .True )
+    %luigi running attacking player
+    Call SetAnimation( .Actor:Self .luigiPart .luigiRun)
+    Call SetGoalToTarget ( .Actor:Self )
+    Call SetActorSpeed ( .Actor:Self *Fixed[7.0] )
+    Call RunToGoal ( .Actor:Self 0` .True )
+    Call EnemyDamageTarget ( .Actor:Self *Var0 ~Flags:DamageType:NoContact 00000000 00000000 .luigiDashDamage 00000020 )
 
-        Call SetAnimation( .Actor:Self .luigiPart .luigiRun)
-        Call SetGoalToTarget ( .Actor:Self )
-        Call AddGoalPos ( .Actor:Self -150` 0` -5` )
-        Call SetActorSpeed ( .Actor:Self *Fixed[7.0] )
-        Call RunToGoal ( .Actor:Self 0` .True )
-    EndThread
 
-    Wait 21`
-    Call  EnemyDamageTarget     ( .Actor:Self *Var0 ~Flags:DamageType:NoContact 00000000 00000000 .luigiDashDamage 00000020 )
-    Wait 6`
-    Call  EnemyDamageTarget     ( .Actor:Self *Var0 ~Flags:DamageType:NoContact 00000000 00000000 .booDashDamage 00000020 )
-    Wait 4`
+    %boo attacking player after
+    Call AddGoalPos ( .Actor:Self -42` 0` 0` )
+    Call SetActorSpeed ( .Actor:Self *Fixed[7.0] )
+    Call RunToGoal ( .Actor:Self 0` .True )
+    Call SetGoalToTarget ( .Actor:Self )
+    Call EnemyDamageTarget ( .Actor:Self *Var0 ~Flags:DamageType:NoContact 00000000 00000000 .luigiDashDamage 00000020 )
 
+    %run off screen
+    Call AddGoalPos ( .Actor:Self -150` 0` 0` )
+    Call SetActorSpeed ( .Actor:Self *Fixed[7.0] )
+    Call RunToGoal ( .Actor:Self 0` .True )
+
+    %wrap around from left of screen to right and then walk back to home position
     Wait 30`
-
     Call SetAnimation ( .Actor:Self .luigiPart .luigiWalk )
     Call SetActorPos ( .Actor:Self 200` 0` 0` )
     Call SetGoalToHome ( .Actor:Self )
     Call SetActorSpeed ( .Actor:Self *Fixed[4.0] )
     Call RunToGoal ( .Actor:Self 0` .True )
-
-
 
     Return
     End
