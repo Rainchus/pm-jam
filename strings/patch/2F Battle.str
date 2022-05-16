@@ -1,0 +1,65 @@
+#message:2F:000
+{
+Red Pepper[END]
+}
+
+#message:2F:001
+{
+A red pepper that boosts attack[BR]
+by 1 for 3 turns.[END]
+}
+
+#message:2F:002
+{
+Blue Pepper[END]
+}
+
+#message:2F:003
+{
+A blue pepper that boosts defense[BR]
+by 1 for 3 turns.[END]
+}
+
+#message:2F:004
+{
+[Color 0x2E] Star Dash[END]
+}
+
+#message:2F:005
+{
+Starlow dashes them or something[END]
+}
+
+#message:2F:006
+{
+[Color 0x2D] Star Cloak[END]
+}
+
+#message:2F:007
+{
+Make Mario transparent so he[BR]
+can avoid enemy attacks.[End]
+}
+
+#message:2F:008
+{
+[Color 0x28] Supernova[END]
+}
+
+#message:2F:009
+{
+Blast off at the speed of light[BR]
+and do massive damage to all [BR]
+enemies![End]
+}
+
+#message:2F:00A
+{
+[Color 0x2C] Tattle[END]
+}
+
+#message:2F:00B
+{
+See enemy description and make[BR]
+HP visible.[End]
+}

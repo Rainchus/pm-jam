@@ -1,0 +1,133 @@
+#message:2F:(Starlow1)
+{
+[Shake][Size 24]OH, YOU’VE GOT TO BE[BR]
+KIDDING ME!!![/fx][END]
+}
+
+#message:2F:(Broque2)
+{
+[Size 24][Shake]NONONONONONON!!![/fx][BR]
+[Size 16][Shake]ZEE BLITTIES WERE IN’ALED![/fx][END]
+}
+
+#message:2F:(Starlow3)
+{
+Hey, we’re down here too![Pause 5][BR]
+Mario and I could use a little help.[END]
+}
+
+#message:2F:(Broque4)
+{
+Ah, monsieur Mario![Pause 5] You must[BR]
+save mon Blitties![Pause 5][BR]
+Pleasings,[Pause 5] [Shake]PLEASINGS![/fx][Pause 5] Returnez[BR]
+zhem back to moi, all in un piece.[BR]
+[Wait][Next]
+I know you like breaking zee[BR]
+blocks, but my blitties are[BR]
+[Shake]NON FOR ZEE BREAKING!![/fx][BR]
+[Wait][Next]
+Oui, you must explore zee body[BR]
+of zee beast to find zhem![Pause 5][BR]
+My babies[Pause 10].[Pause 10].[Pause 10].[Pause 10][BR]
+Zhey must be trés afraid[Pause 10].[Pause 10].[Pause 10].[Pause 10]
+[END]
+}
+
+#message:2F:(Starlow5)
+{
+We’ll try our best, but we’ve[BR]
+got[Pause 10].[Pause 10].[Pause 10].[Pause 10]bigger problems.[END]
+}
+
+#message:2F:(Bowser6)
+{
+Ugh, what’s all the commotion?[Pause 10][BR]
+I feel terrible[Pause 10].[Pause 10].[Pause 10].[Pause 30] Wait.[Pause 20][BR]
+Where did Chippy and Mario go!?
+[END]
+}
+
+#message:2F:(Broque7)
+{
+Zey are insides of you[Pause 10].[Pause 10].[Pause 10].again.[BR]
+[Wait][Next]
+I may ‘ave[Pause 10].[Pause 10].[Pause 10].[BR]
+ehm[Pause 10].[Pause 10].[Pause 10].[Pause 30][BR]
+used zee Shroom of Vacuum[Pause 10].[Pause 10].[Pause 10].[END]
+}
+
+#message:2F:(Bowser8)
+{
+[Shake]THAT VACUUM SHROOM THING!?![/fx][Pause 20][BR]
+[Size 24][Shake]AGAIN?!?[/fx][Size 16][BR]
+[Wait][Next]
+THAT’S THE LAST TIME I TRUST[BR]YOUR COOKING, BLOCKHEAD![Pause 5] It [BR]
+didn’t taste that good, anyway[Pause 10].[Pause 10].[Pause 10].[END]
+}
+
+#message:2F:(Starlow9)
+{
+Sorry to interrupt, but any idea[BR]
+how we can get out of here?[Pause 5][BR]
+Preferably sooner rather than[BR]
+later.[Pause 5] It smells terrible![END]
+}
+
+#message:2F:(Bowser10)
+{
+Watch it, Chippy![Pause 5] It's MY body[BR]
+you're in, so speak with some[BR]
+respect![Pause 5][BR]
+[Wait][Next]
+Oh, and I have NO IDEA[BR]
+how to get you out![BR]
+If only Kammy was here[Pause 10].[Pause 10].[Pause 10].[BR]
+She’d know just what to do[Pause 10].[Pause 10].[Pause 10].[END][BR]
+[END]
+}
+
+#message:2F:(Broque11)
+{
+Ah, worrying not![Pause 5][BR]
+Monsieur Turtle Bits et moi will[BR]
+thinkings of how to fix zis.[Pause 5][BR]
+Zee Princess can 'elp too![END]
+}
+
+#message:2F:(Bowser12)
+{
+Yeah, sit tight. Maybe Broque’s[BR]
+got some good ideas in that huge[BR]
+stupid square head of his.[BR]
+[Wait][Next]
+[PrintRising][SHAKE]AND DON'T GO POKIN' AROUND[BR]
+LIKE LAST TIME![/fx][/fx][END]
+}
+
+#message:2F:(Starlow13)
+{
+Well, I guess we’re stuck.[Pause 30] Again. [END]
+}
+
+#message:2F:(Starlow 14)
+{
+Man, this place hasn’t changed[BR]
+one bit [Pause 5]- it’s the same old Toad[BR]
+Square![BR]
+[Wait][Next]
+I don’t care what Bowser says:[Pause 10] [BR]
+we should still do some exploring.[Pause 5][BR]
+Maybe we’ll be able to get[BR]
+ourselves out! [Pause 20]Maybe.[BR]
+[Wait][Next]
+Just gotta stay positive![END]
+}
+
+#message:2F:(Starlow15)
+{
+Hey, a Blitty![Pause 5][BR]
+Broque wanted us to catch them,[BR]
+right?[Pause 10] Gotta pass the time[BR]
+somehow, so let's go![END]
+}
