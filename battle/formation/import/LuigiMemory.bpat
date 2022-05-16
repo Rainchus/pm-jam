@@ -14,6 +14,8 @@
 #define .luigiSleep     00A3000D
 
 #define .hammerThrowDamage 5
+#define .luigiDashDamage 4
+#define .booDashDamage 3
 
 #define .luigiPart 1
 #define .hammerPart 2
@@ -275,15 +277,12 @@
 0.999391 0.999848 1.0
 }
 
-#new:Script $Script_TakeTurn_MemoryLuigi {
-    Call  UseIdleAnimation  ( .Actor:Self .False )
-    Call  EnableIdleScript  ( .Actor:Self .False )
+#new:Script $LuigiHammerThrow {
     Call  SetTargetActor    ( .Actor:Self .Actor:Player )
     Call  SetAnimation ( .Actor:Self 1` .luigiRaise )
     Wait 28`
     Call  SetAnimation ( .Actor:Self 1` .luigiThrow )
     Wait 15`
-
     Call  GetActorPos ( .Actor:Self *Var0 *Var1 *Var2 )
     Add *Var1 -10`
     Add *Var1 20`
@@ -297,7 +296,67 @@
     Call  SetPartFlagBits   ( .Actor:Self .hammerPart 00000001 .True )
     Wait  2`
     Call  EnemyDamageTarget ( .Actor:Self *Var0 ~Flags:DamageType:NoContact 00000000 00000000 .hammerThrowDamage 00000020 )
+    Return
+    End
+}
 
+#new:Script $LuigiRunAttack {
+    % Call  SetTargetActor ( .Actor:Self .Actor:Player )
+    % Call  SetAnimation ( .Actor:Self 1` .luigiRun )
+    % Call  SetGoalToTarget ( .Actor:Self )
+    % Call  GetGoalPos ( .Actor:Self *Var0 *Var1 *Var2 )
+    % Call  SetGoalPos ( .Actor:Self *Var0 *Var1 *Var2 )
+    % Sub *Var0 20`
+    % Call SetActorSpeed ( #actorID moveSpeed )
+    % Call  RunToGoal ( .Actor:Self .True )
+    Call  SetTargetActor    ( .Actor:Self .Actor:Player )
+
+    Call SetAnimation ( .Actor:Self .luigiPart .luigiScared )
+    Wait 24`
+
+    Thread
+        Call SetAnimation( .Actor:Self .luigiPart .luigiRun)
+        Call SetGoalToTarget ( .Actor:Self )
+        Call AddGoalPos ( .Actor:Self 0` 0` 0` )
+        Call SetActorSpeed ( .Actor:Self *Fixed[7.0] )
+        Call RunToGoal ( .Actor:Self 0` .True )
+
+        Call SetAnimation( .Actor:Self .luigiPart .luigiRun)
+        Call SetGoalToTarget ( .Actor:Self )
+        Call AddGoalPos ( .Actor:Self -150` 0` -5` )
+        Call SetActorSpeed ( .Actor:Self *Fixed[7.0] )
+        Call RunToGoal ( .Actor:Self 0` .True )
+    EndThread
+
+    Wait 21`
+    Call  EnemyDamageTarget     ( .Actor:Self *Var0 ~Flags:DamageType:NoContact 00000000 00000000 .luigiDashDamage 00000020 )
+    Wait 6`
+    Call  EnemyDamageTarget     ( .Actor:Self *Var0 ~Flags:DamageType:NoContact 00000000 00000000 .booDashDamage 00000020 )
+    Wait 4`
+
+    Wait 30`
+
+    Call SetAnimation ( .Actor:Self .luigiPart .luigiWalk )
+    Call SetActorPos ( .Actor:Self 200` 0` 0` )
+    Call SetGoalToHome ( .Actor:Self )
+    Call SetActorSpeed ( .Actor:Self *Fixed[4.0] )
+    Call RunToGoal ( .Actor:Self 0` .True )
+
+
+
+    Return
+    End
+}
+
+#new:Script $Script_TakeTurn_MemoryLuigi {
+    Call  UseIdleAnimation  ( .Actor:Self .False )
+    Call  EnableIdleScript  ( .Actor:Self .False )
+    Call RandInt ( 99` *Var0 )
+    If *Var0 < 50`
+        ExecWait $LuigiHammerThrow
+    Else
+        ExecWait $LuigiRunAttack
+    EndIf
     Call  EnableIdleScript  ( .Actor:Self .True )
     Call  UseIdleAnimation  ( .Actor:Self .True )
     Return
