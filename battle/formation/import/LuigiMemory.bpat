@@ -5,13 +5,16 @@
 #define .luigiRun       00A30004
 #define .luigiRaise     00A30005
 #define .luigiThrow     00A30006
-#define .hammerSpin     00A30007
+#define .luigiHammer     00A30007
 #define .luigiHurt      00A30008
 #define .luigiDead      00A30009
 #define .luigiBurnHurt  00A3000A
 #define .luigiBurnDead  00A3000B
 #define .luigiDizzy     00A3000C
 #define .luigiSleep     00A3000D
+
+#define .dashAttackID 1
+#define .hammerAttackID 2
 
 #new:Actor $LuigiMemory {
     % stats
@@ -22,7 +25,7 @@
     [Flags]       00000000 
     [StatusTable] $StatusTable_MemoryLuigi
     % ai
-    [PartsCount]    1`s 
+    [PartsCount]    2`s 
     [PartsTable]  $PartsTable_MemoryLuigi0
     [Script]      $Script_Init_MemoryLuigi
     % move effectiveness
@@ -84,7 +87,28 @@
 /% s8 unk_1D %/                 F6b
 /% s8 unk_1E %/                 00b
 /% s8 unk_1F %/                 00b
-/% s8 unk_20 %/                 00000000 
+/% s8 unk_20 %/                 00000000
+
+%hammer
+/% s32 flags %/                 00120001
+/% s8 index %/                  02b
+/% Vec3b posOffset %/           00b 00b 00b
+/% Vec2b targetOffset %/        00b 00b %for cursor when selecting to attack in battle
+/% s16 opacity %/               00FFs
+/% s32* IdleAnimations %/       $IdleAnimations_Hammer
+/% s32* defenseTable %/         $DefenseTable_MemoryLuigi
+/% s32 eventFlags %/            00000000
+/% s32 elementImmunityFlags %/  00000000
+/% s8 unk_1C %/                 00b
+/% s8 unk_1D %/                 00b
+/% s8 unk_1E %/                 00b
+/% s8 unk_1F %/                 00b
+/% s8 unk_20 %/                 00000000
+}
+
+#new:IdleAnimations $IdleAnimations_Hammer {
+.Status:Normal    .luigiHammer
+.Status:End
 }
 
 #new:IdleAnimations $IdleAnimations_MemoryLuigi {
@@ -247,9 +271,15 @@
 }
 
 #new:Script $Script_TakeTurn_MemoryLuigi {
-    Call  EnableIdleScript  ( .Actor:Self 00000001 )
+    Call  UseIdleAnimation  ( .Actor:Self .False )
+    Call  EnableIdleScript  ( .Actor:Self .False )
+    Call  SetTargetActor    ( .Actor:Self .Actor:Player )
+    Call  SetAnimation ( .Actor:Self 1` .luigiRaise )
+    Wait 28`
+    Call  SetAnimation ( .Actor:Self 1` .luigiThrow )
+    Wait 30`
+    Call  EnableIdleScript  ( .Actor:Self .True )
     Call  UseIdleAnimation  ( .Actor:Self .True )
     Return
     End
 }
-    
