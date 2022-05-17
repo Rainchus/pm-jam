@@ -1,22 +1,22 @@
-#message:2F:(Starlow1)
+#message:32:(Starlow1)
 {
 [Shake][Size 24]OH, YOU’VE GOT TO BE[BR]
 KIDDING ME!!![/fx][END]
 }
 
-#message:2F:(Broque2)
+#message:32:(Broque2)
 {
 [Size 24][Shake]NONONONONONON!!![/fx][BR]
 [Size 16][Shake]ZEE BLITTIES WERE IN’ALED![/fx][END]
 }
 
-#message:2F:(Starlow3)
+#message:32:(Starlow3)
 {
 Hey, we’re down here too![Pause 5][BR]
 Mario and I could use a little help.[END]
 }
 
-#message:2F:(Broque4)
+#message:32:(Broque4)
 {
 Ah, monsieur Mario![Pause 5] You must[BR]
 save mon Blitties![Pause 5][BR]
@@ -34,13 +34,13 @@ Zhey must be trés afraid[Pause 10].[Pause 10].[Pause 10].[Pause 10]
 [END]
 }
 
-#message:2F:(Starlow5)
+#message:32:(Starlow5)
 {
 We’ll try our best, but we’ve[BR]
 got[Pause 10].[Pause 10].[Pause 10].[Pause 10]bigger problems.[END]
 }
 
-#message:2F:(Bowser6)
+#message:32:(Bowser6)
 {
 Ugh, what’s all the commotion?[Pause 10][BR]
 I feel terrible[Pause 10].[Pause 10].[Pause 10].[Pause 30] Wait.[Pause 20][BR]
@@ -48,7 +48,7 @@ Where did Chippy and Mario go!?
 [END]
 }
 
-#message:2F:(Broque7)
+#message:32:(Broque7)
 {
 Zey are insides of you[Pause 10].[Pause 10].[Pause 10].again.[BR]
 [Wait][Next]
@@ -57,7 +57,7 @@ ehm[Pause 10].[Pause 10].[Pause 10].[Pause 30][BR]
 used zee Shroom of Vacuum[Pause 10].[Pause 10].[Pause 10].[END]
 }
 
-#message:2F:(Bowser8)
+#message:32:(Bowser8)
 {
 [Shake]THAT VACUUM SHROOM THING!?![/fx][Pause 20][BR]
 [Size 24][Shake]AGAIN?!?[/fx][Size 16][BR]
@@ -66,7 +66,7 @@ THAT’S THE LAST TIME I TRUST[BR]YOUR COOKING, BLOCKHEAD![Pause 5] It [BR]
 didn’t taste that good, anyway[Pause 10].[Pause 10].[Pause 10].[END]
 }
 
-#message:2F:(Starlow9)
+#message:32:(Starlow9)
 {
 Sorry to interrupt, but any idea[BR]
 how we can get out of here?[Pause 5][BR]
@@ -74,7 +74,7 @@ Preferably sooner rather than[BR]
 later.[Pause 5] It smells terrible![END]
 }
 
-#message:2F:(Bowser10)
+#message:32:(Bowser10)
 {
 Watch it, Chippy![Pause 5] It's MY body[BR]
 you're in, so speak with some[BR]
@@ -87,7 +87,7 @@ She’d know just what to do[Pause 10].[Pause 10].[Pause 10].[END][BR]
 [END]
 }
 
-#message:2F:(Broque11)
+#message:32:(Broque11)
 {
 Ah, worrying not![Pause 5][BR]
 Monsieur Turtle Bits et moi will[BR]
@@ -95,7 +95,7 @@ thinkings of how to fix zis.[Pause 5][BR]
 Zee Princess can 'elp too![END]
 }
 
-#message:2F:(Bowser12)
+#message:32:(Bowser12)
 {
 Yeah, sit tight. Maybe Broque’s[BR]
 got some good ideas in that huge[BR]
@@ -105,12 +105,12 @@ stupid square head of his.[BR]
 LIKE LAST TIME![/fx][/fx][END]
 }
 
-#message:2F:(Starlow13)
+#message:32:(Starlow13)
 {
 Well, I guess we’re stuck.[Pause 30] Again. [END]
 }
 
-#message:2F:(Starlow 14)
+#message:32:(Starlow 14)
 {
 Man, this place hasn’t changed[BR]
 one bit [Pause 5]- it’s the same old Toad[BR]
@@ -124,7 +124,7 @@ ourselves out! [Pause 20]Maybe.[BR]
 Just gotta stay positive![END]
 }
 
-#message:2F:(Starlow15)
+#message:32:(Starlow15)
 {
 Hey, a Blitty![Pause 5][BR]
 Broque wanted us to catch them,[BR]
