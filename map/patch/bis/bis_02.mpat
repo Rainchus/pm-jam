@@ -18,6 +18,7 @@
 	~Vec4f:Entry5
 	~Vec4f:Entry6
 	~Vec4f:Entry7
+	~Vec4f:MarioCutscene
 }
 
 #new:Script_Main $Script_Main
@@ -28,7 +29,7 @@
 	Call  SetCamEnabled      ( .Cam:Default .True
 	Call  SetCamLeadPlayer   ( .Cam:Default .False )
 	Exec  $Script_SetupMusic
-	Exec  $Script_EnterMap
+	ExecWait  $MainCutscene
 	Return
 	End
 }
@@ -60,6 +61,14 @@
 
 #new:Script $Script_CreateExitTriggers
 {
+	Return
+	End
+}
+
+#new:Script $MainCutscene
+{
+	Call DisablePartnerAI ( 0 ) %disable flying partner ai (value 1 would disable walking partner AI)
+	Call DisablePlayerInput ( 0 )
 	Return
 	End
 }
