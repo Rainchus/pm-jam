@@ -300,11 +300,51 @@
     End
 }
 
-#new:Script $LuigiRunAttack {
-    Call  SetTargetActor    ( .Actor:Self .Actor:Player )
-    Call SetAnimation ( .Actor:Self .luigiPart .luigiScared )
-    Wait 24`
+#new:Script $LuigiRunAttackFall {
+    %luigi runs
+    Call SetAnimation( .Actor:Self .luigiPart .luigiRun)
+    Call SetGoalToTarget ( .Actor:Self )
+    Call AddGoalPos ( .Actor:Self 50` 0` 0` ) %60 X units in front of mario
+    Call SetActorSpeed ( .Actor:Self *Fixed[7.0] )
+    Call RunToGoal ( .Actor:Self 0` .True )
 
+    %luigi trips
+    Call SetAnimation( .Actor:Self .luigiPart .luigiIdle)
+    Set *Var0 0
+    Call GetActorRotation ( .Actor:Self *Var4 *Var5 *Var6 )
+    Call GetActorPos ( .Actor:Self *Var7 *Var8 *Var9 ) %store luigi's original Y
+    Loop 11`
+        Call SetActorRotation ( .Actor:Self 0` 0` *Var0 )
+        Call GetActorPos ( .Actor:Self *Var1 *Var2 *Var3 )
+        Add *Var2 1`
+        Call SetActorPos ( .Actor:Self *Var1 *Var2 *Var3 )
+        Add *Var0 9`
+        Wait 1`
+    EndLoop
+
+    %luigi goes to stand up
+    Wait 30`
+    Call SetActorRotation ( .Actor:Self *Var4 *Var5 *Var6 )
+    Call GetActorPos ( .Actor:Self *Var1 *Var2 *Var3 )
+    Call SetGoalPos ( .Actor:Self *Var1 *Var8 *Var3 )
+
+    %luigi jumps in place
+    Call  SetAnimation  ( .Actor:Self .luigiPart .luigiIdle )
+    Call  SetActorJumpGravity   ( .Actor:Self *Fixed[1.0] )
+    Call  JumpToGoal    ( .Actor:Self  15` .False .True .False )
+
+    %luigi returns to home
+    Wait 15`
+    Call SetAnimation ( .Actor:Self .luigiPart .luigiWalk )
+    Call SetGoalToHome ( .Actor:Self )
+    Call SetActorSpeed ( .Actor:Self *Fixed[4.0] )
+    Call RunToGoal ( .Actor:Self 0` .True )
+
+    Return
+    End
+}
+
+#new:Script $LuigiRunAttackSuccess {
     %luigi running attacking player
     Call SetAnimation( .Actor:Self .luigiPart .luigiRun)
     Call SetGoalToTarget ( .Actor:Self )
@@ -320,10 +360,12 @@
     Call SetGoalToTarget ( .Actor:Self )
     Call EnemyDamageTarget ( .Actor:Self *Var0 ~Flags:DamageType:NoContact 00000000 00000000 .booDashDamage 00000030 )
 
+
     %run off screen
     Call AddGoalPos ( .Actor:Self -150` 0` 0` )
     Call SetActorSpeed ( .Actor:Self *Fixed[7.0] )
     Call RunToGoal ( .Actor:Self 0` .True )
+
 
     %wrap around from left of screen to right and then walk back to home position
     Wait 30`
@@ -332,6 +374,24 @@
     Call SetGoalToHome ( .Actor:Self )
     Call SetActorSpeed ( .Actor:Self *Fixed[4.0] )
     Call RunToGoal ( .Actor:Self 0` .True )
+    Return
+    End
+}
+
+#new:Script $LuigiRunAttackMain {
+    Call  SetTargetActor    ( .Actor:Self .Actor:Player )
+    Call SetAnimation ( .Actor:Self .luigiPart .luigiScared )
+    Wait 24`
+
+    Call  EnemyTestTarget   ( .Actor:Self *Var1 ~Flags:DamageType:0 00000000 00000001 00000010 )
+
+    Switch  *Var1 
+    CaseOR  ==  .HitResult:Miss % 6
+    CaseOR  ==  .HitResult:Lucky % 5
+        ExecWait $LuigiRunAttackFall
+    Default
+        ExecWait $LuigiRunAttackSuccess
+    EndSwitch
 
     Return
     End
@@ -340,12 +400,13 @@
 #new:Script $Script_TakeTurn_MemoryLuigi {
     Call  UseIdleAnimation  ( .Actor:Self .False )
     Call  EnableIdleScript  ( .Actor:Self .False )
-    Call RandInt ( 99` *Var0 )
-    If *Var0 < 50`
-        ExecWait $LuigiHammerThrow
-    Else
-        ExecWait $LuigiRunAttack
-    EndIf
+    % Call RandInt ( 99` *Var0 )
+    % If *Var0 < 50`
+    %     ExecWait $LuigiHammerThrow
+    % Else
+    %     ExecWait $LuigiRunAttackMain
+    % EndIf
+    ExecWait $LuigiRunAttackMain
     Call  EnableIdleScript  ( .Actor:Self .True )
     Call  UseIdleAnimation  ( .Actor:Self .True )
     Return
