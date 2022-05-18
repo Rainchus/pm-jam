@@ -1,4 +1,13 @@
 % Auto-generated script for bis_02
+#define .NpcID:Bowser 0
+#define .NpcID:Starlow 1
+#define .NpcID:Peach 2
+#define .NpcID:Broque 3
+
+#define .yawLeft 90`
+#define .yawRight 270`
+
+#import SpriteAnimations.mpat
 
 #new:Header $Header
 {
@@ -18,21 +27,8 @@
 	~Vec4f:Entry5
 	~Vec4f:Entry6
 	~Vec4f:Entry7
-	~Vec4f:MarioCutscene
 }
 
-#new:Script_Main $Script_Main
-{
-	Set   *GB_WorldLocation  .Location:PeachCastleGrounds
-	Call  SetCamPerspective  ( .Cam:Default 00000003 00000019 00000010 00001000 )
-	Call  SetCamBGColor      ( .Cam:Default 00000000 00000000 00000000 )
-	Call  SetCamEnabled      ( .Cam:Default .True
-	Call  SetCamLeadPlayer   ( .Cam:Default .False )
-	Exec  $Script_SetupMusic
-	ExecWait  $MainCutscene
-	Return
-	End
-}
 
 #new:Function_Init $Function_Init
 {
@@ -49,6 +45,8 @@
 {
 	Call  FadeOutMusic  ( 00000000 500` ) % usually between 500-1000
 	Call  ClearAmbientSounds ( 250` )
+	Call SetMusicTrack ( 0 .Song:PeachsCastleParty 0 8 )
+	Call FadeInMusic ( 0 .Song:PeachsCastleParty 0 5` 0 0 )
 	Return
 	End
 }
@@ -65,10 +63,218 @@
 	End
 }
 
+#new:NpcSettings $Bowser
+{
+	0 %unk_00
+	32`s %colliderheight
+	16`s %colliderradius
+	0 %unk
+	0 %interactscript
+	0 %aiscript
+	0 %onhit (enemy)
+	0 %aux (disregard)
+	0 %ondefeat
+	0 %flags
+	0 %unk
+	0s %level
+	0s %unk
+}
+
+#new:NpcGroup $BowserGroup
+{
+	.NpcID:Bowser %basic id, define above
+    $Bowser %reference NpcSettings struct
+    ~Vec3f:Bowser %position, currently refers to marker in map editor (position)
+	00000001 %flags (01 is passive)
+    0 %init script (for any additional info/scriptin)
+    00000000 %unk
+    00000000 %unk
+    270` %yaw, 90 is right, 270 is left
+	~NoDrops %drops
+	~Movement:Bowser %movement
+	~AnimationTable:Bowser %animations, currently refers to marker in map editor
+	00000000 %unk
+	00000000 %unk
+	00000000 %extra animations
+	001A005E %tattleID
+}
+
+#new:NpcSettings $Starlow
+{
+	0 %unk_00
+	32`s %colliderheight
+	16`s %colliderradius
+	0 %unk
+	0 %interactscript
+	0 %aiscript
+	0 %onhit (enemy)
+	0 %aux (disregard)
+	0 %ondefeat
+	0 %flags
+	0 %unk
+	0s %level
+	0s %unk
+}
+
+#new:NpcGroup $StarlowGroup
+{
+	.NpcID:Starlow %basic id, define above
+    $Starlow %reference NpcSettings struct
+    ~Vec3f:Starlow %position, currently refers to marker in map editor (position)
+	00000001 %flags (01 is passive)
+    0 %init script (for any additional info/scriptin)
+    00000000 %unk
+    00000000 %unk
+    270` %yaw, 90 is right, 270 is left
+	~NoDrops %drops
+	~Movement:Starlow %movement
+	~AnimationTable:Starlow %animations, currently refers to marker in map editor
+	00000000 %unk
+	00000000 %unk
+	00000000 %extra animations
+	001A005E %tattleID
+}
+
+#new:NpcSettings $Peach
+{
+	0 %unk_00
+	32`s %colliderheight
+	16`s %colliderradius
+	0 %unk
+	0 %interactscript
+	0 %aiscript
+	0 %onhit (enemy)
+	0 %aux (disregard)
+	0 %ondefeat
+	0 %flags
+	0 %unk
+	0s %level
+	0s %unk
+}
+
+#new:NpcGroup $PeachGroup
+{
+	.NpcID:Peach %basic id, define above
+    $Peach %reference NpcSettings struct
+    ~Vec3f:Peach %position, currently refers to marker in map editor (position)
+	00000001 %flags (01 is passive)
+    0 %init script (for any additional info/scriptin)
+    00000000 %unk
+    00000000 %unk
+    90` %yaw, 90 is right, 270 is left
+	~NoDrops %drops
+	~Movement:Peach %movement
+	~AnimationTable:Peach %animations, currently refers to marker in map editor
+	00000000 %unk
+	00000000 %unk
+	00000000 %extra animations
+	001A005E %tattleID
+}
+
+#new:NpcSettings $Broque
+{
+	0 %unk_00
+	32`s %colliderheight
+	16`s %colliderradius
+	0 %unk
+	0 %interactscript
+	0 %aiscript
+	0 %onhit (enemy)
+	0 %aux (disregard)
+	0 %ondefeat
+	0 %flags
+	0 %unk
+	0s %level
+	0s %unk
+}
+
+#new:NpcGroup $BroqueGroup
+{
+	.NpcID:Broque %basic id, define above
+    $Broque %reference NpcSettings struct
+    ~Vec3f:Broque %position, currently refers to marker in map editor (position)
+	00000001 %flags (01 is passive)
+    0 %init script (for any additional info/scriptin)
+    00000000 %unk
+    00000000 %unk
+    90` %yaw, 90 is right, 270 is left
+	~NoDrops %drops
+	~Movement:Broque %movement
+	~AnimationTable:Broque %animations, currently refers to marker in map editor
+	00000000 %unk
+	00000000 %unk
+	00000000 %extra animations
+	001A005E %tattleID
+}
+
+#new:NpcGroupList $AllNpcs
+{
+	1 $BowserGroup 0 %number of NPCs in group, NPCGroup, BattleID
+	1 $StarlowGroup 0 %number of NPCs group, NPCGroup, BattleID
+	1 $PeachGroup 0 %number of NPCs group, NPCGroup, BattleID
+	1 $BroqueGroup 0 %number of NPCs group, NPCGroup, BattleID
+	0 0 0 %terminating emptyList (essentially an END)
+}
+
+
+#new:Script_Main $Script_Main
+{
+	Set   *GB_WorldLocation  .Location:PeachCastleGrounds
+	Call  SetCamPerspective  ( .Cam:Default 00000003 00000019 00000010 00001000 )
+	Call  SetCamBGColor      ( .Cam:Default 00000000 00000000 00000000 )
+	Call  SetCamEnabled      ( .Cam:Default .True)
+	Call  SetCamLeadPlayer   ( .Cam:Default .False )
+	Call MakeNpcs ( .False $AllNpcs )
+	Exec  $Script_SetupMusic
+	Exec  $MainCutscene
+	Return
+	End
+}
+
 #new:Script $MainCutscene
 {
 	Call DisablePartnerAI ( 0 ) %disable flying partner ai (value 1 would disable walking partner AI)
-	Call DisablePlayerInput ( 0 )
+	Call DisablePlayerInput (.True)
+	Call SetPlayerPos (~Vec3d:MarioCutscene)
+	Wait 15`
+	Call SetNpcAnimation ( .NpcID:Peach .Anim:PeachHandsRaise )
+	Call SpeakToPlayer ( .NpcID:Peach .Anim:PeachTalk .Anim:PeachHandsUpIdle 0 00310000 )
+	Call SetNpcAnimation ( .NpcID:Peach .Anim:PeachHandsLower )
+	Call SpeakToNpc ( .NpcID:Starlow .Anim:StarlowHTalk .Anim:StarlowHIdle 0 .NpcID:Peach 00310001 )
+	Call SpeakToNpc (.NpcID:Broque .Anim:BroqueTalk .Anim:BroqueIdle 0 .NpcID:Peach 00310002)
+	Call InterpNpcYaw (.NpcID:Peach -1` 0) %FiX ALL YAWSSSS
+	Call InterpNpcYaw (.NpcID:Starlow -1` 0)
+	Call InterpPlayerYaw ( 90` 0 )
+	Call SpeakToNpc (.NpcID:Bowser .Anim:BowserHTalk .Anim:BowserIdle 0 .NpcID:Broque 00310003)
+	Call InterpPlayerYaw ( 90` 0 )
+	Call SetNpcAnimation (.NpcID:Starlow .Anim:StarlowAIdle)
+	Call InterpPlayerYaw ( -1` 0 )
+	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowATalk .Anim:StarlowAIdle 0 .NpcID:Bowser 00310004)
+	Call SpeakToNpc (.NpcID:Bowser .Anim:BowserTalk .Anim:BowserIdle 0 .NpcID:Starlow 00310005)
+	Call InterpPlayerYaw ( -1` 0 )
+	Call InterpNpcYaw (.NpcID:Starlow -1` 0 )
+	Call SetNpcAnimation (.NpcID:Starlow .Anim:StarlowHIdle )
+	Call SpeakToNpc (.NpcID:Broque .Anim:BroqueTalk .Anim:BroqueIdle 0 .NpcID:Bowser 00310006)
+	Call SetNpcAnimation (.NpcID:Broque .Anim:BroqueWalk )
+	Call NpcMoveTo (.NpcID:Broque 0` 300` 75` )
+	Call SetNpcAnimation ( .NpcID:Peach .Anim:PeachHandsRaise )
+	Call SpeakToPlayer ( .NpcID:Peach .Anim:PeachTalk .Anim:PeachHandsUpIdle 0 00310007 )
+	Call SetNpcAnimation ( .NpcID:Peach .Anim:PeachHandsLower )
+	Wait 5
+	Call NpcMoveTo (.NpcID:Peach -43` 300` 75` )
+	Call SetNpcAnimation (.NpcID:Starlow .Anim:StarlowNIdle)
+	Wait 30
+	Call SpeakToNpc (.NpcID:Bowser .Anim:BowserSTalk .Anim:BowserIdle 0 .NpcID:Starlow 00310008)
+	Wait 30
+	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowNTalk .Anim:StarlowNIdle 0 .NpcID:Bowser 00310009)
+	Wait 30
+	Call SpeakToNpc (.NpcID:Bowser .Anim:BowserSTalk .Anim:BowserIdle 0 .NpcID:Starlow 0031000A)
+	Wait 30
+	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowNTalk .Anim:StarlowNIdle 0 .NpcID:Bowser 0031000B)
+	Wait 30
+	Call SpeakToNpc (.NpcID:Bowser .Anim:BowserSTalk .Anim:BowserIdle 0 .NpcID:Starlow 0031000C)
+	Wait 30
+	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowNTalk .Anim:StarlowNIdle 0 .NpcID:Bowser 0031000D)
 	Return
 	End
 }

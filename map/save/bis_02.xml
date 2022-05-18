@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Map name="bis_02" author="unnamed" background="obk_bg" textures="kkj_tex">
 	<Editor>
-		<Camera pos="102.004669,102.336914,49.597023" pitch="18.000000" yaw="263.563629"/>
+		<Camera pos="0.593039,53.358238,142.257431" pitch="18.959976" yaw="280.080353"/>
 		<Camera pos="-28.227547,65536.000000,132.636948"/>
 		<Camera pos="65536.000000,173.008774,50.000000"/>
 		<Camera pos="-34.675308,-4.057840,65536.000000"/>
@@ -13061,7 +13061,7 @@
 					</TriangleList>
 				</TriangleBatch>
 			</HitMesh>
-			<Camera type="TYPE_0" flag="false" boomLength="-500.000000" boomPitch="12.000000" viewPitch="-6.000000" posA="350,0,350" posB="0,0,360" posC="0,0,0"/>
+			<Camera type="TYPE_4" flag="false" boomLength="-500.000000" boomPitch="12.000000" viewPitch="-6.000000" posA="350,0,84" posB="-58,0,84" posC="0,0,0"/>
 		</Zone>
 	</Zones>
 	<Markers>
@@ -13071,7 +13071,7 @@
 		<Marker ver="4" type="NPC" pos="0,0,177" yaw="0.000000">
 			<MapObject name="Broque" id="C"/>
 			<Movement type="Stationary" data="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
-			<Sprite sprite="8B" palette="0" animations="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
+			<Sprite sprite="8B" palette="0" animations="1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
 		</Marker>
 		<Marker ver="4" type="NPC" pos="-43,0,128" yaw="0.000000">
 			<MapObject name="Peach" id="B"/>

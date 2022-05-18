@@ -1,0 +1,20 @@
+#define .Anim:PeachHandsRaise 00D60001
+#define .Anim:PeachTalk 00D60002
+#define .Anim:PeachHandsUpIdle 00D60004
+#define .Anim:PeachHandsLower 00D60003
+
+#define .Anim:StarlowHIdle 00010003
+#define .Anim:StarlowHTalk 00010004
+#define .Anim:StarlowNIdle 00010007
+#define .Anim:StarlowNTalk 00010008
+#define .Anim:StarlowAIdle 00010009
+#define .Anim:StarlowATalk 0001000A
+
+#define .Anim:BroqueIdle 008B0001
+#define .Anim:BroqueWalk 008B0002
+#define .Anim:BroqueTalk 00010004
+
+#define .Anim:BowserIdle 00800002
+#define .Anim:BowserTalk 00800006
+#define .Anim:BowserHTalk 00800007
+#define .Anim:BowserSTalk 00800008
