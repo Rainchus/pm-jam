@@ -7,17 +7,27 @@
 		<Raster id="0" palette="0" src="idle1.png"/>
 		<Raster id="1" name="idle2" palette="0" src="idle2.png"/>
 		<Raster id="2" name="idle3" palette="0" src="idle3.png"/>
-		<Raster id="3" name="idle1" palette="0" src="idle1.png"/>
-		<Raster id="4" name="spit1" palette="0" src="spit1.png"/>
-		<Raster id="5" name="spit2" palette="0" src="spit2.png"/>
-		<Raster id="6" name="spit3" palette="0" src="spit3.png"/>
-		<Raster id="7" name="spit4" palette="0" src="spit4.png"/>
-		<Raster id="8" name="spit5" palette="0" src="spit5.png"/>
-		<Raster id="9" name="spit6" palette="0" src="spit6.png"/>
-		<Raster id="A" name="spit7" palette="0" src="spit7.png"/>
-		<Raster id="B" name="hurt1" palette="0" src="hurt1.png"/>
-		<Raster id="C" name="hurt2" palette="0" src="hurt2.png"/>
-		<Raster id="D" name="shot" palette="0" src="shot.png"/>
+		<Raster id="3" name="walk1" palette="0" src="walk1.png"/>
+		<Raster id="4" name="walk2" palette="0" src="walk2.png"/>
+		<Raster id="5" name="walk3" palette="0" src="walk3.png"/>
+		<Raster id="6" name="spit1" palette="0" src="spit1.png"/>
+		<Raster id="7" name="spit2" palette="0" src="spit2.png"/>
+		<Raster id="8" name="spit3" palette="0" src="spit3.png"/>
+		<Raster id="9" name="spit4" palette="0" src="spit4.png"/>
+		<Raster id="A" name="spit5" palette="0" src="spit5.png"/>
+		<Raster id="B" name="spit6" palette="0" src="spit6.png"/>
+		<Raster id="C" name="spit7" palette="0" src="spit7.png"/>
+		<Raster id="D" name="hit1" palette="0" src="hit1.png"/>
+		<Raster id="E" name="hit2" palette="0" src="hit2.png"/>
+		<Raster id="F" name="hit3" palette="0" src="hit3.png"/>
+		<Raster id="10" name="hit4" palette="0" src="hit4.png"/>
+		<Raster id="11" name="hit5" palette="0" src="hit5.png"/>
+		<Raster id="12" name="hit6" palette="0" src="hit6.png"/>
+		<Raster id="13" name="hit7" palette="0" src="hit7.png"/>
+		<Raster id="14" name="hit8" palette="0" src="hit8.png"/>
+		<Raster id="15" name="shot" palette="0" src="shot.png"/>
+		<Raster id="16" name="hurt1" palette="0" src="hurt1.png"/>
+		<Raster id="17" name="hurt2" palette="0" src="hurt2.png"/>
 	</RasterList>
 	<AnimationList>
 		<Animation name="still">
@@ -38,21 +48,47 @@
 				<Command val="2000"/>
 			</Component>
 		</Animation>
-		<Animation name="spit">
+		<Animation name="walk">
 			<Component xyz="0,0,0">
+				<Command val="1003"/>
+				<Command val="C"/>
 				<Command val="1004"/>
-				<Command val="4"/>
+				<Command val="6"/>
+				<Command val="1005"/>
+				<Command val="A"/>
+				<Command val="1004"/>
+				<Command val="6"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="run">
+			<Component xyz="0,0,0">
+				<Command val="1003"/>
+				<Command val="8"/>
+				<Command val="1004"/>
+				<Command val="2"/>
 				<Command val="1005"/>
 				<Command val="6"/>
+				<Command val="1004"/>
+				<Command val="2"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="spit">
+			<Component xyz="0,0,0">
 				<Command val="1006"/>
-				<Command val="8"/>
+				<Command val="4"/>
 				<Command val="1007"/>
-				<Command val="12"/>
+				<Command val="6"/>
 				<Command val="1008"/>
-				<Command val="4"/>
+				<Command val="8"/>
 				<Command val="1009"/>
-				<Command val="4"/>
+				<Command val="12"/>
 				<Command val="100A"/>
+				<Command val="4"/>
+				<Command val="100B"/>
+				<Command val="4"/>
+				<Command val="100C"/>
 				<Command val="4"/>
 				<Command val="1000"/>
 				<Command val="12"/>
@@ -60,9 +96,31 @@
 				<Command val="6"/>
 			</Component>
 		</Animation>
+		<Animation name="hit">
+			<Component xyz="0,0,0">
+				<Command val="100D"/>
+				<Command val="4"/>
+				<Command val="100E"/>
+				<Command val="4"/>
+				<Command val="100F"/>
+				<Command val="6"/>
+				<Command val="1010"/>
+				<Command val="8"/>
+				<Command val="1011"/>
+				<Command val="A"/>
+				<Command val="1012"/>
+				<Command val="10"/>
+				<Command val="1013"/>
+				<Command val="4"/>
+				<Command val="1014"/>
+				<Command val="8"/>
+			</Component>
+		</Animation>
 		<Animation name="bulletgrow">
 			<Component xyz="0,-5,0">
-				<Command val="100D"/>
+				<Command val="1015"/>
+				<Command val="5000"/>
+				<Command val="14"/>
 				<Command val="3"/>
 				<Command val="5000"/>
 				<Command val="19"/>
@@ -86,14 +144,57 @@
 		</Animation>
 		<Animation name="bullet">
 			<Component xyz="0,-5,0">
-				<Command val="100D"/>
+				<Command val="1015"/>
 			</Component>
 		</Animation>
 		<Animation name="hurt">
 			<Component xyz="0,0,0">
-				<Command val="100B"/>
+				<Command val="1016"/>
 				<Command val="6"/>
-				<Command val="100C"/>
+				<Command val="1017"/>
+				<Command val="6"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="dead">
+			<Component xyz="0,0,0">
+				<Command val="1017"/>
+				<Command val="6"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="burnhurt">
+			<Component xyz="0,0,0">
+				<Command val="1016"/>
+				<Command val="6"/>
+				<Command val="1017"/>
+				<Command val="6"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="burndead">
+			<Component xyz="0,0,0">
+				<Command val="1016"/>
+				<Command val="6"/>
+				<Command val="1017"/>
+				<Command val="6"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="dizzy">
+			<Component xyz="0,0,0">
+				<Command val="1016"/>
+				<Command val="6"/>
+				<Command val="1017"/>
+				<Command val="6"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="sleep">
+			<Component xyz="0,0,0">
+				<Command val="1016"/>
+				<Command val="6"/>
+				<Command val="1017"/>
 				<Command val="6"/>
 				<Command val="2000"/>
 			</Component>
