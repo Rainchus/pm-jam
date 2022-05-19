@@ -362,7 +362,7 @@
 
 
     %run off screen
-    Call AddGoalPos ( .Actor:Self -150` 0` 0` )
+    Call AddGoalPos ( .Actor:Self -180` 0` 0` )
     Call SetActorSpeed ( .Actor:Self *Fixed[7.0] )
     Call RunToGoal ( .Actor:Self 0` .True )
 
@@ -400,13 +400,12 @@
 #new:Script $Script_TakeTurn_MemoryLuigi {
     Call  UseIdleAnimation  ( .Actor:Self .False )
     Call  EnableIdleScript  ( .Actor:Self .False )
-    % Call RandInt ( 99` *Var0 )
-    % If *Var0 < 50`
-    %     ExecWait $LuigiHammerThrow
-    % Else
-    %     ExecWait $LuigiRunAttackMain
-    % EndIf
-    ExecWait $LuigiRunAttackMain
+    Call RandInt ( 99` *Var0 )
+    If *Var0 < 50`
+        ExecWait $LuigiHammerThrow
+    Else
+        ExecWait $LuigiRunAttackMain
+    EndIf
     Call  EnableIdleScript  ( .Actor:Self .True )
     Call  UseIdleAnimation  ( .Actor:Self .True )
     Return

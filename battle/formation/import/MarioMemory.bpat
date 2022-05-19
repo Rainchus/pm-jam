@@ -15,6 +15,11 @@
 #define .marioDizzy     00A2000E
 #define .marioSleep     00A2000F
 
+#define .marioJumpAttackDamage 6`
+#define .marioDashDamage 5`
+
+#define .marioPart 1
+
 #new:Actor $MarioMemory {
     % stats
     [Index]         7b 
@@ -248,9 +253,81 @@
 0.999391 0.999848 1.0
 }
 
+%Call  EnableActorGlow   ( .Actor:Self .True ) for rainbow effect
+
+#new:Script $MarioJumpAttack {
+    Call RandInt ( 6` *Var0 )
+
+    %memory mario jump to mario
+    Call SetAnimation  ( .Actor:Self .marioPart .marioJump )
+    Call SetActorJumpGravity   ( .Actor:Self *Fixed[1.5] )
+    Call GetActorPos ( .Actor:Player *Var1 *Var2 *Var3 )
+    Add *Var3 1` %add 1 to Z pos to remove Z fighting
+    Call SetGoalPos ( .Actor:Self *Var1 *Var2 *Var3 )
+    Add *Var0 23`
+    Call JumpToGoal    ( .Actor:Self  *Var0 .False .True .False )
+    
+    %move goal position so damage stars appear in a good location
+    Add *Var2 20`
+    Call SetGoalPos ( .Actor:Self *Var1 *Var2 *Var3 )
+    Call EnemyDamageTarget ( .Actor:Self *Var0 ~Flags:DamageType:NoContact 00000000 00000000 .marioJumpAttackDamage 00000020 )
+
+    %memory mario returns to home
+    Call SetAnimation ( .Actor:Self .marioPart .marioIdle )
+    Wait 5`
+    Call SetAnimation ( .Actor:Self .marioPart .marioRun )
+    Call SetGoalToHome ( .Actor:Self )
+    Call SetActorSpeed ( .Actor:Self *Fixed[4.0] )
+    Call RunToGoal ( .Actor:Self 0` .True )
+    
+    Return
+    End
+}
+
+#new:Script $MarioRunAttackSuccess {
+    %mario uses star
+    Call SetAnimation( .Actor:Self .marioPart .marioRaiseStar)
+    Wait 13` %animation of star raise
+    Call SetAnimation( .Actor:Self .marioPart .marioThrowStar)
+    Wait 25`
+    Call EnableActorGlow ( .Actor:Self .True )
+
+    %mario running attacking player
+    Call SetAnimation( .Actor:Self .marioPart .marioRun)
+    Call SetGoalToTarget ( .Actor:Self )
+    Call SetActorSpeed ( .Actor:Self *Fixed[5.5] )
+    Call RunToGoal ( .Actor:Self 0` .True )
+    Call EnemyDamageTarget ( .Actor:Self *Var0 ~Flags:DamageType:NoContact 00000000 00000000 .marioDashDamage 00000020 )
+
+    %run off screen
+    Call AddGoalPos ( .Actor:Self -180` 0` 0` )
+    Call SetActorSpeed ( .Actor:Self *Fixed[5.5] )
+    Call RunToGoal ( .Actor:Self 0` .True )
+
+    %wrap around from left of screen to right and then walk back to home position
+    Wait 30`
+    Call SetAnimation ( .Actor:Self .marioPart .marioRun )
+    Call SetActorPos ( .Actor:Self 200` 0` 0` )
+    Call SetGoalToHome ( .Actor:Self )
+    Call SetActorSpeed ( .Actor:Self *Fixed[4.0] )
+    Call RunToGoal ( .Actor:Self 0` .True )
+    Call EnableActorGlow ( .Actor:Self .False )
+    Return
+    End
+}
+
 #new:Script $Script_TakeTurn_MemoryMario {
-    Call  EnableIdleScript  ( .Actor:Self 00000001 )
-    Call  UseIdleAnimation  ( .Actor:Self .True )
+    Call UseIdleAnimation  ( .Actor:Self .False )
+    Call EnableIdleScript  ( .Actor:Self .False )
+    Call RandInt ( 99` *Var0 )
+    If *Var0 < 50`
+        ExecWait $MarioJumpAttack
+    Else
+        ExecWait $MarioRunAttackSuccess
+    EndIf
+
+    Call EnableIdleScript  ( .Actor:Self .True )
+    Call UseIdleAnimation  ( .Actor:Self .True )
     Return
     End
 }
