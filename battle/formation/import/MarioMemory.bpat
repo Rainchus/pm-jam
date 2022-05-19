@@ -19,6 +19,7 @@
 #define .marioDashDamage 5`
 
 #define .marioPart 1
+#define .starPart 2
 
 #new:Actor $MarioMemory {
     % stats
@@ -29,7 +30,7 @@
     [Flags]       00000000 
     [StatusTable] $StatusTable_MemoryMario 
     % ai
-    [PartsCount]    1`s 
+    [PartsCount]    2`s 
     [PartsTable]  $PartsTable_MemoryMario0
     [Script]      $Script_Init_MemoryMario 
     % move effectiveness
@@ -92,7 +93,28 @@
 /% s8 unk_1E %/                 00b
 /% s8 unk_1F %/                 00b
 /% s8 unk_20 %/                 00000000 
+
+%hammer
+/% s32 flags %/                 00120001
+/% s8 index %/                  02b
+/% Vec3b posOffset %/           00b 00b 00b
+/% Vec2b targetOffset %/        00b 00b %for cursor when selecting to attack in battle
+/% s16 opacity %/               00FFs
+/% s32* IdleAnimations %/       $IdleAnimations_Star
+/% s32* defenseTable %/         $DefenseTable_MemoryMario
+/% s32 eventFlags %/            00000000
+/% s32 elementImmunityFlags %/  00000000
+/% s8 unk_1C %/                 00b
+/% s8 unk_1D %/                 00b
+/% s8 unk_1E %/                 00b
+/% s8 unk_1F %/                 00b
+/% s8 unk_20 %/                 00000000
 }
+
+#new:IdleAnimations $IdleAnimations_Star {
+    .Status:Normal    .blockStar
+    .Status:End
+    }
 
 #new:IdleAnimations $IdleAnimations_MemoryMario {
 .Status:Normal    .marioIdle
@@ -284,24 +306,47 @@
     End
 }
 
-#new:Script $MarioRunAttackSuccess {
+#new:Script $MarioRunAttack {
     %mario uses star
     Call SetAnimation( .Actor:Self .marioPart .marioRaiseStar)
     Wait 13` %animation of star raise
     Call SetAnimation( .Actor:Self .marioPart .marioThrowStar)
-    Wait 25`
+    Wait 18`
+    Call SetAnimation( .Actor:Self .marioPart .marioIdle)
+
+    %throw star into air
+    Call  GetActorPos ( .Actor:Self *Var3 *Var1 *Var2 )
+    Set *Var0 *Var3
+    Add *Var3 -18` %offset star starting X position
+    Add *Var2 1` %get rid of Z fighting
+    Call  SetPartPos        ( .Actor:Self .starPart  *Var3  *Var1  *Var2 )
+    Call  SetPartScale  ( .Actor:Self .starPart *Fixed[1.0] *Fixed[1.0] *Fixed[1.0] )
+    Call  SetPartJumpGravity    ( .Actor:Self .starPart *Fixed[4.0] )
+    Call  SetPartFlagBits   ( .Actor:Self .starPart 00000001 .False )
+    Add *Var1 20` %jump to mario's head and then disappear
+    Call  JumpPartTo        ( .Actor:Self .starPart *Var0 *Var1 *Var2  15` .True )
+    Call  SetPartFlagBits   ( .Actor:Self .starPart 00000001 .True )
     Call EnableActorGlow ( .Actor:Self .True )
+    Wait 5`
 
     %mario running attacking player
     Call SetAnimation( .Actor:Self .marioPart .marioRun)
     Call SetGoalToTarget ( .Actor:Self )
-    Call SetActorSpeed ( .Actor:Self *Fixed[5.5] )
+    Call SetActorSpeed ( .Actor:Self *Fixed[10.5] )
     Call RunToGoal ( .Actor:Self 0` .True )
-    Call EnemyDamageTarget ( .Actor:Self *Var0 ~Flags:DamageType:NoContact 00000000 00000000 .marioDashDamage 00000020 )
+
+    %damage target if not invisible
+    Call  EnemyTestTarget   ( .Actor:Self *Var1 ~Flags:DamageType:0 00000000 00000001 00000010 )
+    Switch  *Var1 
+        CaseOR  ==  .HitResult:Miss % 6
+        CaseOR  ==  .HitResult:Lucky % 5
+        Default
+            Call EnemyDamageTarget ( .Actor:Self *Var0 ~Flags:DamageType:NoContact 00000000 00000000 .marioDashDamage 00000020 )
+    EndSwitch
 
     %run off screen
     Call AddGoalPos ( .Actor:Self -180` 0` 0` )
-    Call SetActorSpeed ( .Actor:Self *Fixed[5.5] )
+    Call SetActorSpeed ( .Actor:Self *Fixed[10.5] )
     Call RunToGoal ( .Actor:Self 0` .True )
 
     %wrap around from left of screen to right and then walk back to home position
@@ -320,10 +365,11 @@
     Call UseIdleAnimation  ( .Actor:Self .False )
     Call EnableIdleScript  ( .Actor:Self .False )
     Call RandInt ( 99` *Var0 )
+    
     If *Var0 < 50`
         ExecWait $MarioJumpAttack
     Else
-        ExecWait $MarioRunAttackSuccess
+        ExecWait $MarioRunAttack
     EndIf
 
     Call EnableIdleScript  ( .Actor:Self .True )
