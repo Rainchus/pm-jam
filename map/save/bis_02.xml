@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Map name="bis_02" author="unnamed" background="obk_bg" textures="kkj_tex">
 	<Editor>
-		<Camera pos="0.593039,53.358238,142.257431" pitch="18.959976" yaw="280.080353"/>
-		<Camera pos="-28.227547,65536.000000,132.636948"/>
-		<Camera pos="65536.000000,173.008774,50.000000"/>
-		<Camera pos="-34.675308,-4.057840,65536.000000"/>
+		<Camera pos="191.053329,77.345146,169.046875" pitch="7.439998" yaw="267.759827"/>
+		<Camera pos="0.000000,65536.000000,50.000000"/>
+		<Camera pos="65536.000000,8.009850,50.000000"/>
+		<Camera pos="0.000000,195.000000,65536.000000"/>
 	</Editor>
 	<ModelTree>
 		<Node name="Root" id="BD">
@@ -377,7 +377,7 @@
 		</Node>
 	</ZoneTree>
 	<MarkerTree>
-		<Node name="Root" id="D">
+		<Node name="Root" id="E">
 			<Node name="Entrances" id="7">
 				<Node name="Entry0" id="FFFFFFFF"/>
 				<Node name="Entry1" id="0"/>
@@ -393,6 +393,7 @@
 			<Node name="Starlow" id="A"/>
 			<Node name="Peach" id="B"/>
 			<Node name="Broque" id="C"/>
+			<Node name="Blitty" id="D"/>
 		</Node>
 	</MarkerTree>
 	<LightSets>
@@ -13066,12 +13067,17 @@
 	</Zones>
 	<Markers>
 		<Marker ver="4" type="Root">
-			<MapObject name="Root" id="D"/>
+			<MapObject name="Root" id="E"/>
+		</Marker>
+		<Marker ver="4" type="NPC" pos="40,0,300" yaw="0.000000">
+			<MapObject name="Blitty" id="D"/>
+			<Movement type="Stationary" data="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
+			<Sprite sprite="8C" palette="0" animations="3,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
 		</Marker>
 		<Marker ver="4" type="NPC" pos="0,0,177" yaw="0.000000">
 			<MapObject name="Broque" id="C"/>
 			<Movement type="Stationary" data="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
-			<Sprite sprite="8B" palette="0" animations="1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
+			<Sprite sprite="8B" palette="0" animations="1,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
 		</Marker>
 		<Marker ver="4" type="NPC" pos="-43,0,128" yaw="0.000000">
 			<MapObject name="Peach" id="B"/>
@@ -13083,7 +13089,7 @@
 			<Movement type="Stationary" data="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
 			<Sprite sprite="1" palette="0" animations="3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
 		</Marker>
-		<Marker ver="4" type="NPC" pos="0,-2,-12" yaw="-180.000000">
+		<Marker ver="4" type="NPC" pos="0,0,-12" yaw="-180.000000">
 			<MapObject name="Bowser" id="9"/>
 			<Movement type="Stationary" data="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
 			<Sprite sprite="80" palette="0" animations="2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>

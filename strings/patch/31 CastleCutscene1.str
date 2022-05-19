@@ -20,10 +20,10 @@ Dark Star to contend with - hehe.[Wait][END]
 
 #message:31:002
 {
-[STYLE:RIGHT]Oui oui! I am ze overjoyed to[BR]
+[STYLE:RIGHT]Oui oui! I am zee overjoyed to[BR]
 be back 'ere with mon friends.[BR]
 [Wait][Next]
-Ze Dimble Wood was becoming[BR]
+Zee Dimble Wood was becoming[BR]
 somewhat borings. [Pause 20] Zis food, it is[BR]fantastique! It is foreign, honh?[Wait][END]
 }
 
@@ -107,13 +107,13 @@ How .[Pause 10] .[Pause 10] .[Pause 10] is the kingdom going?[Wait][END]
 
 #message:31:(Broque15)
 {
-[STYLE:RIGHT]‘Allo, mon friends![Pause 5] I have[BR]
-returned with ze gift of[BR]
+[STYLE:RIGHT]'Allo, mon friends![Pause 5] I have[BR]
+returned with zee gift of[BR]
 sweetness![BR]
 [Wait][Next]
-Zis ‘efty confection is made from[BR]
+Zis 'efty confection is made from[BR]
 all local ingredients, so[BR]
-‘opefully you like it![Wait][END]
+'opefully you like it![Wait][END]
 }
 
 #message:31:(Bowser16)
@@ -126,9 +126,9 @@ all local ingredients, so[BR]
 #message:31:(Broque17)
 {
 [STYLE:RIGHT][Wave]Hohohonh![/fx] I'm glad you like![BR]
-[Pause 30]Ze Blitties came for ze trip, too.[Pause 5][BR]
+[Pause 30]Zee Blitties came for zee trip, too.[Pause 5][BR]
 Say your greetings, mon petit[BR]
-friends![Wait][END]
+friend![Wait][END]
 }
 
 #message:31:(Blitty18)
@@ -138,13 +138,18 @@ friends![Wait][END]
 
 #message:31:(Bowser19)
 {
-[STYLE:RIGHT]Aw man, you didn't bring Broggy?[Pause 5][BR]
-I'm so down for a rematch![Pause 5][BR]
+[STYLE:RIGHT]Aw man, you didn't bring Broggy?
+[Wait][END]
+}
+
+#message:31:(Bowser20)
+{
+[STYLE:RIGHT]I'm so down for a rematch![Pause 5][BR]
 That crazy mutt sure can put[BR]
 up a fight![Wait][END]
 }
 
-#message:31:(Starlow20)
+#message:31:(Starlow21)
 {
 [STYLE:RIGHT]The Blitties are [Wave]suuuuuper[/fx] cute,[BR]
 though![Pause 5][BR]
@@ -152,9 +157,9 @@ Hi there, little Blitty!
 [Wait][END]
 }
 
-#message:31:(Broque21)
+#message:31:(Broque22)
 {
-[STYLE:RIGHT]I ‘ave been teachings zhem zee[BR]
+[STYLE:RIGHT]I 'ave been teachings zhem zee[BR]
 techniques![Pause 5] Zey are zee most[BR]
 smartest and strongest pets[BR]
 around![BR]
@@ -164,35 +169,35 @@ ask zee blitties all about zis.
 [Wait][END]
 }
 
-#message:31:(Bowser22)
+#message:31:(Bowser23)
 {
 [STYLE:RIGHT]Return to eating?[Pause 10][BR]
 I can't wait up for the Princess -[Pause 10][BR]there's a gigantic cake in front[BR]of me![Wait][END]
 }
 
-#message:31:(Starlow23)
+#message:31:(Starlow24)
 {
 [STYLE:RIGHT]Haven't you ever heard of[BR]
 courtesy?[Wait][END]
 }
 
-#message:31:(Bowser24)
+#message:31:(Bowser25)
 {
 [STYLE:RIGHT]Courtesy is for chumps![Pause 5][BR]
 Move out of the way, Chippy![Wait][END]
 }
 
-#message:31:(Bowser25)
+#message:31:(Bowser26)
 {
 [STYLE:RIGHT][Wave]Man,[Pause 5] that hits the spot[/fx].[Wait][END]
 }
 
-#message:31:(Starlow26)
+#message:31:(Starlow27)
 {
 [STYLE:RIGHT]Typical[Pause 10].[Pause 10].[Pause 10].[Wait][END]
 }
 
-#message:31:(Bowser27)
+#message:31:(Bowser28)
 {
 [STYLE:RIGHT]Ugh[Pause 20].[Pause 20].[Pause 20].[BR]
 Hey, Mr. Block Man, what did you[BR]
@@ -201,7 +206,7 @@ My stomach isn't feeling too good.
 [Wait][END]
 }
 
-#message:31:(Broque28)
+#message:31:(Broque29)
 {
 [STYLE:RIGHT]Ah, all zee freshest and most[BR]
 delicious ingredients from zee[BR]
@@ -209,19 +214,19 @@ Dimble Wood![BR]
 [Wait][Next]
 Zee finest flour,[Pause 10][BR]
 spectacular sugar,[Pause 10][BR]
-and an ‘andful of fungi![BR]
+and an 'andful of fungi![BR]
 [Wait][Next]
 Such pretty colors on zee fungi,[Pause 10][BR]
 [Wave]hoho[/fx]![Wait][END]
 }
 
-#message:31:(Bowser29)
+#message:31:(Bowser30)
 {
 [STYLE:RIGHT]Man, I'm REALLY not feeling[BR]
 good[Pause 10].[Pause 10].[Pause 10].[Pause 10]urgh[Pause 10].[Pause 10].[Pause 10].[Pause 10]hurgh[Pause 10].[Pause 10].[Pause 10].[Wait][END]
 }
 
-#message:31:(Starlow30)
+#message:31:(Starlow31)
 {
 [STYLE:RIGHT]Mushrooms[Pause 10].[Pause 10].[Pause 10].[BR]
 Dimble Wood[Pause 10].[Pause 10].[Pause 10].[Pause 10][BR]
@@ -231,7 +236,7 @@ Dimble Wood[Pause 10].[Pause 10].[Pause 10].[Pause 10][BR]
 THOSE MUSHROOMS?![Wait][END]
 }
 
-#message:31:(Broque31)
+#message:31:(Broque32)
 {
 [STYLE:RIGHT]Zhey were zee most beautiful[BR]
 purples and yellows I have ever[BR]
@@ -239,9 +244,11 @@ done of the seenings![Pause 10] Zey smelled[BR]
 magnifique![Wait][END]
 }
 
-#message:31:(Starlow32)
+#message:31:(Starlow33)
 {
 [STYLE:RIGHT][Size 24][Shake]PURPLE AND YELLOW?![Pause 10][/fx][BR]
 [Size 16]THOSE ARE THE COLORS OF THE[BR]
 VACUUM SHROO-[Wait][END]
 }
+
+

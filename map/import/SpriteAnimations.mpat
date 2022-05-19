@@ -1,5 +1,6 @@
 #define .Anim:PeachHandsRaise 00D60001
 #define .Anim:PeachTalk 00D60002
+#define .Anim:PeachWalk 00D60009
 #define .Anim:PeachHandsUpIdle 00D60004
 #define .Anim:PeachHandsLower 00D60003
 
@@ -13,8 +14,15 @@
 #define .Anim:BroqueIdle 008B0001
 #define .Anim:BroqueWalk 008B0002
 #define .Anim:BroqueTalk 00010004
+%#define .Anim:BroqueTalk 00010004 Happy Talking
+#define .Anim:BroqueTalkPoint 00010005
+
+#define .Anim:BlittyIdle 008C0003
+#define .Anim:BlittyWalk 008C0001
+#define .Anim:BlittyTalk 008C0004
 
 #define .Anim:BowserIdle 00800002
 #define .Anim:BowserTalk 00800006
 #define .Anim:BowserHTalk 00800007
 #define .Anim:BowserSTalk 00800008
+#define .Anim:BowserSlump 00800024

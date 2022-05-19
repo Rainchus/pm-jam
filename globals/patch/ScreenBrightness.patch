@@ -1,0 +1,295 @@
+% Fade screen brightness from black
+%
+% *Var[0] (Float) = Fade Speed (Normally 25.0)
+%
+% *Var[1] (Float) = New Brightness (0.00 - 255.0)(255.0 = Fully Black)
+%
+% Fade Color = 8015C790 (isn't implement in this Script)
+%
+% [ ! ] Writes in Var2
+#export:Script:Global $Script_FadeScreenIn
+{
+	Loop
+		Call 	$WriteAddress ( 80156903 0 0 .False .False ) % remove brightness lock
+		Call 	$ReadAddressFloat  ( 80156904 2 *Var[2] .False .False ) % load brightness
+		SubF	*Var[2] *Var[0] % fade speed
+		If *Var[2] <= *Var[1]
+			SetF 	*Var[2] *Var[1]
+            Call 	$WriteAddress ( 80156903 0 1 .False .False ) % Use default fade shape
+			Call 	$WriteAddressFloat  ( 80156904 2 *Var[2] .False .False ) % save brightness
+			BreakLoop
+		EndIf
+		Call 	$WriteAddressFloat  ( 80156904 2 *Var[2] .False .False ) % save brightness
+		Wait 	1
+	EndLoop
+	Return
+	End
+}
+
+% Fade screen brightness to black
+%
+% *Var[0] (Float) = Fade Speed (Normally 25.0)
+%
+% *Var[1] (Float) = New Brightness (0.00 - 255.0)(255.0 = Fully Black)
+%
+% Fade Color = 8015C790 (isn't implement in this Script)
+%
+% [ ! ] Writes in Var2
+#export:Script:Global $Script_FadeScreenOut
+{
+	Loop
+		Call 	$WriteAddress ( 80156903 0 0 .False .False ) % remove brightness lock
+		Call 	$ReadAddressFloat  ( 80156904 2 *Var[2] .False .False ) % load brightness
+		AddF	*Var[2] *Var[0] % fade speed
+		If *Var[2] >= *Var[1]
+			SetF 	*Var[2] *Var[1]
+            Call 	$WriteAddress ( 80156903 0 1 .False .False ) % Use default fade shape
+			Call 	$WriteAddressFloat  ( 80156904 2 *Var[2] .False .False ) % save brightness
+			BreakLoop
+		EndIf
+		Call 	$WriteAddressFloat  ( 80156904 2 *Var[2] .False .False ) % save brightness
+		Wait 	1
+	EndLoop
+	Return
+	End
+}
+
+% Call $WriteAddress ( Address ByteSize NewValue Offset FollowPointer )
+%
+% EXAMPLE 1:
+% Call $WriteAddress ( 8010F290 0 5 2 .False ) = 8010F290(+2) = 5 (Save as Byte)
+%
+% EXAMPLE 2 (reading pointers):
+% Call $WriteAddress ( 802DF588 1 5 28 .True ) = Follow Pointer in 802DF588 > Pointer(+28) = 5 (Save as Half)
+%
+#export:Function $WriteAddress
+{
+    PUSH    RA, S0, S1, S2, S3, S4
+    LW      S0, C (A0)
+    % Get Argument 5
+    JAL     ~Func:get_variable
+    LW      A1, 10 (S0)
+    COPY    S4, V0
+    % Get Argument 4
+    JAL     ~Func:get_variable
+    LW      A1, C (S0)
+    COPY    S3, V0
+    % Get Argument 3
+    JAL     ~Func:get_variable
+    LW      A1, 8 (S0) % load Var from arg2
+    COPY    S2, V0
+    % Get Argument 2
+    JAL     ~Func:get_variable
+    LW      A1, 4 (S0)
+    COPY    S1, V0
+    % Get Argument 1
+    JAL     ~Func:get_variable
+    LW      A1, 0 (S0)
+    /%
+    Arg1=V0=Address
+    Arg2=S1=ByteSize
+    Arg3=S2=NewValue
+    Arg4=S3=Offset
+    Arg5=S4=Pointer Flag
+    %/
+    % A pointer need to be followed?
+    BNEL    S4, R0, .ReadPointer
+    LW      V0, 0 (V0)
+    .ReadPointer
+    % Read Offset
+    ADDU    V0, V0, S3
+    % Write 1, 2 or 4 Bytes
+    % Byte
+    BEQL    S1, R0, .End
+    SB      S2, 0 (V0)
+    % Half
+    ORI     T2, R0, 1
+    BEQL    S1, T2, .End
+    SH      S2, 0 (V0)
+    % Word
+    ORI     T2, R0, 2
+    BEQ     R0, R0, .End
+    SW      S2, 0 (V0)
+    .End
+    POP     RA, S0, S1, S2, S3, S4
+    JR      RA
+    ORI     V0, R0, 2
+}
+
+% Call $WriteAddressFloat ( Address ByteSize NewValue Offset FollowPointer )
+%
+% Treats the new value to set as a float
+#export:Function $WriteAddressFloat
+{
+    PUSH    RA, S0, S1, S2, S3, S4, S5
+    COPY    S5, A0
+    LW      S0, C (A0)
+    % Get Argument 5
+    COPY    A0, S5
+    JAL     ~Func:get_variable
+    LW      A1, 10 (S0)
+    COPY    S4, V0
+    % Get Argument 4
+    COPY    A0, S5
+    JAL     ~Func:get_variable
+    LW      A1, C (S0)
+    COPY    S3, V0
+    % Get Argument 3
+    COPY    A0, S5
+    JAL     ~Func:get_float_variable
+    LW      A1, 8 (S0) % load Var from arg2
+    MFC1    V0, F0
+    COPY    S2, V0
+    % Get Argument 2
+    COPY    A0, S5
+    JAL     ~Func:get_variable
+    LW      A1, 4 (S0)
+    COPY    S1, V0
+    % Get Argument 1
+    COPY    A0, S5
+    JAL     ~Func:get_variable
+    LW      A1, 0 (S0)
+    /%
+    Arg1=V0=Address
+    Arg2=S1=ByteSize
+    Arg3=S2=NewValue
+    Arg4=S3=Offset
+    Arg5=S4=Pointer Flag
+    %/
+    % A pointer need to be followed?
+    BNEL    S4, R0, .ReadPointer
+    LW      V0, 0 (V0)
+    .ReadPointer
+    % Read Offset
+    ADDU    V0, V0, S3
+    % Write 1, 2 or 4 Bytes
+    % Byte
+    BEQL    S1, R0, .End
+    SB      S2, 0 (V0)
+    % Half
+    ORI     T2, R0, 1
+    BEQL    S1, T2, .End
+    SH      S2, 0 (V0)
+    % Word
+    ORI     T2, R0, 2
+    BEQ     R0, R0, .End
+    SW      S2, 0 (V0)
+    .End
+    POP     RA, S0, S1, S2, S3, S4, S5
+    JR      RA
+    ORI     V0, R0, 2
+}
+
+% Call $ReadAddress ( Address ByteSize *out offset FollowPointer )
+#export:Function $ReadAddress
+{
+    PUSH    RA, S0, S1, S2, S3, S4
+    LW      S0, C (A0)
+    % Get Argument 5
+    JAL     ~Func:get_variable
+    LW      A1, 10 (S0)
+    COPY    S4, V0
+    % Get Argument 4
+    JAL     ~Func:get_variable
+    LW      A1, C (S0)
+    COPY    S3, V0
+    % Get Argument 3
+    LW      S2, 8 (S0) % load Var from arg2
+    % Get Argument 2
+    JAL     ~Func:get_variable
+    LW      A1, 4 (S0)
+    COPY    S1, V0
+    % Get Argument 1
+    JAL     ~Func:get_variable
+    LW      A1, 0 (S0)
+    /%
+    Arg1=V0=Address
+    Arg2=S1=ByteSize
+    Arg3=S2=*out
+    Arg4=S3=Offset
+    Arg5=S4=Pointer Flag
+    %/
+    % A pointer need to be followed?
+    BNEL    S4, R0, .ReadPointer
+    LW      V0, 0 (V0)
+    .ReadPointer
+    % Read Offset
+    ADDU    V0, V0, S3
+    % Read 1, 2 or 4 Bytes
+    % Byte
+    BEQL    S1, R0, .WriteVar
+    LBU     A2, 0 (V0)
+    % Half
+    ORI     T2, R0, 1
+    BEQL    S1, T2, .WriteVar
+    LHU     A2, 0 (V0)
+    % Word
+    ORI     T2, R0, 2
+    BEQ     R0, R0, .WriteVar
+    LW      A2, 0 (V0)
+    .WriteVar
+    % Get Argument 3 and write output
+    JAL 	~Func:set_variable
+    COPY    A1, S2  % copy *out in to A1
+    POP     RA, S0, S1, S2, S3, S4
+    JR      RA
+    ORI     V0, R0, 2
+}
+
+% Call $ReadAddressFloat ( Address ByteSize *out offset FollowPointer )
+%
+% Uses set_float_variable for *out
+#export:Function $ReadAddressFloat
+{
+    PUSH    RA, S0, S1, S2, S3, S4
+    LW      S0, C (A0)
+    % Get Argument 5
+    JAL     ~Func:get_variable
+    LW      A1, 10 (S0)
+    COPY    S4, V0
+    % Get Argument 4
+    JAL     ~Func:get_variable
+    LW      A1, C (S0)
+    COPY    S3, V0
+    % Get Argument 3
+    LW      S2, 8 (S0) % load Var from arg2
+    % Get Argument 2
+    JAL     ~Func:get_variable
+    LW      A1, 4 (S0)
+    COPY    S1, V0
+    % Get Argument 1
+    JAL     ~Func:get_variable
+    LW      A1, 0 (S0)
+    /%
+    Arg1=V0=Address
+    Arg2=S1=ByteSize
+    Arg3=S2=*out
+    Arg4=S3=Offset
+    Arg5=S4=Pointer Flag
+    %/
+    % A pointer need to be followed?
+    BNEL    S4, R0, .ReadPointer
+    LW      V0, 0 (V0)
+    .ReadPointer
+    % Read Offset
+    ADDU    V0, V0, S3
+    % Read 1, 2 or 4 Bytes
+    % Byte
+    BEQL    S1, R0, .WriteVar
+    LBU     A2, 0 (V0)
+    % Half
+    ORI     T2, R0, 1
+    BEQL    S1, T2, .WriteVar
+    LHU     A2, 0 (V0)
+    % Word
+    ORI     T2, R0, 2
+    BEQ     R0, R0, .WriteVar
+    LW      A2, 0 (V0)
+    .WriteVar
+    % Get Argument 3 and write output
+    JAL 	~Func:set_float_variable
+    COPY    A1, S2  % copy *out in to A1
+    POP     RA, S0, S1, S2, S3, S4
+    JR      RA
+    ORI     V0, R0, 2
+}

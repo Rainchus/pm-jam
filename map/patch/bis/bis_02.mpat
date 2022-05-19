@@ -3,6 +3,7 @@
 #define .NpcID:Starlow 1
 #define .NpcID:Peach 2
 #define .NpcID:Broque 3
+#define .NpcID:Blitty 4
 
 #define .yawLeft 90`
 #define .yawRight 270`
@@ -66,7 +67,7 @@
 #new:NpcSettings $Bowser
 {
 	0 %unk_00
-	32`s %colliderheight
+	72`s %colliderheight
 	16`s %colliderradius
 	0 %unk
 	0 %interactscript
@@ -207,12 +208,49 @@
 	001A005E %tattleID
 }
 
+#new:NpcSettings $Blitty
+{
+	0 %unk_00
+	32`s %colliderheight
+	16`s %colliderradius
+	0 %unk
+	0 %interactscript
+	0 %aiscript
+	0 %onhit (enemy)
+	0 %aux (disregard)
+	0 %ondefeat
+	0 %flags
+	0 %unk
+	0s %level
+	0s %unk
+}
+
+#new:NpcGroup $BlittyGroup
+{
+	.NpcID:Blitty %basic id, define above
+    $Blitty %reference NpcSettings struct
+    ~Vec3f:Blitty %position, currently refers to marker in map editor (position)
+	00000001 %flags (01 is passive)
+    0 %init script (for any additional info/scriptin)
+    00000000 %unk
+    00000000 %unk
+    90` %yaw, 90 is right, 270 is left
+	~NoDrops %drops
+	~Movement:Blitty %movement
+	~AnimationTable:Blitty %animations, currently refers to marker in map editor
+	00000000 %unk
+	00000000 %unk
+	00000000 %extra animations
+	001A005E %tattleID
+}
+
 #new:NpcGroupList $AllNpcs
 {
 	1 $BowserGroup 0 %number of NPCs in group, NPCGroup, BattleID
 	1 $StarlowGroup 0 %number of NPCs group, NPCGroup, BattleID
 	1 $PeachGroup 0 %number of NPCs group, NPCGroup, BattleID
 	1 $BroqueGroup 0 %number of NPCs group, NPCGroup, BattleID
+	1 $BlittyGroup 0 %number of NPCs group, NPCGroup, BattleID
 	0 0 0 %terminating emptyList (essentially an END)
 }
 
@@ -236,15 +274,15 @@
 	Call DisablePartnerAI ( 0 ) %disable flying partner ai (value 1 would disable walking partner AI)
 	Call DisablePlayerInput (.True)
 	Call SetPlayerPos (~Vec3d:MarioCutscene)
-	Wait 15`
+	Wait 30`
 	Call SetNpcAnimation ( .NpcID:Peach .Anim:PeachHandsRaise )
 	Call SpeakToPlayer ( .NpcID:Peach .Anim:PeachTalk .Anim:PeachHandsUpIdle 0 00310000 )
 	Call SetNpcAnimation ( .NpcID:Peach .Anim:PeachHandsLower )
 	Call SpeakToNpc ( .NpcID:Starlow .Anim:StarlowHTalk .Anim:StarlowHIdle 0 .NpcID:Peach 00310001 )
 	Call SpeakToNpc (.NpcID:Broque .Anim:BroqueTalk .Anim:BroqueIdle 0 .NpcID:Peach 00310002)
-	Call InterpNpcYaw (.NpcID:Peach -1` 0) %FiX ALL YAWSSSS
-	Call InterpNpcYaw (.NpcID:Starlow -1` 0)
-	Call InterpPlayerYaw ( 90` 0 )
+	%Call InterpNpcYaw (.NpcID:Peach -90` 30`) %FiX ALL YAWSSSS
+	%Call InterpNpcYaw (.NpcID:Starlow -90` 30`)
+	%Call InterpPlayerYaw ( 90` 0 )
 	Call SpeakToNpc (.NpcID:Bowser .Anim:BowserHTalk .Anim:BowserIdle 0 .NpcID:Broque 00310003)
 	Call InterpPlayerYaw ( 90` 0 )
 	Call SetNpcAnimation (.NpcID:Starlow .Anim:StarlowAIdle)
@@ -256,26 +294,110 @@
 	Call SetNpcAnimation (.NpcID:Starlow .Anim:StarlowHIdle )
 	Call SpeakToNpc (.NpcID:Broque .Anim:BroqueTalk .Anim:BroqueIdle 0 .NpcID:Bowser 00310006)
 	Call SetNpcAnimation (.NpcID:Broque .Anim:BroqueWalk )
-	Call NpcMoveTo (.NpcID:Broque 0` 300` 75` )
+	Call NpcMoveTo (.NpcID:Broque 0` 300` 65` )
 	Call SetNpcAnimation ( .NpcID:Peach .Anim:PeachHandsRaise )
 	Call SpeakToPlayer ( .NpcID:Peach .Anim:PeachTalk .Anim:PeachHandsUpIdle 0 00310007 )
 	Call SetNpcAnimation ( .NpcID:Peach .Anim:PeachHandsLower )
-	Wait 5
+	Wait 5`
+	Call SetNpcAnimation (.NpcID:Peach .Anim:PeachWalk)
 	Call NpcMoveTo (.NpcID:Peach -43` 300` 75` )
 	Call SetNpcAnimation (.NpcID:Starlow .Anim:StarlowNIdle)
-	Wait 30
-	Call SpeakToNpc (.NpcID:Bowser .Anim:BowserSTalk .Anim:BowserIdle 0 .NpcID:Starlow 00310008)
-	Wait 30
+	Wait 20`
+	Call SpeakToNpc (.NpcID:Bowser .Anim:BowserTalk .Anim:BowserIdle 0 .NpcID:Starlow 00310008)
+	Wait 20`
 	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowNTalk .Anim:StarlowNIdle 0 .NpcID:Bowser 00310009)
-	Wait 30
-	Call SpeakToNpc (.NpcID:Bowser .Anim:BowserSTalk .Anim:BowserIdle 0 .NpcID:Starlow 0031000A)
-	Wait 30
+	Wait 20`
+	Call SpeakToNpc (.NpcID:Bowser .Anim:BowserTalk .Anim:BowserIdle 0 .NpcID:Starlow 0031000A)
+	Wait 20`
 	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowNTalk .Anim:StarlowNIdle 0 .NpcID:Bowser 0031000B)
-	Wait 30
-	Call SpeakToNpc (.NpcID:Bowser .Anim:BowserSTalk .Anim:BowserIdle 0 .NpcID:Starlow 0031000C)
-	Wait 30
+	Wait 20`
+	Call SpeakToNpc (.NpcID:Bowser .Anim:BowserTalk .Anim:BowserIdle 0 .NpcID:Starlow 0031000C)
+	Wait 20`
 	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowNTalk .Anim:StarlowNIdle 0 .NpcID:Bowser 0031000D)
+	Call ShowEmote ( .NpcID:Starlow .Emote:Ellipsis 1` 30` 1 0 0 0 0 )
+	Call ShowEmote ( .NpcID:Bowser .Emote:Ellipsis 1` 30` 1 0 0 0 0 )
+	Wait 20`
+	Call PlaySoundAtNpc(.NpcID:Starlow .Sound:Exclamation 0)
+	Call ShowEmote ( .NpcID:Starlow .Emote:Exclamation 1` 30` 1 0 0 0 0 )
+	Call ShowEmote ( .NpcID:Bowser .Emote:Exclamation 1` 30` 1 0 0 0 0 )
+	Call NpcMoveTo (.NpcID:Broque 0` 177` 60` )
+
+	%% BROQUE COMES BACK %%
+	Exec $CutscenePartTwo
+
 	Return
 	End
+
+	%TODO
+	%Fix all yaws
+	%Bowser Emote Idles
+}
+
+#new:Script $CutscenePartTwo
+{
+	Call SpeakToNpc (.NpcID:Broque .Anim:BroqueTalk .Anim:BroqueIdle 0 .NpcID:Bowser 0031000E)
+	Call SpeakToNpc (.NpcID:Bowser .Anim:BowserHTalk .Anim:BowserIdle 0 .NpcID:Broque 0031000F)
+	Call SpeakToNpc (.NpcID:Broque .Anim:BroqueTalk .Anim:BroqueIdle 0 .NpcID:Bowser 00310010)
+	Call NpcMoveTo (.NpcID:Blitty 40` 150` 30`)
+	Call PlaySoundAtNpc (.NpcID:Blitty .Sound:Squeak 0 )
+	Wait 5`
+	Call PlaySoundAtNpc (.NpcID:Blitty .Sound:Squeak 0 )
+	Call SpeakToNpc (.NpcID:Blitty .Anim:BlittyTalk .Anim:BlittyIdle 0 .NpcID:Starlow 00310011)
+	Call SpeakToNpc (.NpcID:Bowser .Anim:BowserSTalk .Anim:BowserIdle 0 .NpcID:Starlow 00310012)
+	Call SpeakToNpc (.NpcID:Bowser .Anim:BowserSTalk .Anim:BowserIdle 0 .NpcID:Starlow 00310013)
+	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowHTalk .Anim:StarlowHIdle 0 .NpcID:Blitty 00310014)
+	Call SpeakToNpc (.NpcID:Broque .Anim:BroqueTalkPoint .Anim:BroqueIdle 0 .NpcID:Bowser 00310015)
+	Call PlaySoundAtNpc (.NpcID:Blitty .Sound:Squeak 0 )
+	Wait 5`
+	Call PlaySoundAtNpc (.NpcID:Blitty .Sound:Squeak 0 )
+	Call NpcMoveTo (.NpcID:Blitty 40` 300` 30`)
+	Call SpeakToNpc (.NpcID:Bowser .Anim:BowserHTalk .Anim:BowserIdle 0 .NpcID:Broque 00310016)
+	Call SetNpcAnimation (.NpcID:Starlow .Anim:StarlowAIdle)
+	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowATalk .Anim:StarlowAIdle 0 .NpcID:Bowser 00310017)
+	Call SpeakToNpc (.NpcID:Bowser .Anim:BowserTalk .Anim:BowserIdle 0 .NpcID:Starlow 00310018)
+	Call PlaySoundAtNpc (.NpcID:Bowser .Sound:Rise 0 )
+
+	% Fade Screen Brightness
+	SetF    *Var[0] *Fixed[25.0]  % speed
+	SetF    *Var[1] *Fixed[255.0] % fully dark
+	ExecWait $Script_FadeScreenOut
+	% Screen is now completely black
+	Wait 30
+	Thread % Fade Screen Brightness
+    SetF    *Var[0] *Fixed[25.0] % speed
+    SetF    *Var[1] *Fixed[5.0]  % fully bright
+    ExecWait $Script_FadeScreenIn
+	EndThread
+
+	Wait 15`
+	Call SpeakToNpc (.NpcID:Bowser .Anim:BowserHTalk .Anim:BowserIdle 0 .NpcID:Broque 00310019)
+	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowATalk .Anim:StarlowAIdle 0 .NpcID:Bowser 0031001A)
+	Call PlaySoundAtNpc (.NpcID:Bowser .Sound:Glub 0)
+	Wait 15`
+	Call PlaySoundAtNpc (.NpcID:Bowser .Sound:Drip 0)
+	Wait 15`
+	Call SpeakToNpc (.NpcID:Bowser .Anim:BowserSTalk .Anim:BowserIdle 0 .NpcID:Broque 0031001B)
+	Call SpeakToNpc (.NpcID:Broque .Anim:BroqueTalk .Anim:BroqueIdle 0 .NpcID:Bowser 0031001C) %make this happy talking
+	Call SpeakToNpc (.NpcID:Bowser .Anim:BowserHTalk .Anim:BowserIdle 0 .NpcID:Broque 0031001D)
+	Call PlaySoundAtNpc (.NpcID:Bowser .Sound:Glub 0)
+	Wait 10`
+	Call PlaySoundAtNpc (.NpcID:Bowser .Sound:Glub 0)
+	Wait 10`
+	Call PlaySoundAtNpc (.NpcID:Bowser .Sound:Glub 0)
+	Wait 40`
+	Call SetNpcPos (.NpcID:Bowser 0` 0` -28`)
+	Call SetNpcAnimation (.NpcID:Bowser .Anim:BowserSlump)
+	Call PlaySoundAtNpc (.NpcID:Bowser .Sound:Slam 0)
+	Call GetNpcPos (.NpcID:Bowser *Var0 *Var1 *Var2 )
+	Call PlayEffect (~FX:SmokeImpact:Large *Var0 *Var1 *Var2 00000020 00000004 00000000 0000000A 00000000 00000000 00000000 00000000 00000000)
+	Call SetNpcAnimation ( .NpcID:Starlow .Anim:StarlowNIdle)
+	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowNTalk .Anim:StarlowNIdle 0 .NpcID:Broque 0031001E)
+	Call SetNpcAnimation ( .NpcID:Starlow .Anim:StarlowNIdle) %make fearful
+	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowNTalk .Anim:StarlowNIdle 0 .NpcID:Broque 0031001E)
+	Call SpeakToNpc (.NpcID:Broque .Anim:BroqueTalk .Anim:BroqueIdle 0 .NpcID:Starlow 00310020) %make this happy talking
+
+	Return
+	End
+
 }
 

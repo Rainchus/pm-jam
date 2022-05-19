@@ -29,6 +29,21 @@
 				<Command val="2000"/>
 			</Component>
 		</Animation>
+		<Animation name="walk">
+			<Component name="body" xyz="0,0,0">
+				<Command val="1000"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="5A"/>
+				<Command val="2"/>
+				<Command val="2001"/>
+			</Component>
+		</Animation>
+		<Animation name="run">
+			<Component name="body" xyz="0,0,0">
+				<Command val="1000"/>
+			</Component>
+		</Animation>
 		<Animation name="talk">
 			<Component name="body" xyz="0,0,0">
 				<Command val="1004"/>
