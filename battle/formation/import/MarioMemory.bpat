@@ -278,9 +278,16 @@
 %Call  EnableActorGlow   ( .Actor:Self .True ) for rainbow effect
 
 #new:Script $MarioJumpAttack {
-    Call RandInt ( 6` *Var0 )
+    %memory mario takes a step forward before jumping
+    Call SetAnimation ( .Actor:Self .marioPart .marioRun )
+    Call GetActorPos ( .Actor:Self *Var0 *Var1 *Var2 )
+    Add *Var0 -25
+    Call SetGoalPos ( .Actor:Self *Var0 *Var1 *Var2 )
+    Call SetActorSpeed ( .Actor:Self *Fixed[3.0] )
+    Call RunToGoal ( .Actor:Self 0` .True )
 
     %memory mario jump to mario
+    Call RandInt ( 6` *Var0 )
     Call SetAnimation  ( .Actor:Self .marioPart .marioJump )
     Call SetActorJumpGravity   ( .Actor:Self *Fixed[1.5] )
     Call GetActorPos ( .Actor:Player *Var1 *Var2 *Var3 )
@@ -290,7 +297,7 @@
     Call JumpToGoal    ( .Actor:Self  *Var0 .False .True .False )
     
     %move goal position so damage stars appear in a good location
-    Add *Var2 20`
+    Add *Var2 32`
     Call SetGoalPos ( .Actor:Self *Var1 *Var2 *Var3 )
     Call EnemyDamageTarget ( .Actor:Self *Var0 ~Flags:DamageType:NoContact 00000000 00000000 .marioJumpAttackDamage 00000020 )
 
@@ -365,7 +372,7 @@
     Call UseIdleAnimation  ( .Actor:Self .False )
     Call EnableIdleScript  ( .Actor:Self .False )
     Call RandInt ( 99` *Var0 )
-    
+
     If *Var0 < 50`
         ExecWait $MarioJumpAttack
     Else
