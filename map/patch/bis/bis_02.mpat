@@ -328,23 +328,20 @@
 	Return
 	End
 
-	%TODO
-	%Fix all yaws
-	%Bowser Emote Idles
 }
 
 #new:Script $CutscenePartTwo
 {
 	Call SpeakToNpc (.NpcID:Broque .Anim:BroqueTalk .Anim:BroqueIdle 0 .NpcID:Bowser 0031000E)
 	Call SpeakToNpc (.NpcID:Bowser .Anim:BowserHTalk .Anim:BowserIdle 0 .NpcID:Broque 0031000F)
-	Call SpeakToNpc (.NpcID:Broque .Anim:BroqueTalk .Anim:BroqueIdle 0 .NpcID:Bowser 00310010)
+	Call SpeakToNpc (.NpcID:Broque .Anim:BroqueHTalk .Anim:BroqueHIdle 0 .NpcID:Bowser 00310010)
 	Call NpcMoveTo (.NpcID:Blitty 40` 150` 30`)
 	Call PlaySoundAtNpc (.NpcID:Blitty .Sound:Squeak 0 )
 	Wait 5`
 	Call PlaySoundAtNpc (.NpcID:Blitty .Sound:Squeak 0 )
 	Call SpeakToNpc (.NpcID:Blitty .Anim:BlittyTalk .Anim:BlittyIdle 0 .NpcID:Starlow 00310011)
 	Call SpeakToNpc (.NpcID:Bowser .Anim:BowserSTalk .Anim:BowserIdle 0 .NpcID:Starlow 00310012)
-	Call SpeakToNpc (.NpcID:Bowser .Anim:BowserSTalk .Anim:BowserIdle 0 .NpcID:Starlow 00310013)
+	Call SpeakToNpc (.NpcID:Bowser .Anim:BowserTalk .Anim:BowserIdle 0 .NpcID:Starlow 00310013)
 	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowHTalk .Anim:StarlowHIdle 0 .NpcID:Blitty 00310014)
 	Call SpeakToNpc (.NpcID:Broque .Anim:BroqueTalkPoint .Anim:BroqueIdle 0 .NpcID:Bowser 00310015)
 	Call PlaySoundAtNpc (.NpcID:Blitty .Sound:Squeak 0 )
@@ -377,7 +374,7 @@
 	Call PlaySoundAtNpc (.NpcID:Bowser .Sound:Drip 0)
 	Wait 15`
 	Call SpeakToNpc (.NpcID:Bowser .Anim:BowserSTalk .Anim:BowserIdle 0 .NpcID:Broque 0031001B)
-	Call SpeakToNpc (.NpcID:Broque .Anim:BroqueTalk .Anim:BroqueIdle 0 .NpcID:Bowser 0031001C) %make this happy talking
+	Call SpeakToNpc (.NpcID:Broque .Anim:BroqueHTalk .Anim:BroqueHIdle 0 .NpcID:Bowser 0031001C) %make this happy talking
 	Call SpeakToNpc (.NpcID:Bowser .Anim:BowserHTalk .Anim:BowserIdle 0 .NpcID:Broque 0031001D)
 	Call PlaySoundAtNpc (.NpcID:Bowser .Sound:Glub 0)
 	Wait 10`
@@ -385,19 +382,27 @@
 	Wait 10`
 	Call PlaySoundAtNpc (.NpcID:Bowser .Sound:Glub 0)
 	Wait 40`
-	Call SetNpcPos (.NpcID:Bowser 0` 0` -28`)
+	Call SetNpcPos (.NpcID:Bowser 0` 0` -36`)
 	Call SetNpcAnimation (.NpcID:Bowser .Anim:BowserSlump)
 	Call PlaySoundAtNpc (.NpcID:Bowser .Sound:Slam 0)
 	Call GetNpcPos (.NpcID:Bowser *Var0 *Var1 *Var2 )
 	Call PlayEffect (~FX:SmokeImpact:Large *Var0 *Var1 *Var2 00000020 00000004 00000000 0000000A 00000000 00000000 00000000 00000000 00000000)
 	Call SetNpcAnimation ( .NpcID:Starlow .Anim:StarlowNIdle)
 	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowNTalk .Anim:StarlowNIdle 0 .NpcID:Broque 0031001E)
-	Call SetNpcAnimation ( .NpcID:Starlow .Anim:StarlowNIdle) %make fearful
-	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowNTalk .Anim:StarlowNIdle 0 .NpcID:Broque 0031001E)
-	Call SpeakToNpc (.NpcID:Broque .Anim:BroqueTalk .Anim:BroqueIdle 0 .NpcID:Starlow 00310020) %make this happy talking
+	Call SetNpcAnimation ( .NpcID:Starlow .Anim:StarlowFIdle) %make fearful
+	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowFTalk .Anim:StarlowFIdle 0 .NpcID:Broque 0031001F)
+	Call SpeakToNpc (.NpcID:Broque .Anim:BroqueHTalk .Anim:BroqueHIdle 0 .NpcID:Starlow 00310020) %make this happy talking
+	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowFTalk .Anim:StarlowFIdle 0 .NpcID:Broque 00310021)
+	Call SetNpcAnimation (.NpcID:Starlow .Anim:StarlowFreeze)
 
 	Return
 	End
+
+	%TODO
+	%Fix all yaws
+	%Bowser Emote Idles
+	%Broque Cake
+	%TORNADO!!
 
 }
 

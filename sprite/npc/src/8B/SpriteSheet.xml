@@ -12,6 +12,12 @@
 		<Raster id="5" name="talkbase2" palette="0" src="talkbase2.png"/>
 		<Raster id="6" name="talkpoint1" palette="0" src="talkpoint1.png"/>
 		<Raster id="7" name="talkpoint2" palette="0" src="talkpoint2.png"/>
+		<Raster id="8" name="hidle1" palette="0" src="hidle1.png"/>
+		<Raster id="9" name="hidle2" palette="0" src="hidle2.png"/>
+		<Raster id="A" name="hidle3" palette="0" src="hidle3.png"/>
+		<Raster id="B" name="hidle4" palette="0" src="hidle4.png"/>
+		<Raster id="C" name="htalk1" palette="0" src="htalk1.png"/>
+		<Raster id="D" name="htalk2" palette="0" src="htalk2.png"/>
 	</RasterList>
 	<AnimationList>
 		<Animation name="still">
@@ -72,6 +78,28 @@
 				<Command val="1006"/>
 				<Command val="8"/>
 				<Command val="1007"/>
+				<Command val="6"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="h_idle">
+			<Component name="body" xyz="0,0,0">
+				<Command val="1008"/>
+				<Command val="10"/>
+				<Command val="1009"/>
+				<Command val="10"/>
+				<Command val="100A"/>
+				<Command val="10"/>
+				<Command val="100B"/>
+				<Command val="10"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="h_talk">
+			<Component name="body" xyz="0,0,0">
+				<Command val="100C"/>
+				<Command val="6"/>
+				<Command val="100D"/>
 				<Command val="6"/>
 				<Command val="2000"/>
 			</Component>

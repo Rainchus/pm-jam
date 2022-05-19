@@ -230,8 +230,12 @@ good[Pause 10].[Pause 10].[Pause 10].[Pause 10]urgh[Pause 10].[Pause 10].[Pause 
 {
 [STYLE:RIGHT]Mushrooms[Pause 10].[Pause 10].[Pause 10].[BR]
 Dimble Wood[Pause 10].[Pause 10].[Pause 10].[Pause 10][BR]
-[Wait][Next]
-[Size 24][Shake]WAIT! [/fx][BR]
+[Wait][END]
+}
+
+#message:31:(Starlow32)
+{
+[STYLE:RIGHT][Size 24][Shake]WAIT! [/fx][BR]
 [Size 16]BROQUE - WHAT COLORS WERE[BR]
 THOSE MUSHROOMS?![Wait][END]
 }
@@ -248,7 +252,7 @@ magnifique![Wait][END]
 {
 [STYLE:RIGHT][Size 24][Shake]PURPLE AND YELLOW?![Pause 10][/fx][BR]
 [Size 16]THOSE ARE THE COLORS OF THE[BR]
-VACUUM SHROO-[Wait][END]
+VACUUM SHROO-[END]
 }
 
 

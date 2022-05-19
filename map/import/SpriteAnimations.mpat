@@ -10,11 +10,15 @@
 #define .Anim:StarlowNTalk 00010008
 #define .Anim:StarlowAIdle 00010009
 #define .Anim:StarlowATalk 0001000A
+#define .Anim:StarlowFIdle 0001000D
+#define .Anim:StarlowFTalk 0001000E
+#define .Anim:StarlowFreeze 0001000F
 
 #define .Anim:BroqueIdle 008B0001
 #define .Anim:BroqueWalk 008B0002
 #define .Anim:BroqueTalk 00010004
-%#define .Anim:BroqueTalk 00010004 Happy Talking
+#define .Anim:BroqueHIdle 00010006
+#define .Anim:BroqueHTalk 00010007
 #define .Anim:BroqueTalkPoint 00010005
 
 #define .Anim:BlittyIdle 008C0003
