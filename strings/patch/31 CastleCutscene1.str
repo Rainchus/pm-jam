@@ -1,56 +1,56 @@
 #message:31:000
 {
-Starlow, Broque, thanks so much [BR]
-for making the trip back! [BR] 
+[STYLE:RIGHT]Starlow, Broque, thanks so much [BR]
+for making the trip back! [BR]
 [Wait][Next]
-I know it’s been a while since [BR]
-we’ve seen each other, so I [BR]
+I know it's been a while since [BR]
+we've seen each other, so I [BR]
 wanted to catch up and make[BR]
-some more memories.[END]
+some more memories.[Wait][END]
 }
 
 #message:31:001
 {
-No problem, Princess![BR][Pause 5]
-It’s great to see everyone again.[BR]
+[STYLE:RIGHT]No problem, Princess![BR][Pause 5]
+It's great to see everyone again.[BR]
 [Wait][Next]
-Thankfully this time there’s no [BR]
-Dark Star to contend with - hehe.[END]
+Thankfully this time there's no [BR]
+Dark Star to contend with - hehe.[Wait][END]
 }
 
 #message:31:002
 {
-Oui oui! I am ze overjoyed to[BR]
-be back ‘ere with mon friends.[BR]
+[STYLE:RIGHT]Oui oui! I am zee overjoyed to[BR]
+be back 'ere with mon friends.[BR]
 [Wait][Next]
-Ze Dimble Wood was becoming[BR]
-somewhat borings. [Pause 20] Zis food, it is[BR]fantastique! It is foreign, honh?[END]
+Zee Dimble Wood was becoming[BR]
+somewhat borings. [Pause 20] Zis food, it is[BR]fantastique! It is foreign, honh?[Wait][END]
 }
 
 #message:31:003
 {
-No, Broque, it’s just from[BR]
+[STYLE:RIGHT]No, Broque, it's just from[BR]
 another country![BR]
 [Wait][Next]
 Sarasaland makes some [Wave]goooood[/fx][BR]
-grub![END]
+grub![Wait][END]
 }
 
 #message:31:004
 {
-That’s what foreign means,[BR]
-shell-for-brains...[END]
+[STYLE:RIGHT]That's what foreign means,[BR]
+shell-for-brains...[Wait][END]
 }
 
 #message:31:005
 {
-[Shake]Can it, Chippy[/fx]![BR]
-I know what I said...[END]
+[STYLE:RIGHT][Shake]Can it, Chippy[/fx]![BR]
+I know what I said...[Wait][END]
 }
 
 #message:31:006
 {
-Ah, ah, it all is tres bon![Pause 5][BR]
+[STYLE:RIGHT]Ah, ah, it all is tres bon![Pause 5][BR]
 Do not do of the fretting,[BR]
 mon friends.[Pause 5][BR]
 Zis meal is delectable![BR]
@@ -58,190 +58,201 @@ Zis meal is delectable![BR]
 Zat reminds moi: I, Broque [BR]Monsieur, have brought a grand[BR]
 dessert for us all to enjoy![BR]
 [Wait][Next]
-Un moment.[END]
+Un moment.[Wait][END]
 }
 
 #message:31:007
 {
-While Broque retrieves his[BR]
+[STYLE:RIGHT]While Broque retrieves his[BR]
 dessert, I'm going to go check on[BR]
 our Toad Chefs.[Pause 5] The next course[BR]
-should be coming out soon![END]
+should be coming out soon![Wait][END]
 }
 
 #message:31:008
 {
-Well, it’s, uh nice to see you.[BR]
-[Pause 30]I guess.[END]
+[STYLE:RIGHT]Well, it's, uh nice to see you.[BR]
+[Pause 30]I guess.[Wait][END]
 }
 
 #message:31:009
 {
-Nice to see you, too.[BR]
-[Pause 30]I guess.[END]
+[STYLE:RIGHT]Nice to see you, too.[BR]
+[Pause 30]I guess.[Wait][END]
 }
 
 #message:31:00A
 {
-How .[Pause 10] .[Pause 10] .[Pause 20] are the Star Sprites?[END]
+[STYLE:RIGHT]How .[Pause 10] .[Pause 10] .[Pause 20] are the Star Sprites?[Wait][END]
 }
 
 #message:31:00B
 {
-Good,[Pause 10] good.[BR]
+[STYLE:RIGHT]Good,[Pause 10] good.[BR]
 .[Pause 10] .[Pause 10] .[Pause 10][BR]
-How .[Pause 10] .[Pause 10] .[Pause 10] is the kingdom going?[END]
+How .[Pause 10] .[Pause 10] .[Pause 10] is the kingdom going?[Wait][END]
 }
 #message:31:(Bowser13)
 {
-You know, it’s fine.[BR]
+[STYLE:RIGHT]You know, it's fine.[BR]
 [Pause 30]Lots of kindgdom things n' stuff.[BR]
-[Pause 30]Yeah[Pause 10].[Pause 10].[Pause 10].[END]
+[Pause 30]Yeah[Pause 10].[Pause 10].[Pause 10].[Wait][END]
 }
 
 #message:31:(Starlow14)
 {
-Cool[Pause 10].[Pause 10].[Pause 10].[BR]
-[Pause 10]. [Pause 10]. [Pause 10]. [END]
+[STYLE:RIGHT]Cool[Pause 10].[Pause 10].[Pause 10].[BR]
+[Pause 10]. [Pause 10]. [Pause 10].[Wait][END]
 }
 
 #message:31:(Broque15)
 {
-‘Allo, mon friends![Pause 5] I have[BR]
-returned with ze gift of[BR]
+[STYLE:RIGHT]'Allo, mon friends![Pause 5] I have[BR]
+returned with zee gift of[BR]
 sweetness![BR]
 [Wait][Next]
-Zis ‘efty confection is made from[BR]
+Zis 'efty confection is made from[BR]
 all local ingredients, so[BR]
-‘opefully you like it![END]
+'opefully you like it![Wait][END]
 }
 
 #message:31:(Bowser16)
 {
-[Size 24][Shake]WOW![/fx][BR]
-[Size 16][Pause 10]That’s a cake fit for a king![BR]
-[Pause 5]Let’s dig in!![END]
+[STYLE:RIGHT][Size 24][Shake]WOW![/fx][BR]
+[Size 16][Pause 10]That's a cake fit for a king![BR]
+[Pause 5]Let's dig in!![Wait][END]
 }
 
 #message:31:(Broque17)
 {
-[Wave]Hohohonh![/fx] I’m glad you like![BR]
-[Pause 30]Ze Blitties came for ze trip, too.[Pause 5][BR]
+[STYLE:RIGHT][Wave]Hohohonh![/fx] I'm glad you like![BR]
+[Pause 30]Zee Blitties came for zee trip, too.[Pause 5][BR]
 Say your greetings, mon petit[BR]
-friends![END]
+friend![Wait][END]
 }
 
 #message:31:(Blitty18)
 {
-Blit![Pause 10] Blit blit blit![END]
+[STYLE:RIGHT]Blit![Pause 10] Blit blit blit![Wait][END]
 }
 
 #message:31:(Bowser19)
 {
-Aw man, you didn’t bring Broggy?[Pause 5][BR]
-I’m so down for a rematch![Pause 5][BR]
-That crazy mutt sure can put[BR]
-up a fight![END]
+[STYLE:RIGHT]Aw man, you didn't bring Broggy?
+[Wait][END]
 }
 
-#message:31:(Starlow20)
+#message:31:(Bowser20)
 {
-The Blitties are [Wave]suuuuuper[/fx] cute,[BR]
+[STYLE:RIGHT]I'm so down for a rematch![Pause 5][BR]
+That crazy mutt sure can put[BR]
+up a fight![Wait][END]
+}
+
+#message:31:(Starlow21)
+{
+[STYLE:RIGHT]The Blitties are [Wave]suuuuuper[/fx] cute,[BR]
 though![Pause 5][BR]
 Hi there, little Blitty!
-[END]
+[Wait][END]
 }
 
-#message:31:(Broque21)
+#message:31:(Broque22)
 {
-I ‘ave been teachings zhem zee[BR]
+[STYLE:RIGHT]I 'ave been teachings zhem zee[BR]
 techniques![Pause 5] Zey are zee most[BR]
 smartest and strongest pets[BR]
 around![BR]
 [Wait][Next]
 When we return to zee eating,[BR]
 ask zee blitties all about zis.
-[END]
+[Wait][END]
 }
 
-#message:31:(Bowser22)
+#message:31:(Bowser23)
 {
-Return to eating?[Pause 10][BR]
-I can’t wait up for the Princess -[Pause 10][BR]there’s a gigantic cake in front[BR]of me![END]
+[STYLE:RIGHT]Return to eating?[Pause 10][BR]
+I can't wait up for the Princess -[Pause 10][BR]there's a gigantic cake in front[BR]of me![Wait][END]
 }
 
-#message:31:(Starlow23)
+#message:31:(Starlow24)
 {
-Haven't you ever heard of[BR]
-courtesy?[END]
-}
-
-#message:31:(Bowser24)
-{
-Courtesy is for chumps![Pause 5][BR]
-Move out of the way, Chippy![END]
+[STYLE:RIGHT]Haven't you ever heard of[BR]
+courtesy?[Wait][END]
 }
 
 #message:31:(Bowser25)
 {
-[Wave]Man,[Pause 5] that hits the spot[/fx].[END]
+[STYLE:RIGHT]Courtesy is for chumps![Pause 5][BR]
+Move out of the way, Chippy![Wait][END]
 }
 
-#message:31:(Starlow26)
+#message:31:(Bowser26)
 {
-Typical[Pause 10].[Pause 10].[Pause 10].[END]
+[STYLE:RIGHT][Wave]Man,[Pause 5] that hits the spot[/fx].[Wait][END]
 }
 
-#message:31:(Bowser27)
+#message:31:(Starlow27)
 {
-Ugh[Pause 20].[Pause 20].[Pause 20].[BR]
+[STYLE:RIGHT]Typical[Pause 10].[Pause 10].[Pause 10].[Wait][END]
+}
+
+#message:31:(Bowser28)
+{
+[STYLE:RIGHT]Ugh[Pause 20].[Pause 20].[Pause 20].[BR]
 Hey, Mr. Block Man, what did you[BR]
 say was in this cake again?[BR]
-My stomach isn’t feeling too good.
-[END]
+My stomach isn't feeling too good.
+[Wait][END]
 }
 
-#message:31:(Broque28)
+#message:31:(Broque29)
 {
-Ah, all zee freshest and most[BR]
+[STYLE:RIGHT]Ah, all zee freshest and most[BR]
 delicious ingredients from zee[BR]
 Dimble Wood![BR]
 [Wait][Next]
 Zee finest flour,[Pause 10][BR]
 spectacular sugar,[Pause 10][BR]
-and an ‘andful of fungi![BR]
+and an 'andful of fungi![BR]
 [Wait][Next]
 Such pretty colors on zee fungi,[Pause 10][BR]
-[Wave]hoho[/fx]![END]
+[Wave]hoho[/fx]![Wait][END]
 }
 
-#message:31:(Bowser29)
+#message:31:(Bowser30)
 {
-Man, I’m REALLY not feeling[BR]
-good[Pause 10].[Pause 10].[Pause 10].[Pause 10]urgh[Pause 10].[Pause 10].[Pause 10].[Pause 10]hurgh[Pause 10].[Pause 10].[Pause 10].[END]
+[STYLE:RIGHT]Man, I'm REALLY not feeling[BR]
+good[Pause 10].[Pause 10].[Pause 10].[Pause 10]urgh[Pause 10].[Pause 10].[Pause 10].[Pause 10]hurgh[Pause 10].[Pause 10].[Pause 10].[Wait][END]
 }
 
-#message:31:(Starlow30)
+#message:31:(Starlow31)
 {
-Mushrooms[Pause 10].[Pause 10].[Pause 10].[BR]
+[STYLE:RIGHT]Mushrooms[Pause 10].[Pause 10].[Pause 10].[BR]
 Dimble Wood[Pause 10].[Pause 10].[Pause 10].[Pause 10][BR]
-[Wait][Next]
-[Size 24][Shake]WAIT! [/fx][BR]
-[Size 16]BROQUE - WHAT COLORS WERE[BR]
-THOSE MUSHROOMS?![END]
-}
-
-#message:31:(Broque31)
-{
-Zhey were zee most beautiful[BR]
-purples and yellows I have ever[BR]
-done of the seenings![Pause 10] Zey smelled[BR]
-magnifique![END]
+[Wait][END]
 }
 
 #message:31:(Starlow32)
 {
-[Size 24][Shake]PURPLE AND YELLOW?![Pause 10][/fx][BR]
+[STYLE:RIGHT][Size 24][Shake]WAIT! [/fx][BR]
+[Size 16]BROQUE - WHAT COLORS WERE[BR]
+THOSE MUSHROOMS?![Wait][END]
+}
+
+#message:31:(Broque32)
+{
+[STYLE:RIGHT]Zhey were zee most beautiful[BR]
+purples and yellows I have ever[BR]
+done of the seenings![Pause 10] Zey smelled[BR]
+magnifique![Wait][END]
+}
+
+#message:31:(Starlow33)
+{
+[STYLE:RIGHT][Size 24][Shake]PURPLE AND YELLOW?![Pause 10][/fx][BR]
 [Size 16]THOSE ARE THE COLORS OF THE[BR]
 VACUUM SHROO-[END]
 }
+
+
