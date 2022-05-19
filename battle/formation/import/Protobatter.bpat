@@ -1,38 +1,37 @@
-#define .marioStill     00A20000
-#define .marioIdle      00A20001
-#define .marioRun       00A20002
-#define .marioJump      00A20003
-#define .marioRaiseMushroom 00A20004
-#define .marioThrowMushroom 00A20005
-#define .blockMushroom  00A20006
-#define .marioRaiseStar 00A20007
-#define .marioThrowStar 00A20008
-#define .blockStar      00A20009
-#define .marioHurt      00A2000A
-#define .marioDead      00A2000B
-#define .marioBurnHurt  00A2000C
-#define .marioBurnDead  00A2000D
-#define .marioDizzy     00A2000E
-#define .marioSleep     00A2000F
+#define .protoStill     00280000
+#define .protoIdle      00280001
+#define .protoWalk      00280002
+#define .protoRun       00280003
+#define .protoSpit      00280004
+#define .protoHit       00280005
+#define .bulletGrow     00280006
+#define .bulletPart     00280007
+#define .protoHurt      00280008
+#define .protoDead      00280009
+#define .protoBurnHurt  0028000A
+#define .protoBurnDead  0028000B
+#define .protoDizzy     0028000C
+#define .protoSleep     0028000D
 
-#define .marioJumpAttackDamage 6`
-#define .marioDashDamage 5`
 
-#define .marioPart 1
-#define .starPart 2
+#define .protobatterThrowDamage 6`
+#define .protobatterHitDamage 5`
 
-#new:Actor $MarioMemory {
+#define .protoPart 1
+#define .protoBullet 2
+
+#new:Actor $Protobatter {
     % stats
     [Index]         7b 
     [Level]         5`b 
     [MaxHP]         50`b 
     [Coins]         1`b 
     [Flags]       00000000 
-    [StatusTable] $StatusTable_MemoryMario 
+    [StatusTable] $StatusTable_Protobatter
     % ai
     [PartsCount]    2`s 
-    [PartsTable]  $PartsTable_MemoryMario0
-    [Script]      $Script_Init_MemoryMario 
+    [PartsTable]  $PartsTable_Protobatter
+    [Script]      $Script_Init_Protobatter
     % move effectiveness
     [Escape]       90`b 
     [Item]        100`b 
@@ -48,12 +47,12 @@
     [StatusIcon]   10`b  20`b % dx dy
 }
 
-#new:DefenseTable $DefenseTable_MemoryMario {
+#new:DefenseTable $DefenseTable_Protobatter {
 .Element:Normal 00000000
 .Element:End
 }
 
-#new:StatusTable $StatusTable_MemoryMario {
+#new:StatusTable $StatusTable_Protobatter {
 .Status:Normal      0`
 .Status:Default     0`
 .Status:Sleep     100`
@@ -78,30 +77,30 @@
 .Status:End
 }
 
-#new:PartsTable $PartsTable_MemoryMario0 { %ActorPartBlueprint struct in decomp
+#new:PartsTable $PartsTable_Protobatter { %ActorPartBlueprint struct in decomp
 /% s32 flags %/                 00800000
 /% s8 index %/                  01b
 /% Vec3b posOffset %/           00b 00b 00b
-/% Vec2b targetOffset %/        00b 2Bb %for cursor when selecting to attack in battle
+/% Vec2b targetOffset %/        00b 24b %for cursor when selecting to attack in battle
 /% s16 opacity %/               00FFs
-/% s32* IdleAnimations %/       $IdleAnimations_MemoryMario
-/% s32* defenseTable %/         $DefenseTable_MemoryMario
+/% s32* IdleAnimations %/       $IdleAnimations_Protobatter
+/% s32* defenseTable %/         $DefenseTable_Protobatter
 /% s32 eventFlags %/            00000000
 /% s32 elementImmunityFlags %/  00000000
 /% s8 unk_1C %/                 00b
 /% s8 unk_1D %/                 F6b
 /% s8 unk_1E %/                 00b
 /% s8 unk_1F %/                 00b
-/% s8 unk_20 %/                 00000000 
+/% s8 unk_20 %/                 00000000
 
-%star
+%bullet
 /% s32 flags %/                 00120001
 /% s8 index %/                  02b
 /% Vec3b posOffset %/           00b 00b 00b
 /% Vec2b targetOffset %/        00b 00b %for cursor when selecting to attack in battle
 /% s16 opacity %/               00FFs
-/% s32* IdleAnimations %/       $IdleAnimations_Star
-/% s32* defenseTable %/         $DefenseTable_MemoryMario
+/% s32* IdleAnimations %/       $IdleAnimations_Protobatter
+/% s32* defenseTable %/         $DefenseTable_Protobatter
 /% s32 eventFlags %/            00000000
 /% s32 elementImmunityFlags %/  00000000
 /% s8 unk_1C %/                 00b
@@ -111,38 +110,33 @@
 /% s8 unk_20 %/                 00000000
 }
 
-#new:IdleAnimations $IdleAnimations_Star {
-    .Status:Normal    .blockStar
-    .Status:End
-    }
-
-#new:IdleAnimations $IdleAnimations_MemoryMario {
-.Status:Normal    .marioIdle
-.Status:Stone     .marioIdle
-.Status:Sleep     .marioSleep
-.Status:Poison    .marioIdle
-.Status:Stop      .marioStill
-.Status:Static    .marioIdle
-.Status:Paralyze  .marioIdle
-.Status:Dizzy     .marioDizzy
-.Status:Fear      .marioIdle
+#new:IdleAnimations $IdleAnimations_Protobatter {
+.Status:Normal    .protoIdle
+.Status:Stone     .protoIdle
+.Status:Sleep     .protoSleep
+.Status:Poison    .protoIdle
+.Status:Stop      .protoStill
+.Status:Static    .protoIdle
+.Status:Paralyze  .protoIdle
+.Status:Dizzy     .protoDizzy
+.Status:Fear      .protoIdle
 .Status:End
 }
 
-#new:Script $Script_Init_MemoryMario {
-    0:  Call  BindTakeTurn      ( .Actor:Self $Script_TakeTurn_MemoryMario )
-    14:  Call  BindIdle  ( .Actor:Self $Script_Idle_MemoryMario )
-    28:  Call  BindHandleEvent   ( .Actor:Self $Script_HandleEvent_MemoryMario )
-    3C:  Return
-    44:  End
-}
-
-#new:Script $Script_Idle_MemoryMario {
+#new:Script $Script_Init_Protobatter {
+    Call BindTakeTurn ( .Actor:Self $Script_TakeTurn_Protobatter )
+    Call BindIdle ( .Actor:Self $Script_Idle_Protobatter )
+    Call BindHandleEvent ( .Actor:Self $Script_HandleEvent_Protobatter )
     Return
     End
 }
 
-#new:Script $Script_HandleEvent_MemoryMario {
+#new:Script $Script_Idle_Protobatter {
+    Return
+    End
+}
+
+#new:Script $Script_HandleEvent_Protobatter {
     0:  Call  UseIdleAnimation  ( .Actor:Self .False )
     14:  Call  EnableIdleScript  ( .Actor:Self 00000000 )
     28:  Call  SetActorScale     ( .Actor:Self *Fixed[1.0] *Fixed[1.0] *Fixed[1.0] )
@@ -151,21 +145,21 @@
     64:  	CaseOR  ==  .Event:HitCombo % 9
     70:  	CaseOR  ==  .Event:Hit % A
     7C:  		SetConst  *Var0  00000001 
-    8C:  		SetConst  *Var1  .marioHurt 
+    8C:  		SetConst  *Var1  .protoHurt 
     9C:  		ExecWait  DoNormalHit 
     A8:  	EndCaseGroup 
     B0:  	Case  ==  .Event:BurnHit % E
     BC:  		SetConst  *Var0  00000001 
-    CC:  		SetConst  *Var1  .marioBurnHurt 
-    DC:  		SetConst  *Var2  .marioBurnDead 
+    CC:  		SetConst  *Var1  .protoBurnHurt 
+    DC:  		SetConst  *Var2  .protoBurnDead 
     EC:  		ExecWait  DoBurnHit 
     F8:  	Case  ==  .Event:BurnDeath % 24
     104:  		SetConst  *Var0  00000001 
-    114:  		SetConst  *Var1  .marioBurnHurt 
-    124:  		SetConst  *Var2  .marioBurnDead 
+    114:  		SetConst  *Var1  .protoBurnHurt
+    124:  		SetConst  *Var2  .protoBurnDead
     134:  		ExecWait  DoBurnHit 
     140:  		SetConst  *Var0  00000001 
-    150:  		SetConst  *Var1  .marioBurnDead 
+    150:  		SetConst  *Var1  .protoBurnDead
     160:  		ExecWait  DoDeath 
     16C:  		Return
         EndSwitch %temp
@@ -253,52 +247,26 @@
     % 658:  		Return
     % 660:  	Default
     % 668:  EndSwitch
-    670:  Call  SetAnimation      ( .Actor:Self 00000001 .marioIdle )
+    670:  Call  SetAnimation      ( .Actor:Self 00000001 .protoIdle )
     688:  Call  EnableIdleScript  ( .Actor:Self 00000001 )
     69C:  Call  UseIdleAnimation  ( .Actor:Self .True )
     6B0:  Return
     6B8:  End
 }
 
-#new:FloatTable $FloatTable_MemoryMario {
-0.0      0.017452 0.034899 0.052336 0.069756 0.087156 0.104528 0.121869
-0.139173 0.156434 0.173648 0.190809 0.207912 0.224951 0.241922 0.258819
-0.275637 0.292372 0.309017 0.325568 0.34202  0.358368 0.374607 0.390731
-0.406737 0.422618 0.438371 0.45399  0.469472 0.48481  0.5      0.515038
-0.529919 0.544639 0.559193 0.573576 0.587785 0.601815 0.615661 0.62932
-0.642788 0.656059 0.669131 0.681998 0.694658 0.707107 0.71934  0.731354
-0.743145 0.75471  0.766044 0.777146 0.788011 0.798636 0.809017 0.819152
-0.829038 0.838671 0.848048 0.857167 0.866025 0.87462  0.882948 0.891007
-0.898794 0.906308 0.913545 0.920505 0.927184 0.93358  0.939693 0.945519
-0.951057 0.956305 0.961262 0.965926 0.970296 0.97437  0.978148 0.981627
-0.984808 0.987688 0.990268 0.992546 0.994522 0.996195 0.997564 0.99863
-0.999391 0.999848 1.0
-}
+#new:Script $ProtobatterSwing {
+    %run to player
+    Call SetTargetActor ( .Actor:Self .Actor:Player )
+    Call SetGoalToTarget   ( .Actor:Self )
+    Call AddGoalPos ( .Actor:Self 20` 0` 0` )
+    Call SetActorSpeed ( .Actor:Self *Fixed[4.0] )
+    Call SetAnimation ( .Actor:Self .protoPart .protoRun )
+    Call RunToGoal ( .Actor:Self 30` .False )
+    Call SetAnimation  ( .Actor:Self .protoPart .protoHit )
+    Wait 26` %duration of swing
 
-%Call  EnableActorGlow   ( .Actor:Self .True ) for rainbow effect
-
-#new:Script $MarioJumpAttack {
-    %memory mario takes a step forward before jumping
-    Call SetAnimation ( .Actor:Self .marioPart .marioRun )
-    Call GetActorPos ( .Actor:Self *Var0 *Var1 *Var2 )
-    Add *Var0 -25
-    Call SetGoalPos ( .Actor:Self *Var0 *Var1 *Var2 )
-    Call SetActorSpeed ( .Actor:Self *Fixed[3.0] )
-    Call RunToGoal ( .Actor:Self 0` .True )
-
-    %memory mario jump to mario
-    Call RandInt ( 6` *Var0 )
-    Call SetAnimation  ( .Actor:Self .marioPart .marioJump )
-    Call SetActorJumpGravity   ( .Actor:Self *Fixed[1.5] )
-    Call GetActorPos ( .Actor:Player *Var1 *Var2 *Var3 )
-    Add *Var3 1` %add 1 to Z pos to remove Z fighting
-    Call SetGoalPos ( .Actor:Self *Var1 *Var2 *Var3 )
-    Add *Var0 23`
-    Call JumpToGoal    ( .Actor:Self  *Var0 .False .True .False )
-    
-    %move goal position so damage stars appear in a good location
-    Add *Var2 32`
-    Call SetGoalPos ( .Actor:Self *Var1 *Var2 *Var3 )
+    %move damage star position to a normal location
+    Call SetGoalToTarget   ( .Actor:Self )
 
     %damage target if not invisible
     Call  EnemyTestTarget   ( .Actor:Self *Var1 ~Flags:DamageType:0 00000000 00000001 00000010 )
@@ -306,13 +274,15 @@
         CaseOR  ==  .HitResult:Miss % 6
         CaseOR  ==  .HitResult:Lucky % 5
         Default
-            Call EnemyDamageTarget ( .Actor:Self *Var0 ~Flags:DamageType:NoContact 00000000 00000000 .marioJumpAttackDamage 00000020 )
+            Call EnemyDamageTarget ( .Actor:Self *Var0 ~Flags:DamageType:NoContact 00000000 00000000 .protobatterHitDamage 00000020 )
     EndSwitch
 
-    %memory mario returns to home
-    Call SetAnimation ( .Actor:Self .marioPart .marioIdle )
-    Wait 5`
-    Call SetAnimation ( .Actor:Self .marioPart .marioRun )
+    %idle for a bit
+    Call SetAnimation  ( .Actor:Self .protoPart .protoIdle )
+    Wait 6`
+
+    %run back to home
+    Call SetAnimation ( .Actor:Self .protoPart .protoRun )
     Call SetGoalToHome ( .Actor:Self )
     Call SetActorSpeed ( .Actor:Self *Fixed[4.0] )
     Call RunToGoal ( .Actor:Self 0` .True )
@@ -321,75 +291,14 @@
     End
 }
 
-#new:Script $MarioRunAttack {
-    %mario uses star
-    Call SetAnimation( .Actor:Self .marioPart .marioRaiseStar)
-    Wait 13` %animation of star raise
-    Call SetAnimation( .Actor:Self .marioPart .marioThrowStar)
-    Wait 18`
-    Call SetAnimation( .Actor:Self .marioPart .marioIdle)
-
-    %throw star into air
-    Call  GetActorPos ( .Actor:Self *Var3 *Var1 *Var2 )
-    Set *Var0 *Var3
-    Add *Var3 -18` %offset star starting X position
-    Add *Var2 1` %get rid of Z fighting
-    Call  SetPartPos        ( .Actor:Self .starPart  *Var3  *Var1  *Var2 )
-    Call  SetPartScale  ( .Actor:Self .starPart *Fixed[1.0] *Fixed[1.0] *Fixed[1.0] )
-    Call  SetPartJumpGravity    ( .Actor:Self .starPart *Fixed[4.0] )
-    Call  SetPartFlagBits   ( .Actor:Self .starPart 00000001 .False )
-    Add *Var1 20` %jump to mario's head and then disappear
-    Call  JumpPartTo        ( .Actor:Self .starPart *Var0 *Var1 *Var2  15` .True )
-    Call  SetPartFlagBits   ( .Actor:Self .starPart 00000001 .True )
-    Call EnableActorGlow ( .Actor:Self .True )
-    Wait 5`
-
-    %mario running attacking player
-    Call SetAnimation( .Actor:Self .marioPart .marioRun)
-    Call SetGoalToTarget ( .Actor:Self )
-    Call SetActorSpeed ( .Actor:Self *Fixed[10.5] )
-    Call RunToGoal ( .Actor:Self 0` .True )
-
-    %damage target if not invisible
-    Call  EnemyTestTarget   ( .Actor:Self *Var1 ~Flags:DamageType:0 00000000 00000001 00000010 )
-    Switch  *Var1 
-        CaseOR  ==  .HitResult:Miss % 6
-        CaseOR  ==  .HitResult:Lucky % 5
-        Default
-            Call EnemyDamageTarget ( .Actor:Self *Var0 ~Flags:DamageType:NoContact 00000000 00000000 .marioDashDamage 00000020 )
-    EndSwitch
-
-    %run off screen
-    Call AddGoalPos ( .Actor:Self -180` 0` 0` )
-    Call SetActorSpeed ( .Actor:Self *Fixed[10.5] )
-    Call RunToGoal ( .Actor:Self 0` .True )
-
-    %wrap around from left of screen to right and then walk back to home position
-    Wait 30`
-    Call SetAnimation ( .Actor:Self .marioPart .marioRun )
-    Call SetActorPos ( .Actor:Self 200` 0` 0` )
-    Call SetGoalToHome ( .Actor:Self )
-    Call SetActorSpeed ( .Actor:Self *Fixed[4.0] )
-    Call RunToGoal ( .Actor:Self 0` .True )
-    Call EnableActorGlow ( .Actor:Self .False )
-    Return
-    End
-}
-
-#new:Script $Script_TakeTurn_MemoryMario {
+#new:Script $Script_TakeTurn_Protobatter {
     Call UseIdleAnimation  ( .Actor:Self .False )
     Call EnableIdleScript  ( .Actor:Self .False )
-    Call RandInt ( 99` *Var0 )
 
-    If *Var0 < 50`
-        ExecWait $MarioJumpAttack
-    Else
-        ExecWait $MarioRunAttack
-    EndIf
+    ExecWait $ProtobatterSwing
 
     Call EnableIdleScript  ( .Actor:Self .True )
     Call UseIdleAnimation  ( .Actor:Self .True )
     Return
     End
 }
-    
