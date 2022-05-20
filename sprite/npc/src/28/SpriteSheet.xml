@@ -2,6 +2,7 @@
 <SpriteSheet maxComponents="2" paletteGroups="4">
 	<PaletteList>
 		<Palette id="0" src="Palette_00.png"/>
+		<Palette id="1" name="Pep_Palette" src="Palette_01.png"/>
 	</PaletteList>
 	<RasterList>
 		<Raster id="0" palette="0" src="idle1.png"/>
@@ -198,6 +199,61 @@
 				<Command val="2"/>
 				<Command val="5000"/>
 				<Command val="96"/>
+				<Command val="2"/>
+				<Command val="202F"/>
+			</Component>
+		</Animation>
+		<Animation name="grow2">
+			<Component xyz="0,0,0">
+				<Command val="1002"/>
+				<Command val="2"/>
+				<Command val="5002"/>
+				<Command val="78"/>
+				<Command val="5001"/>
+				<Command val="A5"/>
+				<Command val="2"/>
+				<Command val="5001"/>
+				<Command val="B4"/>
+				<Command val="5002"/>
+				<Command val="69"/>
+				<Command val="2"/>
+				<Command val="5001"/>
+				<Command val="BC"/>
+				<Command val="5002"/>
+				<Command val="62"/>
+				<Command val="2"/>
+				<Command val="5001"/>
+				<Command val="B4"/>
+				<Command val="5002"/>
+				<Command val="69"/>
+				<Command val="2"/>
+				<Command val="5001"/>
+				<Command val="B4"/>
+				<Command val="5002"/>
+				<Command val="87"/>
+				<Command val="2"/>
+				<Command val="5001"/>
+				<Command val="C3"/>
+				<Command val="5002"/>
+				<Command val="A5"/>
+				<Command val="2"/>
+				<Command val="5001"/>
+				<Command val="D2"/>
+				<Command val="5002"/>
+				<Command val="BC"/>
+				<Command val="2"/>
+				<Command val="5001"/>
+				<Command val="D2"/>
+				<Command val="5002"/>
+				<Command val="C3"/>
+				<Command val="2"/>
+				<Command val="5001"/>
+				<Command val="DA"/>
+				<Command val="5002"/>
+				<Command val="D2"/>
+				<Command val="2"/>
+				<Command val="5000"/>
+				<Command val="E1"/>
 				<Command val="2"/>
 				<Command val="202F"/>
 			</Component>
