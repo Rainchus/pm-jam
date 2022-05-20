@@ -421,8 +421,10 @@
 #new:Script $LuigiRunAttackMain {
     Call  SetTargetActor    ( .Actor:Self .Actor:Player )
     Call SetAnimation ( .Actor:Self .luigiPart .luigiScared )
-    Wait 24`
-
+    Wait 8`
+    Call PlaySoundAtActor (.Actor:Self .Sound:BooSpook)
+    Wait 16`
+    
     Call  EnemyTestTarget   ( .Actor:Self *Var1 ~Flags:DamageType:0 00000000 00000001 00000010 )
 
     Switch  *Var1 

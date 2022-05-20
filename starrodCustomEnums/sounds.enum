@@ -10,6 +10,8 @@ false	% reversed
 046 = JrTroopaSwim
 047 = BooSpook
 
+0B2 = Star
+
 0C1 = BooVanish
 0C3 = BooAppear
 
@@ -71,6 +73,8 @@ false	% reversed
 321 = MoleSurface
 322 = MoleDig
 323 = MolePop
+
+340 = Slam
 
 3E2 = Jump
 3E3 = MissJump	% or tripping

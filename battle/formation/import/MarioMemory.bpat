@@ -295,6 +295,8 @@
     Call SetGoalPos ( .Actor:Self *Var1 *Var2 *Var3 )
     Add *Var0 23`
     Call JumpToGoal    ( .Actor:Self  *Var0 .False .True .False )
+    Call PlayEffect (~FX:ShockWave:White *Var1 *Var2 *Var3)
+    Call PlaySoundAtActor (.Actor:Self .Sound:Slam)
     
     %move goal position so damage stars appear in a good location
     Add *Var2 32`
@@ -341,8 +343,10 @@
     Add *Var1 20` %jump to mario's head and then disappear
     Call  JumpPartTo        ( .Actor:Self .starPart *Var0 *Var1 *Var2  15` .True )
     Call  SetPartFlagBits   ( .Actor:Self .starPart 00000001 .True )
+    Call PlaySoundAtActor (.Actor:Self .Sound:Star)
+    Call PlayEffect(~FX:Sparkles:Star *Var0 *Var1 *Var2 32` )
     Call EnableActorGlow ( .Actor:Self .True )
-    Wait 5`
+    Wait 20`
 
     %mario running attacking player
     Call SetAnimation( .Actor:Self .marioPart .marioRun)
