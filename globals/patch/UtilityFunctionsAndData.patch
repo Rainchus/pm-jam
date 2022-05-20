@@ -18,6 +18,25 @@
     NOP
 }
 
+#export:Function:Battle $SetNewCursorPositionForProtoBatter {
+    PUSH s0, s1, ra
+
+    ADDU s0, a0, r0
+    LW s1, 000C (a0) %load pointer to script args
+
+    %assuming this will never be a Var[X]
+    LW a0, 0000 (s1) %load arg0
+    ADDIU a1, r0, FF81 %actor self ID
+    BEQ a0, a1, .actorSelf
+    NOP
+    
+    .actorSelf
+
+    POP s0, s1, ra
+    JR RA
+    ORI v0, r0, 2
+}
+
 #export:Function $DrawMenuBox {
     ADDIU        SP, SP, -58
     SW        RA, 50 (SP)

@@ -144,27 +144,27 @@
 
 #new:Script $Script_HandleEvent_MemoryMario {
     0:  Call  UseIdleAnimation  ( .Actor:Self .False )
-    14:  Call  EnableIdleScript  ( .Actor:Self 00000000 )
+    14:  Call  EnableIdleScript  ( .Actor:Self .False )
     28:  Call  SetActorScale     ( .Actor:Self *Fixed[1.0] *Fixed[1.0] *Fixed[1.0] )
     44:  Call  GetLastEvent      ( .Actor:Self *Var0 )
     58:  Switch  *Var0 
     64:  	CaseOR  ==  .Event:HitCombo % 9
     70:  	CaseOR  ==  .Event:Hit % A
-    7C:  		SetConst  *Var0  00000001 
+    7C:  		SetConst  *Var0  .marioPart 
     8C:  		SetConst  *Var1  .marioHurt 
-    9C:  		ExecWait  DoNormalHit 
-    A8:  	EndCaseGroup 
+    9C:  		ExecWait  DoNormalHit
+    A8:  	EndCaseGroup
     B0:  	Case  ==  .Event:BurnHit % E
-    BC:  		SetConst  *Var0  00000001 
+    BC:  		SetConst  *Var0  .marioPart 
     CC:  		SetConst  *Var1  .marioBurnHurt 
     DC:  		SetConst  *Var2  .marioBurnDead 
-    EC:  		ExecWait  DoBurnHit 
+    EC:  		ExecWait  DoBurnHit
     F8:  	Case  ==  .Event:BurnDeath % 24
-    104:  		SetConst  *Var0  00000001 
+    104:  		SetConst  *Var0  .marioPart 
     114:  		SetConst  *Var1  .marioBurnHurt 
     124:  		SetConst  *Var2  .marioBurnDead 
     134:  		ExecWait  DoBurnHit 
-    140:  		SetConst  *Var0  00000001 
+    140:  		SetConst  *Var0  .marioPart 
     150:  		SetConst  *Var1  .marioBurnDead 
     160:  		ExecWait  DoDeath 
     16C:  		Return
@@ -253,8 +253,8 @@
     % 658:  		Return
     % 660:  	Default
     % 668:  EndSwitch
-    670:  Call  SetAnimation      ( .Actor:Self 00000001 .marioIdle )
-    688:  Call  EnableIdleScript  ( .Actor:Self 00000001 )
+    670:  Call  SetAnimation      ( .Actor:Self .marioPart .marioIdle )
+    688:  Call  EnableIdleScript  ( .Actor:Self .True )
     69C:  Call  UseIdleAnimation  ( .Actor:Self .True )
     6B0:  Return
     6B8:  End

@@ -146,27 +146,27 @@
 
 #new:Script $Script_HandleEvent_MemoryLuigi {
     0:  Call  UseIdleAnimation  ( .Actor:Self .False )
-    14:  Call  EnableIdleScript  ( .Actor:Self 00000000 )
+    14:  Call  EnableIdleScript  ( .Actor:Self .False )
     28:  Call  SetActorScale     ( .Actor:Self *Fixed[1.0] *Fixed[1.0] *Fixed[1.0] )
     44:  Call  GetLastEvent      ( .Actor:Self *Var0 )
     58:  Switch  *Var0 
     64:  	CaseOR  ==  .Event:HitCombo % 9
     70:  	CaseOR  ==  .Event:Hit % A
-    7C:  		SetConst  *Var0  00000001 
+    7C:  		SetConst  *Var0  .luigiPart 
     8C:  		SetConst  *Var1  .luigiHurt 
-    9C:  		ExecWait  DoNormalHit 
+    9C:  		ExecWait  DoNormalHit
     A8:  	EndCaseGroup 
     B0:  	Case  ==  .Event:BurnHit % E
-    BC:  		SetConst  *Var0  00000001 
+    BC:  		SetConst  *Var0  .luigiPart 
     CC:  		SetConst  *Var1  .luigiBurnHurt 
     DC:  		SetConst  *Var2  .luigiBurnDead 
     EC:  		ExecWait  DoBurnHit 
     F8:  	Case  ==  .Event:BurnDeath % 24
-    104:  		SetConst  *Var0  00000001 
+    104:  		SetConst  *Var0  .luigiPart 
     114:  		SetConst  *Var1  .luigiBurnHurt 
     124:  		SetConst  *Var2  .luigiBurnDead 
     134:  		ExecWait  DoBurnHit 
-    140:  		SetConst  *Var0  00000001 
+    140:  		SetConst  *Var0  .luigiPart 
     150:  		SetConst  *Var1  .luigiBurnDead 
     160:  		ExecWait  DoDeath 
     16C:  		Return
@@ -255,8 +255,8 @@
     % 658:  		Return
     % 660:  	Default
     % 668:  EndSwitch
-    670:  Call  SetAnimation      ( .Actor:Self 00000001 .luigiIdle )
-    688:  Call  EnableIdleScript  ( .Actor:Self 00000001 )
+    670:  Call  SetAnimation      ( .Actor:Self .luigiPart .luigiIdle )
+    688:  Call  EnableIdleScript  ( .Actor:Self .True )
     69C:  Call  UseIdleAnimation  ( .Actor:Self .True )
     6B0:  Return
     6B8:  End
@@ -276,30 +276,6 @@
 0.984808 0.987688 0.990268 0.992546 0.994522 0.996195 0.997564 0.99863
 0.999391 0.999848 1.0
 }
-
-%original code
-% #new:Script $LuigiHammerThrow {
-%     Call  SetTargetActor    ( .Actor:Self .Actor:Player )
-%     Call  SetAnimation ( .Actor:Self 1` .luigiRaise )
-%     Wait 28`
-%     Call  SetAnimation ( .Actor:Self 1` .luigiThrow )
-%     Wait 15`
-%     Call  GetActorPos ( .Actor:Self *Var0 *Var1 *Var2 )
-%     Add *Var1 -10`
-%     Add *Var1 20`
-%     Call  SetPartPos        ( .Actor:Self .hammerPart  *Var0  *Var1  *Var2 )
-%     Call  SetPartScale  ( .Actor:Self .hammerPart *Fixed[1.0] *Fixed[1.0] *Fixed[1.0] )
-%     Call  SetPartJumpGravity    ( .Actor:Self .hammerPart *Fixed[3.0] )
-%     Call  SetPartFlagBits   ( .Actor:Self .hammerPart 00000001 .False )
-%     Call  SetGoalToTarget   ( .Actor:Self )
-%     Call  GetGoalPos        ( .Actor:Self *Var0 *Var1 *Var2 )
-%     Call  JumpPartTo        ( .Actor:Self .hammerPart *Var0 *Var1 *Var2  15` .True )
-%     Call  SetPartFlagBits   ( .Actor:Self .hammerPart 00000001 .True )
-%     Wait  2`
-%     Call  EnemyDamageTarget ( .Actor:Self *Var0 ~Flags:DamageType:NoContact 00000000 00000000 .hammerThrowDamage 00000020 )
-%     Return
-%     End
-% }
 
 #new:Script $LuigiHammerThrow {
     Call  SetTargetActor    ( .Actor:Self .Actor:Player )
@@ -334,8 +310,6 @@
             Call  EnemyDamageTarget ( .Actor:Self *Var0 ~Flags:DamageType:NoContact 00000000 00000000 .hammerThrowDamage 00000020 )
     EndSwitch
 
-
-    
     Return
     End
 }

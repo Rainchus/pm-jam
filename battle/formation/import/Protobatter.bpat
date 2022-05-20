@@ -6,13 +6,25 @@
 #define .protoHit       00280005
 #define .bulletGrow     00280006
 #define .bulletPart     00280007
-#define .protoHurt      00280008
-#define .protoDead      00280009
-#define .protoBurnHurt  0028000A
-#define .protoBurnDead  0028000B
-#define .protoDizzy     0028000C
-#define .protoSleep     0028000D
+#define .protoGrow1     00280008
+#define .protoGrow2     00280009
+#define .protoHurt      0028000A
+#define .protoDead      0028000B
+#define .protoBurnHurt  0028000C
+#define .protoBurnDead  0028000D
+#define .protoDizzy     0028000E
+#define .protoSleep     0028000F
 
+#define .protoScaleVar 0
+#define .protoCursorVar 1
+
+#define .protoSizeNormal    0
+#define .protoSizeLarge     1
+#define .protoSizeMax       2
+
+#define .cursorPositionIndex0 0
+#define .cursorPositionIndex1 1
+#define .cursorPositionIndex2 2
 
 #define .protobatterThrowDamage 6`
 #define .protobatterHitDamage 5`
@@ -127,6 +139,8 @@
     Call BindTakeTurn ( .Actor:Self $Script_TakeTurn_Protobatter )
     Call BindIdle ( .Actor:Self $Script_Idle_Protobatter )
     Call BindHandleEvent ( .Actor:Self $Script_HandleEvent_Protobatter )
+    Call SetActorVar ( .Actor:Self .protoScaleVar 0` ) %init proto to normal size
+    Call SetActorVar ( .Actor:Self .protoCursorVar 0` ) %cursor when selecting to attack enemy init
     Return
     End
 }
@@ -136,29 +150,72 @@
     End
 }
 
+#new:Script $ProtoAnimSetScale {
+    Call GetActorVar ( .Actor:Self .protoScaleVar *Var0 )
+    Switch *Var0
+        Case == .protoSizeNormal
+            Call SetActorScale ( .Actor:Self *Fixed[1.0] *Fixed[1.0] *Fixed[1.0] )
+        Case == .protoSizeLarge
+            Call SetActorScale ( .Actor:Self *Fixed[1.0] *Fixed[1.0] *Fixed[1.0] )
+            Call SetActorScale ( .Actor:Self *Fixed[1.5] *Fixed[1.5] *Fixed[1.5] )
+        Case == .protoSizeMax
+            Call SetActorScale ( .Actor:Self *Fixed[1.0] *Fixed[1.0] *Fixed[1.0] )
+            Call SetActorScale ( .Actor:Self *Fixed[2.25] *Fixed[2.25] *Fixed[2.25] )
+        EndSwitch
+    Return
+    End
+}
+
+#new:Script $ProtobatterGrow {
+    Call GetActorVar ( .Actor:Self .protoScaleVar *Var0 )
+
+    Switch *Var0
+        Case == .protoSizeNormal
+            Call SetActorScale ( .Actor:Self *Fixed[1.0] *Fixed[1.0] *Fixed[1.0] )
+            Call SetAnimation ( .Actor:Self .protoPart .protoGrow1 )
+            Call SetActorVar ( .Actor:Self .protoScaleVar .protoSizeLarge )
+            Wait 20`
+            Call SetAnimation ( .Actor:Self .protoPart .protoIdle )
+            Call SetActorScale ( .Actor:Self *Fixed[1.5] *Fixed[1.5] *Fixed[1.5] )
+        Case == .protoSizeLarge
+            Call SetActorScale ( .Actor:Self *Fixed[1.0] *Fixed[1.0] *Fixed[1.0] )
+            Call SetAnimation ( .Actor:Self .protoPart .protoGrow2 )
+            Call SetActorVar ( .Actor:Self .protoScaleVar .protoSizeMax )
+            Wait 20`
+            Call SetAnimation ( .Actor:Self .protoPart .protoIdle )
+            Call SetActorScale ( .Actor:Self *Fixed[2.25] *Fixed[2.25] *Fixed[2.25] )
+        Default
+    EndSwitch
+
+    Return
+    End
+}
+
 #new:Script $Script_HandleEvent_Protobatter {
     0:  Call  UseIdleAnimation  ( .Actor:Self .False )
-    14:  Call  EnableIdleScript  ( .Actor:Self 00000000 )
+    14:  Call  EnableIdleScript  ( .Actor:Self .False )
     28:  Call  SetActorScale     ( .Actor:Self *Fixed[1.0] *Fixed[1.0] *Fixed[1.0] )
     44:  Call  GetLastEvent      ( .Actor:Self *Var0 )
     58:  Switch  *Var0 
     64:  	CaseOR  ==  .Event:HitCombo % 9
     70:  	CaseOR  ==  .Event:Hit % A
-    7C:  		SetConst  *Var0  00000001 
+                ExecWait $ProtoAnimSetScale
+    7C:  		SetConst  *Var0  .protoPart 
     8C:  		SetConst  *Var1  .protoHurt 
-    9C:  		ExecWait  DoNormalHit 
+    9C:  		ExecWait  DoNormalHit
+                ExecWait $ProtobatterGrow
     A8:  	EndCaseGroup 
     B0:  	Case  ==  .Event:BurnHit % E
-    BC:  		SetConst  *Var0  00000001 
+    BC:  		SetConst  *Var0  .protoPart 
     CC:  		SetConst  *Var1  .protoBurnHurt 
     DC:  		SetConst  *Var2  .protoBurnDead 
     EC:  		ExecWait  DoBurnHit 
     F8:  	Case  ==  .Event:BurnDeath % 24
-    104:  		SetConst  *Var0  00000001 
+    104:  		SetConst  *Var0  .protoPart 
     114:  		SetConst  *Var1  .protoBurnHurt
     124:  		SetConst  *Var2  .protoBurnDead
     134:  		ExecWait  DoBurnHit 
-    140:  		SetConst  *Var0  00000001 
+    140:  		SetConst  *Var0  .protoPart 
     150:  		SetConst  *Var1  .protoBurnDead
     160:  		ExecWait  DoDeath 
     16C:  		Return
@@ -247,8 +304,9 @@
     % 658:  		Return
     % 660:  	Default
     % 668:  EndSwitch
-    670:  Call  SetAnimation      ( .Actor:Self 00000001 .protoIdle )
-    688:  Call  EnableIdleScript  ( .Actor:Self 00000001 )
+          ExecWait $ProtoAnimSetScale
+    670:  Call  SetAnimation      ( .Actor:Self .protoPart .protoIdle )
+    688:  Call  EnableIdleScript  ( .Actor:Self .True )
     69C:  Call  UseIdleAnimation  ( .Actor:Self .True )
     6B0:  Return
     6B8:  End
@@ -260,8 +318,10 @@
     Call SetGoalToTarget   ( .Actor:Self )
     Call AddGoalPos ( .Actor:Self 20` 0` 0` )
     Call SetActorSpeed ( .Actor:Self *Fixed[4.0] )
+    ExecWait $ProtoAnimSetScale
     Call SetAnimation ( .Actor:Self .protoPart .protoRun )
     Call RunToGoal ( .Actor:Self 30` .False )
+    ExecWait $ProtoAnimSetScale
     Call SetAnimation  ( .Actor:Self .protoPart .protoHit )
     Wait 26` %duration of swing
 
@@ -278,10 +338,12 @@
     EndSwitch
 
     %idle for a bit
+    ExecWait $ProtoAnimSetScale
     Call SetAnimation  ( .Actor:Self .protoPart .protoIdle )
     Wait 6`
 
     %run back to home
+    ExecWait $ProtoAnimSetScale
     Call SetAnimation ( .Actor:Self .protoPart .protoRun )
     Call SetGoalToHome ( .Actor:Self )
     Call SetActorSpeed ( .Actor:Self *Fixed[4.0] )
