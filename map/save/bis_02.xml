@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Map name="bis_02" author="unnamed" background="obk_bg" textures="kkj_tex">
 	<Editor>
-		<Camera pos="187.015610,103.120201,80.633415" pitch="20.159872" yaw="270.958679"/>
+		<Camera pos="100.752289,73.442963,64.195648" pitch="11.679989" yaw="268.558594"/>
 		<Camera pos="2.713862,65536.000000,1.488260"/>
 		<Camera pos="65536.000000,193.101425,17.989985"/>
-		<Camera pos="-0.610521,1.669060,65536.000000"/>
+		<Camera pos="-0.610521,-2.517851,65536.000000"/>
 	</Editor>
 	<ModelTree>
 		<Node name="Root" id="BF">
@@ -409,14 +409,14 @@
 	<Models>
 		<Model ver="2" type="ROOT" lightset="1">
 			<MapObject name="Root" id="BF" dumped="true" fileOffset="16880"/>
-			<BoundingBox empty="false" min="-550,-10,-500" max="550,390,600"/>
+			<BoundingBox empty="false" min="-550,-36,-500" max="550,390,600"/>
 			<PropertyList>
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="GROUP" lightset="0">
 			<MapObject name="TornadoGroup" id="BE"/>
-			<BoundingBox empty="false" min="-74,-10,0" max="75,138,200"/>
-			<TransformMatrix m="1.000000,0.000000,0.000000,0.000000,0.000000,1.000000,0.000000,64.000000,0.000000,0.000000,1.000000,0.000000,0.000000,0.000000,0.000000,1.000000"/>
+			<BoundingBox empty="false" min="-74,-36,0" max="75,111,200"/>
+			<TransformMatrix m="1.000000,0.000000,0.000000,0.000000,0.000000,1.000000,0.000000,37.514077,0.000000,0.000000,1.000000,0.000000,0.000000,0.000000,0.000000,1.000000"/>
 			<PropertyList>
 				<Property v="60,0,0"/>
 				<Property v="60,0,1"/>
@@ -13369,7 +13369,7 @@
 			<Movement type="Stationary" data="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
 			<Sprite sprite="1" palette="0" animations="3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
 		</Marker>
-		<Marker ver="4" type="NPC" pos="0,-200,-24" yaw="-180.000000">
+		<Marker ver="4" type="NPC" pos="0,-200,0" yaw="-180.000000">
 			<MapObject name="BattleBowser" id="A"/>
 			<Movement type="Stationary" data="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
 			<Sprite sprite="81" palette="0" animations="17,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
