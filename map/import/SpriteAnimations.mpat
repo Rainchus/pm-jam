@@ -27,6 +27,10 @@
 
 #define .Anim:BowserIdle 00800002
 #define .Anim:BowserTalk 00800006
+#define .Anim:BowserHIdle 00800028
 #define .Anim:BowserHTalk 00800007
+#define .Anim:BowserSIdle 00800029
 #define .Anim:BowserSTalk 00800008
 #define .Anim:BowserSlump 00800024
+#define .Anim:BowserFBStart 00810017
+#define .Anim:BowserFB 00810018

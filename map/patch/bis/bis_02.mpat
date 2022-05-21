@@ -447,11 +447,14 @@
 	Wait 30`
 	Call SetNpcAnimation (.NpcID:BattleBowser .Anim:BowserFB)
 	
-	Call NpcFlyTo (.NpcID:Starlow 0` 32` -12` 32` 0` .Easing:QuarticIn)
+	Call NpcFlyTo (.NpcID:Starlow 0` 32` -12` 45` 0` .Easing:QuarticIn)
+
 	SetF *Var0 *Fixed[0.95]
 	SetF *Var1 *Fixed[0.95]
 	SetF *Var2 *Fixed[0.95]
 
+	Call SetNpcScale (.NpcID:Starlow *Fixed[0.5] *Fixed[0.5] *Fixed[0.5])
+	
 	Loop 4
 	Call SetNpcScale (.NpcID:Starlow *Var0 *Var1 *Var2 )
 	AddF *Var0 *Fixed[-0.2]
@@ -463,8 +466,9 @@
 
 	%TODO
 	%Fix all yaws
-	%Broque Cake and walk
+	%Broque Cake, walk, MoonRun, so he gets sucked in
 	%Mario Exclamation
+	%Fix starlow scaling for getting sucked in
 	%TORNADO!!
 
 }
