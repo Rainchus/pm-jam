@@ -159,7 +159,7 @@
 	.NpcID:Starlow %basic id, define above
     $Starlow %reference NpcSettings struct
     ~Vec3f:Starlow %position, currently refers to marker in map editor (position)
-	00000001 %flags (01 is passive)
+	01000001 %flags (01 is passive)
     0 %init script (for any additional info/scriptin)
     00000000 %unk
     00000000 %unk
@@ -314,7 +314,7 @@
 	Loop 
 	%Call RotateGroup ( ~Model:TornadoGroup *Var0 0` 0` 1` )
 	Call RotateModel ( ~Model:Tornado *Var0 0` 0` 1` )
-	Add   *Var0  8`
+	Add   *Var0  12`
 	If  *Var0  >  359`
   	Sub   *Var0  360`
     EndIf
@@ -430,6 +430,7 @@
 	Wait 15`
 	Call PlaySoundAtNpc (.NpcID:Bowser .Sound:Drip 0)
 	Wait 15`
+	Call SetNpcAnimation (.NpcID:Bowser .Anim:BowserSIdle)
 	Call SpeakToNpc (.NpcID:Bowser .Anim:BowserSTalk .Anim:BowserSIdle 0 .NpcID:Broque 0031001B)
 	Call SpeakToNpc (.NpcID:Broque .Anim:BroqueHTalk .Anim:BroqueHIdle 0 .NpcID:Bowser 0031001C) %make this happy talking
 	Call SpeakToNpc (.NpcID:Bowser .Anim:BowserSTalk .Anim:BowserSIdle 0 .NpcID:Broque 0031001D)
@@ -459,6 +460,7 @@
 	Wait 20`
 	Call  FadeOutMusic  ( 00000000 500` )
 	Call FadeInMusic ( 0 .Song:FuzzyAttack 0 5` 0 0 )
+	Call NpcMoveTo ( .NpcID:BattleBowser 0` 0` 0` )
 	Wait 10`
 	Call SetNpcPos (.NpcID:Bowser 0` -200` -24` )
 	Call SetNpcPos (.NpcID:BattleBowser 0` 0` -24` )
@@ -484,17 +486,26 @@
         Exec  $Script_Update_Texture_Panner
 		Exec $TornadoSpin
     EndThread
-
 	
-	Call NpcFlyTo (.NpcID:Starlow 0` 32` -12` 45` 0` .Easing:QuarticIn)
-
-	Call SetNpcScale (.NpcID:Starlow *Fixed[0.5] *Fixed[0.5] *Fixed[0.5])
-	
-	Loop 4
-	Call SetNpcScale (.NpcID:Starlow *Var0 *Var1 *Var2 )
-	AddF *Var0 *Fixed[-0.2]
-	Wait 5`
-	EndLoop
+	Call PlaySoundAtNpc ( .NpcID:Starlow .Sound:Wind 0 )
+	Call SetNpcAnimation ( .NpcID:Starlow .Anim:StarlowFreeze )
+	Thread
+	Call NpcFlyTo (.NpcID:Starlow 0` 32` -12` 90` 0` .Easing:QuarticIn)	
+	EndThread
+	Thread
+		Wait 25`
+        SetF *VarF *Fixed[1.0]
+        Loop 10`
+            Call SetNpcScale ( .NpcID:Starlow *VarF *VarF *VarF )
+            AddF *VarF *Fixed[-0.1]
+            Wait 3`
+        EndLoop
+    EndThread
+	Call SetNpcScale(.NpcID:Starlow *Fixed[0.0000001] *Fixed[0.00000001] *Fixed[0.00000001])
+	Call EnableNpcShadow ( .NpcID:Starlow 0 )
+	Wait 90`
+	Call PlaySoundAtPlayer ( .Sound:Wind 0 )
+	Call PlayerMoveTo ( 0` -12` 45` ) %Make Mario an NPC and make this a flyto
 
 	Return
 	End
