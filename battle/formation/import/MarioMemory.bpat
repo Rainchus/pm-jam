@@ -1,31 +1,37 @@
-#define .marioStill     00A20000
-#define .marioIdle      00A20001
-#define .marioRun       00A20002
-#define .marioJump      00A20003
+%Animations
+#define .marioStill         00A20000
+#define .marioIdle          00A20001
+#define .marioRun           00A20002
+#define .marioJump          00A20003
 #define .marioRaiseMushroom 00A20004
 #define .marioThrowMushroom 00A20005
-#define .blockMushroom  00A20006
-#define .marioRaiseStar 00A20007
-#define .marioThrowStar 00A20008
-#define .blockStar      00A20009
-#define .marioHurt      00A2000A
-#define .marioDead      00A2000B
-#define .marioBurnHurt  00A2000C
-#define .marioBurnDead  00A2000D
-#define .marioDizzy     00A2000E
-#define .marioSleep     00A2000F
+#define .blockMushroom      00A20006
+#define .marioRaiseStar     00A20007
+#define .marioThrowStar     00A20008
+#define .blockStar          00A20009
+#define .marioHurt          00A2000A
+#define .marioDead          00A2000B
+#define .marioBurnHurt      00A2000C
+#define .marioBurnDead      00A2000D
+#define .marioDizzy         00A2000E
+#define .marioSleep         00A2000F
 
+%Memory Mario parts
+#define .marioPart 1
+#define .marioPartByte 1`b
+#define .starPart 2
+#define .starPartByte 2`b
+
+%Memory Mario stats
+#define .memoryMarioHP 50`b
 #define .marioJumpAttackDamage 6`
 #define .marioDashDamage 5`
-
-#define .marioPart 1
-#define .starPart 2
 
 #new:Actor $MarioMemory {
     % stats
     [Index]         7b 
     [Level]         5`b 
-    [MaxHP]         50`b 
+    [MaxHP]         .memoryMarioHP
     [Coins]         1`b 
     [Flags]       00000000 
     [StatusTable] $StatusTable_MemoryMario 
@@ -80,7 +86,7 @@
 
 #new:PartsTable $PartsTable_MemoryMario0 { %ActorPartBlueprint struct in decomp
 /% s32 flags %/                 00800000
-/% s8 index %/                  01b
+/% s8 index %/                  .marioPartByte
 /% Vec3b posOffset %/           00b 00b 00b
 /% Vec2b targetOffset %/        00b 2Bb %for cursor when selecting to attack in battle
 /% s16 opacity %/               00FFs
@@ -96,7 +102,7 @@
 
 %star
 /% s32 flags %/                 00120001
-/% s8 index %/                  02b
+/% s8 index %/                  .starPartByte
 /% Vec3b posOffset %/           00b 00b 00b
 /% Vec2b targetOffset %/        00b 00b %for cursor when selecting to attack in battle
 /% s16 opacity %/               00FFs
@@ -130,11 +136,11 @@
 }
 
 #new:Script $Script_Init_MemoryMario {
-    0:  Call  BindTakeTurn      ( .Actor:Self $Script_TakeTurn_MemoryMario )
-    14:  Call  BindIdle  ( .Actor:Self $Script_Idle_MemoryMario )
-    28:  Call  BindHandleEvent   ( .Actor:Self $Script_HandleEvent_MemoryMario )
-    3C:  Return
-    44:  End
+    Call  BindTakeTurn      ( .Actor:Self $Script_TakeTurn_MemoryMario )
+    Call  BindIdle  ( .Actor:Self $Script_Idle_MemoryMario )
+    Call  BindHandleEvent   ( .Actor:Self $Script_HandleEvent_MemoryMario )
+    Return
+    End
 }
 
 #new:Script $Script_Idle_MemoryMario {
@@ -143,32 +149,42 @@
 }
 
 #new:Script $Script_HandleEvent_MemoryMario {
-    0:  Call  UseIdleAnimation  ( .Actor:Self .False )
-    14:  Call  EnableIdleScript  ( .Actor:Self .False )
-    28:  Call  SetActorScale     ( .Actor:Self *Fixed[1.0] *Fixed[1.0] *Fixed[1.0] )
-    44:  Call  GetLastEvent      ( .Actor:Self *Var0 )
-    58:  Switch  *Var0 
-    64:  	CaseOR  ==  .Event:HitCombo % 9
-    70:  	CaseOR  ==  .Event:Hit % A
-    7C:  		SetConst  *Var0  .marioPart 
-    8C:  		SetConst  *Var1  .marioHurt 
-    9C:  		ExecWait  DoNormalHit
-    A8:  	EndCaseGroup
-    B0:  	Case  ==  .Event:BurnHit % E
-    BC:  		SetConst  *Var0  .marioPart 
-    CC:  		SetConst  *Var1  .marioBurnHurt 
-    DC:  		SetConst  *Var2  .marioBurnDead 
-    EC:  		ExecWait  DoBurnHit
-    F8:  	Case  ==  .Event:BurnDeath % 24
-    104:  		SetConst  *Var0  .marioPart 
-    114:  		SetConst  *Var1  .marioBurnHurt 
-    124:  		SetConst  *Var2  .marioBurnDead 
-    134:  		ExecWait  DoBurnHit 
-    140:  		SetConst  *Var0  .marioPart 
-    150:  		SetConst  *Var1  .marioBurnDead 
-    160:  		ExecWait  DoDeath 
-    16C:  		Return
-        EndSwitch %temp
+    Call  UseIdleAnimation  ( .Actor:Self .False )
+    Call  EnableIdleScript  ( .Actor:Self .False )
+    Call  SetActorScale     ( .Actor:Self *Fixed[1.0] *Fixed[1.0] *Fixed[1.0] )
+    Call  GetLastEvent      ( .Actor:Self *Var0 )
+
+    Switch  *Var0 
+        CaseOR  ==  .Event:HitCombo % 9
+        CaseOR  ==  .Event:Hit % A
+            SetConst  *Var0  .marioPart 
+            SetConst  *Var1  .marioHurt 
+            ExecWait  DoNormalHit
+        EndCaseGroup
+        Case  ==  .Event:BurnHit % E
+            SetConst  *Var0  .marioPart 
+            SetConst  *Var1  .marioBurnHurt 
+            SetConst  *Var2  .marioBurnDead 
+        ExecWait  DoBurnHit
+        Case  ==  .Event:BurnDeath % 24
+            SetConst  *Var0  .marioPart 
+            SetConst  *Var1  .marioBurnHurt 
+            SetConst  *Var2  .marioBurnDead 
+            ExecWait  DoBurnHit 
+            SetConst  *Var0  .marioPart 
+            SetConst  *Var1  .marioBurnDead 
+            ExecWait  DoDeath 
+            Return
+        Case  ==  .Event:Death % 20
+            SetConst  *Var0  .marioPart 
+            SetConst  *Var1  .marioHurt 
+            ExecWait  DoNormalHit 
+            Wait  10`
+            SetConst  *Var0  .marioPart  
+            SetConst  *Var1  .marioDead
+            ExecWait  DoDeath 
+            Return
+    EndSwitch
     % 174:  	Case  ==  .Event:SpinSmashHit % B
     % 180:  		SetConst  *Var0  00000001 
     % 190:  		SetConst  *Var1  00260005 
@@ -253,11 +269,11 @@
     % 658:  		Return
     % 660:  	Default
     % 668:  EndSwitch
-    670:  Call  SetAnimation      ( .Actor:Self .marioPart .marioIdle )
-    688:  Call  EnableIdleScript  ( .Actor:Self .True )
-    69C:  Call  UseIdleAnimation  ( .Actor:Self .True )
-    6B0:  Return
-    6B8:  End
+    Call  SetAnimation      ( .Actor:Self .marioPart .marioIdle )
+    Call  EnableIdleScript  ( .Actor:Self .True )
+    Call  UseIdleAnimation  ( .Actor:Self .True )
+    Return
+    End
 }
 
 #new:FloatTable $FloatTable_MemoryMario {

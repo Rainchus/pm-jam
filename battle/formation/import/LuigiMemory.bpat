@@ -13,21 +13,25 @@
 #define .luigiDizzy     00A3000C
 #define .luigiSleep     00A3000D
 
+
+
+%Memory Luigi parts
+#define .luigiPart 1
+#define .luigiPartByte 1`b
+#define .hammerPart 2
+#define .hammerPartByte 2`b
+
+%Memory Luigi stats
+#define .luigiHP 50`b
 #define .hammerThrowDamage 5
 #define .luigiDashDamage 4
 #define .booDashDamage 3
-
-#define .luigiPart 1
-#define .hammerPart 2
-
-#define .dashAttackID 1
-#define .hammerAttackID 2
 
 #new:Actor $LuigiMemory {
     % stats
     [Index]         7b 
     [Level]         5`b 
-    [MaxHP]         50`b 
+    [MaxHP]         .luigiHP 
     [Coins]         1`b 
     [Flags]       00000000 
     [StatusTable] $StatusTable_MemoryLuigi
@@ -82,7 +86,7 @@
 
 #new:PartsTable $PartsTable_MemoryLuigi0 { %ActorPartBlueprint struct in decomp
 /% s32 flags %/                 00800000
-/% s8 index %/                  01b
+/% s8 index %/                  .luigiPartByte
 /% Vec3b posOffset %/           00b 00b 00b
 /% Vec2b targetOffset %/        00b 30b %for cursor when selecting to attack in battle
 /% s16 opacity %/               00FFs
@@ -98,7 +102,7 @@
 
 %hammer
 /% s32 flags %/                 00120001
-/% s8 index %/                  02b
+/% s8 index %/                  .hammerPartByte
 /% Vec3b posOffset %/           00b 00b 00b
 /% Vec2b targetOffset %/        00b 00b %for cursor when selecting to attack in battle
 /% s16 opacity %/               00FFs
@@ -132,11 +136,11 @@
 }
 
 #new:Script $Script_Init_MemoryLuigi {
-    0:  Call  BindTakeTurn      ( .Actor:Self $Script_TakeTurn_MemoryLuigi )
-    14:  Call  BindIdle  ( .Actor:Self $Script_Idle_MemoryLuigi )
-    28:  Call  BindHandleEvent   ( .Actor:Self $Script_HandleEvent_MemoryLuigi )
-    3C:  Return
-    44:  End
+    Call  BindTakeTurn      ( .Actor:Self $Script_TakeTurn_MemoryLuigi )
+    Call  BindIdle  ( .Actor:Self $Script_Idle_MemoryLuigi )
+    Call  BindHandleEvent   ( .Actor:Self $Script_HandleEvent_MemoryLuigi )
+    Return
+    End
 }
 
 #new:Script $Script_Idle_MemoryLuigi {
@@ -145,32 +149,41 @@
 }
 
 #new:Script $Script_HandleEvent_MemoryLuigi {
-    0:  Call  UseIdleAnimation  ( .Actor:Self .False )
-    14:  Call  EnableIdleScript  ( .Actor:Self .False )
-    28:  Call  SetActorScale     ( .Actor:Self *Fixed[1.0] *Fixed[1.0] *Fixed[1.0] )
-    44:  Call  GetLastEvent      ( .Actor:Self *Var0 )
-    58:  Switch  *Var0 
-    64:  	CaseOR  ==  .Event:HitCombo % 9
-    70:  	CaseOR  ==  .Event:Hit % A
-    7C:  		SetConst  *Var0  .luigiPart 
-    8C:  		SetConst  *Var1  .luigiHurt 
-    9C:  		ExecWait  DoNormalHit
-    A8:  	EndCaseGroup 
-    B0:  	Case  ==  .Event:BurnHit % E
-    BC:  		SetConst  *Var0  .luigiPart 
-    CC:  		SetConst  *Var1  .luigiBurnHurt 
-    DC:  		SetConst  *Var2  .luigiBurnDead 
-    EC:  		ExecWait  DoBurnHit 
-    F8:  	Case  ==  .Event:BurnDeath % 24
-    104:  		SetConst  *Var0  .luigiPart 
-    114:  		SetConst  *Var1  .luigiBurnHurt 
-    124:  		SetConst  *Var2  .luigiBurnDead 
-    134:  		ExecWait  DoBurnHit 
-    140:  		SetConst  *Var0  .luigiPart 
-    150:  		SetConst  *Var1  .luigiBurnDead 
-    160:  		ExecWait  DoDeath 
-    16C:  		Return
-        EndSwitch %temp
+    Call  UseIdleAnimation  ( .Actor:Self .False )
+    Call  EnableIdleScript  ( .Actor:Self .False )
+    Call  SetActorScale     ( .Actor:Self *Fixed[1.0] *Fixed[1.0] *Fixed[1.0] )
+    Call  GetLastEvent      ( .Actor:Self *Var0 )
+    Switch  *Var0 
+        CaseOR  ==  .Event:HitCombo % 9
+        CaseOR  ==  .Event:Hit % A
+            SetConst  *Var0  .luigiPart 
+            SetConst  *Var1  .luigiHurt 
+            ExecWait  DoNormalHit
+        EndCaseGroup 
+        Case  ==  .Event:BurnHit % E
+            SetConst  *Var0  .luigiPart 
+            SetConst  *Var1  .luigiBurnHurt 
+            SetConst  *Var2  .luigiBurnDead 
+        ExecWait  DoBurnHit 
+        Case  ==  .Event:BurnDeath % 24
+            SetConst  *Var0  .luigiPart 
+            SetConst  *Var1  .luigiBurnHurt 
+            SetConst  *Var2  .luigiBurnDead 
+            ExecWait  DoBurnHit 
+            SetConst  *Var0  .luigiPart 
+            SetConst  *Var1  .luigiBurnDead 
+            ExecWait  DoDeath 
+            Return
+        Case  ==  .Event:Death % 20
+            SetConst  *Var0  .luigiPart 
+            SetConst  *Var1  .luigiHurt 
+            ExecWait  DoNormalHit 
+            Wait  10`
+            SetConst  *Var0  .luigiPart  
+            SetConst  *Var1  .luigiDead
+            ExecWait  DoDeath 
+            Return
+    EndSwitch
     % 174:  	Case  ==  .Event:SpinSmashHit % B
     % 180:  		SetConst  *Var0  00000001 
     % 190:  		SetConst  *Var1  00260005 
@@ -255,11 +268,11 @@
     % 658:  		Return
     % 660:  	Default
     % 668:  EndSwitch
-    670:  Call  SetAnimation      ( .Actor:Self .luigiPart .luigiIdle )
-    688:  Call  EnableIdleScript  ( .Actor:Self .True )
-    69C:  Call  UseIdleAnimation  ( .Actor:Self .True )
-    6B0:  Return
-    6B8:  End
+    Call  SetAnimation      ( .Actor:Self .luigiPart .luigiIdle )
+    Call  EnableIdleScript  ( .Actor:Self .True )
+    Call  UseIdleAnimation  ( .Actor:Self .True )
+    Return
+    End
 }
 
 #new:FloatTable $FloatTable_MemoryLuigi {

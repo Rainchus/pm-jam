@@ -1,3 +1,4 @@
+%Animations
 #define .protoStill     00280000
 #define .protoIdle      00280001
 #define .protoWalk      00280002
@@ -15,28 +16,37 @@
 #define .protoDizzy     0028000E
 #define .protoSleep     0028000F
 
+%Actor variables
 #define .protoScaleVar 0
 #define .protoCursorVar 1
 
+%Protobatter sizes
 #define .protoSizeNormal    0
 #define .protoSizeLarge     1
 #define .protoSizeMax       2
 
+%Cursor positions depending on size
 #define .cursorPositionIndex0 0
 #define .cursorPositionIndex1 1
 #define .cursorPositionIndex2 2
 
-#define .protobatterThrowDamage 6`
-#define .protobatterHitDamage 5`
-
+%Protobatter parts
 #define .protoPart 1
 #define .bulletPart 2
+
+%Protobatter stats
+#define .protoHP 8`b
+#define .protoNormalDamageSpitHit 3`
+#define .protoLargeDamageHitSpit 4`
+#define .protoMaxDamageHitSpit 5`
+#define .protobatterThrowDamage 6`
+#define .protobatterHitDamage 5`
 
 #new:Actor $Protobatter {
     % stats
     [Index]         7b 
     [Level]         5`b 
-    [MaxHP]         50`b 
+    [MaxHP]         .protoHP
     [Coins]         1`b 
     [Flags]       00000000 
     [StatusTable] $StatusTable_Protobatter
@@ -196,34 +206,48 @@
 }
 
 #new:Script $Script_HandleEvent_Protobatter {
-    0:  Call  UseIdleAnimation  ( .Actor:Self .False )
-    14:  Call  EnableIdleScript  ( .Actor:Self .False )
-    28:  Call  SetActorScale     ( .Actor:Self *Fixed[1.0] *Fixed[1.0] *Fixed[1.0] )
-    44:  Call  GetLastEvent      ( .Actor:Self *Var0 )
-    58:  Switch  *Var0 
-    64:  	CaseOR  ==  .Event:HitCombo % 9
-    70:  	CaseOR  ==  .Event:Hit % A
-                ExecWait $ProtoAnimSetScale
-    7C:  		SetConst  *Var0  .protoPart 
-    8C:  		SetConst  *Var1  .protoHurt 
-    9C:  		ExecWait  DoNormalHit
-                ExecWait $ProtobatterGrow
-    A8:  	EndCaseGroup 
-    B0:  	Case  ==  .Event:BurnHit % E
-    BC:  		SetConst  *Var0  .protoPart 
-    CC:  		SetConst  *Var1  .protoBurnHurt 
-    DC:  		SetConst  *Var2  .protoBurnDead 
-    EC:  		ExecWait  DoBurnHit 
-    F8:  	Case  ==  .Event:BurnDeath % 24
-    104:  		SetConst  *Var0  .protoPart 
-    114:  		SetConst  *Var1  .protoBurnHurt
-    124:  		SetConst  *Var2  .protoBurnDead
-    134:  		ExecWait  DoBurnHit 
-    140:  		SetConst  *Var0  .protoPart 
-    150:  		SetConst  *Var1  .protoBurnDead
-    160:  		ExecWait  DoDeath 
-    16C:  		Return
-        EndSwitch %temp
+    Call  UseIdleAnimation  ( .Actor:Self .False )
+    Call  EnableIdleScript  ( .Actor:Self .False )
+    Call  SetActorScale     ( .Actor:Self *Fixed[1.0] *Fixed[1.0] *Fixed[1.0] )
+    Call  GetLastEvent      ( .Actor:Self *Var0 )
+
+    Switch  *Var0 
+        CaseOR  ==  .Event:HitCombo % 9
+        CaseOR  ==  .Event:Hit % A
+            ExecWait $ProtoAnimSetScale
+            SetConst  *Var0  .protoPart 
+            SetConst  *Var1  .protoHurt 
+            ExecWait  DoNormalHit
+            ExecWait $ProtobatterGrow
+        EndCaseGroup 
+            Case  ==  .Event:BurnHit % E
+            ExecWait $ProtoAnimSetScale
+            SetConst  *Var0  .protoPart 
+            SetConst  *Var1  .protoBurnHurt 
+            SetConst  *Var2  .protoBurnDead 
+            ExecWait  DoBurnHit 
+        Case  ==  .Event:BurnDeath % 24
+            ExecWait $ProtoAnimSetScale
+            SetConst  *Var0  .protoPart 
+            SetConst  *Var1  .protoBurnHurt
+            SetConst  *Var2  .protoBurnDead
+            ExecWait  DoBurnHit 
+            SetConst  *Var0  .protoPart 
+            SetConst  *Var1  .protoBurnDead
+            ExecWait  DoDeath 
+            Return
+        Case  ==  .Event:Death % 20
+            ExecWait $ProtoAnimSetScale
+            SetConst  *Var0  .protoPart 
+            SetConst  *Var1  .protoHurt 
+            ExecWait  DoNormalHit
+            Wait  10`
+            SetConst  *Var0  .protoPart 
+            SetConst  *Var1  .protoDead
+            ExecWait  DoDeath 
+            Return
+    EndSwitch
+
     % 174:  	Case  ==  .Event:SpinSmashHit % B
     % 180:  		SetConst  *Var0  00000001 
     % 190:  		SetConst  *Var1  00260005 
@@ -271,12 +295,12 @@
     % 434:  		ExecWait  DoImmune 
     % 440:  	EndCaseGroup
     % 448:  	Case  ==  .Event:Death % 20
-    % 454:  		SetConst  *Var0  00000001 
-    % 464:  		SetConst  *Var1  .marioHurt 
+    % 454:  		SetConst  *Var0  .protoPart 
+    % 464:  		SetConst  *Var1  .protoHurt 
     % 474:  		ExecWait  DoNormalHit 
     % 480:  		Wait  10`
-    % 48C:  		SetConst  *Var0  00000001 
-    % 49C:  		SetConst  *Var1  .marioDeath
+    % 48C:  		SetConst  *Var0  .protoPart 
+    % 49C:  		SetConst  *Var1  .protoDeath
     % 4AC:  		ExecWait  DoDeath 
     % 4B8:  		Return
     % 4C0:  	Case  ==  .Event:EndFirstStrike % 35
@@ -357,7 +381,7 @@
     End
 }
 
-#new:Script $ProtobatterSpit {
+#new:Script $ProtobatterSpit { %spit directly hit mario
     Call  SetAnimation ( .Actor:Self .protoPart .protoSpit )
     Wait 20`
     Call  GetActorPos ( .Actor:Self *Var0 *Var1 *Var2 )
@@ -396,6 +420,61 @@
             Call  EnemyDamageTarget ( .Actor:Self *Var0 ~Flags:DamageType:NoContact 00000000 00000000 3` 00000020 )
     EndSwitch
 
+    Return
+    End
+}
+
+#new:Script $ProtobatterHitSpit { %protobatter hits spit with club at mario
+    %initial spit animation
+    Call SetAnimation ( .Actor:Self .protoPart .protoSpit )
+    Wait 20`
+
+    %spit out bullet thing
+    Call GetActorPos ( .Actor:Self *Var0 *Var1 *Var2 )
+    Call SetPartPos        ( .Actor:Self .bulletPart  *Var0  *Var1  *Var2 )
+    Call SetPartScale  ( .Actor:Self .bulletPart *Fixed[1.0] *Fixed[1.0] *Fixed[1.0] )
+    Call SetPartJumpGravity    ( .Actor:Self .bulletPart *Fixed[0.0] )
+    Call  SetPartFlagBits   ( .Actor:Self .bulletPart 00000001 .False )
+    Add *Var0 -30`
+    Add *Var1 10` %probably change X and Y offset based on scale
+    Add *Var2 1` %fix Z fighting
+    Call JumpPartTo        ( .Actor:Self .bulletPart *Var0 *Var1 *Var2  5` .False )
+    Wait 10`
+
+    %protobatter hits bullet
+    Call SetAnimation ( .Actor:Self .protoPart .protoHit )
+    Wait 26` %duration of swing
+    Call GetActorPos ( .Actor:Player *Var0 *Var1 *Var2 )
+    Add *Var1 16`
+
+    Call SetGoalToTarget   ( .Actor:Self )
+    Call GetGoalPos        ( .Actor:Self *Var0 *Var1 *Var2 )
+
+    %test if protobatter can hit mario
+    Call  EnemyTestTarget   ( .Actor:Self *Var3 ~Flags:DamageType:0 00000000 00000001 00000010 )
+    Switch  *Var3 
+        CaseOR  ==  .HitResult:Miss % 6
+        CaseOR  ==  .HitResult:Lucky % 5
+            Add *Var0 -180`
+            Call  JumpPartTo        ( .Actor:Self .bulletPart *Var0 *Var1 *Var2  20` .True )
+            Call  SetPartFlagBits   ( .Actor:Self .bulletPart 00000001 .True )
+            Wait  2`
+        EndCaseGroup
+
+        Default
+            Call  JumpPartTo        ( .Actor:Self .bulletPart *Var0 *Var1 *Var2  15` .True )
+            Call  SetPartFlagBits   ( .Actor:Self .bulletPart 00000001 .True )
+            Call GetActorVar ( .Actor:Self .protoScaleVar *Var4 ) %get proto scale size
+            Switch *Var4
+                Case == .protoSizeNormal
+                    Set *Var5 .protoNormalDamageSpitHit
+                Case == .protoSizeLarge
+                    Set *Var5 .protoLargeDamageHitSpit
+                Case == .protoSizeMax
+                    Set *Var5 .protoMaxDamageHitSpit
+            EndSwitch
+            Call  EnemyDamageTarget ( .Actor:Self *Var0 ~Flags:DamageType:NoContact 00000000 00000000 *Var5 00000020 )
+    EndSwitch
 
     Return
     End
@@ -406,7 +485,7 @@
     Call EnableIdleScript  ( .Actor:Self .False )
 
     %ExecWait $ProtobatterSwing
-    ExecWait $ProtobatterSpit
+    ExecWait $ProtobatterHitSpit
 
     Call EnableIdleScript  ( .Actor:Self .True )
     Call UseIdleAnimation  ( .Actor:Self .True )
