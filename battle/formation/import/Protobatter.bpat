@@ -5,7 +5,7 @@
 #define .protoSpit      00280004
 #define .protoHit       00280005
 #define .bulletGrow     00280006
-#define .bulletPart     00280007
+#define .bullet         00280007
 #define .protoGrow1     00280008
 #define .protoGrow2     00280009
 #define .protoHurt      0028000A
@@ -30,7 +30,7 @@
 #define .protobatterHitDamage 5`
 
 #define .protoPart 1
-#define .protoBullet 2
+#define .bulletPart 2
 
 #new:Actor $Protobatter {
     % stats
@@ -111,7 +111,7 @@
 /% Vec3b posOffset %/           00b 00b 00b
 /% Vec2b targetOffset %/        00b 00b %for cursor when selecting to attack in battle
 /% s16 opacity %/               00FFs
-/% s32* IdleAnimations %/       $IdleAnimations_Protobatter
+/% s32* IdleAnimations %/       $IdleAnimations_ProtobatterBullet
 /% s32* defenseTable %/         $DefenseTable_Protobatter
 /% s32 eventFlags %/            00000000
 /% s32 elementImmunityFlags %/  00000000
@@ -120,6 +120,11 @@
 /% s8 unk_1E %/                 00b
 /% s8 unk_1F %/                 00b
 /% s8 unk_20 %/                 00000000
+}
+
+#new:IdleAnimations $IdleAnimations_ProtobatterBullet {
+    .Status:Normal    .bullet
+    .Status:End
 }
 
 #new:IdleAnimations $IdleAnimations_Protobatter {
@@ -168,7 +173,6 @@
 
 #new:Script $ProtobatterGrow {
     Call GetActorVar ( .Actor:Self .protoScaleVar *Var0 )
-
     Switch *Var0
         Case == .protoSizeNormal
             Call SetActorScale ( .Actor:Self *Fixed[1.0] *Fixed[1.0] *Fixed[1.0] )
@@ -353,11 +357,56 @@
     End
 }
 
+#new:Script $ProtobatterSpit {
+    Call  SetAnimation ( .Actor:Self .protoPart .protoSpit )
+    Wait 20`
+    Call  GetActorPos ( .Actor:Self *Var0 *Var1 *Var2 )
+
+    Call GetActorVar ( .Actor:Self .protoScaleVar *Var4 ) %get proto scale size
+    Switch *Var4
+        Case == .protoSizeNormal
+            %offset 1
+        Case == .protoSizeLarge
+            %offset 2
+        Case == .protoSizeMax
+            %offset 3
+    EndSwitch
+
+    Add *Var2 1` %fix Z fighting
+    Call  SetPartPos        ( .Actor:Self .bulletPart  *Var0  *Var1  *Var2 )
+    Call  SetPartScale  ( .Actor:Self .bulletPart *Fixed[1.0] *Fixed[1.0] *Fixed[1.0] )
+    Call  SetPartJumpGravity    ( .Actor:Self .bulletPart *Fixed[0.0] )
+    Call  SetPartFlagBits   ( .Actor:Self .bulletPart 00000001 .False )
+    Call  SetGoalToTarget   ( .Actor:Self )
+    Call  GetGoalPos        ( .Actor:Self *Var0 *Var1 *Var2 )
+
+    Call  EnemyTestTarget   ( .Actor:Self *Var3 ~Flags:DamageType:0 00000000 00000001 00000010 )
+    Switch  *Var3 
+        CaseOR  ==  .HitResult:Miss % 6
+        CaseOR  ==  .HitResult:Lucky % 5
+            Call  JumpPartTo        ( .Actor:Self .bulletPart *Var0 *Var1 *Var2  15` .True )
+            Call  SetPartFlagBits   ( .Actor:Self .bulletPart 00000001 .True )
+            Wait  2`
+        EndCaseGroup
+
+        Default
+            Call  JumpPartTo        ( .Actor:Self .bulletPart *Var0 *Var1 *Var2  15` .True )
+            Call  SetPartFlagBits   ( .Actor:Self .bulletPart 00000001 .True )
+            Wait  2`
+            Call  EnemyDamageTarget ( .Actor:Self *Var0 ~Flags:DamageType:NoContact 00000000 00000000 3` 00000020 )
+    EndSwitch
+
+
+    Return
+    End
+}
+
 #new:Script $Script_TakeTurn_Protobatter {
     Call UseIdleAnimation  ( .Actor:Self .False )
     Call EnableIdleScript  ( .Actor:Self .False )
 
-    ExecWait $ProtobatterSwing
+    %ExecWait $ProtobatterSwing
+    ExecWait $ProtobatterSpit
 
     Call EnableIdleScript  ( .Actor:Self .True )
     Call UseIdleAnimation  ( .Actor:Self .True )

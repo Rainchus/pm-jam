@@ -5,7 +5,7 @@
 #define .luigiRun       00A30004
 #define .luigiRaise     00A30005
 #define .luigiThrow     00A30006
-#define .luigiHammer     00A30007
+#define .luigiHammer    00A30007
 #define .luigiHurt      00A30008
 #define .luigiDead      00A30009
 #define .luigiBurnHurt  00A3000A
@@ -279,13 +279,12 @@
 
 #new:Script $LuigiHammerThrow {
     Call  SetTargetActor    ( .Actor:Self .Actor:Player )
-    Call  SetAnimation ( .Actor:Self 1` .luigiRaise )
+    Call  SetAnimation ( .Actor:Self .luigiPart .luigiRaise )
     Wait 28`
-    Call  SetAnimation ( .Actor:Self 1` .luigiThrow )
+    Call  SetAnimation ( .Actor:Self .luigiPart .luigiThrow )
     Wait 15`
     Call  GetActorPos ( .Actor:Self *Var0 *Var1 *Var2 )
-    Add *Var1 -10`
-    Add *Var1 20`
+    Add *Var1 10`
     Call  SetPartPos        ( .Actor:Self .hammerPart  *Var0  *Var1  *Var2 )
     Call  SetPartScale  ( .Actor:Self .hammerPart *Fixed[1.0] *Fixed[1.0] *Fixed[1.0] )
     Call  SetPartJumpGravity    ( .Actor:Self .hammerPart *Fixed[3.0] )
