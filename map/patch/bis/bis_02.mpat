@@ -307,8 +307,48 @@
 	End
 }
 
+
+#new:Script $TornadoSpin
+{
+	Set *Var0 0`
+	Loop 
+	Call RotateGroup ( ~Model:TornadoGroup *Var0 0` 0` 1` )
+	%Call RotateModel ( ~Model:Tornado *Var0 0` 0` 1` )
+	Add   *Var0  2`
+	If  *Var0  >  359`
+  	Sub   *Var0  360`
+    EndIf
+	Wait 1`
+	EndLoop
+
+	Return
+	End
+}
+
 #new:Script $MainCutscene
 {
+
+	Call  SetTexPanner  ( ~Model:Tornado 0000000F )
+    Thread
+        Set   *Var0  0000000F
+        Set   *Var1  600`
+        Set   *Var2  00000000
+        Set   *Var3  00000000
+        Set   *Var4  00000000
+        Set   *Var5  00000001
+        Set   *Var6  00000001
+        Set   *Var7  00000001
+        Set   *Var8  00000001
+        Set   *Var9  00000000
+        Set   *VarA  00000000
+        Set   *VarB  00000000
+        Set   *VarC  00000000
+        Exec  $Script_Update_Texture_Panner
+		Exec $TornadoSpin
+    EndThread
+
+	Call TranslateGroup ( ~Model:TornadoGroup -43` 41` 86` )
+
 	Call DisablePartnerAI ( 0 ) %disable flying partner ai (value 1 would disable walking partner AI)
 	Call DisablePlayerInput (.True)
 	Call SetPlayerPos (~Vec3d:MarioCutscene)
@@ -448,6 +488,10 @@
 	Call SetNpcAnimation (.NpcID:BattleBowser .Anim:BowserFB)
 	
 	Call NpcFlyTo (.NpcID:Starlow 0` 32` -12` 45` 0` .Easing:QuarticIn)
+
+	Call TranslateModel ( ~Model:Tornado *Fixed[0.0] *Fixed[32.0] *Fixed[86.0] )
+
+
 
 	SetF *Var0 *Fixed[0.95]
 	SetF *Var1 *Fixed[0.95]
