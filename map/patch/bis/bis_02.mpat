@@ -357,13 +357,26 @@
 	End
 }
 
-#new:Script $EveryoneFaceBroque { %not implemented yet
+#new:Script $EveryoneFaceBroque {
 	Thread
-		Call InterpNpcYaw (.NpcID:Peach 300` 15` )
+		Call InterpNpcYaw (.NpcID:Peach 180` 15` )
 	EndThread
 	
 	Thread
-		Call InterpNpcYaw (.NpcID:Starlow 300` 15` )
+		Call InterpNpcYaw (.NpcID:Starlow 180` 15` )
+	EndThread
+
+	Thread
+		Call InterpPlayerYaw ( 180` 15` )
+	EndThread
+
+	Return
+	End
+}
+
+#new:Script $EveryoneFaceStarlow {
+	Thread
+		Call InterpNpcYaw (.NpcID:Peach 300` 15` )
 	EndThread
 
 	Thread
@@ -386,9 +399,7 @@
 	Call SetNpcAnimation ( .NpcID:Peach .Anim:PeachHandsLower )
 	Call SpeakToNpc ( .NpcID:Starlow .Anim:StarlowHTalk .Anim:StarlowHIdle 0 .NpcID:Peach 00310001 )
 	Call SpeakToNpc (.NpcID:Broque .Anim:BroqueTalk .Anim:BroqueIdle 0 .NpcID:Peach 00310002)
-
 	Exec $EveryoneFaceBowser
-
 	Call SpeakToNpc (.NpcID:Bowser .Anim:BowserHTalk .Anim:BowserHIdle 0 .NpcID:Broque 00310003)
 	Call InterpPlayerYaw ( 90` 0 )
 	Call SetNpcAnimation (.NpcID:Starlow .Anim:StarlowAIdle)
