@@ -18,6 +18,9 @@
 		<Raster id="B" name="hidle4" palette="0" src="hidle4.png"/>
 		<Raster id="C" name="htalk1" palette="0" src="htalk1.png"/>
 		<Raster id="D" name="htalk2" palette="0" src="htalk2.png"/>
+		<Raster id="E" name="run1" palette="0" src="run1.png"/>
+		<Raster id="F" name="run2" palette="0" src="run2.png"/>
+		<Raster id="10" name="run3" palette="0" src="run3.png"/>
 	</RasterList>
 	<AnimationList>
 		<Animation name="still">
@@ -101,6 +104,19 @@
 				<Command val="6"/>
 				<Command val="100D"/>
 				<Command val="6"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="flee">
+			<Component name="body" xyz="0,0,0">
+				<Command val="100E"/>
+				<Command val="3"/>
+				<Command val="100F"/>
+				<Command val="2"/>
+				<Command val="1010"/>
+				<Command val="3"/>
+				<Command val="100F"/>
+				<Command val="2"/>
 				<Command val="2000"/>
 			</Component>
 		</Animation>
