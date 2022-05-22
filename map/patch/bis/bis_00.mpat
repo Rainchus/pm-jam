@@ -1,3 +1,20 @@
+#define .NpcID:Peach 0
+
+#new:Script $ChangePeachYaw {
+    Wait 30`
+    Set *Var0 0`
+    Loop 
+        Call InterpNpcYaw ( .NpcID:Peach *Var0 15` )
+        Add *Var0 90`
+        If *Var0 == 360`
+            Set *Var0 0
+        EndIf
+        Wait 15`
+    EndLoop
+    Return
+    End
+}
+
 @ $Script_Main {
     Set   *GB_WorldLocation  .Location:GoombaRoad
     Call  SetCamPerspective  ( .Cam:Default 00000003 00000019 00000010 00001000 )
@@ -12,8 +29,49 @@
     %         Call $ScrApi_XORVar ( *Var0 1 ) %Var0 ^ 1
     %     EndLoop
     % EndThread
+    Call MakeNpcs ( .False $NpcGroupList )
+    Exec $ChangePeachYaw
     Exec  $Script_SetupMusic
     Exec  $Script_EnterMap
     Return
     End
+}
+
+#new:NpcGroupList $NpcGroupList {
+	1 $PeachGroup 0 %number of NPCs group, NPCGroup, BattleID
+	0 0 0 %terminating emptyList
+}
+
+#new:NpcSettings $Peach {
+	0 %unk_00
+	32`s %colliderheight
+	16`s %colliderradius
+	0 %unk
+	0 %interactscript
+	0 %aiscript
+	0 %onhit (enemy)
+	0 %aux (disregard)
+	0 %ondefeat
+	0 %flags
+	0 %unk
+	0s %level
+	0s %unk
+}
+
+#new:NpcGroup $PeachGroup {
+	.NpcID:Peach %basic id, define above
+    $Peach %reference NpcSettings struct
+    ~Vec3f:Peach %position, currently refers to marker in map editor (position)
+	00000001 %flags (01 is passive)
+    0 %init script (for any additional info/scriptin)
+    00000000 %unk
+    00000000 %unk
+    90` %yaw, 90 is right, 270 is left
+	~NoDrops %drops
+	~Movement:Peach %movement
+	~AnimationTable:Peach %animations, currently refers to marker in map editor
+	00000000 %unk
+	00000000 %unk
+	00000000 %extra animations
+	001A005E %tattleID
 }

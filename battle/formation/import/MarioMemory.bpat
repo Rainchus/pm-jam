@@ -18,9 +18,7 @@
 
 %Memory Mario parts
 #define .marioPart 1
-#define .marioPartByte 1`b
 #define .starPart 2
-#define .starPartByte 2`b
 
 %Memory Mario stats
 #define .memoryMarioHP 50`b
@@ -86,7 +84,7 @@
 
 #new:PartsTable $PartsTable_MemoryMario0 { %ActorPartBlueprint struct in decomp
 /% s32 flags %/                 00800000
-/% s8 index %/                  .marioPartByte
+/% s8 index %/                  ~Byte:.marioPart
 /% Vec3b posOffset %/           00b 00b 00b
 /% Vec2b targetOffset %/        00b 2Bb %for cursor when selecting to attack in battle
 /% s16 opacity %/               00FFs
@@ -102,7 +100,7 @@
 
 %star
 /% s32 flags %/                 00120001
-/% s8 index %/                  .starPartByte
+/% s8 index %/                  ~Byte:.starPart
 /% Vec3b posOffset %/           00b 00b 00b
 /% Vec2b targetOffset %/        00b 00b %for cursor when selecting to attack in battle
 /% s16 opacity %/               00FFs
@@ -136,9 +134,9 @@
 }
 
 #new:Script $Script_Init_MemoryMario {
-    Call  BindTakeTurn      ( .Actor:Self $Script_TakeTurn_MemoryMario )
-    Call  BindIdle  ( .Actor:Self $Script_Idle_MemoryMario )
-    Call  BindHandleEvent   ( .Actor:Self $Script_HandleEvent_MemoryMario )
+    Call BindTakeTurn      ( .Actor:Self $Script_TakeTurn_MemoryMario )
+    Call BindIdle  ( .Actor:Self $Script_Idle_MemoryMario )
+    Call BindHandleEvent   ( .Actor:Self $Script_HandleEvent_MemoryMario )
     Return
     End
 }
@@ -149,10 +147,10 @@
 }
 
 #new:Script $Script_HandleEvent_MemoryMario {
-    Call  UseIdleAnimation  ( .Actor:Self .False )
-    Call  EnableIdleScript  ( .Actor:Self .False )
-    Call  SetActorScale     ( .Actor:Self *Fixed[1.0] *Fixed[1.0] *Fixed[1.0] )
-    Call  GetLastEvent      ( .Actor:Self *Var0 )
+    Call UseIdleAnimation  ( .Actor:Self .False )
+    Call EnableIdleScript  ( .Actor:Self .False )
+    Call SetActorScale     ( .Actor:Self *Fixed[1.0] *Fixed[1.0] *Fixed[1.0] )
+    Call GetLastEvent      ( .Actor:Self *Var0 )
 
     Switch  *Var0 
         CaseOR  ==  .Event:HitCombo % 9
@@ -204,17 +202,17 @@
     % 250:  		SetConst  *Var0  00000001 
     % 260:  		SetConst  *Var1  00260005 
     % 270:  		ExecWait  DoJumpBack 
-    % 27C:  		Call  JumpToGoal    ( .Actor:Self  5` .False .True .False )
-    % 29C:  		Call  SetAnimationRate      ( .Actor:Self 00000001 *Fixed[2.0] )
-    % 2B4:  		Call  SetAnimation  ( .Actor:Self 00000001 00260007 )
-    % 2CC:  		Call  SetGoalToHome ( .Actor:Self )
-    % 2DC:  		Call  SetActorSpeed ( .Actor:Self *Fixed[8.0] )
-    % 2F0:  		Call  RunToGoal     ( .Actor:Self  0` .False )
-    % 308:  		Call  SetAnimationRate      ( .Actor:Self 00000001 *Fixed[1.0] )
+    % 27C:  		Call JumpToGoal    ( .Actor:Self  5` .False .True .False )
+    % 29C:  		Call SetAnimationRate      ( .Actor:Self 00000001 *Fixed[2.0] )
+    % 2B4:  		Call SetAnimation  ( .Actor:Self 00000001 00260007 )
+    % 2CC:  		Call SetGoalToHome ( .Actor:Self )
+    % 2DC:  		Call SetActorSpeed ( .Actor:Self *Fixed[8.0] )
+    % 2F0:  		Call RunToGoal     ( .Actor:Self  0` .False )
+    % 308:  		Call SetAnimationRate      ( .Actor:Self 00000001 *Fixed[1.0] )
     % 320:  		Wait  5`
-    % 32C:  		Call  SetAnimation  ( .Actor:Self 00000001 00260001 )
-    % 344:  		Call  SetActorJumpGravity   ( .Actor:Self *Fixed[1.6] )
-    % 358:  		Call  JumpToGoal    ( .Actor:Self  5` .False .True .False )
+    % 32C:  		Call SetAnimation  ( .Actor:Self 00000001 00260001 )
+    % 344:  		Call SetActorJumpGravity   ( .Actor:Self *Fixed[1.6] )
+    % 358:  		Call JumpToGoal    ( .Actor:Self  5` .False .True .False )
     % 378:  	Case  ==  .Event:ShockDeath % 26
     % 384:  		SetConst  *Var0  00000001 
     % 394:  		SetConst  *Var1  0026000E 
@@ -241,13 +239,13 @@
     % 4AC:  		ExecWait  DoDeath 
     % 4B8:  		Return
     % 4C0:  	Case  ==  .Event:EndFirstStrike % 35
-    % 4CC:  		Call  SetAnimationRate  ( .Actor:Self 00000001 *Fixed[2.0] )
-    % 4E4:  		Call  SetAnimation  ( .Actor:Self 00000001 00260003 )
-    % 4FC:  		Call  SetGoalToHome ( .Actor:Self )
-    % 50C:  		Call  SetActorSpeed ( .Actor:Self *Fixed[4.0] )
-    % 520:  		Call  RunToGoal     ( .Actor:Self  0` .False )
-    % 538:  		Call  SetAnimationRate  ( .Actor:Self 00000001 *Fixed[1.0] )
-    % 550:  		Call  HPBarToHome   ( .Actor:Self )
+    % 4CC:  		Call SetAnimationRate  ( .Actor:Self 00000001 *Fixed[2.0] )
+    % 4E4:  		Call SetAnimation  ( .Actor:Self 00000001 00260003 )
+    % 4FC:  		Call SetGoalToHome ( .Actor:Self )
+    % 50C:  		Call SetActorSpeed ( .Actor:Self *Fixed[4.0] )
+    % 520:  		Call RunToGoal     ( .Actor:Self  0` .False )
+    % 538:  		Call SetAnimationRate  ( .Actor:Self 00000001 *Fixed[1.0] )
+    % 550:  		Call HPBarToHome   ( .Actor:Self )
     % 560:  	Case  ==  .Event:RecoverStatus % 31
     % 56C:  		SetConst  *Var0  00000001 
     % 57C:  		SetConst  *Var1  00260001 
@@ -269,9 +267,9 @@
     % 658:  		Return
     % 660:  	Default
     % 668:  EndSwitch
-    Call  SetAnimation      ( .Actor:Self .marioPart .marioIdle )
-    Call  EnableIdleScript  ( .Actor:Self .True )
-    Call  UseIdleAnimation  ( .Actor:Self .True )
+    Call SetAnimation      ( .Actor:Self .marioPart .marioIdle )
+    Call EnableIdleScript  ( .Actor:Self .True )
+    Call UseIdleAnimation  ( .Actor:Self .True )
     Return
     End
 }
@@ -291,7 +289,7 @@
 0.999391 0.999848 1.0
 }
 
-%Call  EnableActorGlow   ( .Actor:Self .True ) for rainbow effect
+%Call EnableActorGlow   ( .Actor:Self .True ) for rainbow effect
 
 #new:Script $MarioJumpAttack {
     %memory mario takes a step forward before jumping
@@ -319,7 +317,7 @@
     Call SetGoalPos ( .Actor:Self *Var1 *Var2 *Var3 )
 
     %damage target if not invisible
-    Call  EnemyTestTarget   ( .Actor:Self *Var1 ~Flags:DamageType:0 00000000 00000001 00000010 )
+    Call EnemyTestTarget   ( .Actor:Self *Var1 ~Flags:DamageType:0 00000000 00000001 00000010 )
     Switch  *Var1 
         CaseOR  ==  .HitResult:Miss % 6
         CaseOR  ==  .HitResult:Lucky % 5
@@ -348,17 +346,17 @@
     Call SetAnimation( .Actor:Self .marioPart .marioIdle)
 
     %throw star into air
-    Call  GetActorPos ( .Actor:Self *Var3 *Var1 *Var2 )
+    Call GetActorPos ( .Actor:Self *Var3 *Var1 *Var2 )
     Set *Var0 *Var3
     Add *Var3 -18` %offset star starting X position
     Add *Var2 1` %get rid of Z fighting
-    Call  SetPartPos        ( .Actor:Self .starPart  *Var3  *Var1  *Var2 )
-    Call  SetPartScale  ( .Actor:Self .starPart *Fixed[1.0] *Fixed[1.0] *Fixed[1.0] )
-    Call  SetPartJumpGravity    ( .Actor:Self .starPart *Fixed[4.0] )
-    Call  SetPartFlagBits   ( .Actor:Self .starPart 00000001 .False )
+    Call SetPartPos        ( .Actor:Self .starPart  *Var3  *Var1  *Var2 )
+    Call SetPartScale  ( .Actor:Self .starPart *Fixed[1.0] *Fixed[1.0] *Fixed[1.0] )
+    Call SetPartJumpGravity    ( .Actor:Self .starPart *Fixed[4.0] )
+    Call SetPartFlagBits   ( .Actor:Self .starPart 00000001 .False )
     Add *Var1 20` %jump to mario's head and then disappear
-    Call  JumpPartTo        ( .Actor:Self .starPart *Var0 *Var1 *Var2  15` .True )
-    Call  SetPartFlagBits   ( .Actor:Self .starPart 00000001 .True )
+    Call JumpPartTo        ( .Actor:Self .starPart *Var0 *Var1 *Var2  15` .True )
+    Call SetPartFlagBits   ( .Actor:Self .starPart 00000001 .True )
     Call PlaySoundAtActor (.Actor:Self .Sound:Star)
     Call PlayEffect(~FX:Sparkles:Star *Var0 *Var1 *Var2 32` )
     Call EnableActorGlow ( .Actor:Self .True )
@@ -371,7 +369,7 @@
     Call RunToGoal ( .Actor:Self 0` .True )
 
     %damage target if not invisible
-    Call  EnemyTestTarget   ( .Actor:Self *Var1 ~Flags:DamageType:0 00000000 00000001 00000010 )
+    Call EnemyTestTarget   ( .Actor:Self *Var1 ~Flags:DamageType:0 00000000 00000001 00000010 )
     Switch  *Var1 
         CaseOR  ==  .HitResult:Miss % 6
         CaseOR  ==  .HitResult:Lucky % 5
