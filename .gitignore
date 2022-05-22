@@ -12,3 +12,4 @@ sprite/player/cache/**
 sprite/player/temp/
 world/partner/temp/
 map/build/**
+map/build/index.bin
