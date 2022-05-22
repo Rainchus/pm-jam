@@ -21,8 +21,8 @@
 #define .Anim:BroqueHTalk 00010007
 #define .Anim:BroqueTalkPoint 00010005
 
-#define .Anim:BlittyIdle 008C0003
-#define .Anim:BlittyWalk 008C0001
+#define .Anim:BlittyIdle 008C0001
+#define .Anim:BlittyWalk 008C0002
 #define .Anim:BlittyTalk 008C0004
 
 #define .Anim:BowserIdle 00800002
@@ -32,5 +32,6 @@
 #define .Anim:BowserSIdle 00800029
 #define .Anim:BowserSTalk 00800008
 #define .Anim:BowserSlump 00800024
+#define .Anim:BowserFBCharge 00810016
 #define .Anim:BowserFBStart 00810017
 #define .Anim:BowserFB 00810018

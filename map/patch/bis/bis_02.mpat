@@ -212,7 +212,7 @@
 #new:NpcSettings $Broque
 {
 	0 %unk_00
-	32`s %colliderheight
+	42`s %colliderheight
 	16`s %colliderradius
 	0 %unk
 	0 %interactscript
@@ -319,6 +319,21 @@
   	Sub   *Var0  360`
     EndIf
 	Wait 1`
+	EndLoop
+
+	Return
+	End
+}
+
+#new:Script $TornadoGrow
+{
+	SetF *VarD *Fixed[0.0]
+	SetF *VarE *Fixed[0.0]
+	SetF *VarF *Fixed[0.0]
+	Loop 10
+        Call ScaleModel ( ~Model:Tornado *VarD *VarE *VarF )
+        AddF *VarF *Fixed[0.1]
+		Wait 10`
 	EndLoop
 
 	Return
@@ -456,19 +471,19 @@
 	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowFTalk .Anim:StarlowFIdle 0 .NpcID:Broque 00310021)
 	Call PlaySoundAtNpc(.NpcID:Starlow .Sound:Exclamation 0)
 	Call ShowEmote ( .NpcID:Starlow .Emote:Exclamation 1` 30` 1 0 0 0 0 )
-	Call ShowEmote ( .NpcID:Broque .Emote:Exclamation 1` 30` 1 0 0 0 0 )
+	Call ShowEmote ( .NpcID:Broque .Emote:Exclamation 1` 30` 1 0 8` 0 0 )
 	Wait 20`
-	Call  FadeOutMusic  ( 00000000 500` )
-	Call FadeInMusic ( 0 .Song:FuzzyAttack 0 5` 0 0 )
-	Call NpcMoveTo ( .NpcID:BattleBowser 0` 0` 0` )
-	Wait 10`
+	Call InterpNpcYaw (.NpcID:BattleBowser -1` 0`)
 	Call SetNpcPos (.NpcID:Bowser 0` -200` -24` )
 	Call SetNpcPos (.NpcID:BattleBowser 0` 0` -24` )
+	Call  FadeOutMusic  ( 00000000 500` )
+	Call FadeInMusic ( 0 .Song:FuzzyAttack 0 5` 0 0 )
+	Wait 10`
+
+	Call SetNpcAnimation (.NpcID:BattleBowser .Anim:BowserFBCharge)
+	Wait 14`
 	Call SetNpcAnimation ( .NpcID:BattleBowser .Anim:BowserFBStart )
-	Wait 30`
-	Call SetNpcAnimation (.NpcID:BattleBowser .Anim:BowserFB)
-	Call EnableModel (~Model:Tornado 1)
-	Call  SetTexPanner  ( ~Model:Tornado 0000000F )
+	Wait 12`
     Thread
         Set   *Var0  0000000F
         Set   *Var1  600`
@@ -486,11 +501,23 @@
         Exec  $Script_Update_Texture_Panner
 		Exec $TornadoSpin
     EndThread
-	
+	Call SetNpcAnimation (.NpcID:BattleBowser .Anim:BowserFB)
+	Call ScaleModel ( ~Model:Tornado *Fixed[0.0] *Fixed[0.0] *Fixed[0.0])
+	Call EnableModel (~Model:Tornado 1)
+	Call  SetTexPanner  ( ~Model:Tornado 0000000F )
+	Thread
+		Call ShakeCam ( .Cam:Default 2` 500` *Fixed[0.25] )
+		Wait 6`
+		Call ShakeCam ( .Cam:Default 2` 500` *Fixed[0.75] )
+	EndThread
+	Thread
+		Call NpcMoveTo(.NpcID:Broque 0` 200` 240`)
+	EndThread
+	Call NpcFlyTo (.NpcID:Starlow -43` 41` 100` 25` 0` .Easing:QuarticOut)	
 	Call PlaySoundAtNpc ( .NpcID:Starlow .Sound:Wind 0 )
 	Call SetNpcAnimation ( .NpcID:Starlow .Anim:StarlowFreeze )
 	Thread
-	Call NpcFlyTo (.NpcID:Starlow 0` 32` -12` 90` 0` .Easing:QuarticIn)	
+	Call NpcFlyTo (.NpcID:Starlow 0` 32` -12` 60` 0` .Easing:QuarticIn)	
 	EndThread
 	Thread
 		Wait 25`
@@ -498,14 +525,27 @@
         Loop 10`
             Call SetNpcScale ( .NpcID:Starlow *VarF *VarF *VarF )
             AddF *VarF *Fixed[-0.1]
-            Wait 3`
+            Wait 7`
         EndLoop
+		SetF *Var1 *Fixed[0.0]
     EndThread
-	Call SetNpcScale(.NpcID:Starlow *Fixed[0.0000001] *Fixed[0.00000001] *Fixed[0.00000001])
+	Thread
+		Set *VarD 0`
+		Loop
+            Call SetNpcRotation (.NpcID:Starlow *VarD 0` 0`)
+			Add   *VarD  12`
+			If  *VarD  >  359`
+			  Set   *VarD 0`
+			EndIf
+			Wait 1`
+        EndLoop
+	EndThread
 	Call EnableNpcShadow ( .NpcID:Starlow 0 )
 	Wait 90`
 	Call PlaySoundAtPlayer ( .Sound:Wind 0 )
 	Call PlayerMoveTo ( 0` -12` 45` ) %Make Mario an NPC and make this a flyto
+
+	%Swap Maps
 
 	Return
 	End
@@ -514,8 +554,7 @@
 	%Fix all yaws
 	%Broque Cake, walk, MoonRun, so he gets sucked in
 	%Mario Exclamation
-	%Fix starlow scaling for getting sucked in
-	%TORNADO!!
+	%Tornado Scale up from bowser's mouth
 
 }
 
