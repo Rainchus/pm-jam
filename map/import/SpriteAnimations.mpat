@@ -3,6 +3,8 @@
 #define .Anim:PeachWalk 00D60009
 #define .Anim:PeachHandsUpIdle 00D60004
 #define .Anim:PeachHandsLower 00D60003
+#define .Anim:CakeFull 00D6001A
+#define .Anim:CakeEaten 00D6001B
 
 #define .Anim:StarlowHIdle 00010003
 #define .Anim:StarlowHTalk 00010004
@@ -25,6 +27,11 @@
 #define .Anim:BlittyIdle 008C0001
 #define .Anim:BlittyWalk 008C0002
 #define .Anim:BlittyTalk 008C0004
+
+#define .Anim:MarioNPCStand 00D30000
+#define .Anim:MarioNPCTumble 00D30001
+#define .Anim:MarioNPCFall 00D30002
+#define .Anim:MarioNPCCrouch 00D30003
 
 #define .Anim:BowserIdle 00800002
 #define .Anim:BowserTalk 00800006

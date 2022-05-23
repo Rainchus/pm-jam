@@ -35,6 +35,9 @@ false	% reversed
 
 153 = SearchBush
 
+161 = Falling
+162 = HitGround
+
 172 = Squeak
 
 187 = Crumble
