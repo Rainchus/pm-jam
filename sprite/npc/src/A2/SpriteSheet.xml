@@ -530,5 +530,40 @@
 				<Command val="201D"/>
 			</Component>
 		</Animation>
+		<Animation name="shrink">
+			<Component name="Comp_00" xyz="0,0,0">
+				<Command val="1000"/>
+				<Command val="5000"/>
+				<Command val="C8"/>
+				<Command val="4"/>
+				<Command val="5000"/>
+				<Command val="C8"/>
+				<Command val="4"/>
+				<Command val="5000"/>
+				<Command val="96"/>
+				<Command val="4"/>
+				<Command val="5000"/>
+				<Command val="64"/>
+				<Command val="4"/>
+				<Command val="5000"/>
+				<Command val="C8"/>
+				<Command val="4"/>
+				<Command val="5000"/>
+				<Command val="96"/>
+				<Command val="4"/>
+				<Command val="5000"/>
+				<Command val="64"/>
+				<Command val="4"/>
+				<Command val="5000"/>
+				<Command val="96"/>
+				<Command val="4"/>
+				<Command val="5000"/>
+				<Command val="64"/>
+				<Command val="4"/>
+				<Command val="5000"/>
+				<Command val="96"/>
+				<Command val="4"/>
+			</Component>
+		</Animation>
 	</AnimationList>
 </SpriteSheet>

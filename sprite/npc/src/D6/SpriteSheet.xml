@@ -9,6 +9,7 @@
 		<Palette id="5" src="Palette_05.png"/>
 		<Palette id="6" src="Palette_06.png"/>
 		<Palette id="7" src="Palette_07.png"/>
+		<Palette id="8" name="CakeFull" src="CakeFull.pal.png"/>
 	</PaletteList>
 	<RasterList>
 		<Raster id="0" palette="0" src="Raster_00.png"/>
@@ -55,6 +56,8 @@
 		<Raster id="29" palette="0" src="Raster_29.png"/>
 		<Raster id="2A" palette="0" src="Raster_2A.png"/>
 		<Raster id="2B" palette="0" src="Raster_2B.png"/>
+		<Raster id="2C" name="CakeFull" palette="8" src="CakeFull.png"/>
+		<Raster id="2D" name="CakeEaten" palette="8" src="CakeEaten.png"/>
 	</RasterList>
 	<AnimationList>
 		<Animation name="Anim_00">
@@ -413,6 +416,22 @@
 				<Command val="2"/>
 				<Command val="8201"/>
 				<Command val="2002"/>
+			</Component>
+		</Animation>
+		<Animation name="cake">
+			<Component name="Comp_00" xyz="0,0,0">
+				<Command val="102C"/>
+				<Command val="2"/>
+				<Command val="8201"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="cakeeaten">
+			<Component name="Comp_00" xyz="0,0,0">
+				<Command val="102D"/>
+				<Command val="2"/>
+				<Command val="8201"/>
+				<Command val="2000"/>
 			</Component>
 		</Animation>
 	</AnimationList>

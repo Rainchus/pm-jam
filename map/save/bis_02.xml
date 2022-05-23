@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Map name="bis_02" author="unnamed" background="obk_bg" textures="kkj_tex">
 	<Editor>
-		<Camera pos="177.969940,85.231598,143.910934" pitch="12.959990" yaw="256.878510"/>
-		<Camera pos="2.713862,65536.000000,1.488260"/>
-		<Camera pos="65536.000000,-78.321899,223.343369"/>
-		<Camera pos="-0.610521,-2.517851,65536.000000"/>
+		<Camera pos="69.137756,-133.711136,70.129097" pitch="19.519993" yaw="290.720184"/>
+		<Camera pos="0.000000,65536.000000,50.000000"/>
+		<Camera pos="65536.000000,158.000000,50.000000"/>
+		<Camera pos="0.000000,158.000000,65536.000000"/>
 	</Editor>
 	<ModelTree>
 		<Node name="Root" id="BF">
@@ -380,7 +380,7 @@
 		</Node>
 	</ZoneTree>
 	<MarkerTree>
-		<Node name="Root" id="F">
+		<Node name="Root" id="10">
 			<Node name="Entrances" id="7">
 				<Node name="Entry0" id="FFFFFFFF"/>
 				<Node name="Entry1" id="0"/>
@@ -398,6 +398,7 @@
 			<Node name="Peach" id="C"/>
 			<Node name="Broque" id="D"/>
 			<Node name="Blitty" id="E"/>
+			<Node name="MarioNPC" id="F"/>
 		</Node>
 	</MarkerTree>
 	<LightSets>
@@ -13347,7 +13348,12 @@
 	</Zones>
 	<Markers>
 		<Marker ver="4" type="Root">
-			<MapObject name="Root" id="F"/>
+			<MapObject name="Root" id="10"/>
+		</Marker>
+		<Marker ver="4" type="NPC" pos="0,-100,0" yaw="0.000000">
+			<MapObject name="MarioNPC" id="F"/>
+			<Movement type="Stationary" data="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
+			<Sprite sprite="D3" palette="0" animations="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
 		</Marker>
 		<Marker ver="4" type="NPC" pos="40,0,300" yaw="0.000000">
 			<MapObject name="Blitty" id="E"/>
@@ -13372,14 +13378,14 @@
 		<Marker ver="4" type="NPC" pos="0,-200,0" yaw="-180.000000">
 			<MapObject name="BattleBowser" id="A"/>
 			<Movement type="Stationary" data="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
-			<Sprite sprite="81" palette="0" animations="17,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
+			<Sprite sprite="81" palette="0" animations="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
 		</Marker>
 		<Marker ver="4" type="NPC" pos="0,0,-12" yaw="-180.000000">
 			<MapObject name="Bowser" id="9"/>
 			<Movement type="Stationary" data="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
 			<Sprite sprite="80" palette="0" animations="2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
 		</Marker>
-		<Marker ver="4" type="Position" pos="-58,0,54" yaw="0.000000">
+		<Marker ver="4" type="Position" pos="-54,0,50" yaw="0.000000">
 			<MapObject name="MarioCutscene" id="8"/>
 		</Marker>
 		<Marker ver="4" type="Group">

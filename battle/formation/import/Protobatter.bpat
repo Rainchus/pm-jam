@@ -183,6 +183,7 @@
 
 #new:Script $ProtobatterGrow {
     Call GetActorVar ( .Actor:Self .protoScaleVar *Var0 )
+    Call PlaySoundAtActor ( .Actor:Self .Sound:Rise )
     Switch *Var0
         Case == .protoSizeNormal
             Call SetActorScale ( .Actor:Self *Fixed[1.0] *Fixed[1.0] *Fixed[1.0] )
