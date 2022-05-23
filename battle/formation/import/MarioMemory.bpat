@@ -15,10 +15,15 @@
 #define .marioBurnDead      00A2000D
 #define .marioDizzy         00A2000E
 #define .marioSleep         00A2000F
+#define .marioGrow          00A20010
+
+%Actor Vars
+#define .marioGlowingVar 0
 
 %Memory Mario parts
 #define .marioPart 1
 #define .starPart 2
+#define .mushroomPart 3
 
 %Memory Mario stats
 #define .memoryMarioHP 50`b
@@ -34,7 +39,7 @@
     [Flags]       00000000 
     [StatusTable] $StatusTable_MemoryMario 
     % ai
-    [PartsCount]    2`s 
+    [PartsCount]    3`s 
     [PartsTable]  $PartsTable_MemoryMario0
     [Script]      $Script_Init_MemoryMario 
     % move effectiveness
@@ -113,12 +118,33 @@
 /% s8 unk_1E %/                 00b
 /% s8 unk_1F %/                 00b
 /% s8 unk_20 %/                 00000000
+
+%star
+/% s32 flags %/                 00120001
+/% s8 index %/                  ~Byte:.mushroomPart
+/% Vec3b posOffset %/           00b 00b 00b
+/% Vec2b targetOffset %/        00b 00b %for cursor when selecting to attack in battle
+/% s16 opacity %/               00FFs
+/% s32* IdleAnimations %/       $IdleAnimations_Mushroom
+/% s32* defenseTable %/         $DefenseTable_MemoryMario
+/% s32 eventFlags %/            00000000
+/% s32 elementImmunityFlags %/  00000000
+/% s8 unk_1C %/                 00b
+/% s8 unk_1D %/                 00b
+/% s8 unk_1E %/                 00b
+/% s8 unk_1F %/                 00b
+/% s8 unk_20 %/                 00000000
+}
+
+#new:IdleAnimations $IdleAnimations_Mushroom {
+    .Status:Normal    .blockMushroom
+    .Status:End
 }
 
 #new:IdleAnimations $IdleAnimations_Star {
     .Status:Normal    .blockStar
     .Status:End
-    }
+}
 
 #new:IdleAnimations $IdleAnimations_MemoryMario {
 .Status:Normal    .marioIdle
@@ -146,41 +172,58 @@
     End
 }
 
+#new:Script $SetMemoryMarioScaling {
+    Call GetActorVar ( .Actor:Self .marioGlowingVar *Var3 )
+    If *Var3 != 0
+        Call SetActorScale     ( .Actor:Self *Fixed[1.0] *Fixed[1.0] *Fixed[1.0] )
+        Call SetActorScale     ( .Actor:Self *Fixed[2.0] *Fixed[2.0] *Fixed[2.0] )
+    Else
+        Call SetActorScale     ( .Actor:Self *Fixed[1.0] *Fixed[1.0] *Fixed[1.0] )
+    EndIf
+    Return
+    End
+}
+
 #new:Script $Script_HandleEvent_MemoryMario {
     Call UseIdleAnimation  ( .Actor:Self .False )
     Call EnableIdleScript  ( .Actor:Self .False )
     Call SetActorScale     ( .Actor:Self *Fixed[1.0] *Fixed[1.0] *Fixed[1.0] )
     Call GetLastEvent      ( .Actor:Self *Var0 )
-
     Switch  *Var0 
         CaseOR  ==  .Event:HitCombo % 9
         CaseOR  ==  .Event:Hit % A
+            ExecWait $SetMemoryMarioScaling
             SetConst  *Var0  .marioPart 
             SetConst  *Var1  .marioHurt 
             ExecWait  DoNormalHit
         EndCaseGroup
         Case  ==  .Event:BurnHit % E
+            ExecWait $SetMemoryMarioScaling
             SetConst  *Var0  .marioPart 
             SetConst  *Var1  .marioBurnHurt 
             SetConst  *Var2  .marioBurnDead 
-        ExecWait  DoBurnHit
+            ExecWait  DoBurnHit
         Case  ==  .Event:BurnDeath % 24
+            ExecWait $SetMemoryMarioScaling
             SetConst  *Var0  .marioPart 
             SetConst  *Var1  .marioBurnHurt 
             SetConst  *Var2  .marioBurnDead 
-            ExecWait  DoBurnHit 
+            ExecWait  DoBurnHit
+            ExecWait $SetMemoryMarioScaling
             SetConst  *Var0  .marioPart 
             SetConst  *Var1  .marioBurnDead 
-            ExecWait  DoDeath 
+            ExecWait  DoDeath
             Return
         Case  ==  .Event:Death % 20
+            ExecWait $SetMemoryMarioScaling
             SetConst  *Var0  .marioPart 
             SetConst  *Var1  .marioHurt 
-            ExecWait  DoNormalHit 
+            ExecWait  DoNormalHit
             Wait  10`
+            ExecWait $SetMemoryMarioScaling
             SetConst  *Var0  .marioPart  
             SetConst  *Var1  .marioDead
-            ExecWait  DoDeath 
+            ExecWait  DoDeath
             Return
     EndSwitch
     % 174:  	Case  ==  .Event:SpinSmashHit % B
@@ -267,6 +310,7 @@
     % 658:  		Return
     % 660:  	Default
     % 668:  EndSwitch
+    ExecWait $SetMemoryMarioScaling
     Call SetAnimation      ( .Actor:Self .marioPart .marioIdle )
     Call EnableIdleScript  ( .Actor:Self .True )
     Call UseIdleAnimation  ( .Actor:Self .True )
@@ -289,8 +333,6 @@
 0.999391 0.999848 1.0
 }
 
-%Call EnableActorGlow   ( .Actor:Self .True ) for rainbow effect
-
 #new:Script $MarioJumpAttack {
     %memory mario takes a step forward before jumping
     Call SetAnimation ( .Actor:Self .marioPart .marioRun )
@@ -302,6 +344,7 @@
 
     %memory mario jump to mario
     Call RandInt ( 6` *Var0 )
+    ExecWait $SetMemoryMarioScaling
     Call SetAnimation  ( .Actor:Self .marioPart .marioJump )
     Call SetActorJumpGravity   ( .Actor:Self *Fixed[1.5] )
     Call GetActorPos ( .Actor:Player *Var1 *Var2 *Var3 )
@@ -326,8 +369,10 @@
     EndSwitch
 
     %memory mario returns to home
+    ExecWait $SetMemoryMarioScaling
     Call SetAnimation ( .Actor:Self .marioPart .marioIdle )
     Wait 5`
+    ExecWait $SetMemoryMarioScaling
     Call SetAnimation ( .Actor:Self .marioPart .marioRun )
     Call SetGoalToHome ( .Actor:Self )
     Call SetActorSpeed ( .Actor:Self *Fixed[4.0] )
@@ -337,12 +382,57 @@
     End
 }
 
+#new:Script $MarioBuff {
+    %mario uses star
+    ExecWait $SetMemoryMarioScaling
+    Call SetAnimation( .Actor:Self .marioPart .marioRaiseMushroom)
+    Wait 13` %animation of star raise
+    ExecWait $SetMemoryMarioScaling
+    Call SetAnimation( .Actor:Self .marioPart .marioThrowMushroom)
+    Wait 18`
+    ExecWait $SetMemoryMarioScaling
+    Call SetAnimation( .Actor:Self .marioPart .marioIdle)
+
+    %throw mushroom into air
+    Call GetActorPos ( .Actor:Self *Var3 *Var1 *Var2 )
+    Set *Var0 *Var3
+    Add *Var3 -18` %offset star starting X position
+    Add *Var2 1` %get rid of Z fighting
+    Call SetPartPos        ( .Actor:Self .mushroomPart  *Var3  *Var1  *Var2 )
+    Call SetPartScale  ( .Actor:Self .mushroomPart *Fixed[1.0] *Fixed[1.0] *Fixed[1.0] )
+    Call SetPartJumpGravity    ( .Actor:Self .mushroomPart *Fixed[4.0] )
+    Call SetPartFlagBits   ( .Actor:Self .mushroomPart 00000001 .False )
+    Add *Var1 20` %jump to mario's head and then disappear
+    Call JumpPartTo        ( .Actor:Self .mushroomPart *Var0 *Var1 *Var2  15` .True )
+    Call SetPartFlagBits   ( .Actor:Self .mushroomPart 00000001 .True )
+    Call PlaySoundAtActor (.Actor:Self .Sound:Star)
+    Call EnableActorGlow ( .Actor:Self .True )
+    Wait 20`
+
+    %grow animation
+    Call SetAnimation ( .Actor:Self .marioPart .marioGrow )
+    Wait 30`
+
+    %set actor var to signify mario is buffed (impacts chosen attack decision)
+    Call SetActorVar ( .Actor:Self .marioGlowingVar 3` ) %(amount of turns to buff -1)
+    Call SetAnimation ( .Actor:Self .marioPart .marioIdle )
+    ExecWait $SetMemoryMarioScaling %this one needs to go after the animation because??? (otherwise he scales to 4x size for a frame)
+    Call $Scr_API_BoostStatCustom ( .Actor:Self .boostAttack 2` )
+    Call $Scr_API_BoostStatCustom ( .Actor:Self .boostDef 2` )
+
+    Return
+    End
+}
+
 #new:Script $MarioRunAttack {
     %mario uses star
+    ExecWait $SetMemoryMarioScaling
     Call SetAnimation( .Actor:Self .marioPart .marioRaiseStar)
     Wait 13` %animation of star raise
+    ExecWait $SetMemoryMarioScaling
     Call SetAnimation( .Actor:Self .marioPart .marioThrowStar)
     Wait 18`
+    ExecWait $SetMemoryMarioScaling
     Call SetAnimation( .Actor:Self .marioPart .marioIdle)
 
     %throw star into air
@@ -359,10 +449,17 @@
     Call SetPartFlagBits   ( .Actor:Self .starPart 00000001 .True )
     Call PlaySoundAtActor (.Actor:Self .Sound:Star)
     Call PlayEffect(~FX:Sparkles:Star *Var0 *Var1 *Var2 32` )
-    Call EnableActorGlow ( .Actor:Self .True )
+
+    %check if we should enable actor glow (probably pointless?)
+    Call GetActorVar ( .Actor:Self .marioGlowingVar *Var3 )
+    If *Var3 == 0
+        Call EnableActorGlow ( .Actor:Self .True )
+    EndIf
+    
     Wait 20`
 
     %mario running attacking player
+    ExecWait $SetMemoryMarioScaling
     Call SetAnimation( .Actor:Self .marioPart .marioRun)
     Call SetGoalToTarget ( .Actor:Self )
     Call SetActorSpeed ( .Actor:Self *Fixed[10.5] )
@@ -384,12 +481,19 @@
 
     %wrap around from left of screen to right and then walk back to home position
     Wait 30`
+    ExecWait $SetMemoryMarioScaling
     Call SetAnimation ( .Actor:Self .marioPart .marioRun )
     Call SetActorPos ( .Actor:Self 200` 0` 0` )
     Call SetGoalToHome ( .Actor:Self )
     Call SetActorSpeed ( .Actor:Self *Fixed[4.0] )
     Call RunToGoal ( .Actor:Self 0` .True )
-    Call EnableActorGlow ( .Actor:Self .False )
+
+    %check if actor glow should end
+    Call GetActorVar ( .Actor:Self .marioGlowingVar *Var3 )
+    If *Var3 == 0
+        Call EnableActorGlow ( .Actor:Self .False )
+    EndIf
+    
     Return
     End
 }
@@ -397,12 +501,41 @@
 #new:Script $Script_TakeTurn_MemoryMario {
     Call UseIdleAnimation  ( .Actor:Self .False )
     Call EnableIdleScript  ( .Actor:Self .False )
-    Call RandInt ( 99` *Var0 )
 
-    If *Var0 < 50`
-        ExecWait $MarioJumpAttack
+    Call GetActorVar ( .Actor:Self .marioGlowingVar *Var0 )
+    %if not buffed already, evenly choose between 3 moves
+    If *Var0 == 0
+        Call RandInt ( 149` *Var1 )
+        Switch *Var1
+            Case < 50`
+                ExecWait $MarioJumpAttack
+            Case < 100`
+                ExecWait $MarioBuff
+            Default
+                ExecWait $MarioRunAttack
+        EndSwitch
     Else
-        ExecWait $MarioRunAttack
+        %if buffed, choose between 2 attacking moves
+        Call RandInt ( 99` *Var1 )
+        Switch *Var1
+            Case < 50`
+                ExecWait $MarioJumpAttack
+            Default
+                ExecWait $MarioRunAttack
+        EndSwitch
+    EndIf
+
+    %subtract from buff turns if buff active
+    Call GetActorVar ( .Actor:Self .marioGlowingVar *Var0 )
+    If *Var0 != 0
+        Add *Var0 -1`
+        Call SetActorVar( .Actor:Self .marioGlowingVar *Var0 )
+        If *Var0 == 0
+            Call $Scr_API_ClearStatCustom (.Actor:Self .boostAttack) %clear atk buff
+            Call $Scr_API_ClearStatCustom (.Actor:Self .boostDef) %clear def buff
+            Call EnableActorGlow ( .Actor:Self .False )
+            ExecWait $SetMemoryMarioScaling %temporary, will have shrink animation
+        EndIf
     EndIf
 
     Call EnableIdleScript  ( .Actor:Self .True )

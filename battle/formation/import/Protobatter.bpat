@@ -247,7 +247,7 @@
             ExecWait  DoDeath 
             Return
     EndSwitch
-
+    ExecWait $ProtoAnimSetScale
     % 174:  	Case  ==  .Event:SpinSmashHit % B
     % 180:  		SetConst  *Var0  00000001 
     % 190:  		SetConst  *Var1  00260005 
@@ -429,17 +429,41 @@
     Call SetAnimation ( .Actor:Self .protoPart .protoSpit )
     Wait 20`
 
-    %spit out bullet thing
+    %spit out bullet
     Call GetActorPos ( .Actor:Self *Var0 *Var1 *Var2 )
+    Call GetActorVar ( .Actor:Self .protoScaleVar *Var3 )
+
+    Switch *Var3
+    Case == .protoSizeNormal
+        Add *Var1 10`
+    Case == .protoSizeLarge
+        Add *Var1 15`
+    Case == .protoSizeMax
+        Add *Var1 20`
+    EndSwitch
+        
+    Call SetAnimation ( .Actor:Self .bulletPart .bulletGrow )
     Call SetPartPos        ( .Actor:Self .bulletPart  *Var0  *Var1  *Var2 )
     Call SetPartScale  ( .Actor:Self .bulletPart *Fixed[1.0] *Fixed[1.0] *Fixed[1.0] )
     Call SetPartJumpGravity    ( .Actor:Self .bulletPart *Fixed[0.0] )
     Call SetPartFlagBits   ( .Actor:Self .bulletPart 00000001 .False )
-    Add *Var0 -30`
-    Add *Var1 10` %probably change X and Y offset based on scale
+
+    %change spit bullet location before hit depending on scale
+    Call GetActorVar ( .Actor:Self .protoScaleVar *Var3 )
+    Switch *Var3
+    Case == .protoSizeNormal
+        Add *Var0 -30`
+    Case == .protoSizeLarge
+        Add *Var0 -35`
+    Case == .protoSizeMax
+        Add *Var0 -40`
+    EndSwitch
+    
     Add *Var2 1` %fix Z fighting
     Call JumpPartTo        ( .Actor:Self .bulletPart *Var0 *Var1 *Var2  5` .False )
-    Wait 10`
+    Wait 4`
+    Call SetAnimation ( .Actor:Self .bulletPart .bullet )
+    Wait 6`
 
     %protobatter hits bullet
     Call SetAnimation ( .Actor:Self .protoPart .protoHit )
