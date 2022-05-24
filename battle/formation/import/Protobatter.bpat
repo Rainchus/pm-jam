@@ -183,10 +183,10 @@
 
 #new:Script $ProtobatterGrow {
     Call GetActorVar ( .Actor:Self .protoScaleVar *Var0 )
-    Call PlaySoundAtActor ( .Actor:Self .Sound:Rise )
     Switch *Var0
         Case == .protoSizeNormal
             Call SetActorScale ( .Actor:Self *Fixed[1.0] *Fixed[1.0] *Fixed[1.0] )
+            Call PlaySoundAtActor ( .Actor:Self .Sound:Rise )
             Call SetAnimation ( .Actor:Self .protoPart .protoGrow1 )
             Call SetActorVar ( .Actor:Self .protoScaleVar .protoSizeLarge )
             Wait 20`
@@ -194,6 +194,7 @@
             Call SetActorScale ( .Actor:Self *Fixed[1.5] *Fixed[1.5] *Fixed[1.5] )
         Case == .protoSizeLarge
             Call SetActorScale ( .Actor:Self *Fixed[1.0] *Fixed[1.0] *Fixed[1.0] )
+            Call PlaySoundAtActor ( .Actor:Self .Sound:Rise )
             Call SetAnimation ( .Actor:Self .protoPart .protoGrow2 )
             Call SetActorVar ( .Actor:Self .protoScaleVar .protoSizeMax )
             Wait 20`
