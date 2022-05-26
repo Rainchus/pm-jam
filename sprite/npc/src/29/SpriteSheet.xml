@@ -22,6 +22,8 @@
 		<Raster id="F" name="roll6" palette="0" src="roll6.png"/>
 		<Raster id="10" name="roll7" palette="0" src="roll7.png"/>
 		<Raster id="11" name="roll8" palette="0" src="roll8.png"/>
+		<Raster id="12" name="hurt2" palette="0" src="hurt2.png"/>
+		<Raster id="13" name="hurt1" palette="0" src="hurt1.png"/>
 	</RasterList>
 	<AnimationList>
 		<Animation name="still">
@@ -119,8 +121,6 @@
 			<Component name="Comp_00" xyz="0,0,0">
 				<Command val="100A"/>
 				<Command val="8"/>
-				<Command val="100B"/>
-				<Command val="4"/>
 				<Command val="100C"/>
 				<Command val="4"/>
 				<Command val="100D"/>
@@ -137,28 +137,18 @@
 			</Component>
 		</Animation>
 		<Animation name="hurt">
-			<Component name="Comp_00" xyz="0,0,0">
-				<Command val="1001"/>
-				<Command val="C"/>
-				<Command val="1002"/>
+			<Component name="Comp_00" xyz="0,-9,0">
+				<Command val="1013"/>
 				<Command val="6"/>
-				<Command val="1003"/>
-				<Command val="C"/>
-				<Command val="1000"/>
+				<Command val="1012"/>
 				<Command val="6"/>
 				<Command val="2000"/>
 			</Component>
 		</Animation>
 		<Animation name="dead">
-			<Component name="Comp_00" xyz="0,0,0">
-				<Command val="1001"/>
+			<Component name="Comp_00" xyz="0,-9,0">
+				<Command val="1013"/>
 				<Command val="C"/>
-				<Command val="1002"/>
-				<Command val="6"/>
-				<Command val="1003"/>
-				<Command val="C"/>
-				<Command val="1000"/>
-				<Command val="6"/>
 				<Command val="2000"/>
 			</Component>
 		</Animation>
