@@ -183,6 +183,7 @@
 
 #new:Script $ProtobatterGrow {
     Call GetActorVar ( .Actor:Self .protoScaleVar *Var0 )
+    Call PlaySoundAtActor ( .Actor:Self .Sound:Rise )
     Switch *Var0
         Case == .protoSizeNormal
             Call SetActorScale ( .Actor:Self *Fixed[1.0] *Fixed[1.0] *Fixed[1.0] )
@@ -435,6 +436,7 @@
     Call GetActorPos ( .Actor:Self *Var0 *Var1 *Var2 )
     Call GetActorVar ( .Actor:Self .protoScaleVar *Var3 )
 
+    %change bullet starting Y position based on size
     Switch *Var3
     Case == .protoSizeNormal
         Add *Var1 10`
@@ -450,7 +452,7 @@
     Call SetPartJumpGravity    ( .Actor:Self .bulletPart *Fixed[0.0] )
     Call SetPartFlagBits   ( .Actor:Self .bulletPart 00000001 .False )
 
-    %change spit bullet location before hit depending on scale
+    %change spit bullet location X before hit depending on scale
     Call GetActorVar ( .Actor:Self .protoScaleVar *Var3 )
     Switch *Var3
     Case == .protoSizeNormal
