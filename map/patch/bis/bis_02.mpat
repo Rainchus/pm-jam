@@ -440,7 +440,7 @@
 	Call SetNpcAnimation ( .NpcID:Peach .Anim:PeachHandsLower )
 	Wait 5`
 	Call SetNpcAnimation (.NpcID:Peach .Anim:PeachWalk)
-	Call NpcMoveTo (.NpcID:Peach -43` 300` 75` )
+	Call NpcMoveTo (.NpcID:Peach 0` 300` 75` )
 	Call SetNpcAnimation (.NpcID:Starlow .Anim:StarlowNIdle)
 	Wait 20`
 	Exec $EveryoneFaceBowser
@@ -467,8 +467,20 @@
 	Call PlaySoundAtNpc(.NpcID:Starlow .Sound:Exclamation 0)
 	Call ShowEmote ( .NpcID:Starlow .Emote:Exclamation 1` 30` 1 0 0 0 0 )
 	Call ShowEmote ( .NpcID:Bowser .Emote:Exclamation 1` 30` 1 0 0 0 0 )
-	Call NpcMoveTo (.NpcID:Broque 0` 177` 60` )
-
+	Call SetNpcAnimation (.NpcID:Peach .Anim:CakeFull)
+	Call SetNpcPos (.NpcID:Peach 12` 18` 300`)
+	Thread
+		Call NpcMoveTo (.NpcID:Broque 0` 177` 60` )
+	EndThread
+	Thread
+		Call NpcFlyTo ( .NpcID:Peach 0` 18` 177` 60` 0` .Easing:Linear )
+	EndThread
+	Call SetNpcAnimation (.NpcID:Broque .Anim:BroqueHoldWalk)
+	Wait 60`
+	Call SetNpcAnimation (.NpcID:Broque .Anim:BroqueHoldIdle)
+	Wait 15`
+	Call SetNpcPos (.NpcID:Peach 20` 22` 140`)
+	Call SetNpcAnimation (.NpcID:Broque .Anim:BroqueIdle)
 	%% BROQUE COMES BACK %%
 	Exec $CutscenePartTwo
 
@@ -480,28 +492,71 @@
 #new:Script $CutscenePartTwo
 {
 	Call SpeakToNpc (.NpcID:Broque .Anim:BroqueTalk .Anim:BroqueIdle 0 .NpcID:Bowser 0031000E)
-	Call SetNpcAnimation (.NpcID:Peach .Anim:CakeFull)
-	Call SetNpcPos (.NpcID:Peach 9` 21` 50`)
-	Exec $EveryoneFaceBowser
+
+	%taken from everyonefacebowser
+	Thread
+		Call InterpNpcYaw (.NpcID:Starlow 300` 15` )
+	EndThread
+
+	Thread
+		Call InterpPlayerYaw ( 0` 15` )
+	EndThread
+
 	Call SpeakToNpc (.NpcID:Bowser .Anim:BowserHTalk .Anim:BowserHIdle 0 .NpcID:Broque 0031000F)
-	Exec $EveryoneFaceBroque
+
+	%taken from everyonefacebroque
+	Thread
+		Call InterpNpcYaw (.NpcID:Starlow 120` 15` )
+	EndThread
+
+	Thread
+		Call InterpPlayerYaw ( 180` 15` )
+	EndThread
+
 	Call SpeakToNpc (.NpcID:Broque .Anim:BroqueHTalk .Anim:BroqueHIdle 0 .NpcID:Bowser 00310010)
 	Call NpcMoveTo (.NpcID:Blitty 40` 150` 30`)
 	Call PlaySoundAtNpc (.NpcID:Blitty .Sound:Squeak 0 )
 	Wait 5`
 	Call PlaySoundAtNpc (.NpcID:Blitty .Sound:Squeak 0 )
 	Call SpeakToNpc (.NpcID:Blitty .Anim:BlittyTalk .Anim:BlittyIdle 0 .NpcID:Starlow 00310011)
-	Exec $EveryoneFaceBowser
+	
+	%taken from everyonefacebowser
+	Thread
+		Call InterpNpcYaw (.NpcID:Starlow 300` 15` )
+	EndThread
+
+	Thread
+		Call InterpPlayerYaw ( 0` 15` )
+	EndThread
+
 	Call SpeakToNpc (.NpcID:Bowser .Anim:BowserSTalk .Anim:BowserSIdle 0 .NpcID:Starlow 00310012)
 	Call SpeakToNpc (.NpcID:Bowser .Anim:BowserTalk .Anim:BowserIdle 0 .NpcID:Starlow 00310013)
 	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowHTalk .Anim:StarlowHIdle 0 .NpcID:Blitty 00310014)
-	Exec $EveryoneFaceBroque
+
+	%taken from everyonefacebroque
+	Thread
+		Call InterpNpcYaw (.NpcID:Starlow 120` 15` )
+	EndThread
+
+	Thread
+		Call InterpPlayerYaw ( 180` 15` )
+	EndThread
+
 	Call SpeakToNpc (.NpcID:Broque .Anim:BroqueTalkPoint .Anim:BroqueIdle 0 .NpcID:Bowser 00310015)
 	Call PlaySoundAtNpc (.NpcID:Blitty .Sound:Squeak 0 )
 	Wait 5`
 	Call PlaySoundAtNpc (.NpcID:Blitty .Sound:Squeak 0 )
 	Call NpcMoveTo (.NpcID:Blitty 40` 300` 30`)
-	Exec $EveryoneFaceBowser
+	
+	%taken from everyonefacebowser	
+	Thread
+		Call InterpNpcYaw (.NpcID:Starlow 300` 15` )
+	EndThread
+
+	Thread
+		Call InterpPlayerYaw ( 0` 15` )
+	EndThread
+
 	Call SpeakToNpc (.NpcID:Bowser .Anim:BowserHTalk .Anim:BowserIdle 0 .NpcID:Broque 00310016)
 	Call SetNpcAnimation (.NpcID:Starlow .Anim:StarlowAIdle)
 	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowATalk .Anim:StarlowAIdle 0 .NpcID:Bowser 00310017)
@@ -511,9 +566,9 @@
 	% Fade Screen Brightness
 	SetF    *Var[0] *Fixed[25.0]  % speed
 	SetF    *Var[1] *Fixed[255.0] % fully dark
-	Call SetNpcAnimation ( .NpcID:Peach .Anim:CakeEaten )
 	ExecWait $Script_FadeScreenOut
 	% Screen is now completely black
+	Call SetNpcAnimation ( .NpcID:Peach .Anim:CakeEaten )
 	Wait 30
 	Thread % Fade Screen Brightness
     SetF    *Var[0] *Fixed[25.0] % speed
@@ -530,9 +585,27 @@
 	Wait 15`
 	Call SetNpcAnimation (.NpcID:Bowser .Anim:BowserSIdle)
 	Call SpeakToNpc (.NpcID:Bowser .Anim:BowserSTalk .Anim:BowserSIdle 0 .NpcID:Broque 0031001B)
-	Exec $EveryoneFaceBroque
+
+	%taken from everyonefacebroque
+	Thread
+		Call InterpNpcYaw (.NpcID:Starlow 120` 15` )
+	EndThread
+
+	Thread
+		Call InterpPlayerYaw ( 180` 15` )
+	EndThread
+
 	Call SpeakToNpc (.NpcID:Broque .Anim:BroqueHTalk .Anim:BroqueHIdle 0 .NpcID:Bowser 0031001C)
-	Exec $EveryoneFaceBowser
+	
+	%taken from everyonefacebowser	
+	Thread
+		Call InterpNpcYaw (.NpcID:Starlow 300` 15` )
+	EndThread
+
+	Thread
+		Call InterpPlayerYaw ( 0` 15` )
+	EndThread
+
 	Call SpeakToNpc (.NpcID:Bowser .Anim:BowserSTalk .Anim:BowserSIdle 0 .NpcID:Broque 0031001D)
 	Call PlaySoundAtNpc (.NpcID:Bowser .Sound:Glub 0)
 	Wait 10`
@@ -545,7 +618,16 @@
 	Call PlaySoundAtNpc (.NpcID:Bowser .Sound:Slam 0)
 	Call GetNpcPos (.NpcID:Bowser *Var0 *Var1 *Var2 )
 	Call PlayEffect (~FX:SmokeImpact:Large *Var0 *Var1 *Var2 00000020 00000004 00000000 0000000A 00000000 00000000 00000000 00000000 00000000)
-	Exec $EveryoneFaceBroque
+
+	%taken from everyonefacebroque
+	Thread
+		Call InterpNpcYaw (.NpcID:Starlow 120` 15` )
+	EndThread
+
+	Thread
+		Call InterpPlayerYaw ( 180` 15` )
+	EndThread	
+	
 	Call SetNpcAnimation ( .NpcID:Starlow .Anim:StarlowNIdle)
 	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowNTalk .Anim:StarlowNIdle 0 .NpcID:Broque 0031001E)
 	Call SetNpcAnimation ( .NpcID:Starlow .Anim:StarlowFIdle) %make fearful
@@ -555,7 +637,16 @@
 	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowFTalk .Anim:StarlowFIdle 0 .NpcID:Broque 0031001F)
 	Call SpeakToNpc (.NpcID:Broque .Anim:BroqueHTalk .Anim:BroqueHIdle 0 .NpcID:Starlow 00310020) %make this happy talking
 	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowFTalk .Anim:StarlowFIdle 0 .NpcID:Broque 00310021)
-	Exec $EveryoneFaceBowser
+	
+	%taken from everyonefacebowser	
+	Thread
+		Call InterpNpcYaw (.NpcID:Starlow 300` 15` )
+	EndThread
+
+	Thread
+		Call InterpPlayerYaw ( 0` 15` )
+	EndThread
+
 	Call PlaySoundAtNpc(.NpcID:Starlow .Sound:Exclamation 0)
 	Call ShowEmote ( .NpcID:Starlow .Emote:Exclamation 1` 30` 1 0 0 0 0 )
 	Call ShowEmote ( .NpcID:MarioNPC .Emote:Exclamation 1` 30` 1 0 0 0 0 )
@@ -664,17 +755,39 @@
 			EndLoop
 	EndThread
 	Call EnableNpcShadow ( .NpcID:MarioNPC 0 )
-	%Swap Maps
+	Wait 90`
+	Call PlaySoundAtNpc (.NpcID:Peach .Sound:Wind 0)
+	Call NpcFlyTo (.NpcID:Peach -43` 41` 100` 25` 0` .Easing:QuarticOut)
+	Thread
+		Call NpcFlyTo (.NpcID:Peach 0` 25` -12` 60` 0` .Easing:QuarticIn)	
+	EndThread
+	Thread
+			Wait 25`
+			SetF *VarF *Fixed[1.0]
+			Loop 10`
+				Call SetNpcScale ( .NpcID:Peach *VarF *VarF *VarF )
+				AddF *VarF *Fixed[-0.1]
+				Wait 7`
+			EndLoop
+			SetF *Var1 *Fixed[0.0]
+	EndThread
+	Thread
+			Set *VarD 0`
+			Loop
+				Call SetNpcRotation (.NpcID:Peach *VarD 0` 0`)
+				Add   *VarD  12`
+				If  *VarD  >  359`
+				  Set   *VarD 0`
+				EndIf
+				Wait 1`
+			EndLoop
+	EndThread
+	Call EnableNpcShadow ( .NpcID:Peach 0 )
+	
+	Call GotoMap ( bis_03 0 )
 
 	Return
 	End
-
-	%TODO
-	%Broque Walk and Script Cake Scene
-	%Tweak Cake Pos so mario isn't covered (probably right at peach)
-	%Make Cake not Yaw
-	%Call exclamation emote over mario before getting sucked in
-	%Tornado Scale up from bowser's mouth
 
 }
 

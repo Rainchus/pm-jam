@@ -21,6 +21,13 @@
 		<Raster id="E" name="run1" palette="0" src="run1.png"/>
 		<Raster id="F" name="run2" palette="0" src="run2.png"/>
 		<Raster id="10" name="run3" palette="0" src="run3.png"/>
+		<Raster id="11" name="walk3" palette="0" src="walk3.png"/>
+		<Raster id="12" name="walk1" palette="0" src="walk1.png"/>
+		<Raster id="13" name="walk2" palette="0" src="walk2.png"/>
+		<Raster id="14" name="hold1" palette="0" src="hold1.png"/>
+		<Raster id="15" name="hold2" palette="0" src="hold2.png"/>
+		<Raster id="16" name="hold3" palette="0" src="hold3.png"/>
+		<Raster id="17" name="hold4" palette="0" src="hold4.png"/>
 	</RasterList>
 	<AnimationList>
 		<Animation name="still">
@@ -43,14 +50,14 @@
 		</Animation>
 		<Animation name="walk">
 			<Component name="body" xyz="0,0,0">
-				<Command val="1000"/>
-				<Command val="10"/>
-				<Command val="1001"/>
-				<Command val="10"/>
-				<Command val="1002"/>
-				<Command val="10"/>
-				<Command val="1003"/>
-				<Command val="10"/>
+				<Command val="1012"/>
+				<Command val="C"/>
+				<Command val="1013"/>
+				<Command val="6"/>
+				<Command val="1011"/>
+				<Command val="C"/>
+				<Command val="1013"/>
+				<Command val="6"/>
 				<Command val="2000"/>
 			</Component>
 		</Animation>
@@ -117,6 +124,28 @@
 				<Command val="3"/>
 				<Command val="100F"/>
 				<Command val="2"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="holdwalk">
+			<Component name="body" xyz="0,0,0">
+				<Command val="1014"/>
+				<Command val="C"/>
+				<Command val="1015"/>
+				<Command val="6"/>
+				<Command val="1016"/>
+				<Command val="C"/>
+				<Command val="1015"/>
+				<Command val="6"/>
+				<Command val="2000"/>
+			</Component>
+		</Animation>
+		<Animation name="holdidle">
+			<Component name="body" xyz="0,0,0">
+				<Command val="1017"/>
+				<Command val="18"/>
+				<Command val="1015"/>
+				<Command val="18"/>
 				<Command val="2000"/>
 			</Component>
 		</Animation>

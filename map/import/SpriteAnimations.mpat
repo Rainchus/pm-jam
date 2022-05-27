@@ -23,6 +23,8 @@
 #define .Anim:BroqueHTalk 008B0007
 #define .Anim:BroqueTalkPoint 008B0005
 #define .Anim:BroqueFlee 008B0008
+#define .Anim:BroqueHoldWalk 008B0009
+#define .Anim:BroqueHoldIdle 008B000A
 
 #define .Anim:BlittyIdle 008C0001
 #define .Anim:BlittyWalk 008C0002
