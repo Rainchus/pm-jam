@@ -1,0 +1,129 @@
+%Animations
+#define .tenderlingStill       00290000
+#define .tenderlingIdle        00290001
+#define .tenderlingWalk        00290002
+#define .tenderlingRun         00290003
+#define .tenderlingJump        00290004
+#define .tenderlingRoll        00290005
+#define .tenderlingHurt        00290006
+#define .tenderlingDead        00290007
+#define .tenderlingBurnHurt    00290008
+#define .tenderlingBurnDead    00290009
+#define .tenderlingDizzy       0029000A
+#define .tenderlingSleep       0029000B
+
+%Tenderling parts
+#define .tenderlingPart 1
+
+%Tenderling stats
+#define .tenderlingHP 8`b
+
+#new:Actor $Tenderling {
+    % stats
+    [Index]         7b 
+    [Level]         5`b 
+    [MaxHP]         .tenderlingHP
+    [Coins]         1`b 
+    [Flags]       00000000 
+    [StatusTable] $StatusTable_Tenderling
+    % ai
+    [PartsCount]    1`s 
+    [PartsTable]  $PartsTable_Tenderling0
+    [Script]      $Script_Init_Tenderling 
+    % move effectiveness
+    [Escape]       90`b 
+    [Item]        100`b 
+    [AirLift]     100`b 
+    [Hurricane]    90`b % Bow's "Spook" as well
+    [UpAndAway]    95`b 
+    [PowerBounce] 100`b 
+    [SpinSmash]     0`b % weight (0-4)
+    % ui positions
+    [Size]         24`b  24`b % width height
+    [HealthBar]     0`b   0`b % dx dy
+    [StatusTurn]  -10`b  20`b % dx dy
+    [StatusIcon]   10`b  20`b % dx dy
+}
+
+#new:DefenseTable $DefenseTable_Tenderling {
+.Element:Normal 00000000
+.Element:End
+}
+
+#new:StatusTable $StatusTable_Tenderling {
+.Status:Normal      0`
+.Status:Default     0`
+.Status:Sleep     100`
+.Status:Poison    100`
+.Status:Frozen    100`
+.Status:Dizzy     100`
+.Status:Fear      100`
+.Status:Static    100`
+.Status:Paralyze  100`
+.Status:Shrink    100`
+.Status:Stop      100`
+.Status:DefaultTurnMod    0`
+.Status:SleepTurnMod      0`
+.Status:PoisonTurnMod     0`
+.Status:FrozenTurnMod     0`
+.Status:DizzyTurnMod      0`
+.Status:FearTurnMod       0`
+.Status:StaticTurnMod     0`
+.Status:ParalyzeTurnMod   0`
+.Status:ShrinkTurnMod     0`
+.Status:StopTurnMod       0`
+.Status:End
+}
+
+#new:PartsTable $PartsTable_Tenderling0 { %ActorPartBlueprint struct in decomp
+/% s32 flags %/                 00800000
+/% s8 index %/                  ~Byte:.marioPart
+/% Vec3b posOffset %/           00b 00b 00b
+/% Vec2b targetOffset %/        00b 2Bb %for cursor when selecting to attack in battle
+/% s16 opacity %/               00FFs
+/% s32* IdleAnimations %/       $IdleAnimations_Tenderling
+/% s32* defenseTable %/         $DefenseTable_Tenderling
+/% s32 eventFlags %/            00000000
+/% s32 elementImmunityFlags %/  00000000
+/% s8 unk_1C %/                 00b
+/% s8 unk_1D %/                 F6b
+/% s8 unk_1E %/                 00b
+/% s8 unk_1F %/                 00b
+/% s8 unk_20 %/                 00000000 
+}
+
+#new:IdleAnimations $IdleAnimations_Tenderling {
+.Status:Normal    .tenderlingIdle
+.Status:Stone     .tenderlingIdle
+.Status:Sleep     .tenderlingSleep
+.Status:Poison    .tenderlingIdle
+.Status:Stop      .tenderlingStill
+.Status:Static    .tenderlingIdle
+.Status:Paralyze  .tenderlingIdle
+.Status:Dizzy     .tenderlingDizzy
+.Status:Fear      .tenderlingIdle
+.Status:End
+}
+
+#new:Script $Script_Init_Tenderling {
+    Call BindTakeTurn      ( .Actor:Self $Script_TakeTurn_Tenderling )
+    Call BindIdle  ( .Actor:Self $Script_Idle_Tenderling )
+    Call BindHandleEvent   ( .Actor:Self $Script_HandleEvent_Tenderling )
+    Return
+    End
+}
+
+#new:Script $Script_Idle_Tenderling {
+    Return
+    End
+}
+
+#new:Script $Script_TakeTurn_Tenderling {
+    Return
+    End
+}
+
+#new:Script $Script_HandleEvent_Tenderling {
+    Return
+    End
+}

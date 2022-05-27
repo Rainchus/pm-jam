@@ -62,12 +62,10 @@
      .isSelf
      ANDI t0, t0, FDFF %remove ORed 0x200 from actor ID (specifes this is an enemy)
 
-
      LI t1, 800DC150
      SLL t2, t0, 2 %multiply by 4
      ADDU t2, t2, t1
      LW s1, 0000 (t2) %load current actor ptr by ID
-
 
      LW t0, 0004 (s0) %load 2nd arg from script
      BEQ t0, r0, .atkBoost
@@ -84,9 +82,6 @@
      ADDU t2, t2, t1
      BEQ r0, r0, .end
      SB t2, 0221 (s1) %store new atk amount
-
-
-     
 
      .end
      POP s0, s1, ra
@@ -352,9 +347,7 @@
     ADDIU a1, r0, FF81 %actor self ID
     BEQ a0, a1, .actorSelf
     NOP
-
     .actorSelf
-
 
     POP s0, s1, ra
     JR RA
