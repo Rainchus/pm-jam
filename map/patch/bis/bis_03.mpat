@@ -1,25 +1,58 @@
-#define .NpcID:Peach 0
+#define .NpcID:Starlow 0
+#define .NpcID:MarioNPC 1
+#import SpriteAnimations.mpat
 
-#new:Script $ChangePeachYaw {
-    Wait 30`
-    Set *Var0 0`
-    Loop 
-        Call InterpNpcYaw ( .NpcID:Peach *Var0 15` )
-        Add *Var0 90`
-        If *Var0 == 360`
-            Set *Var0 0
-        EndIf
-        Wait 15`
-    EndLoop
-    Return
-    End
+
+#new:Header $Header
+{
+	[MainScript] $Script_Main
+	[Background] 80200000
+	[EntryList] $EntryList
+	[EntryCount] 1
 }
 
-@ $Script_Main {
+#new:EntryList $EntryList
+{
+	~Vec4f:MainEntry
+}
+
+
+#new:Function_Init $Function_Init
+{
+	PUSH    RA
+	LIA     A0, 800B0CF0
+	LIA     A1, "kkj_tex"
+	JAL     800654F0 % sprintf
+	RESERVED
+	CLEAR  V0
+	JPOP   RA
+}
+
+#new:Script $Script_SetupMusic
+{
+	Call  FadeOutMusic  ( 00000000 500` ) % usually between 500-1000
+	Call  ClearAmbientSounds ( 250` )
+	Return
+	End
+}
+
+#new:Script $Script_EnterMap
+{
+	Return
+	End
+}
+
+#new:Script $Script_CreateExitTriggers
+{
+	Return
+	End
+}
+
+#new:Script $Script_Main {
     Set   *GB_WorldLocation  .Location:GoombaRoad
     Call  SetCamPerspective  ( .Cam:Default 00000003 00000019 00000010 00001000 )
     Call  SetCamBGColor      ( .Cam:Default 00000000 00000000 00000000 )
-    Call  SetCamEnabled      ( .Cam:Default .True
+    Call  SetCamEnabled      ( .Cam:Default .True)
     Call  SetCamLeadPlayer   ( .Cam:Default .False )
     % Set *Var0 1
     % Thread
@@ -30,19 +63,58 @@
     %     EndLoop
     % EndThread
     Call MakeNpcs ( .False $NpcGroupList )
-    Exec $ChangePeachYaw
     Exec  $Script_SetupMusic
     Exec  $Script_EnterMap
+    Exec $Cutscene
     Return
     End
 }
 
+#new:Script $Cutscene {
+    Call DisablePartnerAI ( 0 ) %disable flying partner ai (value 1 would disable walking partner AI)
+	Call DisablePlayerInput (.True)
+    Call DisablePlayerPhysics ( 1 )
+    Thread
+        Call NpcFlyTo (.NpcID:Starlow 0` 25` -12` 60` 0` .Easing:Linear)	
+    EndThread
+    Thread
+		Set *VarD 0`
+		Loop
+            Call SetNpcRotation (.NpcID:Starlow *VarD 0` 0`)
+			Add   *VarD  12`
+			If  *VarD  >  359`
+			  Set   *VarD 0`
+			EndIf
+			Wait 1`
+        EndLoop
+	EndThread
+    Thread
+        Call NpcFlyTo (.NpcID:MarioNPC 0` 25` -12` 60` 0` .Easing:Linear)	
+    EndThread
+    Thread
+		Set *VarD 0`
+		Loop
+            Call SetNpcRotation (.NpcID:MarioNPC *VarD 0` 0`)
+			Add   *VarD  12`
+			If  *VarD  >  359`
+			  Set   *VarD 0`
+			EndIf
+			Wait 1`
+        EndLoop
+	EndThread
+
+    End
+    Return
+}
+
 #new:NpcGroupList $NpcGroupList {
-	1 $PeachGroup 0 %number of NPCs group, NPCGroup, BattleID
+	1 $StarlowGroup 0 %number of NPCs group, NPCGroup, BattleID
+	1 $MarioNPCGroup 0 %number of NPCs group, NPCGroup, BattleID
 	0 0 0 %terminating emptyList
 }
 
-#new:NpcSettings $Peach {
+#new:NpcSettings $MarioNPC
+{
 	0 %unk_00
 	32`s %colliderheight
 	16`s %colliderradius
@@ -58,18 +130,55 @@
 	0s %unk
 }
 
-#new:NpcGroup $PeachGroup {
-	.NpcID:Peach %basic id, define above
-    $Peach %reference NpcSettings struct
-    ~Vec3f:Peach %position, currently refers to marker in map editor (position)
+#new:NpcGroup $MarioNPCGroup
+{
+	.NpcID:MarioNPC %basic id, define above
+    $MarioNPC %reference NpcSettings struct
+    ~Vec3f:MarioNPC %position, currently refers to marker in map editor (position)
 	00000001 %flags (01 is passive)
     0 %init script (for any additional info/scriptin)
     00000000 %unk
     00000000 %unk
     90` %yaw, 90 is right, 270 is left
 	~NoDrops %drops
-	~Movement:Peach %movement
-	~AnimationTable:Peach %animations, currently refers to marker in map editor
+	~Movement:MarioNPC %movement
+	~AnimationTable:MarioNPC %animations, currently refers to marker in map editor
+	00000000 %unk
+	00000000 %unk
+	00000000 %extra animations
+	001A005E %tattleID
+}
+
+#new:NpcSettings $Starlow
+{
+	0 %unk_00
+	32`s %colliderheight
+	16`s %colliderradius
+	0 %unk
+	0 %interactscript
+	0 %aiscript
+	0 %onhit (enemy)
+	0 %aux (disregard)
+	0 %ondefeat
+	0 %flags
+	0 %unk
+	0s %level
+	0s %unk
+}
+
+#new:NpcGroup $StarlowGroup
+{
+	.NpcID:Starlow %basic id, define above
+    $Starlow %reference NpcSettings struct
+    ~Vec3f:Starlow %position, currently refers to marker in map editor (position)
+	01000001 %flags (01 is passive)
+    0 %init script (for any additional info/scriptin)
+    00000000 %unk
+    00000000 %unk
+    270` %yaw, 90 is right, 270 is left
+	~NoDrops %drops
+	~Movement:Starlow %movement
+	~AnimationTable:Starlow %animations, currently refers to marker in map editor
 	00000000 %unk
 	00000000 %unk
 	00000000 %extra animations
