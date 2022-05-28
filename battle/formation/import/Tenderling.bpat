@@ -275,11 +275,9 @@
     Call SetTargetActor ( .Actor:Self .Actor:Player )
     Call SetGoalToTarget   ( .Actor:Self )
     Call AddGoalPos ( .Actor:Self -60` 0` 0` ) %jump slightly below origin to align roll sprite with ground
-    Call SetActorSpeed ( .Actor:Self *Fixed[4.0] )
+    Call SetActorSpeed ( .Actor:Self *Fixed[1.0] )
     Call SetAnimation ( .Actor:Self .tenderlingPart .tenderlingRoll )
     Call RunToGoal ( .Actor:Self 5` .False )
-
-    
 
     %tenderling hits mario
     Call SetGoalToTarget   ( .Actor:Self ) %move damage stars to correct location
@@ -289,7 +287,7 @@
     Call SetTargetActor ( .Actor:Self .Actor:Player )
     Call SetGoalToTarget   ( .Actor:Self )
     Call AddGoalPos ( .Actor:Self -60` 0` 0` )
-    Call SetActorSpeed ( .Actor:Self *Fixed[4.0] )
+    Call SetActorSpeed ( .Actor:Self *Fixed[1.0] )
     Call SetAnimation ( .Actor:Self .tenderlingPart .tenderlingRoll )
     Call RunToGoal ( .Actor:Self 20` .False )
 
