@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Map name="bis_04" author="unnamed" background="obk_bg" textures="kmr_tex">
 	<Editor>
-		<Camera pos="138.982407,169.959351,648.334290" pitch="10.000000" yaw="0.000000"/>
+		<Camera pos="255.194870,169.959351,591.702637" pitch="10.000000" yaw="0.000000"/>
 		<Camera pos="-310.411041,65536.000000,191.283203"/>
-		<Camera pos="65536.000000,18.756138,-3.035814"/>
+		<Camera pos="65536.000000,-55.734161,84.651665"/>
 		<Camera pos="133.431763,-52.252853,65536.000000"/>
 	</Editor>
 	<ModelTree>
@@ -92,7 +92,7 @@
 	</ColliderTree>
 	<ZoneTree>
 		<Node name="Root" id="1">
-			<Node name="CubeZone" id="0"/>
+			<Node name="CameraZone" id="0"/>
 		</Node>
 	</ZoneTree>
 	<MarkerTree>
@@ -21819,7 +21819,7 @@
 			<HitObject type="ROOT"/>
 		</Zone>
 		<Zone ver="0">
-			<MapObject name="CubeZone" id="0" hidden="true"/>
+			<MapObject name="CameraZone" id="0"/>
 			<HitObject type="HIT"/>
 			<HitMesh ver="0">
 				<TriangleBatch ver="0">
