@@ -573,6 +573,7 @@
 		<Map name="bis_01" nickname="Toad Square"/>
 		<Map name="bis_02" nickname="Peach's Castle"/>
 		<Map name="bis_03" nickname="Tumble"/>
+		<Map name="bis_04" nickname="Memory Bank"/>
 	</Area>
 	<Resource name="mac_tex" compressed="false"/>
 	<Resource name="tik_tex" compressed="false"/>
