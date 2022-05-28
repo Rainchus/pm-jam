@@ -17,6 +17,7 @@
 
 %Tenderling stats
 #define .tenderlingHP 8`b
+#define .tenderlingRollDamage 5`
 
 #new:Actor $Tenderling {
     % stats
@@ -77,7 +78,7 @@
 
 #new:PartsTable $PartsTable_Tenderling0 { %ActorPartBlueprint struct in decomp
 /% s32 flags %/                 00800000
-/% s8 index %/                  ~Byte:.marioPart
+/% s8 index %/                  ~Byte:.tenderlingPart
 /% Vec3b posOffset %/           00b 00b 00b
 /% Vec2b targetOffset %/        00b 2Bb %for cursor when selecting to attack in battle
 /% s16 opacity %/               00FFs
@@ -118,12 +119,201 @@
     End
 }
 
-#new:Script $Script_TakeTurn_Tenderling {
+#new:Script $Script_HandleEvent_Tenderling {
+    Call UseIdleAnimation  ( .Actor:Self .False )
+    Call EnableIdleScript  ( .Actor:Self .False )
+    Call SetActorScale     ( .Actor:Self *Fixed[1.0] *Fixed[1.0] *Fixed[1.0] )
+    Call GetLastEvent      ( .Actor:Self *Var0 )
+    Switch  *Var0 
+        CaseOR  ==  .Event:HitCombo % 9
+        CaseOR  ==  .Event:Hit % A
+            SetConst  *Var0  .tenderlingPart 
+            SetConst  *Var1  .tenderlingHurt 
+            ExecWait  DoNormalHit
+        EndCaseGroup 
+        Case  ==  .Event:BurnHit % E
+            SetConst  *Var0  .tenderlingPart 
+            SetConst  *Var1  .tenderlingBurnHurt 
+            SetConst  *Var2  .tenderlingBurnDead 
+        ExecWait  DoBurnHit 
+        Case  ==  .Event:BurnDeath % 24
+            SetConst  *Var0  .tenderlingPart 
+            SetConst  *Var1  .tenderlingBurnHurt 
+            SetConst  *Var2  .tenderlingBurnDead 
+            ExecWait  DoBurnHit 
+            SetConst  *Var0  .tenderlingPart 
+            SetConst  *Var1  .tenderlingBurnDead 
+            ExecWait  DoDeath 
+            Return
+        Case  ==  .Event:Death % 20
+            SetConst  *Var0  .tenderlingPart 
+            SetConst  *Var1  .tenderlingHurt 
+            ExecWait  DoNormalHit 
+            Wait  10`
+            SetConst  *Var0  .tenderlingPart  
+            SetConst  *Var1  .tenderlingDead
+            ExecWait  DoDeath 
+            Return
+    EndSwitch
+    % 174:  	Case  ==  .Event:SpinSmashHit % B
+    % 180:  		SetConst  *Var0  00000001 
+    % 190:  		SetConst  *Var1  00260005 
+    % 1A0:  		ExecWait  DoSpinSmashHit 
+    % 1AC:  	Case  ==  .Event:SpinSmashDeath % 21
+    % 1B8:  		SetConst  *Var0  00000001 
+    % 1C8:  		SetConst  *Var1  00260005 
+    % 1D8:  		ExecWait  DoSpinSmashHit 
+    % 1E4:  		SetConst  *Var0  00000001 
+    % 1F4:  		SetConst  *Var1  00260006 
+    % 204:  		ExecWait  DoDeath 
+    % 210:  		Return
+    % 218:  	Case  ==  .Event:ShockHit % 2F
+    % 224:  		SetConst  *Var0  00000001 
+    % 234:  		SetConst  *Var1  0026000E 
+    % 244:  		ExecWait  DoShockHit 
+    % 250:  		SetConst  *Var0  00000001 
+    % 260:  		SetConst  *Var1  00260005 
+    % 270:  		ExecWait  DoJumpBack 
+    % 27C:  		Call JumpToGoal    ( .Actor:Self  5` .False .True .False )
+    % 29C:  		Call SetAnimationRate      ( .Actor:Self 00000001 *Fixed[2.0] )
+    % 2B4:  		Call SetAnimation  ( .Actor:Self 00000001 00260007 )
+    % 2CC:  		Call SetGoalToHome ( .Actor:Self )
+    % 2DC:  		Call SetActorSpeed ( .Actor:Self *Fixed[8.0] )
+    % 2F0:  		Call RunToGoal     ( .Actor:Self  0` .False )
+    % 308:  		Call SetAnimationRate      ( .Actor:Self 00000001 *Fixed[1.0] )
+    % 320:  		Wait  5`
+    % 32C:  		Call SetAnimation  ( .Actor:Self 00000001 00260001 )
+    % 344:  		Call SetActorJumpGravity   ( .Actor:Self *Fixed[1.6] )
+    % 358:  		Call JumpToGoal    ( .Actor:Self  5` .False .True .False )
+    % 378:  	Case  ==  .Event:ShockDeath % 26
+    % 384:  		SetConst  *Var0  00000001 
+    % 394:  		SetConst  *Var1  0026000E 
+    % 3A4:  		ExecWait  DoShockHit 
+    % 3B0:  		SetConst  *Var0  00000001 
+    % 3C0:  		SetConst  *Var1  00260006 
+    % 3D0:  		ExecWait  DoDeath 
+    % 3DC:  		Return
+    % 3E4:  	Case  ==  .Event:StarBeam % 13
+    % 3F0:  	CaseOR  ==  00000017 % 17
+    % 3FC:  	CaseOR  ==  .Event:Immune % 19
+    % 408:  	CaseOR  ==  .Event:AirLiftFailed % 1F
+    % 414:  		SetConst  *Var0  00000001 
+    % 424:  		SetConst  *Var1  00260001 
+    % 434:  		ExecWait  DoImmune 
+    % 440:  	EndCaseGroup
+    % 448:  	Case  ==  .Event:Death % 20
+    % 454:  		SetConst  *Var0  00000001 
+    % 464:  		SetConst  *Var1  .luigiHurt 
+    % 474:  		ExecWait  DoNormalHit 
+    % 480:  		Wait  10`
+    % 48C:  		SetConst  *Var0  00000001 
+    % 49C:  		SetConst  *Var1  .luigiDeath
+    % 4AC:  		ExecWait  DoDeath 
+    % 4B8:  		Return
+    % 4C0:  	Case  ==  .Event:EndFirstStrike % 35
+    % 4CC:  		Call SetAnimationRate  ( .Actor:Self 00000001 *Fixed[2.0] )
+    % 4E4:  		Call SetAnimation  ( .Actor:Self 00000001 00260003 )
+    % 4FC:  		Call SetGoalToHome ( .Actor:Self )
+    % 50C:  		Call SetActorSpeed ( .Actor:Self *Fixed[4.0] )
+    % 520:  		Call RunToGoal     ( .Actor:Self  0` .False )
+    % 538:  		Call SetAnimationRate  ( .Actor:Self 00000001 *Fixed[1.0] )
+    % 550:  		Call HPBarToHome   ( .Actor:Self )
+    % 560:  	Case  ==  .Event:RecoverStatus % 31
+    % 56C:  		SetConst  *Var0  00000001 
+    % 57C:  		SetConst  *Var1  00260001 
+    % 58C:  		ExecWait  DoRecover 
+    % 598:  	Case  ==  .Event:ScareAway % 39
+    % 5A4:  		SetConst  *Var0  00000001 
+    % 5B4:  		SetConst  *Var1  00260003 
+    % 5C4:  		SetConst  *Var2  00260005 
+    % 5D4:  		ExecWait  DoScareAway 
+    % 5E0:  		Return
+    % 5E8:  	Case  ==  .Event:BeginAirLift % 3A
+    % 5F4:  		SetConst  *Var0  00000001 
+    % 604:  		SetConst  *Var1  00260003 
+    % 614:  		ExecWait  DoAirLift 
+    % 620:  	Case  ==  .Event:BlowAway % 16
+    % 62C:  		SetConst  *Var0  00000001 
+    % 63C:  		SetConst  *Var1  00260005 
+    % 64C:  		ExecWait  DoBlowAway 
+    % 658:  		Return
+    % 660:  	Default
+    % 668:  EndSwitch
+    Call SetAnimation      ( .Actor:Self .tenderlingPart .tenderlingIdle )
+    Call EnableIdleScript  ( .Actor:Self .True )
+    Call UseIdleAnimation  ( .Actor:Self .True )
     Return
     End
 }
 
-#new:Script $Script_HandleEvent_Tenderling {
+%run to position in front of mario. Jump in place, ram into him
+#new:Script $TenderlingRunningAttack {
+    %run to player
+    Call SetTargetActor ( .Actor:Self .Actor:Player )
+    Call SetGoalToTarget   ( .Actor:Self )
+    Call AddGoalPos ( .Actor:Self 55` 0` 0` )
+    Call SetActorSpeed ( .Actor:Self *Fixed[4.0] )
+    Call SetAnimation ( .Actor:Self .tenderlingPart .tenderlingRun )
+    Call RunToGoal ( .Actor:Self 30` .False )
+
+    %tenderling changes to roll animation 10 frames into jump
+    Thread
+        Wait 10`
+        Call SetAnimation  ( .Actor:Self .tenderlingPart .tenderlingRoll )
+        %offset position slightly downwards or tenderling will float in the air while rolling
+        Call SetPartDispOffset ( .Actor:Self .tenderlingPart 0` -8` 0` )
+    EndThread
+
+    %tenderling jumps in place
+    Call SetAnimation  ( .Actor:Self .tenderlingPart .tenderlingJump )
+    Call GetActorPos ( .Actor:Self *Var0 *Var1 *Var2 )
+    Call SetActorJumpGravity   ( .Actor:Self *Fixed[1.0] )
+    Call SetGoalPos ( .Actor:Self *Var0 *Var1 *Var2 )
+    Call JumpToGoal    ( .Actor:Self  20` .False .True .False )
+    
+    %tenderling rolls up to mario
+    Call SetTargetActor ( .Actor:Self .Actor:Player )
+    Call SetGoalToTarget   ( .Actor:Self )
+    Call AddGoalPos ( .Actor:Self -60` 0` 0` ) %jump slightly below origin to align roll sprite with ground
+    Call SetActorSpeed ( .Actor:Self *Fixed[4.0] )
+    Call SetAnimation ( .Actor:Self .tenderlingPart .tenderlingRoll )
+    Call RunToGoal ( .Actor:Self 5` .False )
+
+    
+
+    %tenderling hits mario
+    Call SetGoalToTarget   ( .Actor:Self ) %move damage stars to correct location
+    Call EnemyDamageTarget ( .Actor:Self *Var0 ~Flags:DamageType:NoContact 00000000 00000000 .tenderlingRollDamage 00000020 )
+
+    %tenderling rolls through mario
+    Call SetTargetActor ( .Actor:Self .Actor:Player )
+    Call SetGoalToTarget   ( .Actor:Self )
+    Call AddGoalPos ( .Actor:Self -60` 0` 0` )
+    Call SetActorSpeed ( .Actor:Self *Fixed[4.0] )
+    Call SetAnimation ( .Actor:Self .tenderlingPart .tenderlingRoll )
+    Call RunToGoal ( .Actor:Self 20` .False )
+
+    %tenderling walks back to home
+    Call SetPartDispOffset ( .Actor:Self .tenderlingPart 0` 0` 0` )
+    Call SetAnimation ( .Actor:Self .tenderlingPart .tenderlingIdle )
+    Wait 10`
+    Call SetAnimation ( .Actor:Self .tenderlingPart .tenderlingWalk )
+    Call SetGoalToHome ( .Actor:Self )
+    Call SetActorSpeed ( .Actor:Self *Fixed[4.0] )
+    Call RunToGoal ( .Actor:Self 0` .True )
+
+    Return
+    End
+}
+
+#new:Script $Script_TakeTurn_Tenderling {
+    Call UseIdleAnimation  ( .Actor:Self .False )
+    Call EnableIdleScript  ( .Actor:Self .False )
+
+    ExecWait $TenderlingRunningAttack
+    
+    Call EnableIdleScript  ( .Actor:Self .True )
+    Call UseIdleAnimation  ( .Actor:Self .True )
     Return
     End
 }
