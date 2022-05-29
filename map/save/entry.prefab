@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Prefab author="unnamed" textures="kmr_tex">
+	<ModelTree>
+		<Node name="Root" id="2">
+			<Node name="ex_w_floor" id="0"/>
+			<Node name="ex_w_edge" id="1"/>
+		</Node>
+	</ModelTree>
+	<LightSets>
+		<LightSet name="Lights_None" a="0">
+		</LightSet>
+	</LightSets>
+	<Models>
+		<Model ver="2" type="ROOT" lightset="0">
+			<MapObject name="Root" id="2"/>
+			<BoundingBox empty="true" min="0,0,0" max="0,0,0"/>
+			<PropertyList>
+			</PropertyList>
+		</Model>
+		<Model ver="2" type="MODEL" lightset="0">
+			<MapObject name="ex_w_edge" id="1"/>
+			<ShapeMesh ver="3" texture="kmr_berosaidetif">
+				<DisplayList>
+					<F3DEX2 cmd="E7000000,0"/>
+					<F3DEX2 cmd="D9FDFFFF,0"/>
+					<F3DEX2 cmd="D9FFFFFF,200400"/>
+					<TriangleBatch ver="0">
+						<VertexTable>
+							<Vertex xyz="-500,-20,50"/>
+							<Vertex xyz="-500,0,50" uv="0,512"/>
+							<Vertex xyz="-500,0,-50" uv="2560,512"/>
+							<Vertex xyz="-500,-20,50"/>
+							<Vertex xyz="-500,0,-50" uv="2560,512"/>
+							<Vertex xyz="-500,-20,-50" uv="2560,0"/>
+							<Vertex xyz="-400,0,50" uv="2560,512"/>
+							<Vertex xyz="-500,0,50" uv="0,512"/>
+							<Vertex xyz="-500,-20,50"/>
+							<Vertex xyz="-400,0,50" uv="2560,512"/>
+							<Vertex xyz="-500,-20,50"/>
+							<Vertex xyz="-420,-20,50" uv="2048,0"/>
+							<Vertex xyz="-500,-20,-50" uv="512,0"/>
+							<Vertex xyz="-500,0,-50" uv="512,512"/>
+							<Vertex xyz="-400,0,-50" uv="-2048,512"/>
+							<Vertex xyz="-500,-20,-50" uv="512,0"/>
+							<Vertex xyz="-400,0,-50" uv="-2048,512"/>
+							<Vertex xyz="-420,-20,-50" uv="-1536,0"/>
+						</VertexTable>
+						<TriangleList>
+							<Triangle ijk="0,1,2"/>
+							<Triangle ijk="3,4,5"/>
+							<Triangle ijk="6,7,8"/>
+							<Triangle ijk="9,10,11"/>
+							<Triangle ijk="12,13,14"/>
+							<Triangle ijk="15,16,17"/>
+						</TriangleList>
+					</TriangleBatch>
+				</DisplayList>
+			</ShapeMesh>
+			<PropertyList>
+				<Property v="5C,0,1"/>
+				<Property v="5F,0,0"/>
+			</PropertyList>
+		</Model>
+		<Model ver="2" type="MODEL" lightset="0">
+			<MapObject name="ex_w_floor" id="0"/>
+			<ShapeMesh ver="3" texture="kmr_green_ctif">
+				<DisplayList>
+					<F3DEX2 cmd="E7000000,0"/>
+					<F3DEX2 cmd="D9FDFFFF,0"/>
+					<F3DEX2 cmd="D9FFFFFF,200400"/>
+					<TriangleBatch ver="0">
+						<VertexTable>
+							<Vertex xyz="-500,0,-50" uv="-1408,-8000" rgba="255,205,205,255"/>
+							<Vertex xyz="-500,0,50" uv="-3008,-8000" rgba="255,205,205,255"/>
+							<Vertex xyz="-400,0,50" uv="-3008,-6400" rgba="255,205,205,255"/>
+							<Vertex xyz="-500,0,-50" uv="-1408,-8000" rgba="255,205,205,255"/>
+							<Vertex xyz="-400,0,50" uv="-3008,-6400" rgba="255,205,205,255"/>
+							<Vertex xyz="-400,0,-50" uv="-1408,-6400" rgba="255,205,205,255"/>
+						</VertexTable>
+						<TriangleList>
+							<Triangle ijk="0,1,2"/>
+							<Triangle ijk="3,4,5"/>
+						</TriangleList>
+					</TriangleBatch>
+				</DisplayList>
+			</ShapeMesh>
+			<PropertyList>
+				<Property v="5C,0,1"/>
+				<Property v="5F,0,0"/>
+			</PropertyList>
+		</Model>
+	</Models>
+</Prefab>
