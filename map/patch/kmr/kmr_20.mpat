@@ -42,7 +42,7 @@
 
 @ $Script_8024FD70 { % First Play, go to starting castle room
 	%debug
-	Call GotoMap ("bis_02" 0)
+	Call GotoMap ("bis_05" 0)
 	Set *GB_StoryProgress FFFFFF9E
 	Call $GivePartners ()
 	Call $GiveBootsAndHammer ()

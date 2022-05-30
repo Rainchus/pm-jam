@@ -1,6 +1,6 @@
 tex: bon_platmain
 {
-	img: bon_platmain.png
+	img: bon_platmain-export.png
 	{
 		format: CI-4
 		hwrap: mirror
