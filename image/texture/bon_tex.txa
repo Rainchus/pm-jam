@@ -59,3 +59,17 @@ tex: bon_pipe
 	combine: 8
 }
 
+
+tex: bon_lava
+{
+	img: bon_lava.png
+	{
+		format: CI-4
+		hwrap: repeat
+		vwrap: repeat
+	}
+	filter: yes
+	combine: 8
+}
+
+
