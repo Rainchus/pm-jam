@@ -9,7 +9,7 @@ B482B9B0
 flb_bg
 BFEB4DF7
 hos_bg
-E38712F9
+152316ED
 iwa_bg
 4F7DD6D2
 jan_bg
@@ -53,6 +53,6 @@ title_bg
 title_data
 D446B09C
 yki_bg
-FC623468
+B30E90AE
 yos_bg
 2EBE538A
