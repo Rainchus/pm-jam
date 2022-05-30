@@ -784,7 +784,7 @@
 	EndThread
 	Call EnableNpcShadow ( .NpcID:Peach 0 )
 	Wait 45`
-	Call GotoMap ( "bis_03" 0` )
+	%Call GotoMap ( "bis_03" 0` )
 
 	Return
 	End

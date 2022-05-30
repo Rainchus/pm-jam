@@ -1,0 +1,61 @@
+tex: bon_platmain
+{
+	img: bon_platmain.png
+	{
+		format: CI-4
+		hwrap: mirror
+		vwrap: mirror
+	}
+	filter: yes
+	combine: 8
+}
+
+tex: bon_marioflagbase
+{
+	img: bon_marioflagbase.png
+	{
+		format: CI-4
+		hwrap: mirror
+		vwrap: mirror
+	}
+	filter: yes
+	combine: 8
+}
+
+tex: bon_bowserflagbase
+{
+	img: bon_bowserflagbase.png
+	{
+		format: CI-4
+		hwrap: mirror
+		vwrap: mirror
+	}
+	filter: yes
+	combine: 8
+}
+
+tex: bon_pole
+{
+	img: bon_pole.png
+	{
+		format: CI-4
+		hwrap: mirror
+		vwrap: mirror
+	}
+	filter: yes
+	combine: 8
+}
+
+
+tex: bon_pipe
+{
+	img: bon_pipe.png
+	{
+		format: CI-4
+		hwrap: mirror
+		vwrap: mirror
+	}
+	filter: yes
+	combine: 8
+}
+

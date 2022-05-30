@@ -48,6 +48,30 @@
 }
 
 
+#new:Script $TexturePanning {
+	Thread
+        Set   *Var0  0000000F
+        Set   *Var1  600`
+        Set   *Var2  00000000
+        Set   *Var3  00000000
+        Set   *Var4  00000000
+        Set   *Var5  00000000
+        Set   *Var6  00000001
+        Set   *Var7  00000001
+        Set   *Var8  00000001
+        Set   *Var9  00000000
+        Set   *VarA  00000000
+        Set   *VarB  00000000
+        Set   *VarC  00000000
+        Exec  $Script_Update_Texture_Panner
+    EndThread
+	Call  SetTexPanner  ( ~Model:Screen 0000000F )
+	
+	Return
+	End
+}
+
+
 #new:Script $Script_Main {
     Set   *GB_WorldLocation  .Location:GoombaRoad
     Call  SetCamPerspective  ( .Cam:Default 00000003 00000019 00000010 00001000 )
@@ -62,6 +86,7 @@
     %     EndLoop
     % EndThread
     Exec  $Script_SetupMusic
+	Exec $TexturePanning
     Exec  $Script_EnterMap
     Return
     End
