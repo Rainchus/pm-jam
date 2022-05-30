@@ -21,14 +21,20 @@
 	LIA     A1, "bon_tex"
 	JAL     800654F0 % sprintf
 	RESERVED
+
+	LI a0, 800D9668
+	LI a1, "yki_bg"
+	JAL     800654F0 % sprintf
+	RESERVED
+	
 	CLEAR  V0
 	JPOP   RA
 }
 
 #new:Script $Script_SetupMusic
 {
-	Call  FadeOutMusic  ( 00000000 500` ) % usually between 500-1000
-	Call  ClearAmbientSounds ( 250` )
+	Call FadeOutMusic  ( 00000000 500` ) % usually between 500-1000
+	Call ClearAmbientSounds ( 250` )
 	Call SetMusicTrack ( 0 .Song:PeachsCastleParty 0 8 )
 	Call FadeInMusic ( 0 .Song:PeachsCastleParty 0 5` 0 0 )
 	Return
@@ -52,7 +58,8 @@
     Set   *GB_WorldLocation  .Location:GoombaRoad
     Call  SetCamPerspective  ( .Cam:Default 00000003 00000019 00000010 00001000 )
     Call  SetCamBGColor      ( .Cam:Default 00000000 00000000 00000000 )
-    Call  SetCamEnabled      ( .Cam:Default .True
+    Call  SetCamEnabled      ( .Cam:Default .True )
+    Call  SetCamLeadPlayer   ( .Cam:Default .False )
     % Set *Var0 1
     % Thread
     %     Loop
