@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Map name="bis_04" author="unnamed" background="obk_bg" textures="kmr_tex">
 	<Editor>
-		<Camera pos="-57.289715,389.629028,289.143463" pitch="21.679985" yaw="7.200118"/>
+		<Camera pos="-17.561569,384.380646,259.253357" pitch="11.119987" yaw="9.600261"/>
 		<Camera pos="200.106750,65536.000000,-83.197334"/>
 		<Camera pos="65536.000000,1474.125488,-812.998535"/>
 		<Camera pos="270.127808,55.716232,65536.000000"/>
@@ -110,11 +110,12 @@
 		</Node>
 	</ZoneTree>
 	<MarkerTree>
-		<Node name="Root" id="3">
+		<Node name="Root" id="4">
 			<Node name="Entrances" id="FFFFFFFF"/>
 			<Node name="MainEntry" id="0"/>
 			<Node name="Nutsoglobin" id="1"/>
-			<Node name="Nutsoglobin" id="2"/>
+			<Node name="Challenge Globin" id="2"/>
+			<Node name="Guardian" id="3"/>
 		</Node>
 	</MarkerTree>
 	<LightSets>
@@ -21031,7 +21032,7 @@
 				<Property v="60,0,1"/>
 			</PropertyList>
 		</Model>
-		<Model ver="2" type="MODEL" lightset="0">
+		<Model ver="2" type="MODEL" lightset="0" panUnit="15">
 			<MapObject name="Screen" id="6"/>
 			<ShapeMesh ver="3" texture="kmr_teritif">
 				<DisplayList>
@@ -22786,10 +22787,15 @@
 	</Zones>
 	<Markers>
 		<Marker ver="4" type="Root">
-			<MapObject name="Root" id="3"/>
+			<MapObject name="Root" id="4"/>
 		</Marker>
-		<Marker ver="4" type="NPC" pos="-44,300,0" yaw="0.000000">
-			<MapObject name="Nutsoglobin" id="2"/>
+		<Marker ver="4" type="NPC" pos="-100,300,0" yaw="0.000000">
+			<MapObject name="Guardian" id="3"/>
+			<Movement type="Stationary" data="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
+			<Sprite sprite="14" palette="0" animations="1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
+		</Marker>
+		<Marker ver="4" type="NPC" pos="-50,300,0" yaw="0.000000">
+			<MapObject name="Challenge Globin" id="2"/>
 			<Movement type="Stationary" data="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
 			<Sprite sprite="13" palette="0" animations="2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
 		</Marker>
