@@ -18,7 +18,7 @@
 {
 	PUSH    RA
 	LIA     A0, 800B0CF0
-	LIA     A1, "kmr_tex"
+	LIA     A1, "bon_tex"
 	JAL     800654F0 % sprintf
 	RESERVED
 	CLEAR  V0

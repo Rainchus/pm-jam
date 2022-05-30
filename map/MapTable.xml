@@ -604,6 +604,7 @@
 	<Resource name="end_tex" compressed="false"/>
 	<Resource name="mgm_tex" compressed="false"/>
 	<Resource name="gv__tex" compressed="false"/>
+	<Resource name="bon_tex" compressed="false"/>
 	<Resource name="kmr_bg" compressed="true"/>
 	<Resource name="nok_bg" compressed="true"/>
 	<Resource name="sbk_bg" compressed="true"/>

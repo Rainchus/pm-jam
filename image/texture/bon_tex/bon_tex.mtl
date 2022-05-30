@@ -6,14 +6,6 @@ Ns 0
 map_Ka bon_platmain.png
 map_Kd bon_platmain.png
 
-newmtl bon_marioflagbase
-Ka 1 1 1
-Kd 1 1 1
-Ks 1 1 1
-Ns 0
-map_Ka bon_marioflagbase.png
-map_Kd bon_marioflagbase.png
-
 newmtl bon_bowserflagbase
 Ka 1 1 1
 Kd 1 1 1
@@ -21,6 +13,22 @@ Ks 1 1 1
 Ns 0
 map_Ka bon_bowserflagbase.png
 map_Kd bon_bowserflagbase.png
+
+newmtl bon_lava
+Ka 1 1 1
+Kd 1 1 1
+Ks 1 1 1
+Ns 0
+map_Ka bon_lava.png
+map_Kd bon_lava.png
+
+newmtl bon_marioflagbase
+Ka 1 1 1
+Kd 1 1 1
+Ks 1 1 1
+Ns 0
+map_Ka bon_marioflagbase.png
+map_Kd bon_marioflagbase.png
 
 newmtl bon_pole
 Ka 1 1 1
@@ -37,12 +45,4 @@ Ks 1 1 1
 Ns 0
 map_Ka bon_pipe.png
 map_Kd bon_pipe.png
-
-newmtl bon_lava
-Ka 1 1 1
-Kd 1 1 1
-Ks 1 1 1
-Ns 0
-map_Ka bon_lava.png
-map_Kd bon_lava.png
 

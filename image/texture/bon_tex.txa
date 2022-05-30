@@ -10,9 +10,9 @@ tex: bon_platmain
 	combine: 8
 }
 
-tex: bon_marioflagbase
+tex: bon_bowserflagbase
 {
-	img: bon_marioflagbase.png
+	img: bon_bowserflagbase.png
 	{
 		format: CI-4
 		hwrap: mirror
@@ -22,9 +22,21 @@ tex: bon_marioflagbase
 	combine: 8
 }
 
-tex: bon_bowserflagbase
+tex: bon_lava
 {
-	img: bon_bowserflagbase.png
+	img: bon_lava.png
+	{
+		format: CI-4
+		hwrap: repeat
+		vwrap: repeat
+	}
+	filter: yes
+	combine: 8
+}
+
+tex: bon_marioflagbase
+{
+	img: bon_marioflagbase.png
 	{
 		format: CI-4
 		hwrap: mirror
@@ -58,18 +70,4 @@ tex: bon_pipe
 	filter: yes
 	combine: 8
 }
-
-
-tex: bon_lava
-{
-	img: bon_lava.png
-	{
-		format: CI-4
-		hwrap: repeat
-		vwrap: repeat
-	}
-	filter: yes
-	combine: 8
-}
-
 
