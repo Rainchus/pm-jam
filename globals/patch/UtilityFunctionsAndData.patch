@@ -71,20 +71,6 @@
      4EA7A358
 }
 
-% @Hook:Global 80026804 {
-%      JAL ~Func:step_current_game_mode
-%      NOP
-%      JAL $clearfpsSprintfBuffer
-%      NOP
-%      JAL $getFPSAverage
-%      NOP
-%      MFC1 a0, f0
-%      JAL $printFPS
-%      NOP
-%      J 8002680C
-%      NOP
-% }
-
 @Hook:Global 800E92B8 {
      JAL $clearfpsSprintfBuffer
      NOP
