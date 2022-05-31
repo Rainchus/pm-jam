@@ -84,6 +84,7 @@
 	Call  SetTexPanner  ( ~Model:Tendril2 14` )
     Call  SetTexPanner  ( ~Model:Tendril3 15` )
     Call  SetTexPanner  ( ~Model:Tendril1 15` )
+    Call  SetTexPanner  ( ~Model:Screen 15` )
 	
 	Return
 	End
