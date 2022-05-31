@@ -247,7 +247,7 @@
 }
 
 %run to position in front of mario. Jump in place, ram into him
-#new:Script $ChuboombaRunningAttack {
+#new:Script $ChuboombaRunningAttackNoPause {
     %run to player
     Call SetTargetActor ( .Actor:Self .Actor:Player )
     Call SetGoalToTarget   ( .Actor:Self )
@@ -272,6 +272,20 @@
             Call EnemyDamageTarget ( .Actor:Self *Var0 ~Flags:DamageType:NoContact 00000000 00000000 .chuboombaDashDamage 00000020 )
     EndSwitch
 
+    %run off screen
+    Call AddGoalPos ( .Actor:Self -180` 0` 0` )
+    Call SetActorSpeed ( .Actor:Self *Fixed[7.0] )
+    Call RunToGoal ( .Actor:Self 0` .True )
+
+
+    %wrap around from left of screen to right and then walk back to home position
+    Wait 30`
+    Call SetAnimation ( .Actor:Self .chuboombaPart .chuboombaWalk )
+    Call SetActorPos ( .Actor:Self 200` 0` 0` )
+    Call SetGoalToHome ( .Actor:Self )
+    Call SetActorSpeed ( .Actor:Self *Fixed[4.0] )
+    Call RunToGoal ( .Actor:Self 0` .True )
+
     Return
     End
 }
@@ -280,7 +294,7 @@
     Call UseIdleAnimation  ( .Actor:Self .False )
     Call EnableIdleScript  ( .Actor:Self .False )
 
-    ExecWait $ChuboombaRunningAttack
+    ExecWait $ChuboombaRunningAttackNoPause
     
     Call EnableIdleScript  ( .Actor:Self .True )
     Call UseIdleAnimation  ( .Actor:Self .True )
