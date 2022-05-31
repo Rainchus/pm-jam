@@ -94,6 +94,10 @@
     LAW t0, $spinHoverBool
     BEQ t0, r0, .noHover
     NOP
+    LAH t0, 80074026
+    ANDI t1, t0, 2000
+    BEQ t1, r0, .noHover
+    NOP
     LIO t0, 8010EFC8
     LBU t1, 00B4 (t0) %load action state
     ORI t2, r0, 001A %spinning

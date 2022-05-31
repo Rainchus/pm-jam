@@ -246,7 +246,6 @@
     End
 }
 
-%run to position in front of mario. Jump in place, ram into him
 #new:Script $ChuboombaRunningAttackNoPause {
     %run to player
     Call SetTargetActor ( .Actor:Self .Actor:Player )
@@ -256,8 +255,54 @@
     Call SetAnimation ( .Actor:Self .chuboombaPart .chuboombaRun )
     Call RunToGoal ( .Actor:Self 30` .False )
 
-    %mario running attacking player
+    %Chuboomba running attacking player
     ExecWait $SetMemoryMarioScaling
+    Call SetAnimation( .Actor:Self .chuboombaPart .chuboombaRun)
+    Call SetGoalToTarget ( .Actor:Self )
+    Call SetActorSpeed ( .Actor:Self *Fixed[10.5] )
+    Call RunToGoal ( .Actor:Self 0` .True )
+
+    %damage target if not invisible
+    Call EnemyTestTarget   ( .Actor:Self *Var1 ~Flags:DamageType:0 00000000 00000001 00000010 )
+    Switch  *Var1 
+        CaseOR  ==  .HitResult:Miss % 6
+        CaseOR  ==  .HitResult:Lucky % 5
+        Default
+            Call EnemyDamageTarget ( .Actor:Self *Var0 ~Flags:DamageType:NoContact 00000000 00000000 .chuboombaDashDamage 00000020 )
+    EndSwitch
+
+    %run off screen
+    Call AddGoalPos ( .Actor:Self -180` 0` 0` )
+    Call SetActorSpeed ( .Actor:Self *Fixed[7.0] )
+    Call RunToGoal ( .Actor:Self 0` .True )
+
+
+    %wrap around from left of screen to right and then walk back to home position
+    Wait 30`
+    Call SetAnimation ( .Actor:Self .chuboombaPart .chuboombaWalk )
+    Call SetActorPos ( .Actor:Self 200` 0` 0` )
+    Call SetGoalToHome ( .Actor:Self )
+    Call SetActorSpeed ( .Actor:Self *Fixed[4.0] )
+    Call RunToGoal ( .Actor:Self 0` .True )
+
+    Return
+    End
+}
+
+#new:Script $ChuboombaRunningAttackWithPause {
+    Call SetAnimation ( .Actor:Self .chuboombaPart .chuboombaBreath )
+    Wait 30`
+    %run to player
+    Call SetTargetActor ( .Actor:Self .Actor:Player )
+    Call SetGoalToTarget   ( .Actor:Self )
+    Call AddGoalPos ( .Actor:Self 55` 0` 0` )
+    Call SetActorSpeed ( .Actor:Self *Fixed[4.0] )
+    Call SetAnimation ( .Actor:Self .chuboombaPart .chuboombaRun )
+    Call RunToGoal ( .Actor:Self 30` .False )
+
+    Wait 30`
+
+    %Chuboombaario running attacking player
     Call SetAnimation( .Actor:Self .chuboombaPart .chuboombaRun)
     Call SetGoalToTarget ( .Actor:Self )
     Call SetActorSpeed ( .Actor:Self *Fixed[10.5] )
@@ -294,7 +339,11 @@
     Call UseIdleAnimation  ( .Actor:Self .False )
     Call EnableIdleScript  ( .Actor:Self .False )
 
-    ExecWait $ChuboombaRunningAttackNoPause
+    If *Var0 < 50`
+        ExecWait $ChuboombaRunningAttackNoPause
+    Else
+        ExecWait $ChuboombaRunningAttackWithPause
+    EndIf
     
     Call EnableIdleScript  ( .Actor:Self .True )
     Call UseIdleAnimation  ( .Actor:Self .True )
