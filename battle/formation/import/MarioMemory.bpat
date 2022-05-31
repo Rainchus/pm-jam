@@ -32,7 +32,7 @@
 
 #new:Actor $MarioMemory {
     % stats
-    [Index]         7b 
+    [Index]         DAb 
     [Level]         5`b 
     [MaxHP]         .memoryMarioHP
     [Coins]         1`b 

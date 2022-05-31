@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Map name="bis_05" author="unnamed" background="yki_bg" textures="bon_tex">
 	<Editor>
-		<Camera pos="944.263855,158.157318,-153.422043" pitch="14.160018" yaw="68.639908"/>
+		<Camera pos="536.727112,257.837555,347.117584" pitch="15.600016" yaw="352.960205"/>
 		<Camera pos="1147.823975,65536.000000,-132.433716"/>
 		<Camera pos="65536.000000,53.097267,-131.671661"/>
 		<Camera pos="1160.683228,80.525742,65536.000000"/>
@@ -97,10 +97,12 @@
 		</Node>
 	</ZoneTree>
 	<MarkerTree>
-		<Node name="Root" id="2">
+		<Node name="Root" id="4">
 			<Node name="MainEntry" id="FFFFFFFF"/>
 			<Node name="PowerBlock" id="0"/>
 			<Node name="PipeExit" id="1"/>
+			<Node name="Check1" id="2"/>
+			<Node name="Check2" id="3"/>
 		</Node>
 	</MarkerTree>
 	<LightSets>
@@ -5264,7 +5266,13 @@
 	</Zones>
 	<Markers>
 		<Marker ver="4" type="Root">
-			<MapObject name="Root" id="2"/>
+			<MapObject name="Root" id="4"/>
+		</Marker>
+		<Marker ver="4" type="Position" pos="1120,74,-149" yaw="-180.000000">
+			<MapObject name="Check2" id="3"/>
+		</Marker>
+		<Marker ver="4" type="Position" pos="-20,0,0" yaw="0.000000">
+			<MapObject name="Check1" id="2"/>
 		</Marker>
 		<Marker ver="4" type="Entity" pos="1599,13,1337" yaw="0.000000">
 			<MapObject name="PipeExit" id="1"/>

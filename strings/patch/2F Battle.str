@@ -27,7 +27,7 @@ by 1 for 3 turns.[END]
 
 #message:2F:005
 {
-Starlow dashes them or something[END]
+Dash into a single enemy.[END]
 }
 
 #message:2F:006
@@ -49,8 +49,7 @@ can avoid enemy attacks.[End]
 #message:2F:009
 {
 Blast off at the speed of light[BR]
-and do massive damage to all [BR]
-enemies![End]
+and do massive damage to all foes![BR][End]
 }
 
 #message:2F:00A

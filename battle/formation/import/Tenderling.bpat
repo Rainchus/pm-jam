@@ -21,7 +21,7 @@
 
 #new:Actor $Tenderling {
     % stats
-    [Index]         7b 
+    [Index]         D7b 
     [Level]         5`b 
     [MaxHP]         .tenderlingHP
     [Coins]         1`b 

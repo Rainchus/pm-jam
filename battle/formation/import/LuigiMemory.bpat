@@ -27,7 +27,7 @@
 
 #new:Actor $LuigiMemory {
     % stats
-    [Index]         7b 
+    [Index]         DBb 
     [Level]         5`b 
     [MaxHP]         .luigiHP 
     [Coins]         1`b 

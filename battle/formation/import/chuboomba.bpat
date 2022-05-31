@@ -21,7 +21,7 @@
 
 #new:Actor $Chuboomba {
     % stats
-    [Index]         7b 
+    [Index]         D8b 
     [Level]         5`b 
     [MaxHP]         .chuboombaHP
     [Coins]         1`b 

@@ -1,0 +1,207 @@
+#message:35:000
+{
+Goombule[END]
+}
+
+#message:35:001
+{
+[Style Right]
+This is a Goombule.[BR]
+[Wait][Next]
+Goombules are cells that have[BR]
+taken the form of a Goomba.[BR]
+Lucky for us, they're just as[BR]
+weak as the real thing![BR]
+[Wait][Next]
+Max HP: 2, Attack Power: 1[BR]
+Defense Power: 0[BR]
+You can jump on them or whack[BR]
+'em with the Hammer.[BR]
+[Wait][Next]
+They may be tiny, but we still[BR]
+need to watch out. If a bunch of[BR]
+them banded together, we'd be[BR]
+in real trouble![Wait][End]
+}
+
+#message:35:002
+{
+Spiked Goombule[END]
+}
+
+#message:35:003
+{
+[Style Right]
+This is a Spiked Goombule.[BR]
+[Wait][Next]
+Spiked Goombules are nothing[BR]
+special. It's just a Goombule with[BR]
+a hat! Who cares?[BR]
+[Pause 20]...A hat isn't a personality.[BR]
+[Wait][Next]
+Max HP: 2, Attack Power: 1[BR]
+Defense Power: 0[BR]
+Feel free to whack 'em with the[BR]
+Hammer, but watch out jumping![BR]
+[Wait][Next]
+I wonder where it got the[BR]
+helmet from, anyway...[BR][Pause 20]
+It would be super weird if[BR]
+Bowser's body just made them.[Wait][End]
+}
+
+#message:35:004
+{
+Tenderling[END]
+}
+
+#message:35:005
+{
+[Style Right]
+This is a Tenderling.[BR]
+[Wait][Next]
+Seems like Bowser's lunch has[BR]
+taken on a life of its own. Be[BR]
+careful when it winds up to roll,[BR]
+or you might just get grilled![BR]
+[Wait][Next]
+Max HP: 2, Attack Power: 1[BR]
+Defense Power: 0[BR]
+You can jump on them or whack[BR]
+'em with the Hammer.[BR]
+[Wait][Next]
+We should probably stop saying[BR]
+"You are what you eat," and[BR]
+start saying "What you eat will[BR]
+come to life and attack people!"
+[Wait][End]
+}
+
+#message:35:006
+{
+Protobatter[END]
+}
+
+#message:35:007
+{
+[Style Right]
+This is a Protobatter.[BR]
+[Wait][Next]
+Their clubs are nothing to scoff[BR]
+at! And what are they spitting[BR]
+at us? Well, whatever it is, it's[BR]
+pretty gross - yuck![BR]
+[Wait][Next]
+Max HP: 2, Attack Power: 1[BR]
+Defense Power: 0[BR]
+You can jump on them or whack[BR]
+'em with the Hammer.[BR]
+[Wait][Next]
+Try your best to defeat them[BR]
+in as few moves as you can. Each[BR]
+time they get hit, they double in[BR]
+size![Wait][End]
+}
+
+#message:35:008
+{
+Chuboomba[END]
+}
+
+#message:35:009
+{
+[Style Right]
+This is a Chuboomba.[BR]
+[Wait][Next]
+Hard to believe a Goomba could[BR]
+get this fat, but I guess that's[BR]
+what a diet of Chuckola Cola and[BR]
+Star Candies will do to you...[BR]
+[Wait][Next]
+Max HP: 2, Attack Power: 1[BR]
+Defense Power: 0[BR]
+You can jump on them or whack[BR]
+'em with the Hammer.[BR]
+[Wait][Next]
+They might need to catch their[BR]
+breath every so often, but they[BR]
+put their heft to good use - it[BR]
+really packs a punch![Wait][End]
+}
+
+#message:35:00A
+{
+Bowser Memory MX[END]
+}
+
+#message:35:00B
+{
+[Style Right]
+This is the Bowser Memory MX.[BR]
+[Wait][Next]
+Or is that you.[BR]
+[Pause 20]...[BR]
+[Pause 20]Mario...?[BR]
+[Pause 20]Oh man...[BR]
+[Wait][Next]
+Max HP: 2, Attack Power: 1[BR]
+Defense Power: 0[BR]
+You can jump on them or whack[BR]
+'em with the Hammer.[BR]
+[Wait][Next]
+Hmm...the real Mario would know[BR]
+my favorite color! Alright: which[BR]
+of you knows my favorite color is[BR]
+yellow?[Pause 60] Aw, CRUD! [Pause 30][Size 12][Down 4][Speed delay=3 chars=1]Whoops...[Wait][End]
+}
+#message:35:00C
+{
+Bowser Memory ML[END]
+}
+
+#message:35:00D
+{
+[Style Right]
+This is the Bowser Memory ML.[BR]
+[Wait][Next]
+Now this one, I know! Luigi[BR]
+didn't get sucked down here[BR]
+with us[Pause 20]...or did he?[BR]
+[Pause 20]It looks really similar to him...[BR]
+[Wait][Next]
+Max HP: 2, Attack Power: 1[BR]
+Defense Power: 0[BR]
+You can jump on them or whack[BR]
+'em with the Hammer.[BR]
+[Wait][Next]
+Wait, Luigi was playing tennis[BR]
+with Daisy today. Go ahead and[BR]
+whack this baddie to your[BR]
+heart's content![Wait][End]
+}
+
+#message:35:00E
+{
+Pwallop[END]
+}
+
+#message:35:00F
+{
+[Style Right]
+This is a Pwallop.[BR]
+[Wait][Next]
+They're related to[BR]
+Protobatters, but are much,[BR]
+MUCH more powerful.[BR]
+[Wait][Next]
+Max HP: 2, Attack Power: 1[BR]
+Defense Power: 0[BR]
+You can jump on them or whack[BR]
+'em with the Hammer.[BR]
+[Wait][Next]
+Sometimes, they don't even care[BR]
+enough to spit at you - they'll[BR]
+just run up and start smackin'[BR]
+away! [Pause 20]Yeesh...[Wait][End]
+}
+

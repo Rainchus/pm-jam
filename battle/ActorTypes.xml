@@ -213,4 +213,12 @@
 	<ActorType desc="SlotMachineStart" id="D1" name="00290076" tattle="001C0093" sfxIncrement="30,30"/>
 	<ActorType desc="SlotMachineStart" id="D2" name="00290076" tattle="001C0093" sfxIncrement="30,30"/>
 	<ActorType desc="SlotMachineStart" id="D3" name="00290076" tattle="001C0093" sfxIncrement="30,30"/>
+	<ActorType desc="Goombule" id="D4" name="00350000" tattle="00350001" tattleCamOffset="0,5,0" sfxWalk="20DD,20DD" sfxFly="20DD,20DD" sfxJump="3E2" sfxHurt="10F" sfxIncrement="30,30"/>
+	<ActorType desc="SpikedGoombule" id="D5" name="00350002" tattle="00350003" tattleCamOffset="0,5,0" sfxWalk="20DD,20DD" sfxFly="20DD,20DD" sfxJump="3E2" sfxHurt="10F" sfxIncrement="30,30"/>
+	<ActorType desc="Protobatter" id="D6" name="00350006" tattle="00350007" tattleCamOffset="0,5,0" sfxWalk="20DD,20DD" sfxFly="20DD,20DD" sfxJump="3E2" sfxHurt="10F" sfxIncrement="30,30"/>
+	<ActorType desc="Tenderling" id="D7" name="00350004" tattle="00350005" tattleCamOffset="0,5,0" sfxWalk="20DD,20DD" sfxFly="20DD,20DD" sfxJump="3E2" sfxHurt="10F" sfxIncrement="30,30"/>
+	<ActorType desc="Chuboomba" id="D8" name="00350008" tattle="00350009" tattleCamOffset="0,17,55" sfxWalk="20DD,20DD" sfxFly="20DD,20DD" sfxJump="3E2" sfxHurt="10F" sfxIncrement="30,30"/>
+	<ActorType desc="Pwallop" id="D9" name="0035000E" tattle="0035000F" tattleCamOffset="0,5,0" sfxWalk="20DD,20DD" sfxFly="20DD,20DD" sfxJump="3E2" sfxHurt="10F" sfxIncrement="30,30"/>
+	<ActorType desc="MarioMemory" id="DA" name="0035000A" tattle="0035000B" tattleCamOffset="0,10,25" sfxWalk="20DD,20DD" sfxFly="20DD,20DD" sfxJump="3E2" sfxHurt="10F" sfxIncrement="30,30"/>
+	<ActorType desc="LuigiMemory" id="DB" name="0035000C" tattle="0035000D" tattleCamOffset="0,10,35" sfxWalk="20DD,20DD" sfxFly="20DD,20DD" sfxJump="3E2" sfxHurt="10F" sfxIncrement="30,30"/>
 </ActorTypes>

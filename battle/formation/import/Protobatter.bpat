@@ -44,7 +44,7 @@
 
 #new:Actor $Protobatter {
     % stats
-    [Index]         7b 
+    [Index]         D6b 
     [Level]         5`b 
     [MaxHP]         .protoHP
     [Coins]         1`b 
