@@ -50,6 +50,177 @@
      ORI v0, r0, 2
 }
 
+#new:Data $ringBufferCurrentIndex {
+     0b
+}
+
+#new:Data $fpsRingBuffer { %30 u64s
+     0 0  0 0  0 0  0 0  0 0
+     0 0  0 0  0 0  0 0  0 0
+     0 0  0 0  0 0  0 0  0 0
+     0 0  0 0  0 0  0 0  0 0
+     0 0  0 0  0 0  0 0  0 0
+     0 0  0 0  0 0  0 0  0 0
+}
+
+#new:Data $thirtyAsDouble {
+     41F00000 00000000
+}
+
+#new:Data $someFloat {
+     4EA7A358
+}
+
+% @Hook:Global 80026804 {
+%      JAL ~Func:step_current_game_mode
+%      NOP
+%      JAL $clearfpsSprintfBuffer
+%      NOP
+%      JAL $getFPSAverage
+%      NOP
+%      MFC1 a0, f0
+%      JAL $printFPS
+%      NOP
+%      J 8002680C
+%      NOP
+% }
+
+@Hook:Global 800E92B8 {
+     JAL $clearfpsSprintfBuffer
+     NOP
+     JAL $getFPSAverage
+     NOP
+     MFC1 a0, f0
+     JAL $printFPS
+     NOP
+     LW ra, 008C (sp)
+     LW ra, 008C (sp)
+     LW s7, 0084 (sp)
+     LW s6, 0080 (sp)
+     LW s5, 007C (sp)
+     LW s4, 0078 (sp)
+     J 800E92C0
+     NOP
+}
+
+#new:Function $clearfpsSprintfBuffer {
+     DADDU t1, r0, r0
+     LI t0, $fpsSprintfBuffer
+     .loop
+     SW r0, 0000 (t0)
+     ADDIU t0, t0, 4
+     ADDIU t1, t1, 1
+     SLTI t2, t1, 7`
+     BNE t2, r0, .loop
+     NOP
+     JR RA
+     NOP
+}
+
+#new:Data $fpsSprintfBuffer {
+     0 0 0 0 0 0 0
+}
+
+#new:Data $fpsStringBuffer {
+     0 0 0 0 0 0 0
+}
+
+#new:ASCII $formatString {
+     "%2.2f"
+}
+
+#new:Function $fpsAsciiToStringFormat { %ptr to ascii string on a0
+     BEQ a0, r0, .nullString
+     NOP
+     LI t1, $fpsStringBuffer
+     ORI t2, r0, 00FD
+     .loop
+     LB t0, 0000 (a0)
+     BEQ t0, r0, .end
+     NOP
+     ADDIU t0, t0, -20
+     SB t0, 0000 (t1)
+     ADDIU t1, t1, 1
+     BEQ r0, r0, .loop
+     ADDIU a0, a0, 1
+     .end
+     SB t2, 0000 (t1) %terminate string
+     .nullString
+     JR RA
+     NOP
+}
+
+#new:Function $printFPS { %takes fps on a0
+     PUSH[20] ra
+     %format string
+
+     MTC1 a0, f0
+     cvt.d.s f1, f0
+     MFC1 a2, f1
+     MFC1 a3, f0
+
+     LI a0, $fpsSprintfBuffer
+     LI a1, $formatString
+     JAL ~Func:sprintf
+     NOP
+     LI a0, $fpsSprintfBuffer
+     JAL $fpsAsciiToStringFormat
+     NOP
+
+     %draw string
+     LI a0, $fpsStringBuffer
+     ORI a1, r0, 0104 %x pos
+     ORI a2, r0, 00CC %y pos
+     ORI a3, r0, 00FF %opacity
+     SW r0, 0010 (sp)
+     SW r0, 0014 (sp)
+     JAL ~Func:draw_string
+     SW r0, 0018 (sp)
+
+
+     JPOP[20] ra
+
+}
+
+#export:Function $getFPSAverage { %returns as float
+     ADDIU SP, SP, -18
+     SW RA, 0014 (SP)
+     JAL ~Func:osGetCount
+     NOP            
+     LI a2, $ringBufferCurrentIndex
+     LBU V1, 0000 (A2)
+     ADDIU A0, V1, 0001
+     LI a1, $fpsRingBuffer
+     SLL V1, V1, 3
+     ANDI A0, A0, 00FF
+     ADDU V1, V1, A1
+     SLTIU A3, A0, 30` %ring buffer total entries
+     LW A1, 0004 (V1)
+     SW R0, 0000 (V1)
+     BEQ A3, r0 .label2
+     SW V0, 0004 (V1)
+     SB A0, 0000 (A2)
+     .label1
+     SUBU V0, V0, A1
+     MTC1 V0, F0
+     BGE V0, r0, .label0
+     CVT.D.W F0, F0
+     LI v0, $thirtyAsDouble
+     LDC1 F2, 0 (V0)
+     ADD.D F0, F0, F2
+     .label0
+     LI v0, $someFloat
+     LW RA, 0014 (SP)
+     LWC1 F2, 0000 (V0)
+     CVT.S.D F0, F0
+     DIV.S F0, F2, F0
+     JR RA
+     ADDIU SP, SP, 18
+     .label2
+     B .label1
+     SB R0, 0000 (A2)
+}
+
 #export:Function $Scr_API_BoostStatCustom { %actorIndex(or actorSelf), boost type(0 for atk, 1 for def), amountToBoostBy
      PUSH s0, s1, ra
 

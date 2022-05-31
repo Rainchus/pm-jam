@@ -10,7 +10,7 @@
 007 = Flag_EVT_07 = GF_StartedChapter7
 008 = Flag_EVT_08 = GF_StartedChapter8
 009 = Flag_EVT_09 = GF_DemoSceneDone
-00A = Flag_EVT_0A = unused
+00A = Flag_EVT_0A = Flag_block_bis_05
 00B = Flag_EVT_0B = unused
 00C = Flag_EVT_0C = unused
 00D = Flag_EVT_0D = unused

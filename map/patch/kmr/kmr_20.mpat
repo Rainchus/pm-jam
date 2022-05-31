@@ -22,6 +22,31 @@
 	ORI v0, r0, 2
 }
 
+#new:Function $ScrAPI_setAllGlobalFlagsAndBytes {
+    LI t0, 800DBC70 %global flags start
+    LI t1, FFFFFFFF
+    DADDU t2, r0, r0 %loop counter
+    .flagsLoop
+    SW t1, 0000 (t0)
+    ADDIU t2, t2, 1
+    SLTI t3, t2, 64`
+    BNE t3, r0, .flagsLoop
+    ADDIU t0, t0, 4
+
+    %init global bytes loop
+    LI t0, 800DBD70 %global bytes start
+    DADDU t2, r0, r0 %loop counter
+    .bytesLoop
+    SW t1, 0000 (t0)
+    ADDIU t2, t2, 1
+    SLTI t3, t2, 128`
+    BNE t3, r0, .bytesLoop
+    ADDIU t0, t0, 4
+
+    JR RA
+    ORI v0, r0, 2
+}
+
 
 #new:Function $GivePartners {
     ORI v0, r0, .goombarioID
@@ -42,6 +67,7 @@
 
 @ $Script_8024FD70 { % First Play, go to starting castle room
 	%debug
+	Call $ScrAPI_setAllGlobalFlagsAndBytes
 	Call GotoMap ("bis_05" 0)
 	Set *GB_StoryProgress FFFFFF9E
 	Call $GivePartners ()

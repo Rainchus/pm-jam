@@ -50,22 +50,40 @@
 
 #new:Script $TexturePanning {
 	Thread
-        Set   *Var0  0000000F
-        Set   *Var1  600`
-        Set   *Var2  00000000
-        Set   *Var3  00000000
-        Set   *Var4  00000000
-        Set   *Var5  00000000
-        Set   *Var6  00000001
-        Set   *Var7  00000001
-        Set   *Var8  00000001
-        Set   *Var9  00000000
-        Set   *VarA  00000000
-        Set   *VarB  00000000
-        Set   *VarC  00000000
+        Set   *Var0  0000000F 	%tex pan ID
+        Set   *Var1  0 			%main U
+        Set   *Var2  1500`		%main V
+        Set   *Var3  0			%Aux U
+        Set   *Var4  0			%Aux V
+        Set   *Var5  0
+        Set   *Var6  1
+        Set   *Var7  1
+        Set   *Var8  1
+        Set   *Var9  0
+        Set   *VarA  0
+        Set   *VarB  0
+        Set   *VarC  0
         Exec  $Script_Update_Texture_Panner
+
+        Set   *Var0  0000000E 	%tex pan ID
+        Set   *Var1  0 			%main U
+        Set   *Var2  -1500`		%main V
+        Set   *Var3  0			%Aux U
+        Set   *Var4  0			%Aux V
+        Set   *Var5  0
+        Set   *Var6  1
+        Set   *Var7  1
+        Set   *Var8  1
+        Set   *Var9  0
+        Set   *VarA  0
+        Set   *VarB  0
+        Set   *VarC  0
+        Exec  $Script_Update_Texture_Panner
+
     EndThread
-	Call  SetTexPanner  ( ~Model:Screen 0000000F )
+	Call  SetTexPanner  ( ~Model:Tendril2 14` )
+    Call  SetTexPanner  ( ~Model:Tendril3 15` )
+    Call  SetTexPanner  ( ~Model:Tendril1 15` )
 	
 	Return
 	End
@@ -85,9 +103,9 @@
     %         Call $ScrApi_XORVar ( *Var0 1 ) %Var0 ^ 1
     %     EndLoop
     % EndThread
-    Exec  $Script_SetupMusic
+    Exec $Script_SetupMusic
 	Exec $TexturePanning
-    Exec  $Script_EnterMap
+    Exec $Script_EnterMap
     Return
     End
 }
