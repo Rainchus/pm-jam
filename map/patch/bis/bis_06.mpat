@@ -13,44 +13,6 @@
 	~Vec4f:MainEntry
 }
 
-#new:Script $TexturePanningLava {
-	Thread
-        Set   *Var0  00000000 	%tex pan ID
-        Set   *Var1  0 			%main U
-        Set   *Var2  400`		%main V
-        Set   *Var3  0			%Aux U
-        Set   *Var4  0			%Aux V
-        Set   *Var5  0
-        Set   *Var6  1
-        Set   *Var7  1
-        Set   *Var8  1
-        Set   *Var9  0
-        Set   *VarA  0
-        Set   *VarB  0
-        Set   *VarC  0
-        Exec  $Script_Update_Texture_Panner
-
-		Set   *Var0  00000001 %tex pan ID
-        Set   *Var1  0
-        Set   *Var2  -400`
-        Set   *Var3  0
-        Set   *Var4  0
-        Set   *Var5  0
-        Set   *Var6  1
-        Set   *Var7  1
-        Set   *Var8  1
-        Set   *Var9  0
-        Set   *VarA  0
-        Set   *VarB  0
-        Set   *VarC  0
-        Exec  $Script_Update_Texture_Panner
-    EndThread
-	Call  SetTexPanner  ( ~Model:lavaTopModel 00000000 )
-	Call  SetTexPanner  ( ~Model:lavaBottomModel 00000001 )
-	
-	Return
-	End
-}
 
 
 #new:Function_Init $Function_Init
@@ -108,7 +70,6 @@
     %     EndLoop
     % EndThread
     Exec $Script_SetupMusic
-	Exec $TexturePanningLava
     Exec $Script_EnterMap
     Return
     End

@@ -71,3 +71,16 @@ tex: bon_pipe
 	combine: 8
 }
 
+tex: bon_fence
+{
+	img: bon_fence.png
+	{
+		format: CI-4
+		hwrap: mirror
+		vwrap: clamp
+	}
+	filter: yes
+	combine: 8
+}
+
+
