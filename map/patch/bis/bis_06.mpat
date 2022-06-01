@@ -1,5 +1,7 @@
 #import SpriteAnimations.mpat
 
+#define .oobYPositionRespawn -400
+
 #new:Header $Header
 {
 	[MainScript] $Script_Main
@@ -54,6 +56,20 @@
 	End
 }
 
+#new:Script $CheckIfFallenOOB {
+	Thread
+		Loop
+			Call GetPlayerPos ( *Var0 *Var1 *Var2 )
+			If *Var1 < .oobYPositionRespawn
+				Call SetPlayerPos ( ~Vec3d:RespawnMarker )
+			EndIf
+			Wait 1`
+		EndLoop
+	EndThread
+	Return
+	End
+}
+
 
 #new:Script $Script_Main {
     Set   *GB_WorldLocation  .Location:GoombaRoad
@@ -69,6 +85,7 @@
     %         Call $ScrApi_XORVar ( *Var0 1 ) %Var0 ^ 1
     %     EndLoop
     % EndThread
+	Exec $CheckIfFallenOOB
     Exec $Script_SetupMusic
     Exec $Script_EnterMap
     Return

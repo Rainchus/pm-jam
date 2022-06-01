@@ -29,12 +29,22 @@
     %         Call $ScrApi_XORVar ( *Var0 1 ) %Var0 ^ 1
     %     EndLoop
     % EndThread
-    Call MakeNpcs ( .False $NpcGroupList )
-    Exec $ChangePeachYaw
+    %Call MakeNpcs ( .False $NpcGroupList )
+    %Exec $ChangePeachYaw
     Exec  $Script_SetupMusic
     Exec  $Script_EnterMap
+    Exec $Script_MakeEntities
     Return
     End
+}
+
+#new:Script $Script_MakeEntities
+{
+	%Call  MakeEntity    ( 802EA250 0 0 0 0 80000000 ) %unused entity :o
+    %Call  MakeEntity    ( 802EA798 0 2` 0 0 80000000 ) %unused entity :o
+    
+	Return
+	End
 }
 
 #new:NpcGroupList $NpcGroupList {
