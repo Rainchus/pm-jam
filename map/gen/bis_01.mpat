@@ -1,4 +1,4 @@
-#define .NpcID:Starlow 0
+/%#define .NpcID:Starlow 0
 #define .NpcID:MarioNPC 1
 
 #import SpriteAnimations.mpat
@@ -220,6 +220,6 @@
 	Return
 	End
 }
-
+/%
 
 

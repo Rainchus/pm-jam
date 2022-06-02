@@ -1,4 +1,170 @@
-@ $Script_Main {
+#define .NpcID:Starlow 0
+#define .NpcID:MarioNPC 1
+
+#import SpriteAnimations.mpat
+
+#new:Header $Header
+{
+	[MainScript] $Script_Main
+	[Background] 80200000
+	[EntryList] $EntryList
+	[EntryCount] 3
+}
+
+#new:EntryList $EntryList
+{
+	~Vec4f:entry_m
+	~Vec4f:entry_n
+	~Vec4f:entry_e
+}
+
+#new:Function_Init $Function_Init
+{
+	PUSH    RA
+	LIA     A0, 800B0CF0
+	LIA     A1, "kmr_tex"
+	JAL     800654F0 % sprintf
+	RESERVED
+	CLEAR  V0
+	JPOP   RA
+}
+
+#new:Script $Script_MakeEntities
+{
+	Call  MakeEntity    ( .Entity:SavePoint ~Vec4d:SaveBlock 80000000 )
+	Call  MakeEntity    ( .Entity:HealingBlock ~Vec4d:blo 80000000 )
+	Call  MakeEntity    ( .Entity:Signpost ~Vec4d:Sign 80000000 )
+	Call  AssignScript    ( $Script_ReadSign_Sign )
+	Return
+	End
+}
+
+#new:Script $Script_SetupMusic
+{
+	Call  FadeOutMusic  ( 00000000 500` ) % usually between 500-1000
+	Call  ClearAmbientSounds ( 250` )
+	Call SetMusicTrack ( 0 .Song:ToadTownTunnels 0 8 )
+	Call FadeInMusic ( 0 .Song:ToadTownTunnels 0 5` 0 0 )
+	Return
+	End
+}
+
+#new:Script $Script_EnterMap
+{
+	Call  GetLoadType   ( *Var[0] )
+	If  *Var[0]  ==  1
+		Exec  EnterSavePoint
+		Exec $Script_CreateExitTriggers
+		Return
+	EndIf
+	Return
+	End
+}
+
+#new:Script $Script_CreateExitTriggers
+{
+	Return
+	End
+}
+
+#new:Script $Script_ReadSign_Sign
+{
+	Call  DisablePlayerInput        ( .True )
+	Call  ShowMessageAtScreenPos    ( $String_ReadSign_Sign 000000A0 00000028 )
+	Call  DisablePlayerInput        ( .False )
+	Return
+	End
+}
+
+#new:String $String_ReadSign_Sign
+{
+	[DelayOff][STYLE:SIGN]
+	[CenterX:FF]
+	[Down:03]Write message here.
+	[DelayOn][WAIT][END]
+}
+
+#new:NpcSettings $Starlow
+{
+	0 %unk_00
+	32`s %colliderheight
+	16`s %colliderradius
+	0 %unk
+	0 %interactscript
+	0 %aiscript
+	0 %onhit (enemy)
+	0 %aux (disregard)
+	0 %ondefeat
+	0 %flags
+	0 %unk
+	0s %level
+	0s %unk
+}
+
+#new:NpcGroup $StarlowGroup
+{
+	.NpcID:Starlow %basic id, define above
+    $Starlow %reference NpcSettings struct
+    ~Vec3f:Starlow %position, currently refers to marker in map editor (position)
+	01000001 %flags (01 is passive)
+    0 %init script (for any additional info/scriptin)
+    00000000 %unk
+    00000000 %unk
+    270` %yaw, 90 is right, 270 is left
+	~NoDrops %drops
+	~Movement:Starlow %movement
+	~AnimationTable:Starlow %animations, currently refers to marker in map editor
+	00000000 %unk
+	00000000 %unk
+	00000000 %extra animations
+	001A005E %tattleID
+}
+
+#new:NpcSettings $MarioNPC
+{
+	0 %unk_00
+	32`s %colliderheight
+	16`s %colliderradius
+	0 %unk
+	0 %interactscript
+	0 %aiscript
+	0 %onhit (enemy)
+	0 %aux (disregard)
+	0 %ondefeat
+	0 %flags
+	0 %unk
+	0s %level
+	0s %unk
+}
+
+#new:NpcGroup $MarioNPCGroup
+{
+	.NpcID:MarioNPC %basic id, define above
+    $MarioNPC %reference NpcSettings struct
+    ~Vec3f:MarioNPC %position, currently refers to marker in map editor (position)
+	00000001 %flags (01 is passive)
+    0 %init script (for any additional info/scriptin)
+    00000000 %unk
+    00000000 %unk
+    90` %yaw, 90 is right, 270 is left
+	~NoDrops %drops
+	~Movement:MarioNPC %movement
+	~AnimationTable:MarioNPC %animations, currently refers to marker in map editor
+	00000000 %unk
+	00000000 %unk
+	00000000 %extra animations
+	001A005E %tattleID
+}
+
+#new:NpcGroupList $AllNpcs
+{
+	1 $StarlowGroup 0 %number of NPCs group, NPCGroup, BattleID
+	1 $MarioNPCGroup 0 %number of NPCs group, NPCGroup, BattleID
+	0 0 0 %terminating emptyList (essentially an END)
+}
+
+
+#new:Script_Main $Script_Main {
     Set   *GB_WorldLocation  .Location:GoombaRoad
     Call  SetCamPerspective  ( .Cam:Default 00000003 00000019 00000010 00001000 )
     Call  SetCamBGColor      ( .Cam:Default 00000000 00000000 00000000 )
@@ -14,6 +180,50 @@
     % EndThread
     Exec  $Script_SetupMusic
     Exec  $Script_EnterMap
+    Exec $MainCutscene
     Return
     End
+}
+
+#new:Script $MainCutscene
+{
+	Call DisablePartnerAI ( 0 ) %disable flying partner ai (value 1 would disable walking partner AI)
+	Call DisablePlayerInput (.True)
+    Call DisablePlayerPhysics ( .True )
+	Call SetPlayerPos (~Vec3d:PlayerScenePos)
+	Call SetNpcAnimation ( .NpcID:MarioNPC .Anim:MarioNPCTumble)
+	Call SetNpcAnimation ( .NpcID:Starlow .Anim:StarlowFreeze)
+	Thread
+		Call NpcFlyTo (.NpcID:Starlow -20` 0` 175` 60` 0` .Easing:QuarticIn)	
+	EndThread
+	Thread
+		Call NpcFlyTo (.NpcID:MarioNPC 20` 0` 175` 60` 0` .Easing:QuarticIn)	
+	EndThread
+	Thread
+		Set *VarD 0`
+		Loop
+			Call SetNpcRotation (.NpcID:MarioNPC *VarD 0` 0`)
+			Add   *VarD  12`
+			If  *VarD  >  359`
+			  Set   *VarD 0`
+			EndIf
+			Wait 1`
+		EndLoop
+	EndThread
+	Thread
+		Set *VarD 0`
+		Loop
+			Call SetNpcRotation (.NpcID:Starlow *VarD 0` 0`)
+			Add   *VarD  12`
+			If  *VarD  >  359`
+			  Set   *VarD 0`
+			EndIf
+			Wait 1`
+		EndLoop
+	EndThread
+
+    Call    ResetCam ( .Cam:Default *Fixed[4.0] )
+    Call    SetCamSpeed     ( .Cam:Default *Fixed[1.0] )
+	Return
+	End
 }
