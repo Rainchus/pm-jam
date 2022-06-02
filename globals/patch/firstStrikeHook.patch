@@ -1,0 +1,15 @@
+@Hook:Global 80041538 {
+    DADDU a0, v0, r0 %restore from hook
+
+    LABU t0, 800DBD79 %first strike always works bool
+    BEQ t0, r0, .normalExit
+    NOP
+    %skip ability and level check to insta kill enemy
+    J 80041560
+    NOP
+    .normalExit
+    JAL ~Func:is_ability_active
+    NOP
+    J 80041540
+    NOP
+}

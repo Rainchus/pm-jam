@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Map name="bis_06" author="unnamed" background="hos_bg" textures="bon_tex">
 	<Editor>
-		<Camera pos="1330.967896,146.570618,-511.877838" pitch="2.599964" yaw="359.199432"/>
+		<Camera pos="1356.447754,242.439880,17.619553" pitch="40.519962" yaw="358.559448"/>
 		<Camera pos="1342.153076,65536.000000,0.912498"/>
 		<Camera pos="65536.000000,-3.994605,194.083405"/>
 		<Camera pos="1968.902588,-105.778732,65536.000000"/>
@@ -5374,7 +5374,7 @@
 		<Marker ver="4" type="NPC" pos="1348,96,-132" yaw="-180.000000">
 			<MapObject name="Swooper1" id="3"/>
 			<Movement type="Stationary" data="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
-			<Sprite sprite="34" palette="0" animations="2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
+			<Sprite sprite="34" palette="0" animations="2,2,2,2,1B,1B,4,15,0,0,1,1,1,1,1,1"/>
 		</Marker>
 		<Marker ver="4" type="Entity" pos="1520,-40,207" yaw="-90.000000">
 			<MapObject name="Gate3Switch1" id="2"/>

@@ -9,7 +9,7 @@
 006 = Byte_EVT_06 = unused
 007 = Byte_EVT_07 = unused
 008 = Byte_EVT_08 = unused
-009 = Byte_EVT_09 = unused
+009 = Byte_EVT_09 = FirstStrikeAlwaysWorks
 00A = Byte_EVT_0A = unused
 00B = Byte_EVT_0B = unused
 00C = Byte_KMR_00
