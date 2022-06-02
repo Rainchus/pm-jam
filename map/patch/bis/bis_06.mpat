@@ -32,7 +32,7 @@
 	RESERVED
 
 	LI a0, 800D9668
-	LI a1, "yki_bg"
+	LI a1, "hos_bg"
 	JAL     800654F0 % sprintf
 	RESERVED
 	
