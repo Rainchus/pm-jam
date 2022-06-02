@@ -2,6 +2,8 @@ Sound	% namespace
 soundID	% library name
 false	% reversed
 
+010 = Correct
+
 026 = Slam
 
 % 043 = RunningWater
@@ -71,6 +73,9 @@ false	% reversed
 30E = ShyGuyScreams3
 30F = ToyTankMove1
 310 = ToyTankMove2
+
+3B1 = Wrong
+
 395 = GeneralWhistle
 
 321 = MoleSurface

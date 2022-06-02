@@ -52,6 +52,24 @@
 	End
 }
 
+#new:Script $FlagController
+{
+    Set *Var0 0
+    Call EnableModel ( ~Model:MarioFlag1 0 )
+    Call EnableModel ( ~Model:MarioFlag2 0 )
+    Loop
+        Call EnableModel (~Model:BowserFlag1 1)
+        Call EnableModel (~Model:BowserFlag2 0)
+        Wait 18`
+        Call EnableModel (~Model:BowserFlag1 0)
+        Call EnableModel (~Model:BowserFlag2 1)
+        Wait 18`
+    EndLoop
+
+    Return
+    End
+}
+
 
 #new:Function_Init $Function_Init
 {
@@ -110,6 +128,6 @@
     Exec $Script_SetupMusic
 	Exec $TexturePanningLava
     Exec $Script_EnterMap
-    Return
+    Exec $FlagController
     End
 }
