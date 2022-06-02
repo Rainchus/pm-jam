@@ -2,6 +2,8 @@
 
 #define .oobYPositionRespawn -400
 
+#define .switch1HitFlagIndex 0
+
 #new:Header $Header
 {
 	[MainScript] $Script_Main
@@ -14,8 +16,6 @@
 {
 	~Vec4f:Entry0
 }
-
-
 
 #new:Function_Init $Function_Init
 {
@@ -70,6 +70,20 @@
 	End
 }
 
+#new:Script $Script_Switch1Hit {
+	Call ModifyColliderFlags ( .ORFlags ~Collider:gate1 .collisionInActiveFlag ) %turn gate collision off
+	Return
+	End
+}
+
+#new:Script $MakeEntities {
+	Call  MakeEntity    ( .Entity:BlueSwitch ~Vec4d:Gate1Switch1 80000000 )
+	Call  AssignAreaFlag    ( .switch1HitFlagIndex )
+	Bind  $Script_Switch1Hit .Trigger:AreaFlagSet *AreaFlag[.switch1HitFlagIndex] 00000001 00000000
+	Return
+	End
+}
+
 
 #new:Script $Script_Main {
     Set   *GB_WorldLocation  .Location:GoombaRoad
@@ -85,6 +99,7 @@
     %         Call $ScrApi_XORVar ( *Var0 1 ) %Var0 ^ 1
     %     EndLoop
     % EndThread
+	Exec $MakeEntities
 	Exec $CheckIfFallenOOB
     Exec $Script_SetupMusic
     Exec $Script_EnterMap

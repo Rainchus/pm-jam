@@ -5,6 +5,12 @@
 #export .boostAttack 0
 #export .boostDef 1
 
+#export .ORFlags 0
+#export .NOTFlags 1
+#export .SetFlags 2
+
+#export .collisionInActiveFlag 00010000
+
 #export:Function $isBadgeEquipped {
     .Init
     LIO t2, 8010F498

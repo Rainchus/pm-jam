@@ -38,48 +38,48 @@
     BEQ t0, r0, .noHover
     NOP
 
-    LI a0, 8010EFC8
-    LI a1, $rayCastX
-    LI a2, $rayCastY
-    LI a3, $rayCastZ
-    LI t0, $rayCastLength
-    LIF f0, 15.0
-    SWC1 f0, 0000 (t0)
-    SW t0, 0010 (sp) %set out length of raycast
+    % LI a0, 8010EFC8
+    % LI a1, $rayCastX
+    % LI a2, $rayCastY
+    % LI a3, $rayCastZ
+    % LI t0, $rayCastLength
+    % LIF f0, 15.0
+    % SWC1 f0, 0000 (t0)
+    % SW t0, 0010 (sp) %set out length of raycast
 
-    LI t0, $hitRx
-    SW t0, 0014 (sp)
+    % LI t0, $hitRx
+    % SW t0, 0014 (sp)
 
-    LI t0, $hitRz
-    SW t0, 0018 (sp)
+    % LI t0, $hitRz
+    % SW t0, 0018 (sp)
 
-    LI t0, $hitDirX
-    SW t0, 001C (sp)
+    % LI t0, $hitDirX
+    % SW t0, 001C (sp)
 
-    LI t0, $hitDirZ
-    SW t0, 0020 (sp)
+    % LI t0, $hitDirZ
+    % SW t0, 0020 (sp)
 
-    LW t1, 0028 (a0) %mario X
-    SW t1, 0000 (a1)
-    LW t1, 002C (a0) %mario Y
-    SW t1, 0000 (a2)
-    LW t1, 0030 (a0) %mario Z
-    SW t1, 0000 (a3)
-
-    JAL ~Func:player_raycast_below_cam_relative
-    NOP
-    LI t0, $rayCastLength
-    LWC1 f0, 0000 (t0) %load distance to collider below mario
-    LIF f2, 0.0
-    C.EQ.S f0, f2
-    BC1T .noHover
-    NOP
+    % LW t1, 0028 (a0) %mario X
+    % SW t1, 0000 (a1)
+    % LW t1, 002C (a0) %mario Y
+    % SW t1, 0000 (a2)
+    % LW t1, 0030 (a0) %mario Z
+    % SW t1, 0000 (a3)
+    % %is there even a point to this?
+    % JAL ~Func:player_raycast_below_cam_relative
+    % NOP
+    % LI t0, $rayCastLength
+    % LWC1 f0, 0000 (t0) %load distance to collider below mario
+    % LIF f2, 1.5
+    % C.LT.S f2, f0
+    % BC1T .noHover
+    % NOP
 
     .fallState
-    LI t0, 8010F250
-    SB r0, 0001 (t0) %clear buffered spin
-    JAL ~Func:set_action_state
-    ORI a0, r0, 8 %falling state
+    % LI t0, 8010F250
+    % SB r0, 0001 (t0) %clear buffered spin
+    % JAL ~Func:set_action_state
+    % ORI a0, r0, 8 %falling state
     .noHover
     LWC1 f0, 0010 (s0) %restore from hook
     LUI at, 3F80 %restore from hook
