@@ -10,6 +10,11 @@
    18:  End
 }
 
+#new:Script $Script_DefeatSwooper1 {
+    Return
+    End
+}
+
 #new:Script $Script_Init_Swooper1 {
     Call  BindNpcDefeat ( .Npc:Self $Script_DefeatSwooper1 )
     Return
