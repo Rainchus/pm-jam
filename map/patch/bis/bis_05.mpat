@@ -92,8 +92,8 @@
 {
 	Call FadeOutMusic  ( 00000000 500` ) % usually between 500-1000
 	Call ClearAmbientSounds ( 250` )
-	Call SetMusicTrack ( 0 .Song:PeachsCastleParty 0 8 )
-	Call FadeInMusic ( 0 .Song:PeachsCastleParty 0 5` 0 0 )
+	Call SetMusicTrack ( 0 .Song:ShiverMountain 0 8 )
+	Call FadeInMusic ( 0 .Song:ShiverMountain 0 5` 0 0 )
 	Return
 	End
 }

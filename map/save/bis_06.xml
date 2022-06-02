@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Map name="bis_06" author="unnamed" background="hos_bg" textures="bon_tex">
 	<Editor>
-		<Camera pos="1384.936646,131.296127,1493.947144" pitch="14.600013" yaw="349.759888"/>
+		<Camera pos="1315.335449,195.478546,756.576538" pitch="10.599992" yaw="10.719343"/>
 		<Camera pos="1342.153076,65536.000000,0.912498"/>
 		<Camera pos="65536.000000,18.052559,194.083405"/>
 		<Camera pos="1968.902588,-105.778732,65536.000000"/>
@@ -566,10 +566,10 @@
 						<TriangleList>
 							<Triangle ijk="0,1,2"/>
 							<Triangle ijk="2,3,0"/>
-							<Triangle ijk="4,0,3"/>
-							<Triangle ijk="3,5,4"/>
-							<Triangle ijk="6,4,5"/>
-							<Triangle ijk="5,7,6"/>
+							<Triangle ijk="4,3,0"/>
+							<Triangle ijk="3,4,5"/>
+							<Triangle ijk="6,5,4"/>
+							<Triangle ijk="5,6,7"/>
 							<Triangle ijk="8,6,7"/>
 							<Triangle ijk="7,9,8"/>
 						</TriangleList>
