@@ -1,73 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Map name="bis_06" author="unnamed" background="hos_bg" textures="bon_tex">
 	<Editor>
-		<Camera pos="1468.564941,217.093613,1516.295532" pitch="39.079994" yaw="302.079681"/>
+		<Camera pos="1845.162476,512.461182,618.682800" pitch="38.760002" yaw="287.039917"/>
 		<Camera pos="1342.153076,65536.000000,0.912498"/>
 		<Camera pos="65536.000000,18.052559,194.083405"/>
 		<Camera pos="1968.902588,-105.778732,65536.000000"/>
 	</Editor>
 	<ModelTree>
-		<Node name="Root" id="3B">
-			<Node name="Cubes0" id="2E">
+		<Node name="Root" id="37">
+			<Node name="Cubes0" id="2B">
 				<Node name="CubeModel" id="0"/>
 				<Node name="ex_w_floor" id="1"/>
 				<Node name="ex_w_edge" id="2"/>
 				<Node name="CubeModel" id="3"/>
 				<Node name="CubeModel" id="4"/>
-				<Node name="Gate1Model" id="5"/>
+				<Node name="CubeModel" id="5"/>
 				<Node name="CubeModel" id="6"/>
-				<Node name="CubeModel" id="7"/>
+				<Node name="ConeModel" id="7"/>
 				<Node name="ConeModel" id="8"/>
-				<Node name="ConeModel" id="9"/>
+				<Node name="CubeModel" id="9"/>
 				<Node name="CubeModel" id="A"/>
-				<Node name="CubeModel" id="B"/>
-				<Node name="ConeModel" id="C"/>
-				<Node name="CubeModel" id="D"/>
-				<Node name="ConeModel" id="E"/>
-				<Node name="Gate2Model" id="F"/>
+				<Node name="ConeModel" id="B"/>
+				<Node name="CubeModel" id="C"/>
+				<Node name="ConeModel" id="D"/>
+				<Node name="CubeModel" id="E"/>
+				<Node name="CubeModel" id="F"/>
 				<Node name="CubeModel" id="10"/>
-				<Node name="CubeModel" id="11"/>
+				<Node name="ConeModel" id="11"/>
 				<Node name="CubeModel" id="12"/>
-				<Node name="ConeModel" id="13"/>
-				<Node name="CubeModel" id="14"/>
+				<Node name="CubeModel" id="13"/>
+				<Node name="ConeModel" id="14"/>
 				<Node name="CubeModel" id="15"/>
-				<Node name="ConeModel" id="16"/>
-				<Node name="Gate3Model" id="17"/>
-				<Node name="CubeModel" id="18"/>
-				<Node name="CubeModel" id="19"/>
+				<Node name="CubeModel" id="16"/>
+				<Node name="CubeModel" id="17"/>
+				<Node name="ConeModel" id="18"/>
+				<Node name="Gate4Model" id="19"/>
 				<Node name="CubeModel" id="1A"/>
 				<Node name="ConeModel" id="1B"/>
-				<Node name="Gate4Model" id="1C"/>
+				<Node name="CubeModel" id="1C"/>
 				<Node name="CubeModel" id="1D"/>
-				<Node name="ConeModel" id="1E"/>
-				<Node name="CubeModel" id="1F"/>
+				<Node name="CubeModel" id="1E"/>
+				<Node name="Gate5Model" id="1F"/>
 				<Node name="CubeModel" id="20"/>
-				<Node name="CubeModel" id="21"/>
-				<Node name="Gate5Model" id="22"/>
-				<Node name="CubeModel" id="23"/>
-				<Node name="ConeModel" id="24"/>
+				<Node name="ConeModel" id="21"/>
+				<Node name="CubeModel" id="22"/>
+				<Node name="ConeModel" id="23"/>
+				<Node name="CubeModel" id="24"/>
 				<Node name="CubeModel" id="25"/>
-				<Node name="ConeModel" id="26"/>
+				<Node name="CubeModel" id="26"/>
 				<Node name="CubeModel" id="27"/>
 				<Node name="CubeModel" id="28"/>
 				<Node name="CubeModel" id="29"/>
 				<Node name="CubeModel" id="2A"/>
-				<Node name="CubeModel" id="2B"/>
-				<Node name="CubeModel" id="2C"/>
-				<Node name="CubeModel" id="2D"/>
 			</Node>
-			<Node name="Stage" id="2F"/>
-			<Node name="Exit_North" id="30"/>
-			<Node name="Exit_East" id="31"/>
-			<Node name="Exit_South" id="32"/>
-			<Node name="MeshModel" id="33"/>
-			<Node name="Exit_West" id="34"/>
-			<Node name="Check" id="35"/>
-			<Node name="LavaModels" id="36"/>
-			<Node name="HullModel" id="37"/>
-			<Node name="FloorModel" id="38"/>
-			<Node name="StaircaseModel" id="39"/>
-			<Node name="MeshModel" id="3A"/>
+			<Node name="MeshModel" id="2C"/>
+			<Node name="HullModel" id="2D"/>
+			<Node name="FloorModel" id="2E"/>
+			<Node name="StaircaseModel" id="2F"/>
+			<Node name="MeshModel" id="30"/>
+			<Node name="Gate1Group" id="32">
+				<Node name="Gate1Model" id="31"/>
+			</Node>
+			<Node name="Gate2Group" id="34">
+				<Node name="Gate2Model" id="33"/>
+			</Node>
+			<Node name="Gate3Group" id="36">
+				<Node name="Gate3Model" id="35"/>
+			</Node>
 		</Node>
 	</ModelTree>
 	<ColliderTree>
@@ -154,13 +153,124 @@
 	</LightSets>
 	<Models>
 		<Model ver="2" type="ROOT" lightset="0">
-			<MapObject name="Root" id="3B"/>
+			<MapObject name="Root" id="37"/>
 			<BoundingBox empty="false" min="1171,-310,-1542" max="1545,90,1575"/>
 			<PropertyList>
 			</PropertyList>
 		</Model>
+		<Model ver="2" type="GROUP" lightset="0">
+			<MapObject name="Gate3Group" id="36"/>
+			<BoundingBox empty="false" min="1261,0,142" max="1421,57,142"/>
+			<TransformMatrix m="1.000000,0.000000,0.000000,0.000000,0.000000,1.000000,0.000000,0.000000,0.000000,0.000000,1.000000,0.000000,0.000000,0.000000,0.000000,1.000000"/>
+			<PropertyList>
+				<Property v="60,0,0"/>
+				<Property v="60,0,1"/>
+			</PropertyList>
+		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="MeshModel" id="3A"/>
+			<MapObject name="Gate3Model" id="35"/>
+			<ShapeMesh ver="3" texture="bon_fence">
+				<DisplayList>
+					<F3DEX2 cmd="E7000000,0"/>
+					<F3DEX2 cmd="D9FDFFFF,0"/>
+					<F3DEX2 cmd="D9FFFFFF,200400"/>
+					<TriangleBatch ver="0">
+						<VertexTable>
+							<Vertex xyz="1261,57,142" uv="4608,1" rgba="147,147,147,255"/>
+							<Vertex xyz="1421,0,142" uv="-512,2048" rgba="147,147,147,255"/>
+							<Vertex xyz="1421,57,142" uv="-512,0" rgba="147,147,147,255"/>
+							<Vertex xyz="1261,0,142" uv="4608,2049" rgba="147,147,147,255"/>
+							<Vertex xyz="1421,0,142" uv="-512,2048" rgba="147,147,147,255"/>
+							<Vertex xyz="1261,57,142" uv="4608,1" rgba="147,147,147,255"/>
+						</VertexTable>
+						<TriangleList>
+							<Triangle ijk="0,1,2"/>
+							<Triangle ijk="3,4,5"/>
+						</TriangleList>
+					</TriangleBatch>
+				</DisplayList>
+			</ShapeMesh>
+			<PropertyList>
+				<Property v="5C,0,22"/>
+				<Property v="5F,0,0"/>
+			</PropertyList>
+		</Model>
+		<Model ver="2" type="GROUP" lightset="0">
+			<MapObject name="Gate2Group" id="34"/>
+			<BoundingBox empty="false" min="1261,0,589" max="1421,57,589"/>
+			<TransformMatrix m="1.000000,0.000000,0.000000,0.000000,0.000000,1.000000,0.000000,0.000000,0.000000,0.000000,1.000000,0.000000,0.000000,0.000000,0.000000,1.000000"/>
+			<PropertyList>
+				<Property v="60,0,0"/>
+				<Property v="60,0,1"/>
+			</PropertyList>
+		</Model>
+		<Model ver="2" type="MODEL" lightset="0">
+			<MapObject name="Gate2Model" id="33"/>
+			<ShapeMesh ver="3" texture="bon_fence">
+				<DisplayList>
+					<F3DEX2 cmd="E7000000,0"/>
+					<F3DEX2 cmd="D9FDFFFF,0"/>
+					<F3DEX2 cmd="D9FFFFFF,200400"/>
+					<TriangleBatch ver="0">
+						<VertexTable>
+							<Vertex xyz="1261,57,589" uv="4608,0" rgba="147,147,147,255"/>
+							<Vertex xyz="1421,0,589" uv="-512,2048" rgba="147,147,147,255"/>
+							<Vertex xyz="1421,57,589" uv="-512,0" rgba="147,147,147,255"/>
+							<Vertex xyz="1261,0,589" uv="4608,2047" rgba="147,147,147,255"/>
+							<Vertex xyz="1421,0,589" uv="-512,2048" rgba="147,147,147,255"/>
+							<Vertex xyz="1261,57,589" uv="4608,0" rgba="147,147,147,255"/>
+						</VertexTable>
+						<TriangleList>
+							<Triangle ijk="0,1,2"/>
+							<Triangle ijk="3,4,5"/>
+						</TriangleList>
+					</TriangleBatch>
+				</DisplayList>
+			</ShapeMesh>
+			<PropertyList>
+				<Property v="5C,0,22"/>
+				<Property v="5F,0,0"/>
+			</PropertyList>
+		</Model>
+		<Model ver="2" type="GROUP" lightset="0">
+			<MapObject name="Gate1Group" id="32"/>
+			<BoundingBox empty="false" min="1261,0,1039" max="1421,57,1039"/>
+			<TransformMatrix m="1.000000,0.000000,0.000000,0.000000,0.000000,1.000000,0.000000,0.000000,0.000000,0.000000,1.000000,0.000000,0.000000,0.000000,0.000000,1.000000"/>
+			<PropertyList>
+				<Property v="60,0,0"/>
+				<Property v="60,0,1"/>
+			</PropertyList>
+		</Model>
+		<Model ver="2" type="MODEL" lightset="0">
+			<MapObject name="Gate1Model" id="31"/>
+			<ShapeMesh ver="3" texture="bon_fence">
+				<DisplayList>
+					<F3DEX2 cmd="E7000000,0"/>
+					<F3DEX2 cmd="D9FDFFFF,0"/>
+					<F3DEX2 cmd="D9FFFFFF,200400"/>
+					<TriangleBatch ver="0">
+						<VertexTable>
+							<Vertex xyz="1261,57,1039" uv="4608,8" rgba="147,147,147,255"/>
+							<Vertex xyz="1421,0,1039" uv="-512,2055" rgba="147,147,147,255"/>
+							<Vertex xyz="1421,57,1039" uv="-512,7" rgba="147,147,147,255"/>
+							<Vertex xyz="1261,0,1039" uv="4608,2056" rgba="147,147,147,255"/>
+							<Vertex xyz="1421,0,1039" uv="-512,2055" rgba="147,147,147,255"/>
+							<Vertex xyz="1261,57,1039" uv="4608,8" rgba="147,147,147,255"/>
+						</VertexTable>
+						<TriangleList>
+							<Triangle ijk="0,1,2"/>
+							<Triangle ijk="3,4,5"/>
+						</TriangleList>
+					</TriangleBatch>
+				</DisplayList>
+			</ShapeMesh>
+			<PropertyList>
+				<Property v="5C,0,22"/>
+				<Property v="5F,0,0"/>
+			</PropertyList>
+		</Model>
+		<Model ver="2" type="MODEL" lightset="0">
+			<MapObject name="MeshModel" id="30"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -228,7 +338,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="StaircaseModel" id="39"/>
+			<MapObject name="StaircaseModel" id="2F"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -240,48 +350,48 @@
 							<Vertex xyz="1396,-10,-1036" uv="0,1024" rgba="244,26,26,255"/>
 							<Vertex xyz="1292,0,-1036" uv="60,0" rgba="244,26,26,255"/>
 							<Vertex xyz="1396,0,-1036" uv="60,1024" rgba="244,26,26,255"/>
-							<Vertex xyz="1292,0,-1056" uv="180,0" rgba="-12,26,26,-1"/>
-							<Vertex xyz="1396,0,-1056" uv="180,1024" rgba="-12,26,26,-1"/>
-							<Vertex xyz="1292,10,-1056" uv="240,0" rgba="-12,26,26,-1"/>
-							<Vertex xyz="1396,10,-1056" uv="240,1024" rgba="-12,26,26,-1"/>
-							<Vertex xyz="1292,10,-1076" uv="360,0" rgba="-12,26,26,-1"/>
-							<Vertex xyz="1396,10,-1076" uv="360,1024" rgba="-12,26,26,-1"/>
-							<Vertex xyz="1292,20,-1076" uv="420,0" rgba="-12,26,26,-1"/>
-							<Vertex xyz="1396,20,-1076" uv="420,1024" rgba="-12,26,26,-1"/>
-							<Vertex xyz="1292,20,-1096" uv="540,0" rgba="-12,26,26,-1"/>
-							<Vertex xyz="1396,20,-1096" uv="540,1024" rgba="-12,26,26,-1"/>
-							<Vertex xyz="1292,30,-1096" uv="600,0" rgba="-12,26,26,-1"/>
-							<Vertex xyz="1396,30,-1096" uv="600,1024" rgba="-12,26,26,-1"/>
-							<Vertex xyz="1292,30,-1116" uv="720,0" rgba="-12,26,26,-1"/>
-							<Vertex xyz="1396,30,-1116" uv="720,1024" rgba="-12,26,26,-1"/>
-							<Vertex xyz="1292,40,-1116" uv="780,0" rgba="-12,26,26,-1"/>
-							<Vertex xyz="1396,40,-1116" uv="780,1024" rgba="-12,26,26,-1"/>
-							<Vertex xyz="1292,40,-1136" uv="900,0" rgba="-12,26,26,-1"/>
-							<Vertex xyz="1396,40,-1136" uv="900,1024" rgba="-12,26,26,-1"/>
-							<Vertex xyz="1292,50,-1136" uv="960,0" rgba="-12,26,26,-1"/>
-							<Vertex xyz="1396,50,-1136" uv="960,1024" rgba="-12,26,26,-1"/>
-							<Vertex xyz="1292,50,-1156" uv="1080,0" rgba="-12,26,26,-1"/>
-							<Vertex xyz="1396,50,-1156" uv="1080,1024" rgba="-12,26,26,-1"/>
-							<Vertex xyz="1292,60,-1156" uv="1140,0" rgba="-12,26,26,-1"/>
-							<Vertex xyz="1396,60,-1156" uv="1140,1024" rgba="-12,26,26,-1"/>
-							<Vertex xyz="1292,60,-1176" uv="1260,0" rgba="-12,26,26,-1"/>
-							<Vertex xyz="1396,60,-1176" uv="1260,1024" rgba="-12,26,26,-1"/>
-							<Vertex xyz="1292,70,-1176" uv="1320,0" rgba="-12,26,26,-1"/>
-							<Vertex xyz="1396,70,-1176" uv="1320,1024" rgba="-12,26,26,-1"/>
-							<Vertex xyz="1292,70,-1196" uv="1440,0" rgba="-12,26,26,-1"/>
-							<Vertex xyz="1396,70,-1196" uv="1440,1024" rgba="-12,26,26,-1"/>
-							<Vertex xyz="1292,80,-1196" uv="1500,0" rgba="-12,26,26,-1"/>
-							<Vertex xyz="1396,80,-1196" uv="1500,1024" rgba="-12,26,26,-1"/>
-							<Vertex xyz="1292,80,-1216" uv="1620,0" rgba="-12,26,26,-1"/>
-							<Vertex xyz="1396,80,-1216" uv="1620,1024" rgba="-12,26,26,-1"/>
-							<Vertex xyz="1292,90,-1216" uv="1680,0" rgba="-12,26,26,-1"/>
-							<Vertex xyz="1396,90,-1216" uv="1680,1024" rgba="-12,26,26,-1"/>
+							<Vertex xyz="1292,0,-1056" uv="180,0" rgba="244,26,26,255"/>
+							<Vertex xyz="1396,0,-1056" uv="180,1024" rgba="244,26,26,255"/>
+							<Vertex xyz="1292,10,-1056" uv="240,0" rgba="244,26,26,255"/>
+							<Vertex xyz="1396,10,-1056" uv="240,1024" rgba="244,26,26,255"/>
+							<Vertex xyz="1292,10,-1076" uv="360,0" rgba="244,26,26,255"/>
+							<Vertex xyz="1396,10,-1076" uv="360,1024" rgba="244,26,26,255"/>
+							<Vertex xyz="1292,20,-1076" uv="420,0" rgba="244,26,26,255"/>
+							<Vertex xyz="1396,20,-1076" uv="420,1024" rgba="244,26,26,255"/>
+							<Vertex xyz="1292,20,-1096" uv="540,0" rgba="244,26,26,255"/>
+							<Vertex xyz="1396,20,-1096" uv="540,1024" rgba="244,26,26,255"/>
+							<Vertex xyz="1292,30,-1096" uv="600,0" rgba="244,26,26,255"/>
+							<Vertex xyz="1396,30,-1096" uv="600,1024" rgba="244,26,26,255"/>
+							<Vertex xyz="1292,30,-1116" uv="720,0" rgba="244,26,26,255"/>
+							<Vertex xyz="1396,30,-1116" uv="720,1024" rgba="244,26,26,255"/>
+							<Vertex xyz="1292,40,-1116" uv="780,0" rgba="244,26,26,255"/>
+							<Vertex xyz="1396,40,-1116" uv="780,1024" rgba="244,26,26,255"/>
+							<Vertex xyz="1292,40,-1136" uv="900,0" rgba="244,26,26,255"/>
+							<Vertex xyz="1396,40,-1136" uv="900,1024" rgba="244,26,26,255"/>
+							<Vertex xyz="1292,50,-1136" uv="960,0" rgba="244,26,26,255"/>
+							<Vertex xyz="1396,50,-1136" uv="960,1024" rgba="244,26,26,255"/>
+							<Vertex xyz="1292,50,-1156" uv="1080,0" rgba="244,26,26,255"/>
+							<Vertex xyz="1396,50,-1156" uv="1080,1024" rgba="244,26,26,255"/>
+							<Vertex xyz="1292,60,-1156" uv="1140,0" rgba="244,26,26,255"/>
+							<Vertex xyz="1396,60,-1156" uv="1140,1024" rgba="244,26,26,255"/>
+							<Vertex xyz="1292,60,-1176" uv="1260,0" rgba="244,26,26,255"/>
+							<Vertex xyz="1396,60,-1176" uv="1260,1024" rgba="244,26,26,255"/>
+							<Vertex xyz="1292,70,-1176" uv="1320,0" rgba="244,26,26,255"/>
+							<Vertex xyz="1396,70,-1176" uv="1320,1024" rgba="244,26,26,255"/>
+							<Vertex xyz="1292,70,-1196" uv="1440,0" rgba="244,26,26,255"/>
+							<Vertex xyz="1396,70,-1196" uv="1440,1024" rgba="244,26,26,255"/>
+							<Vertex xyz="1292,80,-1196" uv="1500,0" rgba="244,26,26,255"/>
+							<Vertex xyz="1396,80,-1196" uv="1500,1024" rgba="244,26,26,255"/>
+							<Vertex xyz="1292,80,-1216" uv="1620,0" rgba="244,26,26,255"/>
+							<Vertex xyz="1396,80,-1216" uv="1620,1024" rgba="244,26,26,255"/>
+							<Vertex xyz="1292,90,-1216" uv="1680,0" rgba="244,26,26,255"/>
+							<Vertex xyz="1396,90,-1216" uv="1680,1024" rgba="244,26,26,255"/>
 							<Vertex xyz="1292,90,-1236" uv="1800,0" rgba="244,26,26,255"/>
 							<Vertex xyz="1396,90,-1236" uv="1800,1024" rgba="244,26,26,255"/>
-							<Vertex xyz="1292,-10,-1036" uv="0,1536" rgba="-108,7,7,-1"/>
+							<Vertex xyz="1292,-10,-1036" uv="0,1536" rgba="148,7,7,255"/>
 							<Vertex xyz="1292,0,-1036" uv="0,1596" rgba="244,26,26,255"/>
 							<Vertex xyz="1292,0,-1056" uv="120,1596" rgba="244,26,26,255"/>
-							<Vertex xyz="1396,-10,-1036" uv="0,1536" rgba="-108,7,7,-1"/>
+							<Vertex xyz="1396,-10,-1036" uv="0,1536" rgba="148,7,7,255"/>
 							<Vertex xyz="1396,0,-1056" uv="120,1596" rgba="244,26,26,255"/>
 							<Vertex xyz="1396,0,-1036" uv="0,1596" rgba="244,26,26,255"/>
 							<Vertex xyz="1292,10,-1056" uv="120,1656" rgba="244,26,26,255"/>
@@ -317,13 +427,13 @@
 							<Vertex xyz="1396,80,-1216" uv="1080,2076" rgba="244,26,26,255"/>
 							<Vertex xyz="1396,80,-1196" uv="960,2076" rgba="244,26,26,255"/>
 							<Vertex xyz="1292,90,-1216" uv="1080,2136" rgba="244,26,26,255"/>
-							<Vertex xyz="1292,90,-1236" uv="1200,2136" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1396,90,-1236" uv="1200,2136" rgba="-108,7,7,-1"/>
+							<Vertex xyz="1292,90,-1236" uv="1200,2136" rgba="148,7,7,255"/>
+							<Vertex xyz="1396,90,-1236" uv="1200,2136" rgba="148,7,7,255"/>
 							<Vertex xyz="1396,90,-1216" uv="1080,2136" rgba="244,26,26,255"/>
-							<Vertex xyz="1396,-30,-1036" uv="0,1416" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1396,70,-1236" uv="1200,2016" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1292,-30,-1036" uv="0,1416" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1292,70,-1236" uv="1200,2016" rgba="-108,7,7,-1"/>
+							<Vertex xyz="1396,-30,-1036" uv="0,1416" rgba="148,7,7,255"/>
+							<Vertex xyz="1396,70,-1236" uv="1200,2016" rgba="148,7,7,255"/>
+							<Vertex xyz="1292,-30,-1036" uv="0,1416" rgba="148,7,7,255"/>
+							<Vertex xyz="1292,70,-1236" uv="1200,2016" rgba="148,7,7,255"/>
 							<Vertex xyz="1396,-30,-1036" uv="0,-1536" rgba="244,26,26,255"/>
 							<Vertex xyz="1292,-30,-1036" uv="0,-1086" rgba="244,26,26,255"/>
 							<Vertex xyz="1292,70,-1236" uv="1800,-1086" rgba="244,26,26,255"/>
@@ -406,7 +516,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="FloorModel" id="38"/>
+			<MapObject name="FloorModel" id="2E"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -434,7 +544,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="HullModel" id="37"/>
+			<MapObject name="HullModel" id="2D"/>
 			<ShapeMesh ver="3" texture="bon_fence">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -471,32 +581,8 @@
 				<Property v="5F,0,0"/>
 			</PropertyList>
 		</Model>
-		<Model ver="2" type="GROUP" lightset="0">
-			<MapObject name="LavaModels" id="36"/>
-			<BoundingBox empty="true" min="60,-361,-100" max="172,-12,123"/>
-			<PropertyList>
-				<Property v="60,0,0"/>
-				<Property v="60,0,1"/>
-			</PropertyList>
-		</Model>
-		<Model ver="2" type="GROUP" lightset="0">
-			<MapObject name="Check" id="35"/>
-			<BoundingBox empty="true" min="1137,74,-156" max="1161,128,-117"/>
-			<PropertyList>
-				<Property v="60,0,0"/>
-				<Property v="60,0,1"/>
-			</PropertyList>
-		</Model>
-		<Model ver="2" type="GROUP" lightset="0">
-			<MapObject name="Exit_West" id="34"/>
-			<BoundingBox empty="true" min="-600,-20,-50" max="-500,0,50"/>
-			<PropertyList>
-				<Property v="60,0,0"/>
-				<Property v="60,0,1"/>
-			</PropertyList>
-		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="MeshModel" id="33"/>
+			<MapObject name="MeshModel" id="2C"/>
 			<ShapeMesh ver="3" texture="">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -516,39 +602,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="GROUP" lightset="0">
-			<MapObject name="Exit_South" id="32"/>
-			<BoundingBox empty="true" min="-50,-20,500" max="50,0,600"/>
-			<PropertyList>
-				<Property v="60,0,0"/>
-				<Property v="60,0,1"/>
-			</PropertyList>
-		</Model>
-		<Model ver="2" type="GROUP" lightset="0">
-			<MapObject name="Exit_East" id="31"/>
-			<BoundingBox empty="true" min="500,-20,-50" max="600,0,50"/>
-			<PropertyList>
-				<Property v="60,0,0"/>
-				<Property v="60,0,1"/>
-			</PropertyList>
-		</Model>
-		<Model ver="2" type="GROUP" lightset="0">
-			<MapObject name="Exit_North" id="30"/>
-			<BoundingBox empty="true" min="-50,0,-600" max="50,0,-500"/>
-			<PropertyList>
-				<Property v="60,0,0"/>
-				<Property v="60,0,1"/>
-			</PropertyList>
-		</Model>
-		<Model ver="2" type="GROUP" lightset="0">
-			<MapObject name="Stage" id="2F"/>
-			<BoundingBox empty="true" min="-500,0,-500" max="500,0,500"/>
-			<PropertyList>
-				<Property v="60,0,0"/>
-				<Property v="60,0,1"/>
-			</PropertyList>
-		</Model>
-		<Model ver="2" type="GROUP" lightset="0">
-			<MapObject name="Cubes0" id="2E"/>
+			<MapObject name="Cubes0" id="2B"/>
 			<BoundingBox empty="false" min="1171,-310,-1542" max="1545,90,1575"/>
 			<PropertyList>
 				<Property v="60,0,0"/>
@@ -556,7 +610,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="CubeModel" id="2D"/>
+			<MapObject name="CubeModel" id="2A"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -570,24 +624,24 @@
 							<Vertex xyz="1247,90,-1349" uv="0,8192" rgba="244,26,26,255"/>
 							<Vertex xyz="1447,-10,-1349" uv="4096,4096" rgba="244,26,26,255"/>
 							<Vertex xyz="1447,90,-1349" uv="4096,8192" rgba="244,26,26,255"/>
-							<Vertex xyz="1447,-10,-1349" uv="4096,4096" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1447,-10,-1542" uv="8192,4096" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1447,90,-1349" uv="4096,8192" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1447,90,-1349" uv="4096,8192" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1447,-10,-1542" uv="8192,4096" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1447,90,-1542" uv="8192,8192" rgba="-108,7,7,-1"/>
+							<Vertex xyz="1447,-10,-1349" uv="4096,4096" rgba="148,7,7,255"/>
+							<Vertex xyz="1447,-10,-1542" uv="8192,4096" rgba="148,7,7,255"/>
+							<Vertex xyz="1447,90,-1349" uv="4096,8192" rgba="148,7,7,255"/>
+							<Vertex xyz="1447,90,-1349" uv="4096,8192" rgba="148,7,7,255"/>
+							<Vertex xyz="1447,-10,-1542" uv="8192,4096" rgba="148,7,7,255"/>
+							<Vertex xyz="1447,90,-1542" uv="8192,8192" rgba="148,7,7,255"/>
 							<Vertex xyz="1447,-10,-1542" uv="8192,4096" rgba="244,26,26,255"/>
 							<Vertex xyz="1247,-10,-1542" uv="12288,4096" rgba="244,26,26,255"/>
 							<Vertex xyz="1447,90,-1542" uv="8192,8192" rgba="244,26,26,255"/>
 							<Vertex xyz="1447,90,-1542" uv="8192,8192" rgba="244,26,26,255"/>
 							<Vertex xyz="1247,-10,-1542" uv="12288,4096" rgba="244,26,26,255"/>
 							<Vertex xyz="1247,90,-1542" uv="12288,8192" rgba="244,26,26,255"/>
-							<Vertex xyz="1247,-10,-1542" uv="12288,4096" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1247,-10,-1349" uv="16384,4096" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1247,90,-1542" uv="12288,8192" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1247,90,-1542" uv="12288,8192" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1247,-10,-1349" uv="16384,4096" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1247,90,-1349" uv="16384,8192" rgba="-108,7,7,-1"/>
+							<Vertex xyz="1247,-10,-1542" uv="12288,4096" rgba="148,7,7,255"/>
+							<Vertex xyz="1247,-10,-1349" uv="16384,4096" rgba="148,7,7,255"/>
+							<Vertex xyz="1247,90,-1542" uv="12288,8192" rgba="148,7,7,255"/>
+							<Vertex xyz="1247,90,-1542" uv="12288,8192" rgba="148,7,7,255"/>
+							<Vertex xyz="1247,-10,-1349" uv="16384,4096" rgba="148,7,7,255"/>
+							<Vertex xyz="1247,90,-1349" uv="16384,8192" rgba="148,7,7,255"/>
 							<Vertex xyz="1247,90,-1349" uv="0,-4096" rgba="244,26,26,255"/>
 							<Vertex xyz="1447,90,-1349" rgba="244,26,26,255"/>
 							<Vertex xyz="1247,90,-1542" uv="4096,-4096" rgba="244,26,26,255"/>
@@ -624,7 +678,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="CubeModel" id="2C"/>
+			<MapObject name="CubeModel" id="29"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -638,24 +692,24 @@
 							<Vertex xyz="1446,90,-1349" uv="0,8192" rgba="244,26,26,255"/>
 							<Vertex xyz="1247,-10,-1349" uv="4096,4096" rgba="244,26,26,255"/>
 							<Vertex xyz="1247,90,-1349" uv="4096,8192" rgba="244,26,26,255"/>
-							<Vertex xyz="1247,-10,-1349" uv="4096,4096" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1292,-10,-1236" uv="8192,4096" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1247,90,-1349" uv="4096,8192" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1247,90,-1349" uv="4096,8192" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1292,-10,-1236" uv="8192,4096" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1292,90,-1236" uv="8192,8192" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1292,-10,-1236" uv="8192,4096" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1396,-10,-1236" uv="12288,4096" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1292,90,-1236" uv="8192,8192" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1292,90,-1236" uv="8192,8192" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1396,-10,-1236" uv="12288,4096" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1396,90,-1236" uv="12288,8192" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1396,-10,-1236" uv="12288,4096" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1446,-10,-1349" uv="16384,4096" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1396,90,-1236" uv="12288,8192" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1396,90,-1236" uv="12288,8192" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1446,-10,-1349" uv="16384,4096" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1446,90,-1349" uv="16384,8192" rgba="-108,7,7,-1"/>
+							<Vertex xyz="1247,-10,-1349" uv="4096,4096" rgba="148,7,7,255"/>
+							<Vertex xyz="1292,-10,-1236" uv="8192,4096" rgba="148,7,7,255"/>
+							<Vertex xyz="1247,90,-1349" uv="4096,8192" rgba="148,7,7,255"/>
+							<Vertex xyz="1247,90,-1349" uv="4096,8192" rgba="148,7,7,255"/>
+							<Vertex xyz="1292,-10,-1236" uv="8192,4096" rgba="148,7,7,255"/>
+							<Vertex xyz="1292,90,-1236" uv="8192,8192" rgba="148,7,7,255"/>
+							<Vertex xyz="1292,-10,-1236" uv="8192,4096" rgba="148,7,7,255"/>
+							<Vertex xyz="1396,-10,-1236" uv="12288,4096" rgba="148,7,7,255"/>
+							<Vertex xyz="1292,90,-1236" uv="8192,8192" rgba="148,7,7,255"/>
+							<Vertex xyz="1292,90,-1236" uv="8192,8192" rgba="148,7,7,255"/>
+							<Vertex xyz="1396,-10,-1236" uv="12288,4096" rgba="148,7,7,255"/>
+							<Vertex xyz="1396,90,-1236" uv="12288,8192" rgba="148,7,7,255"/>
+							<Vertex xyz="1396,-10,-1236" uv="12288,4096" rgba="148,7,7,255"/>
+							<Vertex xyz="1446,-10,-1349" uv="16384,4096" rgba="148,7,7,255"/>
+							<Vertex xyz="1396,90,-1236" uv="12288,8192" rgba="148,7,7,255"/>
+							<Vertex xyz="1396,90,-1236" uv="12288,8192" rgba="148,7,7,255"/>
+							<Vertex xyz="1446,-10,-1349" uv="16384,4096" rgba="148,7,7,255"/>
+							<Vertex xyz="1446,90,-1349" uv="16384,8192" rgba="148,7,7,255"/>
 							<Vertex xyz="1446,90,-1349" uv="-61,-4096" rgba="244,26,26,255"/>
 							<Vertex xyz="1247,90,-1349" uv="-61,0" rgba="244,26,26,255"/>
 							<Vertex xyz="1396,90,-1236" uv="4096,-3177" rgba="244,26,26,255"/>
@@ -692,7 +746,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="CubeModel" id="2B"/>
+			<MapObject name="CubeModel" id="28"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -760,7 +814,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="CubeModel" id="2A"/>
+			<MapObject name="CubeModel" id="27"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -788,10 +842,10 @@
 							<Vertex xyz="1441,-227,-727" uv="12288,4096" rgba="240,160,55,255"/>
 							<Vertex xyz="1441,-227,-727" uv="12288,4096" rgba="240,160,55,255"/>
 							<Vertex xyz="1441,-227,-670" uv="16384,4096" rgba="240,160,55,255"/>
-							<Vertex xyz="1441,43,-727" uv="12288,8192" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1441,43,-727" uv="12288,8192" rgba="-69,110,9,-1"/>
+							<Vertex xyz="1441,43,-727" uv="12288,8192" rgba="187,110,9,255"/>
+							<Vertex xyz="1441,43,-727" uv="12288,8192" rgba="187,110,9,255"/>
 							<Vertex xyz="1441,-227,-670" uv="16384,4096" rgba="240,160,55,255"/>
-							<Vertex xyz="1441,43,-670" uv="16384,8192" rgba="-69,110,9,-1"/>
+							<Vertex xyz="1441,43,-670" uv="16384,8192" rgba="187,110,9,255"/>
 							<Vertex xyz="1441,43,-670" uv="0,-4096" rgba="240,160,55,255"/>
 							<Vertex xyz="1495,43,-670" rgba="240,160,55,255"/>
 							<Vertex xyz="1441,43,-727" uv="4096,-4096" rgba="240,160,55,255"/>
@@ -828,7 +882,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="CubeModel" id="29"/>
+			<MapObject name="CubeModel" id="26"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -844,10 +898,10 @@
 							<Vertex xyz="1238,43,-670" uv="4096,8192" rgba="240,160,55,255"/>
 							<Vertex xyz="1238,-227,-670" uv="4096,4096" rgba="240,160,55,255"/>
 							<Vertex xyz="1238,-227,-727" uv="8192,4096" rgba="240,160,55,255"/>
-							<Vertex xyz="1238,43,-670" uv="4096,8192" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1238,43,-670" uv="4096,8192" rgba="-69,110,9,-1"/>
+							<Vertex xyz="1238,43,-670" uv="4096,8192" rgba="187,110,9,255"/>
+							<Vertex xyz="1238,43,-670" uv="4096,8192" rgba="187,110,9,255"/>
 							<Vertex xyz="1238,-227,-727" uv="8192,4096" rgba="240,160,55,255"/>
-							<Vertex xyz="1238,43,-727" uv="8192,8192" rgba="-69,110,9,-1"/>
+							<Vertex xyz="1238,43,-727" uv="8192,8192" rgba="187,110,9,255"/>
 							<Vertex xyz="1238,-227,-727" uv="8192,4096" rgba="240,160,55,255"/>
 							<Vertex xyz="1238,43,-727" uv="8192,8192" rgba="240,160,55,255"/>
 							<Vertex xyz="1184,-227,-727" uv="12288,4096" rgba="240,160,55,255"/>
@@ -896,7 +950,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="CubeModel" id="28"/>
+			<MapObject name="CubeModel" id="25"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -924,10 +978,10 @@
 							<Vertex xyz="1441,-185,-784" uv="12288,4096" rgba="240,160,55,255"/>
 							<Vertex xyz="1441,-185,-784" uv="12288,4096" rgba="240,160,55,255"/>
 							<Vertex xyz="1441,-185,-727" uv="16384,4096" rgba="240,160,55,255"/>
-							<Vertex xyz="1441,85,-784" uv="12288,8192" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1441,85,-784" uv="12288,8192" rgba="-69,110,9,-1"/>
+							<Vertex xyz="1441,85,-784" uv="12288,8192" rgba="187,110,9,255"/>
+							<Vertex xyz="1441,85,-784" uv="12288,8192" rgba="187,110,9,255"/>
 							<Vertex xyz="1441,-185,-727" uv="16384,4096" rgba="240,160,55,255"/>
-							<Vertex xyz="1441,85,-727" uv="16384,8192" rgba="-69,110,9,-1"/>
+							<Vertex xyz="1441,85,-727" uv="16384,8192" rgba="187,110,9,255"/>
 							<Vertex xyz="1441,85,-727" uv="0,-4096" rgba="240,160,55,255"/>
 							<Vertex xyz="1495,85,-727" rgba="240,160,55,255"/>
 							<Vertex xyz="1441,85,-784" uv="4096,-4096" rgba="240,160,55,255"/>
@@ -964,7 +1018,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="CubeModel" id="27"/>
+			<MapObject name="CubeModel" id="24"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -980,10 +1034,10 @@
 							<Vertex xyz="1238,85,-727" uv="4096,8192" rgba="240,160,55,255"/>
 							<Vertex xyz="1238,-185,-727" uv="4096,4096" rgba="240,160,55,255"/>
 							<Vertex xyz="1238,-185,-784" uv="8192,4096" rgba="240,160,55,255"/>
-							<Vertex xyz="1238,85,-727" uv="4096,8192" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1238,85,-727" uv="4096,8192" rgba="-69,110,9,-1"/>
+							<Vertex xyz="1238,85,-727" uv="4096,8192" rgba="187,110,9,255"/>
+							<Vertex xyz="1238,85,-727" uv="4096,8192" rgba="187,110,9,255"/>
 							<Vertex xyz="1238,-185,-784" uv="8192,4096" rgba="240,160,55,255"/>
-							<Vertex xyz="1238,85,-784" uv="8192,8192" rgba="-69,110,9,-1"/>
+							<Vertex xyz="1238,85,-784" uv="8192,8192" rgba="187,110,9,255"/>
 							<Vertex xyz="1238,-185,-784" uv="8192,4096" rgba="240,160,55,255"/>
 							<Vertex xyz="1238,85,-784" uv="8192,8192" rgba="240,160,55,255"/>
 							<Vertex xyz="1184,-185,-784" uv="12288,4096" rgba="240,160,55,255"/>
@@ -1032,7 +1086,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="ConeModel" id="26"/>
+			<MapObject name="ConeModel" id="23"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -1049,9 +1103,9 @@
 							<Vertex xyz="1440,57,-845" uv="2048,0" rgba="240,160,55,255"/>
 							<Vertex xyz="1428,79,-857" uv="2048,2048" rgba="240,160,55,255"/>
 							<Vertex xyz="1414,57,-845" uv="3072,0" rgba="240,160,55,255"/>
-							<Vertex xyz="1414,57,-845" uv="3072,0" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1428,79,-857" uv="3072,2048" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1414,57,-868" uv="4096,0" rgba="-69,110,9,-1"/>
+							<Vertex xyz="1414,57,-845" uv="3072,0" rgba="187,110,9,255"/>
+							<Vertex xyz="1428,79,-857" uv="3072,2048" rgba="187,110,9,255"/>
+							<Vertex xyz="1414,57,-868" uv="4096,0" rgba="187,110,9,255"/>
 						</VertexTable>
 						<TriangleList>
 							<Triangle ijk="0,1,2"/>
@@ -1068,7 +1122,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="CubeModel" id="25"/>
+			<MapObject name="CubeModel" id="22"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -1106,12 +1160,12 @@
 							<Vertex xyz="1440,57,-868" uv="6144,-2" rgba="240,160,55,255"/>
 							<Vertex xyz="1441,0,-845" uv="4096,2046" rgba="240,160,55,255"/>
 							<Vertex xyz="1441,0,-868" uv="6144,2046" rgba="240,160,55,255"/>
-							<Vertex xyz="1414,57,-845" uv="8192,-2" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1414,57,-868" uv="10240,-2" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1415,0,-845" uv="8192,2046" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1415,0,-845" uv="8192,2046" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1414,57,-868" uv="10240,-2" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1415,0,-868" uv="10240,2046" rgba="-69,110,9,-1"/>
+							<Vertex xyz="1414,57,-845" uv="8192,-2" rgba="187,110,9,255"/>
+							<Vertex xyz="1414,57,-868" uv="10240,-2" rgba="187,110,9,255"/>
+							<Vertex xyz="1415,0,-845" uv="8192,2046" rgba="187,110,9,255"/>
+							<Vertex xyz="1415,0,-845" uv="8192,2046" rgba="187,110,9,255"/>
+							<Vertex xyz="1414,57,-868" uv="10240,-2" rgba="187,110,9,255"/>
+							<Vertex xyz="1415,0,-868" uv="10240,2046" rgba="187,110,9,255"/>
 						</VertexTable>
 						<TriangleList>
 							<Triangle ijk="0,1,2"/>
@@ -1136,7 +1190,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="ConeModel" id="24"/>
+			<MapObject name="ConeModel" id="21"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -1147,9 +1201,9 @@
 							<Vertex xyz="1241,57,-868" rgba="240,160,55,255"/>
 							<Vertex xyz="1255,79,-857" uv="0,2048" rgba="240,160,55,255"/>
 							<Vertex xyz="1267,57,-868" uv="1024,0" rgba="240,160,55,255"/>
-							<Vertex xyz="1267,57,-868" uv="1024,0" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1255,79,-857" uv="1024,2048" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1267,57,-845" uv="2048,0" rgba="-69,110,9,-1"/>
+							<Vertex xyz="1267,57,-868" uv="1024,0" rgba="187,110,9,255"/>
+							<Vertex xyz="1255,79,-857" uv="1024,2048" rgba="187,110,9,255"/>
+							<Vertex xyz="1267,57,-845" uv="2048,0" rgba="187,110,9,255"/>
 							<Vertex xyz="1267,57,-845" uv="2048,0" rgba="240,160,55,255"/>
 							<Vertex xyz="1255,79,-857" uv="2048,2048" rgba="240,160,55,255"/>
 							<Vertex xyz="1241,57,-845" uv="3072,0" rgba="240,160,55,255"/>
@@ -1172,7 +1226,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="CubeModel" id="23"/>
+			<MapObject name="CubeModel" id="20"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -1204,12 +1258,12 @@
 							<Vertex xyz="1267,57,-868" uv="10240,6142" rgba="240,160,55,255"/>
 							<Vertex xyz="1241,57,-845" uv="12288,4094" rgba="240,160,55,255"/>
 							<Vertex xyz="1267,57,-845" uv="12288,6142" rgba="240,160,55,255"/>
-							<Vertex xyz="1267,57,-845" uv="4096,-2" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1268,0,-845" uv="4096,2046" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1267,57,-868" uv="6144,-2" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1267,57,-868" uv="6144,-2" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1268,0,-845" uv="4096,2046" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1268,0,-868" uv="6144,2046" rgba="-69,110,9,-1"/>
+							<Vertex xyz="1267,57,-845" uv="4096,-2" rgba="187,110,9,255"/>
+							<Vertex xyz="1268,0,-845" uv="4096,2046" rgba="187,110,9,255"/>
+							<Vertex xyz="1267,57,-868" uv="6144,-2" rgba="187,110,9,255"/>
+							<Vertex xyz="1267,57,-868" uv="6144,-2" rgba="187,110,9,255"/>
+							<Vertex xyz="1268,0,-845" uv="4096,2046" rgba="187,110,9,255"/>
+							<Vertex xyz="1268,0,-868" uv="6144,2046" rgba="187,110,9,255"/>
 							<Vertex xyz="1241,57,-845" uv="8192,-2" rgba="240,160,55,255"/>
 							<Vertex xyz="1241,57,-868" uv="10240,-2" rgba="240,160,55,255"/>
 							<Vertex xyz="1242,0,-845" uv="8192,2046" rgba="240,160,55,255"/>
@@ -1240,7 +1294,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="Gate5Model" id="22"/>
+			<MapObject name="Gate5Model" id="1F"/>
 			<ShapeMesh ver="3" texture="bon_fence">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -1268,7 +1322,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="CubeModel" id="21"/>
+			<MapObject name="CubeModel" id="1E"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -1282,10 +1336,10 @@
 							<Vertex xyz="1241,0,-420" uv="0,8192" rgba="244,26,26,255"/>
 							<Vertex xyz="1441,-100,-420" uv="4096,4096" rgba="244,26,26,255"/>
 							<Vertex xyz="1441,0,-420" uv="4096,8192" rgba="244,26,26,255"/>
-							<Vertex xyz="1441,-100,-420" uv="4096,4096" rgba="-108,7,7,-1"/>
+							<Vertex xyz="1441,-100,-420" uv="4096,4096" rgba="148,7,7,255"/>
 							<Vertex xyz="1441,-100,-868" uv="8192,4096" rgba="244,26,26,255"/>
-							<Vertex xyz="1441,0,-420" uv="4096,8192" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1441,0,-420" uv="4096,8192" rgba="-108,7,7,-1"/>
+							<Vertex xyz="1441,0,-420" uv="4096,8192" rgba="148,7,7,255"/>
+							<Vertex xyz="1441,0,-420" uv="4096,8192" rgba="148,7,7,255"/>
 							<Vertex xyz="1441,-100,-868" uv="8192,4096" rgba="244,26,26,255"/>
 							<Vertex xyz="1441,0,-868" uv="8192,8192" rgba="244,26,26,255"/>
 							<Vertex xyz="1441,-100,-868" uv="8192,4096" rgba="244,26,26,255"/>
@@ -1295,11 +1349,11 @@
 							<Vertex xyz="1241,-100,-868" uv="12288,4096" rgba="244,26,26,255"/>
 							<Vertex xyz="1241,0,-868" uv="12288,8192" rgba="244,26,26,255"/>
 							<Vertex xyz="1241,-100,-868" uv="12288,4096" rgba="244,26,26,255"/>
-							<Vertex xyz="1241,-100,-420" uv="16384,4096" rgba="-108,7,7,-1"/>
+							<Vertex xyz="1241,-100,-420" uv="16384,4096" rgba="148,7,7,255"/>
 							<Vertex xyz="1241,0,-868" uv="12288,8192" rgba="244,26,26,255"/>
 							<Vertex xyz="1241,0,-868" uv="12288,8192" rgba="244,26,26,255"/>
-							<Vertex xyz="1241,-100,-420" uv="16384,4096" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1241,0,-420" uv="16384,8192" rgba="-108,7,7,-1"/>
+							<Vertex xyz="1241,-100,-420" uv="16384,4096" rgba="148,7,7,255"/>
+							<Vertex xyz="1241,0,-420" uv="16384,8192" rgba="148,7,7,255"/>
 							<Vertex xyz="1241,0,-420" uv="0,-4096" rgba="244,26,26,255"/>
 							<Vertex xyz="1441,0,-420" rgba="244,26,26,255"/>
 							<Vertex xyz="1241,0,-868" uv="4096,-4096" rgba="244,26,26,255"/>
@@ -1336,7 +1390,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="CubeModel" id="20"/>
+			<MapObject name="CubeModel" id="1D"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -1350,24 +1404,24 @@
 							<Vertex xyz="1241,0,-258" uv="0,8192" rgba="244,26,26,255"/>
 							<Vertex xyz="1441,-100,-258" uv="4096,4096" rgba="244,26,26,255"/>
 							<Vertex xyz="1441,0,-258" uv="4096,8192" rgba="244,26,26,255"/>
-							<Vertex xyz="1441,-100,-258" uv="4096,4096" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1441,-100,-420" uv="8192,4096" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1441,0,-258" uv="4096,8192" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1441,0,-258" uv="4096,8192" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1441,-100,-420" uv="8192,4096" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1441,0,-420" uv="8192,8192" rgba="-108,7,7,-1"/>
+							<Vertex xyz="1441,-100,-258" uv="4096,4096" rgba="148,7,7,255"/>
+							<Vertex xyz="1441,-100,-420" uv="8192,4096" rgba="148,7,7,255"/>
+							<Vertex xyz="1441,0,-258" uv="4096,8192" rgba="148,7,7,255"/>
+							<Vertex xyz="1441,0,-258" uv="4096,8192" rgba="148,7,7,255"/>
+							<Vertex xyz="1441,-100,-420" uv="8192,4096" rgba="148,7,7,255"/>
+							<Vertex xyz="1441,0,-420" uv="8192,8192" rgba="148,7,7,255"/>
 							<Vertex xyz="1441,-100,-420" uv="8192,4096" rgba="244,26,26,255"/>
 							<Vertex xyz="1241,-100,-420" uv="12288,4096" rgba="244,26,26,255"/>
 							<Vertex xyz="1441,0,-420" uv="8192,8192" rgba="244,26,26,255"/>
 							<Vertex xyz="1441,0,-420" uv="8192,8192" rgba="244,26,26,255"/>
 							<Vertex xyz="1241,-100,-420" uv="12288,4096" rgba="244,26,26,255"/>
 							<Vertex xyz="1241,0,-420" uv="12288,8192" rgba="244,26,26,255"/>
-							<Vertex xyz="1241,-100,-420" uv="12288,4096" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1241,-100,-258" uv="16384,4096" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1241,0,-420" uv="12288,8192" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1241,0,-420" uv="12288,8192" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1241,-100,-258" uv="16384,4096" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1241,0,-258" uv="16384,8192" rgba="-108,7,7,-1"/>
+							<Vertex xyz="1241,-100,-420" uv="12288,4096" rgba="148,7,7,255"/>
+							<Vertex xyz="1241,-100,-258" uv="16384,4096" rgba="148,7,7,255"/>
+							<Vertex xyz="1241,0,-420" uv="12288,8192" rgba="148,7,7,255"/>
+							<Vertex xyz="1241,0,-420" uv="12288,8192" rgba="148,7,7,255"/>
+							<Vertex xyz="1241,-100,-258" uv="16384,4096" rgba="148,7,7,255"/>
+							<Vertex xyz="1241,0,-258" uv="16384,8192" rgba="148,7,7,255"/>
 							<Vertex xyz="1241,0,-258" uv="0,-4096" rgba="244,26,26,255"/>
 							<Vertex xyz="1441,0,-258" rgba="244,26,26,255"/>
 							<Vertex xyz="1241,0,-420" uv="4096,-4096" rgba="244,26,26,255"/>
@@ -1404,7 +1458,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="CubeModel" id="1F"/>
+			<MapObject name="CubeModel" id="1C"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -1412,30 +1466,30 @@
 					<F3DEX2 cmd="D9FFFFFF,200400"/>
 					<TriangleBatch ver="0">
 						<VertexTable>
-							<Vertex xyz="1171,-100,-31" uv="0,4096" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1511,-100,-30" uv="4096,4096" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1171,0,-31" uv="0,8192" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1171,0,-31" uv="0,8192" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1511,-100,-30" uv="4096,4096" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1511,0,-30" uv="4096,8192" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1511,-100,-30" uv="4096,4096" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1511,-100,-258" uv="8192,4096" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1511,0,-30" uv="4096,8192" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1511,0,-30" uv="4096,8192" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1511,-100,-258" uv="8192,4096" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1511,0,-258" uv="8192,8192" rgba="-108,7,7,-1"/>
+							<Vertex xyz="1171,-100,-31" uv="0,4096" rgba="148,7,7,255"/>
+							<Vertex xyz="1511,-100,-30" uv="4096,4096" rgba="148,7,7,255"/>
+							<Vertex xyz="1171,0,-31" uv="0,8192" rgba="148,7,7,255"/>
+							<Vertex xyz="1171,0,-31" uv="0,8192" rgba="148,7,7,255"/>
+							<Vertex xyz="1511,-100,-30" uv="4096,4096" rgba="148,7,7,255"/>
+							<Vertex xyz="1511,0,-30" uv="4096,8192" rgba="148,7,7,255"/>
+							<Vertex xyz="1511,-100,-30" uv="4096,4096" rgba="148,7,7,255"/>
+							<Vertex xyz="1511,-100,-258" uv="8192,4096" rgba="148,7,7,255"/>
+							<Vertex xyz="1511,0,-30" uv="4096,8192" rgba="148,7,7,255"/>
+							<Vertex xyz="1511,0,-30" uv="4096,8192" rgba="148,7,7,255"/>
+							<Vertex xyz="1511,-100,-258" uv="8192,4096" rgba="148,7,7,255"/>
+							<Vertex xyz="1511,0,-258" uv="8192,8192" rgba="148,7,7,255"/>
 							<Vertex xyz="1511,-100,-258" uv="8192,4096" rgba="244,26,26,255"/>
 							<Vertex xyz="1171,-100,-258" uv="12288,4096" rgba="244,26,26,255"/>
 							<Vertex xyz="1511,0,-258" uv="8192,8192" rgba="244,26,26,255"/>
 							<Vertex xyz="1511,0,-258" uv="8192,8192" rgba="244,26,26,255"/>
 							<Vertex xyz="1171,-100,-258" uv="12288,4096" rgba="244,26,26,255"/>
 							<Vertex xyz="1171,0,-258" uv="12288,8192" rgba="244,26,26,255"/>
-							<Vertex xyz="1171,-100,-258" uv="12288,4096" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1171,-100,-31" uv="16384,4096" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1171,0,-258" uv="12288,8192" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1171,0,-258" uv="12288,8192" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1171,-100,-31" uv="16384,4096" rgba="-108,7,7,-1"/>
-							<Vertex xyz="1171,0,-31" uv="16384,8192" rgba="-108,7,7,-1"/>
+							<Vertex xyz="1171,-100,-258" uv="12288,4096" rgba="148,7,7,255"/>
+							<Vertex xyz="1171,-100,-31" uv="16384,4096" rgba="148,7,7,255"/>
+							<Vertex xyz="1171,0,-258" uv="12288,8192" rgba="148,7,7,255"/>
+							<Vertex xyz="1171,0,-258" uv="12288,8192" rgba="148,7,7,255"/>
+							<Vertex xyz="1171,-100,-31" uv="16384,4096" rgba="148,7,7,255"/>
+							<Vertex xyz="1171,0,-31" uv="16384,8192" rgba="148,7,7,255"/>
 							<Vertex xyz="1171,0,-31" uv="0,-4096" rgba="244,26,26,255"/>
 							<Vertex xyz="1511,0,-30" rgba="244,26,26,255"/>
 							<Vertex xyz="1171,0,-258" uv="4096,-4096" rgba="244,26,26,255"/>
@@ -1472,7 +1526,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="ConeModel" id="1E"/>
+			<MapObject name="ConeModel" id="1B"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -1489,9 +1543,9 @@
 							<Vertex xyz="1440,57,-397" uv="2048,0" rgba="240,160,55,255"/>
 							<Vertex xyz="1428,79,-409" uv="2048,2048" rgba="240,160,55,255"/>
 							<Vertex xyz="1414,57,-397" uv="3072,0" rgba="240,160,55,255"/>
-							<Vertex xyz="1414,57,-397" uv="3072,0" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1428,79,-409" uv="3072,2048" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1414,57,-420" uv="4096,0" rgba="-69,110,9,-1"/>
+							<Vertex xyz="1414,57,-397" uv="3072,0" rgba="187,110,9,255"/>
+							<Vertex xyz="1428,79,-409" uv="3072,2048" rgba="187,110,9,255"/>
+							<Vertex xyz="1414,57,-420" uv="4096,0" rgba="187,110,9,255"/>
 						</VertexTable>
 						<TriangleList>
 							<Triangle ijk="0,1,2"/>
@@ -1508,7 +1562,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="CubeModel" id="1D"/>
+			<MapObject name="CubeModel" id="1A"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -1546,12 +1600,12 @@
 							<Vertex xyz="1440,57,-420" uv="6144,-2" rgba="240,160,55,255"/>
 							<Vertex xyz="1441,0,-397" uv="4096,2046" rgba="240,160,55,255"/>
 							<Vertex xyz="1441,0,-420" uv="6144,2046" rgba="240,160,55,255"/>
-							<Vertex xyz="1414,57,-397" uv="8192,-2" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1414,57,-420" uv="10240,-2" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1415,0,-397" uv="8192,2046" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1415,0,-397" uv="8192,2046" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1414,57,-420" uv="10240,-2" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1415,0,-420" uv="10240,2046" rgba="-69,110,9,-1"/>
+							<Vertex xyz="1414,57,-397" uv="8192,-2" rgba="187,110,9,255"/>
+							<Vertex xyz="1414,57,-420" uv="10240,-2" rgba="187,110,9,255"/>
+							<Vertex xyz="1415,0,-397" uv="8192,2046" rgba="187,110,9,255"/>
+							<Vertex xyz="1415,0,-397" uv="8192,2046" rgba="187,110,9,255"/>
+							<Vertex xyz="1414,57,-420" uv="10240,-2" rgba="187,110,9,255"/>
+							<Vertex xyz="1415,0,-420" uv="10240,2046" rgba="187,110,9,255"/>
 						</VertexTable>
 						<TriangleList>
 							<Triangle ijk="0,1,2"/>
@@ -1576,7 +1630,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="Gate4Model" id="1C"/>
+			<MapObject name="Gate4Model" id="19"/>
 			<ShapeMesh ver="3" texture="bon_fence">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -1604,7 +1658,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="ConeModel" id="1B"/>
+			<MapObject name="ConeModel" id="18"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -1615,9 +1669,9 @@
 							<Vertex xyz="1241,57,-420" rgba="240,160,55,255"/>
 							<Vertex xyz="1255,79,-409" uv="0,2048" rgba="240,160,55,255"/>
 							<Vertex xyz="1267,57,-420" uv="1024,0" rgba="240,160,55,255"/>
-							<Vertex xyz="1267,57,-420" uv="1024,0" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1255,79,-409" uv="1024,2048" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1267,57,-397" uv="2048,0" rgba="-69,110,9,-1"/>
+							<Vertex xyz="1267,57,-420" uv="1024,0" rgba="187,110,9,255"/>
+							<Vertex xyz="1255,79,-409" uv="1024,2048" rgba="187,110,9,255"/>
+							<Vertex xyz="1267,57,-397" uv="2048,0" rgba="187,110,9,255"/>
 							<Vertex xyz="1267,57,-397" uv="2048,0" rgba="240,160,55,255"/>
 							<Vertex xyz="1255,79,-409" uv="2048,2048" rgba="240,160,55,255"/>
 							<Vertex xyz="1241,57,-397" uv="3072,0" rgba="240,160,55,255"/>
@@ -1640,7 +1694,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="CubeModel" id="1A"/>
+			<MapObject name="CubeModel" id="17"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -1672,12 +1726,12 @@
 							<Vertex xyz="1267,57,-420" uv="10240,6142" rgba="240,160,55,255"/>
 							<Vertex xyz="1241,57,-397" uv="12288,4094" rgba="240,160,55,255"/>
 							<Vertex xyz="1267,57,-397" uv="12288,6142" rgba="240,160,55,255"/>
-							<Vertex xyz="1267,57,-397" uv="4096,-2" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1268,0,-397" uv="4096,2046" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1267,57,-420" uv="6144,-2" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1267,57,-420" uv="6144,-2" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1268,0,-397" uv="4096,2046" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1268,0,-420" uv="6144,2046" rgba="-69,110,9,-1"/>
+							<Vertex xyz="1267,57,-397" uv="4096,-2" rgba="187,110,9,255"/>
+							<Vertex xyz="1268,0,-397" uv="4096,2046" rgba="187,110,9,255"/>
+							<Vertex xyz="1267,57,-420" uv="6144,-2" rgba="187,110,9,255"/>
+							<Vertex xyz="1267,57,-420" uv="6144,-2" rgba="187,110,9,255"/>
+							<Vertex xyz="1268,0,-397" uv="4096,2046" rgba="187,110,9,255"/>
+							<Vertex xyz="1268,0,-420" uv="6144,2046" rgba="187,110,9,255"/>
 							<Vertex xyz="1241,57,-397" uv="8192,-2" rgba="240,160,55,255"/>
 							<Vertex xyz="1241,57,-420" uv="10240,-2" rgba="240,160,55,255"/>
 							<Vertex xyz="1242,0,-397" uv="8192,2046" rgba="240,160,55,255"/>
@@ -1708,7 +1762,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="CubeModel" id="19"/>
+			<MapObject name="CubeModel" id="16"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -1776,7 +1830,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="CubeModel" id="18"/>
+			<MapObject name="CubeModel" id="15"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -1844,35 +1898,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="Gate3Model" id="17"/>
-			<ShapeMesh ver="3" texture="bon_fence">
-				<DisplayList>
-					<F3DEX2 cmd="E7000000,0"/>
-					<F3DEX2 cmd="D9FDFFFF,0"/>
-					<F3DEX2 cmd="D9FFFFFF,200400"/>
-					<TriangleBatch ver="0">
-						<VertexTable>
-							<Vertex xyz="1261,57,142" uv="4608,1" rgba="147,147,147,255"/>
-							<Vertex xyz="1421,0,142" uv="-512,2048" rgba="147,147,147,255"/>
-							<Vertex xyz="1421,57,142" uv="-512,0" rgba="147,147,147,255"/>
-							<Vertex xyz="1261,0,142" uv="4608,2049" rgba="147,147,147,255"/>
-							<Vertex xyz="1421,0,142" uv="-512,2048" rgba="147,147,147,255"/>
-							<Vertex xyz="1261,57,142" uv="4608,1" rgba="147,147,147,255"/>
-						</VertexTable>
-						<TriangleList>
-							<Triangle ijk="0,1,2"/>
-							<Triangle ijk="3,4,5"/>
-						</TriangleList>
-					</TriangleBatch>
-				</DisplayList>
-			</ShapeMesh>
-			<PropertyList>
-				<Property v="5C,0,22"/>
-				<Property v="5F,0,0"/>
-			</PropertyList>
-		</Model>
-		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="ConeModel" id="16"/>
+			<MapObject name="ConeModel" id="14"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -1889,9 +1915,9 @@
 							<Vertex xyz="1440,57,154" uv="2048,0" rgba="240,160,55,255"/>
 							<Vertex xyz="1428,79,142" uv="2048,2048" rgba="240,160,55,255"/>
 							<Vertex xyz="1414,57,154" uv="3072,0" rgba="240,160,55,255"/>
-							<Vertex xyz="1414,57,154" uv="3072,0" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1428,79,142" uv="3072,2048" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1414,57,131" uv="4096,0" rgba="-69,110,9,-1"/>
+							<Vertex xyz="1414,57,154" uv="3072,0" rgba="187,110,9,255"/>
+							<Vertex xyz="1428,79,142" uv="3072,2048" rgba="187,110,9,255"/>
+							<Vertex xyz="1414,57,131" uv="4096,0" rgba="187,110,9,255"/>
 						</VertexTable>
 						<TriangleList>
 							<Triangle ijk="0,1,2"/>
@@ -1908,7 +1934,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="CubeModel" id="15"/>
+			<MapObject name="CubeModel" id="13"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -1946,12 +1972,12 @@
 							<Vertex xyz="1440,57,131" uv="6144,-2" rgba="240,160,55,255"/>
 							<Vertex xyz="1441,0,154" uv="4096,2046" rgba="240,160,55,255"/>
 							<Vertex xyz="1441,0,131" uv="6144,2046" rgba="240,160,55,255"/>
-							<Vertex xyz="1414,57,154" uv="8192,-2" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1414,57,131" uv="10240,-2" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1415,0,154" uv="8192,2046" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1415,0,154" uv="8192,2046" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1414,57,131" uv="10240,-2" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1415,0,131" uv="10240,2046" rgba="-69,110,9,-1"/>
+							<Vertex xyz="1414,57,154" uv="8192,-2" rgba="187,110,9,255"/>
+							<Vertex xyz="1414,57,131" uv="10240,-2" rgba="187,110,9,255"/>
+							<Vertex xyz="1415,0,154" uv="8192,2046" rgba="187,110,9,255"/>
+							<Vertex xyz="1415,0,154" uv="8192,2046" rgba="187,110,9,255"/>
+							<Vertex xyz="1414,57,131" uv="10240,-2" rgba="187,110,9,255"/>
+							<Vertex xyz="1415,0,131" uv="10240,2046" rgba="187,110,9,255"/>
 						</VertexTable>
 						<TriangleList>
 							<Triangle ijk="0,1,2"/>
@@ -1976,7 +2002,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="CubeModel" id="14"/>
+			<MapObject name="CubeModel" id="12"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -2008,12 +2034,12 @@
 							<Vertex xyz="1267,57,131" uv="10240,6142" rgba="240,160,55,255"/>
 							<Vertex xyz="1241,57,154" uv="12288,4094" rgba="240,160,55,255"/>
 							<Vertex xyz="1267,57,154" uv="12288,6142" rgba="240,160,55,255"/>
-							<Vertex xyz="1267,57,154" uv="4096,-2" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1268,0,154" uv="4096,2046" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1267,57,131" uv="6144,-2" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1267,57,131" uv="6144,-2" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1268,0,154" uv="4096,2046" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1268,0,131" uv="6144,2046" rgba="-69,110,9,-1"/>
+							<Vertex xyz="1267,57,154" uv="4096,-2" rgba="187,110,9,255"/>
+							<Vertex xyz="1268,0,154" uv="4096,2046" rgba="187,110,9,255"/>
+							<Vertex xyz="1267,57,131" uv="6144,-2" rgba="187,110,9,255"/>
+							<Vertex xyz="1267,57,131" uv="6144,-2" rgba="187,110,9,255"/>
+							<Vertex xyz="1268,0,154" uv="4096,2046" rgba="187,110,9,255"/>
+							<Vertex xyz="1268,0,131" uv="6144,2046" rgba="187,110,9,255"/>
 							<Vertex xyz="1241,57,154" uv="8192,-2" rgba="240,160,55,255"/>
 							<Vertex xyz="1241,57,131" uv="10240,-2" rgba="240,160,55,255"/>
 							<Vertex xyz="1242,0,154" uv="8192,2046" rgba="240,160,55,255"/>
@@ -2044,7 +2070,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="ConeModel" id="13"/>
+			<MapObject name="ConeModel" id="11"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -2055,9 +2081,9 @@
 							<Vertex xyz="1241,57,131" rgba="240,160,55,255"/>
 							<Vertex xyz="1255,79,142" uv="0,2048" rgba="240,160,55,255"/>
 							<Vertex xyz="1267,57,131" uv="1024,0" rgba="240,160,55,255"/>
-							<Vertex xyz="1267,57,131" uv="1024,0" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1255,79,142" uv="1024,2048" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1267,57,154" uv="2048,0" rgba="-69,110,9,-1"/>
+							<Vertex xyz="1267,57,131" uv="1024,0" rgba="187,110,9,255"/>
+							<Vertex xyz="1255,79,142" uv="1024,2048" rgba="187,110,9,255"/>
+							<Vertex xyz="1267,57,154" uv="2048,0" rgba="187,110,9,255"/>
 							<Vertex xyz="1267,57,154" uv="2048,0" rgba="240,160,55,255"/>
 							<Vertex xyz="1255,79,142" uv="2048,2048" rgba="240,160,55,255"/>
 							<Vertex xyz="1241,57,154" uv="3072,0" rgba="240,160,55,255"/>
@@ -2080,7 +2106,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="CubeModel" id="12"/>
+			<MapObject name="CubeModel" id="10"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -2148,7 +2174,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="CubeModel" id="11"/>
+			<MapObject name="CubeModel" id="F"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -2176,10 +2202,10 @@
 							<Vertex xyz="1441,-185,663" uv="12288,4096" rgba="240,160,55,255"/>
 							<Vertex xyz="1441,-185,663" uv="12288,4096" rgba="240,160,55,255"/>
 							<Vertex xyz="1441,-185,720" uv="16384,4096" rgba="240,160,55,255"/>
-							<Vertex xyz="1441,85,663" uv="12288,8192" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1441,85,663" uv="12288,8192" rgba="-69,110,9,-1"/>
+							<Vertex xyz="1441,85,663" uv="12288,8192" rgba="187,110,9,255"/>
+							<Vertex xyz="1441,85,663" uv="12288,8192" rgba="187,110,9,255"/>
 							<Vertex xyz="1441,-185,720" uv="16384,4096" rgba="240,160,55,255"/>
-							<Vertex xyz="1441,85,720" uv="16384,8192" rgba="-69,110,9,-1"/>
+							<Vertex xyz="1441,85,720" uv="16384,8192" rgba="187,110,9,255"/>
 							<Vertex xyz="1441,85,720" uv="0,-4096" rgba="240,160,55,255"/>
 							<Vertex xyz="1495,85,720" rgba="240,160,55,255"/>
 							<Vertex xyz="1441,85,663" uv="4096,-4096" rgba="240,160,55,255"/>
@@ -2216,7 +2242,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="CubeModel" id="10"/>
+			<MapObject name="CubeModel" id="E"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -2232,10 +2258,10 @@
 							<Vertex xyz="1238,85,720" uv="4096,8192" rgba="240,160,55,255"/>
 							<Vertex xyz="1238,-185,720" uv="4096,4096" rgba="240,160,55,255"/>
 							<Vertex xyz="1238,-185,663" uv="8192,4096" rgba="240,160,55,255"/>
-							<Vertex xyz="1238,85,720" uv="4096,8192" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1238,85,720" uv="4096,8192" rgba="-69,110,9,-1"/>
+							<Vertex xyz="1238,85,720" uv="4096,8192" rgba="187,110,9,255"/>
+							<Vertex xyz="1238,85,720" uv="4096,8192" rgba="187,110,9,255"/>
 							<Vertex xyz="1238,-185,663" uv="8192,4096" rgba="240,160,55,255"/>
-							<Vertex xyz="1238,85,663" uv="8192,8192" rgba="-69,110,9,-1"/>
+							<Vertex xyz="1238,85,663" uv="8192,8192" rgba="187,110,9,255"/>
 							<Vertex xyz="1238,-185,663" uv="8192,4096" rgba="240,160,55,255"/>
 							<Vertex xyz="1238,85,663" uv="8192,8192" rgba="240,160,55,255"/>
 							<Vertex xyz="1184,-185,663" uv="12288,4096" rgba="240,160,55,255"/>
@@ -2284,35 +2310,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="Gate2Model" id="F"/>
-			<ShapeMesh ver="3" texture="bon_fence">
-				<DisplayList>
-					<F3DEX2 cmd="E7000000,0"/>
-					<F3DEX2 cmd="D9FDFFFF,0"/>
-					<F3DEX2 cmd="D9FFFFFF,200400"/>
-					<TriangleBatch ver="0">
-						<VertexTable>
-							<Vertex xyz="1261,57,589" uv="4608,0" rgba="147,147,147,255"/>
-							<Vertex xyz="1421,0,589" uv="-512,2048" rgba="147,147,147,255"/>
-							<Vertex xyz="1421,57,589" uv="-512,0" rgba="147,147,147,255"/>
-							<Vertex xyz="1261,0,589" uv="4608,2047" rgba="147,147,147,255"/>
-							<Vertex xyz="1421,0,589" uv="-512,2048" rgba="147,147,147,255"/>
-							<Vertex xyz="1261,57,589" uv="4608,0" rgba="147,147,147,255"/>
-						</VertexTable>
-						<TriangleList>
-							<Triangle ijk="0,1,2"/>
-							<Triangle ijk="3,4,5"/>
-						</TriangleList>
-					</TriangleBatch>
-				</DisplayList>
-			</ShapeMesh>
-			<PropertyList>
-				<Property v="5C,0,22"/>
-				<Property v="5F,0,0"/>
-			</PropertyList>
-		</Model>
-		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="ConeModel" id="E"/>
+			<MapObject name="ConeModel" id="D"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -2329,9 +2327,9 @@
 							<Vertex xyz="1440,57,602" uv="2048,0" rgba="240,160,55,255"/>
 							<Vertex xyz="1428,79,590" uv="2048,2048" rgba="240,160,55,255"/>
 							<Vertex xyz="1414,57,602" uv="3072,0" rgba="240,160,55,255"/>
-							<Vertex xyz="1414,57,602" uv="3072,0" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1428,79,590" uv="3072,2048" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1414,57,579" uv="4096,0" rgba="-69,110,9,-1"/>
+							<Vertex xyz="1414,57,602" uv="3072,0" rgba="187,110,9,255"/>
+							<Vertex xyz="1428,79,590" uv="3072,2048" rgba="187,110,9,255"/>
+							<Vertex xyz="1414,57,579" uv="4096,0" rgba="187,110,9,255"/>
 						</VertexTable>
 						<TriangleList>
 							<Triangle ijk="0,1,2"/>
@@ -2348,7 +2346,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="CubeModel" id="D"/>
+			<MapObject name="CubeModel" id="C"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -2386,12 +2384,12 @@
 							<Vertex xyz="1440,57,579" uv="6144,-2" rgba="240,160,55,255"/>
 							<Vertex xyz="1441,0,602" uv="4096,2046" rgba="240,160,55,255"/>
 							<Vertex xyz="1441,0,579" uv="6144,2046" rgba="240,160,55,255"/>
-							<Vertex xyz="1414,57,602" uv="8192,-2" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1414,57,579" uv="10240,-2" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1415,0,602" uv="8192,2046" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1415,0,602" uv="8192,2046" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1414,57,579" uv="10240,-2" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1415,0,579" uv="10240,2046" rgba="-69,110,9,-1"/>
+							<Vertex xyz="1414,57,602" uv="8192,-2" rgba="187,110,9,255"/>
+							<Vertex xyz="1414,57,579" uv="10240,-2" rgba="187,110,9,255"/>
+							<Vertex xyz="1415,0,602" uv="8192,2046" rgba="187,110,9,255"/>
+							<Vertex xyz="1415,0,602" uv="8192,2046" rgba="187,110,9,255"/>
+							<Vertex xyz="1414,57,579" uv="10240,-2" rgba="187,110,9,255"/>
+							<Vertex xyz="1415,0,579" uv="10240,2046" rgba="187,110,9,255"/>
 						</VertexTable>
 						<TriangleList>
 							<Triangle ijk="0,1,2"/>
@@ -2416,7 +2414,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="ConeModel" id="C"/>
+			<MapObject name="ConeModel" id="B"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -2427,9 +2425,9 @@
 							<Vertex xyz="1241,57,579" rgba="240,160,55,255"/>
 							<Vertex xyz="1255,79,590" uv="0,2048" rgba="240,160,55,255"/>
 							<Vertex xyz="1267,57,579" uv="1024,0" rgba="240,160,55,255"/>
-							<Vertex xyz="1267,57,579" uv="1024,0" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1255,79,590" uv="1024,2048" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1267,57,602" uv="2048,0" rgba="-69,110,9,-1"/>
+							<Vertex xyz="1267,57,579" uv="1024,0" rgba="187,110,9,255"/>
+							<Vertex xyz="1255,79,590" uv="1024,2048" rgba="187,110,9,255"/>
+							<Vertex xyz="1267,57,602" uv="2048,0" rgba="187,110,9,255"/>
 							<Vertex xyz="1267,57,602" uv="2048,0" rgba="240,160,55,255"/>
 							<Vertex xyz="1255,79,590" uv="2048,2048" rgba="240,160,55,255"/>
 							<Vertex xyz="1241,57,602" uv="3072,0" rgba="240,160,55,255"/>
@@ -2452,7 +2450,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="CubeModel" id="B"/>
+			<MapObject name="CubeModel" id="A"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -2484,12 +2482,12 @@
 							<Vertex xyz="1267,57,579" uv="10240,6142" rgba="240,160,55,255"/>
 							<Vertex xyz="1241,57,602" uv="12288,4094" rgba="240,160,55,255"/>
 							<Vertex xyz="1267,57,602" uv="12288,6142" rgba="240,160,55,255"/>
-							<Vertex xyz="1267,57,602" uv="4096,-2" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1268,0,602" uv="4096,2046" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1267,57,579" uv="6144,-2" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1267,57,579" uv="6144,-2" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1268,0,602" uv="4096,2046" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1268,0,579" uv="6144,2046" rgba="-69,110,9,-1"/>
+							<Vertex xyz="1267,57,602" uv="4096,-2" rgba="187,110,9,255"/>
+							<Vertex xyz="1268,0,602" uv="4096,2046" rgba="187,110,9,255"/>
+							<Vertex xyz="1267,57,579" uv="6144,-2" rgba="187,110,9,255"/>
+							<Vertex xyz="1267,57,579" uv="6144,-2" rgba="187,110,9,255"/>
+							<Vertex xyz="1268,0,602" uv="4096,2046" rgba="187,110,9,255"/>
+							<Vertex xyz="1268,0,579" uv="6144,2046" rgba="187,110,9,255"/>
 							<Vertex xyz="1241,57,602" uv="8192,-2" rgba="240,160,55,255"/>
 							<Vertex xyz="1241,57,579" uv="10240,-2" rgba="240,160,55,255"/>
 							<Vertex xyz="1242,0,602" uv="8192,2046" rgba="240,160,55,255"/>
@@ -2520,7 +2518,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="CubeModel" id="A"/>
+			<MapObject name="CubeModel" id="9"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -2588,7 +2586,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="ConeModel" id="9"/>
+			<MapObject name="ConeModel" id="8"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -2605,9 +2603,9 @@
 							<Vertex xyz="1440,57,1050" uv="2048,0" rgba="240,160,55,255"/>
 							<Vertex xyz="1428,79,1038" uv="2048,2048" rgba="240,160,55,255"/>
 							<Vertex xyz="1414,57,1050" uv="3072,0" rgba="240,160,55,255"/>
-							<Vertex xyz="1414,57,1050" uv="3072,0" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1428,79,1038" uv="3072,2048" rgba="-37,-127,10,-1"/>
-							<Vertex xyz="1414,57,1027" uv="4096,0" rgba="-69,110,9,-1"/>
+							<Vertex xyz="1414,57,1050" uv="3072,0" rgba="187,110,9,255"/>
+							<Vertex xyz="1428,79,1038" uv="3072,2048" rgba="219,129,10,255"/>
+							<Vertex xyz="1414,57,1027" uv="4096,0" rgba="187,110,9,255"/>
 						</VertexTable>
 						<TriangleList>
 							<Triangle ijk="0,1,2"/>
@@ -2624,7 +2622,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="ConeModel" id="8"/>
+			<MapObject name="ConeModel" id="7"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -2634,9 +2632,9 @@
 						<VertexTable>
 							<Vertex xyz="1240,57,1027" rgba="240,160,55,255"/>
 							<Vertex xyz="1254,79,1038" uv="0,2048" rgba="240,160,55,255"/>
-							<Vertex xyz="1266,57,1027" uv="1024,0" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1254,79,1038" uv="1024,2048" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1266,57,1050" uv="2048,0" rgba="-69,110,9,-1"/>
+							<Vertex xyz="1266,57,1027" uv="1024,0" rgba="187,110,9,255"/>
+							<Vertex xyz="1254,79,1038" uv="1024,2048" rgba="187,110,9,255"/>
+							<Vertex xyz="1266,57,1050" uv="2048,0" rgba="187,110,9,255"/>
 							<Vertex xyz="1254,79,1038" uv="2048,2048" rgba="240,160,55,255"/>
 							<Vertex xyz="1240,57,1050" uv="3072,0" rgba="240,160,55,255"/>
 							<Vertex xyz="1254,79,1038" uv="3072,2048" rgba="240,160,55,255"/>
@@ -2657,7 +2655,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="CubeModel" id="7"/>
+			<MapObject name="CubeModel" id="6"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -2695,12 +2693,12 @@
 							<Vertex xyz="1440,57,1027" uv="6144,-2" rgba="240,160,55,255"/>
 							<Vertex xyz="1441,0,1050" uv="4096,2046" rgba="240,160,55,255"/>
 							<Vertex xyz="1441,0,1027" uv="6144,2046" rgba="240,160,55,255"/>
-							<Vertex xyz="1414,57,1050" uv="8192,-2" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1414,57,1027" uv="10240,-2" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1415,0,1050" uv="8192,2046" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1415,0,1050" uv="8192,2046" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1414,57,1027" uv="10240,-2" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1415,0,1027" uv="10240,2046" rgba="-69,110,9,-1"/>
+							<Vertex xyz="1414,57,1050" uv="8192,-2" rgba="187,110,9,255"/>
+							<Vertex xyz="1414,57,1027" uv="10240,-2" rgba="187,110,9,255"/>
+							<Vertex xyz="1415,0,1050" uv="8192,2046" rgba="187,110,9,255"/>
+							<Vertex xyz="1415,0,1050" uv="8192,2046" rgba="187,110,9,255"/>
+							<Vertex xyz="1414,57,1027" uv="10240,-2" rgba="187,110,9,255"/>
+							<Vertex xyz="1415,0,1027" uv="10240,2046" rgba="187,110,9,255"/>
 						</VertexTable>
 						<TriangleList>
 							<Triangle ijk="0,1,2"/>
@@ -2725,7 +2723,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="CubeModel" id="6"/>
+			<MapObject name="CubeModel" id="5"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -2757,12 +2755,12 @@
 							<Vertex xyz="1266,57,1027" uv="10240,6142" rgba="240,160,55,255"/>
 							<Vertex xyz="1240,57,1050" uv="12288,4094" rgba="240,160,55,255"/>
 							<Vertex xyz="1266,57,1050" uv="12288,6142" rgba="240,160,55,255"/>
-							<Vertex xyz="1266,57,1050" uv="4096,-2" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1267,0,1050" uv="4096,2046" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1266,57,1027" uv="6144,-2" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1266,57,1027" uv="6144,-2" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1267,0,1050" uv="4096,2046" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1267,0,1027" uv="6144,2046" rgba="-69,110,9,-1"/>
+							<Vertex xyz="1266,57,1050" uv="4096,-2" rgba="187,110,9,255"/>
+							<Vertex xyz="1267,0,1050" uv="4096,2046" rgba="187,110,9,255"/>
+							<Vertex xyz="1266,57,1027" uv="6144,-2" rgba="187,110,9,255"/>
+							<Vertex xyz="1266,57,1027" uv="6144,-2" rgba="187,110,9,255"/>
+							<Vertex xyz="1267,0,1050" uv="4096,2046" rgba="187,110,9,255"/>
+							<Vertex xyz="1267,0,1027" uv="6144,2046" rgba="187,110,9,255"/>
 							<Vertex xyz="1240,57,1050" uv="8192,-2" rgba="240,160,55,255"/>
 							<Vertex xyz="1240,57,1027" uv="10240,-2" rgba="240,160,55,255"/>
 							<Vertex xyz="1241,0,1050" uv="8192,2046" rgba="240,160,55,255"/>
@@ -2793,34 +2791,6 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="Gate1Model" id="5"/>
-			<ShapeMesh ver="3" texture="bon_fence">
-				<DisplayList>
-					<F3DEX2 cmd="E7000000,0"/>
-					<F3DEX2 cmd="D9FDFFFF,0"/>
-					<F3DEX2 cmd="D9FFFFFF,200400"/>
-					<TriangleBatch ver="0">
-						<VertexTable>
-							<Vertex xyz="1261,57,1039" uv="4608,8" rgba="147,147,147,255"/>
-							<Vertex xyz="1421,0,1039" uv="-512,2055" rgba="147,147,147,255"/>
-							<Vertex xyz="1421,57,1039" uv="-512,7" rgba="147,147,147,255"/>
-							<Vertex xyz="1261,0,1039" uv="4608,2056" rgba="147,147,147,255"/>
-							<Vertex xyz="1421,0,1039" uv="-512,2055" rgba="147,147,147,255"/>
-							<Vertex xyz="1261,57,1039" uv="4608,8" rgba="147,147,147,255"/>
-						</VertexTable>
-						<TriangleList>
-							<Triangle ijk="0,1,2"/>
-							<Triangle ijk="3,4,5"/>
-						</TriangleList>
-					</TriangleBatch>
-				</DisplayList>
-			</ShapeMesh>
-			<PropertyList>
-				<Property v="5C,0,22"/>
-				<Property v="5F,0,0"/>
-			</PropertyList>
-		</Model>
-		<Model ver="2" type="MODEL" lightset="0">
 			<MapObject name="CubeModel" id="4"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
@@ -2837,10 +2807,10 @@
 							<Vertex xyz="1238,85,1170" uv="4096,8192" rgba="240,160,55,255"/>
 							<Vertex xyz="1238,-185,1170" uv="4096,4096" rgba="240,160,55,255"/>
 							<Vertex xyz="1238,-185,1113" uv="8192,4096" rgba="240,160,55,255"/>
-							<Vertex xyz="1238,85,1170" uv="4096,8192" rgba="-69,110,9,-1"/>
-							<Vertex xyz="1238,85,1170" uv="4096,8192" rgba="-69,110,9,-1"/>
+							<Vertex xyz="1238,85,1170" uv="4096,8192" rgba="187,110,9,255"/>
+							<Vertex xyz="1238,85,1170" uv="4096,8192" rgba="187,110,9,255"/>
 							<Vertex xyz="1238,-185,1113" uv="8192,4096" rgba="240,160,55,255"/>
-							<Vertex xyz="1238,85,1113" uv="8192,8192" rgba="-69,110,9,-1"/>
+							<Vertex xyz="1238,85,1113" uv="8192,8192" rgba="187,110,9,255"/>
 							<Vertex xyz="1238,-185,1113" uv="8192,4096" rgba="240,160,55,255"/>
 							<Vertex xyz="1238,85,1113" uv="8192,8192" rgba="240,160,55,255"/>
 							<Vertex xyz="1184,-185,1113" uv="12288,4096" rgba="240,160,55,255"/>

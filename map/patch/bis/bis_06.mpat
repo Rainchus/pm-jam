@@ -4,6 +4,12 @@
 
 #define .switch1HitFlagIndex 0
 
+#define .switchGroup2Switch1FlagIndex 1
+#define .switchGroup2Switch2FlagIndex 2
+#define .switchGroup1CombinedFlagIndex 3
+
+#define .switch4HitFlagIndex 4
+
 #new:Header $Header
 {
 	[MainScript] $Script_Main
@@ -72,6 +78,49 @@
 
 #new:Script $Script_Switch1Hit {
 	Call ModifyColliderFlags ( .ORFlags ~Collider:gate1 .collisionInActiveFlag ) %turn gate collision off
+	Set *Var0 0
+	Set *Var1 0
+	Set *Var2 0
+	Loop 20`
+		Call TranslateGroup ( ~Model:Gate1Group *Var0 *Var1 *Var2 )
+		Add *Var1 -3`
+		Wait 1`
+	EndLoop
+	Call  EnableGroup ( ~Model:Gate1Group .False )
+	Return
+	End
+}
+
+#new:Script $Script_SwitchGroup2 {
+	If *AreaFlag[.switchGroup2Switch1FlagIndex] == 1
+		If *AreaFlag[.switchGroup2Switch2FlagIndex] == 1
+			Call ModifyColliderFlags ( .ORFlags ~Collider:gate2 .collisionInActiveFlag ) %turn gate collision off
+			Set *Var0 0
+			Set *Var1 0
+			Set *Var2 0
+			Loop 20`
+				Call TranslateGroup ( ~Model:Gate2Group *Var0 *Var1 *Var2 )
+				Add *Var1 -3`
+				Wait 1`
+			EndLoop
+			Call  EnableGroup ( ~Model:Gate2Group .False )
+		EndIf
+	EndIf
+	Return
+	End
+}
+
+#new:Script $Script_Switch4Hit {
+	Call ModifyColliderFlags ( .ORFlags ~Collider:gate3 .collisionInActiveFlag ) %turn gate collision off
+	Set *Var0 0
+	Set *Var1 0
+	Set *Var2 0
+	Loop 20`
+		Call TranslateGroup ( ~Model:Gate3Group *Var0 *Var1 *Var2 )
+		Add *Var1 -3`
+		Wait 1`
+	EndLoop
+	Call  EnableGroup ( ~Model:Gate3Group .False )
 	Return
 	End
 }
@@ -80,6 +129,19 @@
 	Call  MakeEntity    ( .Entity:BlueSwitch ~Vec4d:Gate1Switch1 80000000 )
 	Call  AssignAreaFlag    ( .switch1HitFlagIndex )
 	Bind  $Script_Switch1Hit .Trigger:AreaFlagSet *AreaFlag[.switch1HitFlagIndex] 00000001 00000000
+
+	Call  MakeEntity    ( .Entity:BlueSwitch ~Vec4d:Gate2Switch1 80000000 )
+	Call  AssignAreaFlag    ( .switchGroup2Switch1FlagIndex )
+	Bind  $Script_SwitchGroup2 .Trigger:AreaFlagSet *AreaFlag[.switchGroup2Switch1FlagIndex] 00000001 00000000
+
+	Call  MakeEntity    ( .Entity:BlueSwitch ~Vec4d:Gate2Switch2 80000000 )
+	Call  AssignAreaFlag    ( .switchGroup2Switch2FlagIndex )
+	Bind  $Script_SwitchGroup2 .Trigger:AreaFlagSet *AreaFlag[.switchGroup2Switch2FlagIndex] 00000001 00000000
+
+	Call  MakeEntity    ( .Entity:BlueSwitch ~Vec4d:Gate3Switch1 80000000 )
+	Call  AssignAreaFlag    ( .switch4HitFlagIndex )
+	Bind  $Script_Switch4Hit .Trigger:AreaFlagSet *AreaFlag[.switch4HitFlagIndex] 00000001 00000000
+
 	Return
 	End
 }
@@ -91,6 +153,7 @@
     Call  SetCamBGColor      ( .Cam:Default 00000000 00000000 00000000 )
     Call  SetCamEnabled      ( .Cam:Default .True )
     Call  SetCamLeadPlayer   ( .Cam:Default .False )
+	Call  MakeTransformGroup    ( ~Model:Gate1Group )
     % Set *Var0 1
     % Thread
     %     Loop
