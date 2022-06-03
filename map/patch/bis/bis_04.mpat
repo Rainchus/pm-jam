@@ -1,5 +1,17 @@
 #import SpriteAnimations.mpat
 
+#define .NpcID:Starlow 0
+#define .NpcID:MarioNPC 1
+#define .NpcID:Nuts 2
+#define .NpcID:Challenge 3
+#define .NpcID:Guardian 4
+#define .NpcID:Blitty 5
+#define .NpcID:Goombule 6 
+#define .NpcID:SGoombule 7
+#define .NpcID:Protobatter 8
+#define .NpcID:Tenderling 9
+#define .NpcID:Chuboomba A
+
 #new:Header $Header
 {
 	[MainScript] $Script_Main
@@ -107,6 +119,451 @@
     Exec $Script_SetupMusic
 	Exec $TexturePanning
     Exec $Script_EnterMap
+    Exec $Cutscene1
     Return
     End
 }
+
+
+#new:Script $Cutscene1{
+    Call DisablePartnerAI ( 0 ) %disable flying partner ai (value 1 would disable walking partner AI)
+	Call DisablePlayerInput (.True)
+    Call PlayerMoveTo (-60` 0` 60`)
+    Call NpcFlyTo (.NpcID:Starlow ~Vec3d:StarlowScenePos 60` 0` .Easing:CosInOut)
+    Wait 40`
+    %Starlow says something
+    Call NpcFlyTo (.NpcID:Nuts ~Vec3d:NutsScenePos 60` 0` .Easing:CosInOut)
+    %Nutsoglobin says something
+    Call NpcFlyTo (.NpcID:Challenge ~Vec3d:NutsScenePos 60` 0` .Easing:CosInOut)
+    %Conversation ensues
+    Call SetNpcPos(.NpcID:Goombule 92` 150` 21` )
+    Call NpcFlyTo (.NpcID:Goombule ~Vec3d:EnemyScenePos 60` 0` .Easing:QuarticIn)
+    Call SetPlayerAnimation (.PlayerAnim:ReadyJump)
+    Wait 10`
+    Call SetNpcAnimation (.NpcID:Starlow .Anim:StarlowAIdle)
+    Call SetNpcAnimation (.NpcID:Goombule .Anim:GoombuleRun)
+    Call NpcMoveTo (.NpcID:Goombule ~Vec3d:MarioScenePos)
+
+    Return
+    End
+}
+
+#new:NpcSettings $MarioNPC
+{
+	0 %unk_00
+	32`s %colliderheight
+	16`s %colliderradius
+	0 %unk
+	0 %interactscript
+	0 %aiscript
+	0 %onhit (enemy)
+	0 %aux (disregard)
+	0 %ondefeat
+	0 %flags
+	0 %unk
+	0s %level
+	0s %unk
+}
+
+#new:NpcGroup $MarioNPCGroup
+{
+	.NpcID:MarioNPC %basic id, define above
+    $MarioNPC %reference NpcSettings struct
+    ~Vec3f:MarioNPC %position, currently refers to marker in map editor (position)
+	00000001 %flags (01 is passive)
+    0 %init script (for any additional info/scriptin)
+    00000000 %unk
+    00000000 %unk
+    90` %yaw, 90 is right, 270 is left
+	~NoDrops %drops
+	~Movement:MarioNPC %movement
+	~AnimationTable:MarioNPC %animations, currently refers to marker in map editor
+	00000000 %unk
+	00000000 %unk
+	00000000 %extra animations
+	001A005E %tattleID
+}
+
+
+#new:NpcSettings $Starlow
+{
+	0 %unk_00
+	32`s %colliderheight
+	16`s %colliderradius
+	0 %unk
+	0 %interactscript
+	0 %aiscript
+	0 %onhit (enemy)
+	0 %aux (disregard)
+	0 %ondefeat
+	0 %flags
+	0 %unk
+	0s %level
+	0s %unk
+}
+
+#new:NpcGroup $StarlowGroup
+{
+	.NpcID:Starlow %basic id, define above
+    $Starlow %reference NpcSettings struct
+    ~Vec3f:Starlow %position, currently refers to marker in map editor (position)
+	00000001 %flags (01 is passive)
+    0 %init script (for any additional info/scriptin)
+    00000000 %unk
+    00000000 %unk
+    90` %yaw, 90 is right, 270 is left
+	~NoDrops %drops
+	~Movement:MarioNPC %movement
+	~AnimationTable:MarioNPC %animations, currently refers to marker in map editor
+	00000000 %unk
+	00000000 %unk
+	00000000 %extra animations
+	001A005E %tattleID
+}
+
+
+#new:NpcSettings $Guardian
+{
+	0 %unk_00
+	32`s %colliderheight
+	16`s %colliderradius
+	0 %unk
+	0 %interactscript
+	0 %aiscript
+	0 %onhit (enemy)
+	0 %aux (disregard)
+	0 %ondefeat
+	0 %flags
+	0 %unk
+	0s %level
+	0s %unk
+}
+
+#new:NpcGroup $GuardianGroup
+{
+	.NpcID:Guardian %basic id, define above
+    $Guardian %reference NpcSettings struct
+    ~Vec3f:Guardian %position, currently refers to marker in map editor (position)
+	00000001 %flags (01 is passive)
+    0 %init script (for any additional info/scriptin)
+    00000000 %unk
+    00000000 %unk
+    90` %yaw, 90 is right, 270 is left
+	~NoDrops %drops
+	~Movement:Guardian %movement
+	~AnimationTable:Guardian %animations, currently refers to marker in map editor
+	00000000 %unk
+	00000000 %unk
+	00000000 %extra animations
+	001A005E %tattleID
+}
+
+
+#new:NpcSettings $Nuts
+{
+	0 %unk_00
+	32`s %colliderheight
+	16`s %colliderradius
+	0 %unk
+	0 %interactscript
+	0 %aiscript
+	0 %onhit (enemy)
+	0 %aux (disregard)
+	0 %ondefeat
+	0 %flags
+	0 %unk
+	0s %level
+	0s %unk
+}
+
+#new:NpcGroup $NutsGroup
+{
+	.NpcID:Nuts %basic id, define above
+    $Nuts %reference NpcSettings struct
+    ~Vec3f:Nuts %position, currently refers to marker in map editor (position)
+	00000001 %flags (01 is passive)
+    0 %init script (for any additional info/scriptin)
+    00000000 %unk
+    00000000 %unk
+    90` %yaw, 90 is right, 270 is left
+	~NoDrops %drops
+	~Movement:Nuts %movement
+	~AnimationTable:Nuts %animations, currently refers to marker in map editor
+	00000000 %unk
+	00000000 %unk
+	00000000 %extra animations
+	001A005E %tattleID
+}
+
+
+#new:NpcSettings $Challenge
+{
+	0 %unk_00
+	32`s %colliderheight
+	16`s %colliderradius
+	0 %unk
+	0 %interactscript
+	0 %aiscript
+	0 %onhit (enemy)
+	0 %aux (disregard)
+	0 %ondefeat
+	0 %flags
+	0 %unk
+	0s %level
+	0s %unk
+}
+
+#new:NpcGroup $ChallengeGroup
+{
+	.NpcID:Challenge %basic id, define above
+    $Challenge %reference NpcSettings struct
+    ~Vec3f:Challenge %position, currently refers to marker in map editor (position)
+	00000001 %flags (01 is passive)
+    0 %init script (for any additional info/scriptin)
+    00000000 %unk
+    00000000 %unk
+    90` %yaw, 90 is right, 270 is left
+	~NoDrops %drops
+	~Movement:Challenge %movement
+	~AnimationTable:Challenge %animations, currently refers to marker in map editor
+	00000000 %unk
+	00000000 %unk
+	00000000 %extra animations
+	001A005E %tattleID
+}
+
+
+#new:NpcSettings $Blitty
+{
+	0 %unk_00
+	32`s %colliderheight
+	16`s %colliderradius
+	0 %unk
+	0 %interactscript
+	0 %aiscript
+	0 %onhit (enemy)
+	0 %aux (disregard)
+	0 %ondefeat
+	0 %flags
+	0 %unk
+	0s %level
+	0s %unk
+}
+
+#new:NpcGroup $BlittyGroup
+{
+	.NpcID:Blitty %basic id, define above
+    $Blitty %reference NpcSettings struct
+    ~Vec3f:Blitty %position, currently refers to marker in map editor (position)
+	00000001 %flags (01 is passive)
+    0 %init script (for any additional info/scriptin)
+    00000000 %unk
+    00000000 %unk
+    90` %yaw, 90 is right, 270 is left
+	~NoDrops %drops
+	~Movement:Blitty %movement
+	~AnimationTable:Blitty %animations, currently refers to marker in map editor
+	00000000 %unk
+	00000000 %unk
+	00000000 %extra animations
+	001A005E %tattleID
+}
+
+
+#new:NpcSettings $Goombule
+{
+	0 %unk_00
+	32`s %colliderheight
+	16`s %colliderradius
+	0 %unk
+	0 %interactscript
+	0 %aiscript
+	0 %onhit (enemy)
+	0 %aux (disregard)
+	0 %ondefeat
+	0 %flags
+	0 %unk
+	0s %level
+	0s %unk
+}
+
+#new:NpcGroup $GoombuleGroup
+{
+	.NpcID:Goombule %basic id, define above
+    $Goombule %reference NpcSettings struct
+    ~Vec3f:Goombule %position, currently refers to marker in map editor (position)
+	00000001 %flags (01 is passive)
+    0 %init script (for any additional info/scriptin)
+    00000000 %unk
+    00000000 %unk
+    90` %yaw, 90 is right, 270 is left
+	~NoDrops %drops
+	~Movement:Goombule %movement
+	~AnimationTable:Goombule %animations, currently refers to marker in map editor
+	00000000 %unk
+	00000000 %unk
+	00000000 %extra animations
+	001A005E %tattleID
+}
+
+#new:NpcSettings $SGoombule
+{
+	0 %unk_00
+	32`s %colliderheight
+	16`s %colliderradius
+	0 %unk
+	0 %interactscript
+	0 %aiscript
+	0 %onhit (enemy)
+	0 %aux (disregard)
+	0 %ondefeat
+	0 %flags
+	0 %unk
+	0s %level
+	0s %unk
+}
+
+#new:NpcGroup $SGoombuleGroup
+{
+	.NpcID:SGoombule %basic id, define above
+    $SGoombule %reference NpcSettings struct
+    ~Vec3f:SGoombule %position, currently refers to marker in map editor (position)
+	00000001 %flags (01 is passive)
+    0 %init script (for any additional info/scriptin)
+    00000000 %unk
+    00000000 %unk
+    90` %yaw, 90 is right, 270 is left
+	~NoDrops %drops
+	~Movement:SGoombule %movement
+	~AnimationTable:SGoombule %animations, currently refers to marker in map editor
+	00000000 %unk
+	00000000 %unk
+	00000000 %extra animations
+	001A005E %tattleID
+}
+
+#new:NpcSettings $Protobatter
+{
+	0 %unk_00
+	32`s %colliderheight
+	16`s %colliderradius
+	0 %unk
+	0 %interactscript
+	0 %aiscript
+	0 %onhit (enemy)
+	0 %aux (disregard)
+	0 %ondefeat
+	0 %flags
+	0 %unk
+	0s %level
+	0s %unk
+}
+
+#new:NpcGroup $ProtobatterGroup
+{
+	.NpcID:Protobatter %basic id, define above
+    $Protobatter %reference NpcSettings struct
+    ~Vec3f:Protobatter %position, currently refers to marker in map editor (position)
+	00000001 %flags (01 is passive)
+    0 %init script (for any additional info/scriptin)
+    00000000 %unk
+    00000000 %unk
+    90` %yaw, 90 is right, 270 is left
+	~NoDrops %drops
+	~Movement:Protobatter %movement
+	~AnimationTable:Protobatter %animations, currently refers to marker in map editor
+	00000000 %unk
+	00000000 %unk
+	00000000 %extra animations
+	001A005E %tattleID
+}
+
+#new:NpcSettings $Tenderling
+{
+	0 %unk_00
+	32`s %colliderheight
+	16`s %colliderradius
+	0 %unk
+	0 %interactscript
+	0 %aiscript
+	0 %onhit (enemy)
+	0 %aux (disregard)
+	0 %ondefeat
+	0 %flags
+	0 %unk
+	0s %level
+	0s %unk
+}
+
+#new:NpcGroup $TenderlingGroup
+{
+	.NpcID:Tenderling %basic id, define above
+    $Tenderling %reference NpcSettings struct
+    ~Vec3f:Tenderling %position, currently refers to marker in map editor (position)
+	00000001 %flags (01 is passive)
+    0 %init script (for any additional info/scriptin)
+    00000000 %unk
+    00000000 %unk
+    90` %yaw, 90 is right, 270 is left
+	~NoDrops %drops
+	~Movement:Tenderling %movement
+	~AnimationTable:Tenderling %animations, currently refers to marker in map editor
+	00000000 %unk
+	00000000 %unk
+	00000000 %extra animations
+	001A005E %tattleID
+}
+
+#new:NpcSettings $Chuboomba
+{
+	0 %unk_00
+	32`s %colliderheight
+	16`s %colliderradius
+	0 %unk
+	0 %interactscript
+	0 %aiscript
+	0 %onhit (enemy)
+	0 %aux (disregard)
+	0 %ondefeat
+	0 %flags
+	0 %unk
+	0s %level
+	0s %unk
+}
+
+#new:NpcGroup $ChuboombaGroup
+{
+	.NpcID:Chuboomba %basic id, define above
+    $Chuboomba %reference NpcSettings struct
+    ~Vec3f:Chuboomba %position, currently refers to marker in map editor (position)
+	00000001 %flags (01 is passive)
+    0 %init script (for any additional info/scriptin)
+    00000000 %unk
+    00000000 %unk
+    90` %yaw, 90 is right, 270 is left
+	~NoDrops %drops
+	~Movement:Chuboomba %movement
+	~AnimationTable:Chuboomba %animations, currently refers to marker in map editor
+	00000000 %unk
+	00000000 %unk
+	00000000 %extra animations
+	001A005E %tattleID
+}
+
+#new:NpcGroupList $AllNpcs
+{
+	1 $StarlowGroup 0 %number of NPCs in group, NPCGroup, BattleID
+	1 $MarioNPCGroup 0 %number of NPCs group, NPCGroup, BattleID
+	1 $NutsGroup 0 %number of NPCs group, NPCGroup, BattleID
+	1 $ChallengeGroup 0 %number of NPCs group, NPCGroup, BattleID
+	1 $GuardianGroup 0 %number of NPCs group, NPCGroup, BattleID
+	1 $BlittyGroup 0 %number of NPCs group, NPCGroup, BattleID
+    1 $GoombuleGroup 0 %number of NPCs group, NPCGroup, BattleID
+    1 $SGoombuleGroup 0 %number of NPCs group, NPCGroup, BattleID
+	1 $ProtobatterGroup 0 %number of NPCs group, NPCGroup, BattleID
+	1 $TenderlingGroup 0 %number of NPCs group, NPCGroup, BattleID
+	1 $ChuboombaGroup 0 %number of NPCs group, NPCGroup, BattleID
+	0 0 0 %terminating emptyList (essentially an END)
+}
+
+

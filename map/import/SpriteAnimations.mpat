@@ -45,3 +45,6 @@
 #define .Anim:BowserFBCharge 00810016
 #define .Anim:BowserFBStart 00810017
 #define .Anim:BowserFB 00810018
+
+#define .Anim:GoombuleIdle 00260001
+#define .Anim:GoombuleRun 00260003
