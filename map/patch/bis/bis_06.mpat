@@ -11,6 +11,13 @@
 
 #define .switch4HitFlagIndex 4
 
+%defined in bis_06NPC.mpat
+% #define .swooper0DeathFlag 5
+% #define .swooper1DeathFlag 6
+% #define .swooper2DeathFlag 7
+% #define .swooper3DeathFlag 8
+% #define .swooper4DeathFlag 9
+
 #new:Header $Header {
 	[MainScript] $Script_Main
 	[Background] 80200000
@@ -149,7 +156,7 @@
     Call SetCamEnabled      ( .Cam:Default .True )
     Call SetCamLeadPlayer   ( .Cam:Default .False )
 	Call MakeTransformGroup    ( ~Model:Gate1Group )
-	Call MakeNpcs ( .False $NpcGroupList_Swooper1 )
+	Call MakeNpcs ( .False $NpcGroupList_Swoopers )
 	Set *GameByte[009] 1 %first strike always kills enemy
     % Set *Var0 1
     % Thread

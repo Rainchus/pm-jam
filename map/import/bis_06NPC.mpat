@@ -4,6 +4,13 @@
 #define .NpcID:Swooper_03 3`
 #define .NpcID:Swooper_04 4`
 
+
+#define .swooper0DeathFlag 5
+#define .swooper1DeathFlag 6
+#define .swooper2DeathFlag 7
+#define .swooper3DeathFlag 8
+#define .swooper4DeathFlag 9
+
 #new:Script $Script_NpcAI_Swooper {
     0:  Call  $Function_SwooperOverworldAI    ( $AISettings_Swooper )
    10:  Return
@@ -11,6 +18,7 @@
 }
 
 #new:Script $Script_DefeatSwooper1 {
+    Set *AreaFlag[.swooper0DeathFlag] 1
     Return
     End
 }
@@ -36,14 +44,140 @@
 	00000000 00000000 00000000 00000000 % no tattle string
 }
 
-#new:NpcGroupList $NpcGroupList_Swooper1 {
-	00000001 %amount of NPC groups
+#new:NpcGroupList $NpcGroupList_Swoopers {
+	00000005 %amount of NPC groups
     $NpcGroup_Swooper1 %npc group
+    $NpcGroup_Swooper2 %npc group
+    $NpcGroup_Swooper3 %npc group
+    $NpcGroup_Swooper4 %npc group
+    $NpcGroup_Swooper5 %npc group
     00000000 %battleID
 
     %terminate list
 	00000000 00000000 00000000
 }
+
+
+
+#new:Script $Script_DefeatSwooper2 {
+    Set *AreaFlag[.swooper1DeathFlag] 1
+    Return
+    End
+}
+
+#new:Script $Script_Init_Swooper2 {
+    Call  BindNpcDefeat ( .Npc:Self $Script_DefeatSwooper2 )
+    Return
+    End
+}
+
+#new:NpcSettings $NpcSettings_Swooper2 {
+	00000000 00140014 00000000 00000000 0 80077F70 00000000 8007809C
+	00000800 00000000 00160000
+}
+
+#new:NpcGroup $NpcGroup_Swooper2 {
+	.NpcID:Swooper_00 $NpcSettings_Swooper2 ~Vec3f:Swooper2
+	00200C08 %flags
+    00000000 00000000 00000000 0000005A
+	~Items:5:VoltShroom:A ~HP:Standard:2 ~FP:Standard:2 ~CoinBonus:0:4
+	~Movement:Swooper2
+	~AnimationTable:Swooper2 % .Sprite:Swooper
+	00000000 00000000 00000000 00000000 % no tattle string
+}
+
+
+
+
+#new:Script $Script_DefeatSwooper3 {
+    Set *AreaFlag[.swooper2DeathFlag] 1
+    Return
+    End
+}
+
+#new:Script $Script_Init_Swooper3 {
+    Call  BindNpcDefeat ( .Npc:Self $Script_DefeatSwooper3 )
+    Return
+    End
+}
+
+#new:NpcSettings $NpcSettings_Swooper3 {
+	00000000 00140014 00000000 00000000 0 80077F70 00000000 8007809C
+	00000800 00000000 00160000
+}
+
+#new:NpcGroup $NpcGroup_Swooper3 {
+	.NpcID:Swooper_00 $NpcSettings_Swooper3 ~Vec3f:Swooper3
+	00200C08 %flags
+    00000000 00000000 00000000 0000005A
+	~Items:5:VoltShroom:A ~HP:Standard:2 ~FP:Standard:2 ~CoinBonus:0:4
+	~Movement:Swooper3
+	~AnimationTable:Swooper3 % .Sprite:Swooper
+	00000000 00000000 00000000 00000000 % no tattle string
+}
+
+
+
+
+#new:Script $Script_DefeatSwooper4 {
+    Set *AreaFlag[.swooper3DeathFlag] 1
+    Return
+    End
+}
+
+#new:Script $Script_Init_Swooper4 {
+    Call  BindNpcDefeat ( .Npc:Self $Script_DefeatSwooper4 )
+    Return
+    End
+}
+
+#new:NpcSettings $NpcSettings_Swooper4 {
+	00000000 00140014 00000000 00000000 0 80077F70 00000000 8007809C
+	00000800 00000000 00160000
+}
+
+#new:NpcGroup $NpcGroup_Swooper4 {
+	.NpcID:Swooper_00 $NpcSettings_Swooper4 ~Vec3f:Swooper4
+	00200C08 %flags
+    00000000 00000000 00000000 0000005A
+	~Items:5:VoltShroom:A ~HP:Standard:2 ~FP:Standard:2 ~CoinBonus:0:4
+	~Movement:Swooper4
+	~AnimationTable:Swooper4 % .Sprite:Swooper
+	00000000 00000000 00000000 00000000 % no tattle string
+}
+
+
+
+
+#new:Script $Script_DefeatSwooper5 {
+    Set *AreaFlag[.swooper4DeathFlag] 1
+    Return
+    End
+}
+
+#new:Script $Script_Init_Swooper5 {
+    Call  BindNpcDefeat ( .Npc:Self $Script_DefeatSwooper5 )
+    Return
+    End
+}
+
+#new:NpcSettings $NpcSettings_Swooper5 {
+	00000000 00140014 00000000 00000000 0 80077F70 00000000 8007809C
+	00000800 00000000 00160000
+}
+
+#new:NpcGroup $NpcGroup_Swooper5 {
+	.NpcID:Swooper_00 $NpcSettings_Swooper5 ~Vec3f:Swooper5
+	00200C08 %flags
+    00000000 00000000 00000000 0000005A
+	~Items:5:VoltShroom:A ~HP:Standard:2 ~FP:Standard:2 ~CoinBonus:0:4
+	~Movement:Swooper5
+	~AnimationTable:Swooper5 % .Sprite:Swooper
+	00000000 00000000 00000000 00000000 % no tattle string
+}
+
+
+
 
 #new:AISettings $AISettings_Swooper {
     1.6 % move speed

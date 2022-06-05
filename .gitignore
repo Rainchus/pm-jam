@@ -1,6 +1,6 @@
 mod.cfg
 sprite/npc/cache/
-map/temp/**
+map/build/
 image/cache/
 battle/formation/temp/**
 battle/formation/import/enemy
@@ -11,5 +11,3 @@ out/
 sprite/player/cache/**
 sprite/player/temp/
 world/partner/temp/
-map/build/**
-map/build/index.bin
