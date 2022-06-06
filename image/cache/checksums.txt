@@ -49,7 +49,7 @@ sbk_bg
 sra_bg
 8FF40D28
 title_bg
-0D94CEF5
+0EA9A35E
 title_data
 D446B09C
 yki_bg
