@@ -1,0 +1,76 @@
+#message:36:000
+{
+Attack Piece: Cloak[END]
+}
+
+#message:36:001
+{
+[Style Right][Style Inspect]Starlow learned Cloak! Use this[BR]
+ability in battle to protect Mario[BR]
+from incoming attacks. While[BR]
+cloaked, he'll take no damage.[BR][Wait][End]
+}
+
+#message:36:002
+{
+Attack Piece: Supernova[END]
+}
+
+#message:36:003
+{
+[Style Right][Style Inspect]Starlow learned Supernova![BR]
+She’ll briefly charge up, then blast[BR]
+off at the speed of light![Pause 30] Well, not[BR]
+quite that fast.[BR][Wait][Next]
+It’s a great move to use when[BR]
+facing a horde of enemies.[BR]Starlow can hit all of them in one[BR]
+fell swoop.[Wait][End]
+}
+
+#message:36:004
+{
+[Style Right]A peculiar puzzle piece that[BR]
+somehow contains the knowledge of a [BR]
+new move for Starlow: Cloak.[Wait][End]
+}
+
+#message:36:005
+{
+[Style Right]A peculiar puzzle piece that[BR]
+somehow contains the knowledge of a [BR]
+new move for Starlow: Supernova.[Wait][End]
+}
+
+#message:30:006
+{
+[Color 0x2D] Star Cloak[END]
+}
+
+#message:30:007
+{
+Make Mario transparent so he[BR]
+can avoid enemy attacks.[End]
+}
+
+#message:30:008
+{
+[Color 0x28] Supernova[END]
+}
+
+#message:30:009
+{
+Blast off at the speed of light[BR]
+and do massive damage to all [BR]
+enemies![End]
+}
+
+#message:30:00A
+{
+[Color 0x2C] Tattle[END]
+}
+
+#message:30:00B
+{
+See enemy description and make[BR]
+HP visible.[End]
+}

@@ -89,8 +89,8 @@
 	<Script name="1DC430"/>
 	<Script name="1DC650"/>
 	<Script name="1DC870"/>
-	<Script name="DojoCard1"/>
-	<Script name="DojoCard2"/>
+	<Script name="AttackPiece1"/>
+	<Script name="AttackPiece2"/>
 	<Script name="DojoCard3"/>
 	<Script name="DojoCard4"/>
 	<Script name="DojoCard5"/>
