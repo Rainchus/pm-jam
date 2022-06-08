@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Map name="bis_06" author="unnamed" background="hos_bg" textures="bon_tex">
 	<Editor>
-		<Camera pos="1356.447754,242.439880,17.619553" pitch="40.519962" yaw="358.559448"/>
+		<Camera pos="1346.306519,211.978287,-425.476349" pitch="31.239979" yaw="359.839508"/>
 		<Camera pos="1342.153076,65536.000000,0.912498"/>
 		<Camera pos="65536.000000,-3.994605,194.083405"/>
 		<Camera pos="1968.902588,-105.778732,65536.000000"/>
 	</Editor>
 	<ModelTree>
-		<Node name="Root" id="39">
-			<Node name="Cubes0" id="2B">
+		<Node name="Root" id="3B">
+			<Node name="Cubes0" id="29">
 				<Node name="CubeModel" id="0"/>
 				<Node name="ex_w_floor" id="1"/>
 				<Node name="ex_w_edge" id="2"/>
@@ -34,41 +34,45 @@
 				<Node name="CubeModel" id="16"/>
 				<Node name="CubeModel" id="17"/>
 				<Node name="ConeModel" id="18"/>
-				<Node name="Gate4Model" id="19"/>
-				<Node name="CubeModel" id="1A"/>
-				<Node name="ConeModel" id="1B"/>
+				<Node name="CubeModel" id="19"/>
+				<Node name="ConeModel" id="1A"/>
+				<Node name="CubeModel" id="1B"/>
 				<Node name="CubeModel" id="1C"/>
 				<Node name="CubeModel" id="1D"/>
 				<Node name="CubeModel" id="1E"/>
-				<Node name="Gate5Model" id="1F"/>
+				<Node name="ConeModel" id="1F"/>
 				<Node name="CubeModel" id="20"/>
 				<Node name="ConeModel" id="21"/>
 				<Node name="CubeModel" id="22"/>
-				<Node name="ConeModel" id="23"/>
+				<Node name="CubeModel" id="23"/>
 				<Node name="CubeModel" id="24"/>
 				<Node name="CubeModel" id="25"/>
 				<Node name="CubeModel" id="26"/>
 				<Node name="CubeModel" id="27"/>
 				<Node name="CubeModel" id="28"/>
-				<Node name="CubeModel" id="29"/>
-				<Node name="CubeModel" id="2A"/>
 			</Node>
-			<Node name="MeshModel" id="2C"/>
-			<Node name="HullModel" id="2D"/>
-			<Node name="FloorModel" id="2E"/>
-			<Node name="StaircaseModel" id="2F"/>
-			<Node name="MeshModel" id="30"/>
-			<Node name="Gate1Group" id="32">
-				<Node name="Gate1Model" id="31"/>
+			<Node name="MeshModel" id="2A"/>
+			<Node name="HullModel" id="2B"/>
+			<Node name="FloorModel" id="2C"/>
+			<Node name="StaircaseModel" id="2D"/>
+			<Node name="MeshModel" id="2E"/>
+			<Node name="Gate1Group" id="30">
+				<Node name="Gate1Model" id="2F"/>
 			</Node>
-			<Node name="Gate2Group" id="34">
-				<Node name="Gate2Model" id="33"/>
+			<Node name="Gate2Group" id="32">
+				<Node name="Gate2Model" id="31"/>
 			</Node>
-			<Node name="Gate3Group" id="36">
-				<Node name="Gate3Model" id="35"/>
+			<Node name="Gate3Group" id="34">
+				<Node name="Gate3Model" id="33"/>
 			</Node>
-			<Node name="Split Model" id="37"/>
-			<Node name="Split Model" id="38"/>
+			<Node name="Gate4Group" id="36">
+				<Node name="Gate4Model" id="35"/>
+			</Node>
+			<Node name="Gate5Group" id="38">
+				<Node name="Gate5Model" id="37"/>
+			</Node>
+			<Node name="Split Model" id="39"/>
+			<Node name="Split Model" id="3A"/>
 		</Node>
 	</ModelTree>
 	<ColliderTree>
@@ -155,13 +159,13 @@
 	</LightSets>
 	<Models>
 		<Model ver="2" type="ROOT" lightset="0">
-			<MapObject name="Root" id="39"/>
+			<MapObject name="Root" id="3B"/>
 			<BoundingBox empty="false" min="1171,-310,-1542" max="1545,90,1575"/>
 			<PropertyList>
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="Split Model" id="38"/>
+			<MapObject name="Split Model" id="3A"/>
 			<ShapeMesh ver="3" texture="bon_fence">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -193,7 +197,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="Split Model" id="37"/>
+			<MapObject name="Split Model" id="39"/>
 			<ShapeMesh ver="3" texture="bon_fence">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -219,7 +223,79 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="GROUP" lightset="0">
-			<MapObject name="Gate3Group" id="36"/>
+			<MapObject name="Gate5Group" id="38"/>
+			<BoundingBox empty="false" min="1261,0,-858" max="1421,57,-858"/>
+			<PropertyList>
+				<Property v="60,0,0"/>
+				<Property v="60,0,1"/>
+			</PropertyList>
+		</Model>
+		<Model ver="2" type="MODEL" lightset="0">
+			<MapObject name="Gate5Model" id="37"/>
+			<ShapeMesh ver="3" texture="bon_fence">
+				<DisplayList>
+					<F3DEX2 cmd="E7000000,0"/>
+					<F3DEX2 cmd="D9FDFFFF,0"/>
+					<F3DEX2 cmd="D9FFFFFF,200400"/>
+					<TriangleBatch ver="0">
+						<VertexTable>
+							<Vertex xyz="1261,57,-858" uv="4608,-9" rgba="147,147,147,255"/>
+							<Vertex xyz="1421,0,-858" uv="-512,2039" rgba="147,147,147,255"/>
+							<Vertex xyz="1421,57,-858" uv="-512,-9" rgba="147,147,147,255"/>
+							<Vertex xyz="1261,0,-858" uv="4608,2039" rgba="147,147,147,255"/>
+							<Vertex xyz="1421,0,-858" uv="-512,2039" rgba="147,147,147,255"/>
+							<Vertex xyz="1261,57,-858" uv="4608,-9" rgba="147,147,147,255"/>
+						</VertexTable>
+						<TriangleList>
+							<Triangle ijk="0,1,2"/>
+							<Triangle ijk="3,4,5"/>
+						</TriangleList>
+					</TriangleBatch>
+				</DisplayList>
+			</ShapeMesh>
+			<PropertyList>
+				<Property v="5C,0,11"/>
+				<Property v="5F,0,0"/>
+			</PropertyList>
+		</Model>
+		<Model ver="2" type="GROUP" lightset="0">
+			<MapObject name="Gate4Group" id="36"/>
+			<BoundingBox empty="false" min="1261,0,-409" max="1421,57,-409"/>
+			<PropertyList>
+				<Property v="60,0,0"/>
+				<Property v="60,0,1"/>
+			</PropertyList>
+		</Model>
+		<Model ver="2" type="MODEL" lightset="0">
+			<MapObject name="Gate4Model" id="35"/>
+			<ShapeMesh ver="3" texture="bon_fence">
+				<DisplayList>
+					<F3DEX2 cmd="E7000000,0"/>
+					<F3DEX2 cmd="D9FDFFFF,0"/>
+					<F3DEX2 cmd="D9FFFFFF,200400"/>
+					<TriangleBatch ver="0">
+						<VertexTable>
+							<Vertex xyz="1261,57,-409" uv="4608,0" rgba="147,147,147,255"/>
+							<Vertex xyz="1421,0,-409" uv="-512,2049" rgba="147,147,147,255"/>
+							<Vertex xyz="1421,57,-409" uv="-512,1" rgba="147,147,147,255"/>
+							<Vertex xyz="1261,0,-409" uv="4608,2048" rgba="147,147,147,255"/>
+							<Vertex xyz="1421,0,-409" uv="-512,2049" rgba="147,147,147,255"/>
+							<Vertex xyz="1261,57,-409" uv="4608,0" rgba="147,147,147,255"/>
+						</VertexTable>
+						<TriangleList>
+							<Triangle ijk="0,1,2"/>
+							<Triangle ijk="3,4,5"/>
+						</TriangleList>
+					</TriangleBatch>
+				</DisplayList>
+			</ShapeMesh>
+			<PropertyList>
+				<Property v="5C,0,16"/>
+				<Property v="5F,0,0"/>
+			</PropertyList>
+		</Model>
+		<Model ver="2" type="GROUP" lightset="0">
+			<MapObject name="Gate3Group" id="34"/>
 			<BoundingBox empty="false" min="1261,0,142" max="1421,57,142"/>
 			<TransformMatrix m="1.000000,0.000000,0.000000,0.000000,0.000000,1.000000,0.000000,0.000000,0.000000,0.000000,1.000000,0.000000,0.000000,0.000000,0.000000,1.000000"/>
 			<PropertyList>
@@ -228,7 +304,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="Gate3Model" id="35"/>
+			<MapObject name="Gate3Model" id="33"/>
 			<ShapeMesh ver="3" texture="bon_fence">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -256,7 +332,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="GROUP" lightset="0">
-			<MapObject name="Gate2Group" id="34"/>
+			<MapObject name="Gate2Group" id="32"/>
 			<BoundingBox empty="false" min="1261,0,589" max="1421,57,589"/>
 			<TransformMatrix m="1.000000,0.000000,0.000000,0.000000,0.000000,1.000000,0.000000,0.000000,0.000000,0.000000,1.000000,0.000000,0.000000,0.000000,0.000000,1.000000"/>
 			<PropertyList>
@@ -265,7 +341,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="Gate2Model" id="33"/>
+			<MapObject name="Gate2Model" id="31"/>
 			<ShapeMesh ver="3" texture="bon_fence">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -293,7 +369,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="GROUP" lightset="0">
-			<MapObject name="Gate1Group" id="32"/>
+			<MapObject name="Gate1Group" id="30"/>
 			<BoundingBox empty="false" min="1261,0,1039" max="1421,57,1039"/>
 			<TransformMatrix m="1.000000,0.000000,0.000000,0.000000,0.000000,1.000000,0.000000,0.000000,0.000000,0.000000,1.000000,0.000000,0.000000,0.000000,0.000000,1.000000"/>
 			<PropertyList>
@@ -302,7 +378,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="Gate1Model" id="31"/>
+			<MapObject name="Gate1Model" id="2F"/>
 			<ShapeMesh ver="3" texture="bon_fence">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -330,7 +406,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="MeshModel" id="30"/>
+			<MapObject name="MeshModel" id="2E"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -398,7 +474,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="StaircaseModel" id="2F"/>
+			<MapObject name="StaircaseModel" id="2D"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -576,7 +652,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="FloorModel" id="2E"/>
+			<MapObject name="FloorModel" id="2C"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -604,7 +680,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="HullModel" id="2D"/>
+			<MapObject name="HullModel" id="2B"/>
 			<ShapeMesh ver="3" texture="bon_fence">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -632,7 +708,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="MeshModel" id="2C"/>
+			<MapObject name="MeshModel" id="2A"/>
 			<ShapeMesh ver="3" texture="">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -652,7 +728,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="GROUP" lightset="0">
-			<MapObject name="Cubes0" id="2B"/>
+			<MapObject name="Cubes0" id="29"/>
 			<BoundingBox empty="false" min="1171,-310,-1542" max="1545,90,1575"/>
 			<PropertyList>
 				<Property v="60,0,0"/>
@@ -660,7 +736,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="CubeModel" id="2A"/>
+			<MapObject name="CubeModel" id="28"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -728,7 +804,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="CubeModel" id="29"/>
+			<MapObject name="CubeModel" id="27"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -796,7 +872,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="CubeModel" id="28"/>
+			<MapObject name="CubeModel" id="26"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -864,7 +940,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="CubeModel" id="27"/>
+			<MapObject name="CubeModel" id="25"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -932,7 +1008,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="CubeModel" id="26"/>
+			<MapObject name="CubeModel" id="24"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -1000,7 +1076,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="CubeModel" id="25"/>
+			<MapObject name="CubeModel" id="23"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -1068,7 +1144,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="CubeModel" id="24"/>
+			<MapObject name="CubeModel" id="22"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -1136,7 +1212,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="ConeModel" id="23"/>
+			<MapObject name="ConeModel" id="21"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -1172,7 +1248,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="CubeModel" id="22"/>
+			<MapObject name="CubeModel" id="20"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -1240,7 +1316,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="ConeModel" id="21"/>
+			<MapObject name="ConeModel" id="1F"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -1276,7 +1352,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="CubeModel" id="20"/>
+			<MapObject name="CubeModel" id="1E"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -1344,35 +1420,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="Gate5Model" id="1F"/>
-			<ShapeMesh ver="3" texture="bon_fence">
-				<DisplayList>
-					<F3DEX2 cmd="E7000000,0"/>
-					<F3DEX2 cmd="D9FDFFFF,0"/>
-					<F3DEX2 cmd="D9FFFFFF,200400"/>
-					<TriangleBatch ver="0">
-						<VertexTable>
-							<Vertex xyz="1261,57,-858" uv="4608,-9" rgba="147,147,147,255"/>
-							<Vertex xyz="1421,0,-858" uv="-512,2039" rgba="147,147,147,255"/>
-							<Vertex xyz="1421,57,-858" uv="-512,-9" rgba="147,147,147,255"/>
-							<Vertex xyz="1261,0,-858" uv="4608,2039" rgba="147,147,147,255"/>
-							<Vertex xyz="1421,0,-858" uv="-512,2039" rgba="147,147,147,255"/>
-							<Vertex xyz="1261,57,-858" uv="4608,-9" rgba="147,147,147,255"/>
-						</VertexTable>
-						<TriangleList>
-							<Triangle ijk="0,1,2"/>
-							<Triangle ijk="3,4,5"/>
-						</TriangleList>
-					</TriangleBatch>
-				</DisplayList>
-			</ShapeMesh>
-			<PropertyList>
-				<Property v="5C,0,11"/>
-				<Property v="5F,0,0"/>
-			</PropertyList>
-		</Model>
-		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="CubeModel" id="1E"/>
+			<MapObject name="CubeModel" id="1D"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -1440,7 +1488,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="CubeModel" id="1D"/>
+			<MapObject name="CubeModel" id="1C"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -1508,7 +1556,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="CubeModel" id="1C"/>
+			<MapObject name="CubeModel" id="1B"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -1576,7 +1624,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="ConeModel" id="1B"/>
+			<MapObject name="ConeModel" id="1A"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -1612,7 +1660,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="CubeModel" id="1A"/>
+			<MapObject name="CubeModel" id="19"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>
@@ -1676,34 +1724,6 @@
 			</ShapeMesh>
 			<PropertyList>
 				<Property v="5C,0,1"/>
-				<Property v="5F,0,0"/>
-			</PropertyList>
-		</Model>
-		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="Gate4Model" id="19"/>
-			<ShapeMesh ver="3" texture="bon_fence">
-				<DisplayList>
-					<F3DEX2 cmd="E7000000,0"/>
-					<F3DEX2 cmd="D9FDFFFF,0"/>
-					<F3DEX2 cmd="D9FFFFFF,200400"/>
-					<TriangleBatch ver="0">
-						<VertexTable>
-							<Vertex xyz="1261,57,-409" uv="4608,0" rgba="147,147,147,255"/>
-							<Vertex xyz="1421,0,-409" uv="-512,2049" rgba="147,147,147,255"/>
-							<Vertex xyz="1421,57,-409" uv="-512,1" rgba="147,147,147,255"/>
-							<Vertex xyz="1261,0,-409" uv="4608,2048" rgba="147,147,147,255"/>
-							<Vertex xyz="1421,0,-409" uv="-512,2049" rgba="147,147,147,255"/>
-							<Vertex xyz="1261,57,-409" uv="4608,0" rgba="147,147,147,255"/>
-						</VertexTable>
-						<TriangleList>
-							<Triangle ijk="0,1,2"/>
-							<Triangle ijk="3,4,5"/>
-						</TriangleList>
-					</TriangleBatch>
-				</DisplayList>
-			</ShapeMesh>
-			<PropertyList>
-				<Property v="5C,0,16"/>
 				<Property v="5F,0,0"/>
 			</PropertyList>
 		</Model>

@@ -18,6 +18,12 @@
 % #define .swooper3DeathFlag 8
 % #define .swooper4DeathFlag 9
 
+
+#define .gate5Switch1Flag 10
+#define .gate5Switch2Flag 11
+#define .gate5Switch3Flag 12
+#define .gate5Switch4Flag 13
+
 #new:Header $Header {
 	[MainScript] $Script_Main
 	[Background] 80200000
@@ -127,6 +133,130 @@
 	End
 }
 
+#new:Script $ClearAllGate5SwitchFlag {
+	Set *AreaFlag[.gate5Switch1Flag] = 0
+	Set *AreaFlag[.gate5Switch2Flag] = 0
+	Set *AreaFlag[.gate5Switch3Flag] = 0
+	Set *AreaFlag[.gate5Switch4Flag] = 0
+	Return
+	End
+}
+
+#new:Script $Gate5 {
+	Thread
+		Loop
+			If *AreaFlag[.gate5Switch2Flag] == 1
+				If *AreaFlag[.gate5Switch3Flag] == 1
+					If *AreaFlag[.gate5Switch4Flag] == 1
+						If *AreaFlag[.gate5Switch1Flag] == 1
+							Call ModifyColliderFlags ( .ORFlags ~Collider:gate5 .collisionInActiveFlag ) %turn gate collision off
+							Set *Var0 0
+							Set *Var1 0
+							Set *Var2 0
+							Loop 20`
+								Call TranslateGroup ( ~Model:Gate5Group *Var0 *Var1 *Var2 )
+								Add *Var1 -3`
+								Wait 1`
+							EndLoop
+							Call  EnableGroup ( ~Model:Gate5Group .False )
+						EndIf
+					EndIf
+				EndIf
+			EndIf
+			Wait 1
+		EndLoop
+	EndThread
+	Return
+	End
+}
+
+#new:Script $Script_SwitchGroup5Switch1 {
+	If *AreaFlag[.gate5Switch2Flag] == 0
+		If *AreaFlag[.gate5Switch3Flag] == 0
+			If *AreaFlag[.gate5Switch4Flag] == 0
+				Set *AreaFlag[.gate5Switch1Flag] 1
+			Else
+				Exec $ClearAllGate5SwitchFlag
+			EndIf
+		Else
+			Exec $ClearAllGate5SwitchFlag
+		EndIf
+	Else
+		Exec $ClearAllGate5SwitchFlag
+	EndIf
+	Return
+	End
+}
+
+#new:Script $Script_SwitchGroup5Switch2 {
+	If *AreaFlag[.gate5Switch1Flag] == 1
+		If *AreaFlag[.gate5Switch3Flag] == 0
+			If *AreaFlag[.gate5Switch4Flag] == 0
+				Set *AreaFlag[.gate5Switch2Flag] 1
+			Else
+				Exec $ClearAllGate5SwitchFlag
+			EndIf
+		Else
+			Exec $ClearAllGate5SwitchFlag
+		EndIf
+	Else
+		Exec $ClearAllGate5SwitchFlag
+	EndIf
+	Return
+	End
+}
+
+#new:Script $Script_SwitchGroup5Switch3 {
+	If *AreaFlag[.gate5Switch1Flag] == 1
+		If *AreaFlag[.gate5Switch2Flag] == 1
+			If *AreaFlag[.gate5Switch4Flag] == 0
+				Set *AreaFlag[.gate5Switch3Flag] 1
+			Else
+				Exec $ClearAllGate5SwitchFlag
+			EndIf
+		Else
+			Exec $ClearAllGate5SwitchFlag
+		EndIf
+	Else
+		Exec $ClearAllGate5SwitchFlag
+	EndIf
+	Return
+	End
+}
+
+#new:Script $Script_SwitchGroup5Switch4 {
+	If *AreaFlag[.gate5Switch1Flag] == 1
+		If *AreaFlag[.gate5Switch2Flag] == 1
+			If *AreaFlag[.gate5Switch3Flag] == 1
+				Set *AreaFlag[.gate5Switch4Flag] 1
+			Else
+				Exec $ClearAllGate5SwitchFlag
+			EndIf
+		Else
+			Exec $ClearAllGate5SwitchFlag
+		EndIf
+	Else
+		Exec $ClearAllGate5SwitchFlag
+	EndIf
+	Return
+	End
+}
+
+#new:Script $Script_SwooperHit {
+	Call ModifyColliderFlags ( .ORFlags ~Collider:gate4 .collisionInActiveFlag ) %turn gate collision off
+	Set *Var0 0
+	Set *Var1 0
+	Set *Var2 0
+	Loop 20`
+		Call TranslateGroup ( ~Model:Gate4Group *Var0 *Var1 *Var2 )
+		Add *Var1 -3`
+		Wait 1`
+	EndLoop
+	Call  EnableGroup ( ~Model:Gate4Group .False )
+	Return
+	End
+}
+
 #new:Script $MakeEntities {
 	Call  MakeEntity    ( .Entity:BlueSwitch ~Vec4d:Gate1Switch1 80000000 )
 	Call  AssignAreaFlag    ( .switch1HitFlagIndex )
@@ -143,6 +273,27 @@
 	Call  MakeEntity    ( .Entity:BlueSwitch ~Vec4d:Gate3Switch1 80000000 )
 	Call  AssignAreaFlag    ( .switch4HitFlagIndex )
 	Bind  $Script_Switch4Hit .Trigger:AreaFlagSet *AreaFlag[.switch4HitFlagIndex] 00000001 00000000
+
+	% Call  MakeEntity    ( .Entity:BlueSwitch ~Vec4d:Gate4Switch1 80000000 )
+	% Call  AssignAreaFlag    ( .swooper0DeathFlag )
+	Bind  $Script_SwooperHit .Trigger:AreaFlagSet *AreaFlag[.swooper0DeathFlag] 00000001 00000000
+
+	Call  MakeEntity    ( .Entity:RedSwitch ~Vec4d:Gate5Switch1 80000000 )
+	Call  AssignAreaFlag    ( .gate5Switch1Flag )
+	Bind  $Script_SwitchGroup5Switch1 .Trigger:AreaFlagSet *AreaFlag[.gate5Switch1Flag] 00000001 00000000
+
+	Call  MakeEntity    ( .Entity:RedSwitch ~Vec4d:Gate5Switch2 80000000 )
+	Call  AssignAreaFlag    ( .gate5Switch2Flag )
+	Bind  $Script_SwitchGroup5Switch2 .Trigger:AreaFlagSet *AreaFlag[.gate5Switch2Flag] 00000001 00000000
+
+	Call  MakeEntity    ( .Entity:RedSwitch ~Vec4d:Gate5Switch3 80000000 )
+	Call  AssignAreaFlag    ( .gate5Switch3Flag )
+	Bind  $Script_SwitchGroup5Switch3 .Trigger:AreaFlagSet *AreaFlag[.gate5Switch3Flag] 00000001 00000000
+
+	Call  MakeEntity    ( .Entity:RedSwitch ~Vec4d:Gate5Switch4 80000000 )
+	Call  AssignAreaFlag    ( .gate5Switch4Flag )
+	Bind  $Script_SwitchGroup5Switch4 .Trigger:AreaFlagSet *AreaFlag[.gate5Switch4Flag] 00000001 00000000
+
 
 	Return
 	End
@@ -168,6 +319,7 @@
     % EndThread
 	Exec $MakeEntities
 	Exec $CheckIfFallenOOB
+	Exec $Gate5
     Exec $Script_SetupMusic
     Exec $Script_EnterMap
     Return

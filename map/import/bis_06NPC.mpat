@@ -37,7 +37,8 @@
 #new:NpcGroup $NpcGroup_Swooper1 {
 	.NpcID:Swooper_00 $NpcSettings_Swooper1 ~Vec3f:Swooper1
 	00200C08 %flags
-    00000000 00000000 00000000 0000005A
+      $Script_Init_Swooper1
+      00000000 00000000 0000005A
 	~Items:5:VoltShroom:A ~HP:Standard:2 ~FP:Standard:2 ~CoinBonus:0:4
 	~Movement:Swooper1
 	~AnimationTable:Swooper1 % .Sprite:Swooper
@@ -45,15 +46,15 @@
 }
 
 #new:NpcGroupList $NpcGroupList_Swoopers {
-	00000005 %amount of NPC groups
-    $NpcGroup_Swooper1 %npc group
-    $NpcGroup_Swooper2 %npc group
-    $NpcGroup_Swooper3 %npc group
-    $NpcGroup_Swooper4 %npc group
-    $NpcGroup_Swooper5 %npc group
-    00000000 %battleID
+      00000001 %amount of NPC groups
+      $NpcGroup_Swooper1 %npc group
+      $NpcGroup_Swooper2 %npc group
+      $NpcGroup_Swooper3 %npc group
+      $NpcGroup_Swooper4 %npc group
+      $NpcGroup_Swooper5 %npc group
+      00000000 %battleID
 
-    %terminate list
+      %terminate list
 	00000000 00000000 00000000
 }
 
