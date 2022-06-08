@@ -80,7 +80,7 @@
 #new:NpcGroup $NpcGroup_Swooper2 {
 	.NpcID:Swooper_00 $NpcSettings_Swooper2 ~Vec3f:Swooper2
 	00200C08 %flags
-    00000000 00000000 00000000 0000005A
+      00000000 00000000 00000000 0000005A
 	~Items:5:VoltShroom:A ~HP:Standard:2 ~FP:Standard:2 ~CoinBonus:0:4
 	~Movement:Swooper2
 	~AnimationTable:Swooper2 % .Sprite:Swooper

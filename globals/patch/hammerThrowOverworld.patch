@@ -46,7 +46,7 @@
 
 #new:Function $checkIfHammerHitEntity {
 	PUSH[20] s0, s1, s2, f12, f14, ra
-	SAW r0, $switchHitBool
+	%SAW r0, $switchHitBool
 	%s0 currently holds entity pointer
 	LAW s1, $hammerThrowVirtualEntityIndex
 	ADDIU t0, r0, FFFF
@@ -93,6 +93,7 @@
 	BEQ t0, r0, .exit
 	NOP
 	PUSH v0
+	SAW r0, $switchHitBool
 	%s0 holds current entity pointer
 	%s1 holds current entity index?
 	BEQ s0, r0, .nullPointer
@@ -218,14 +219,6 @@ Facing Left[END]
 
 #new:String $facingRightText {
 Facing Right[END]
-}
-
-#new:Function $ScrAPI_checkIfHammerHitEntity {
-	PUSH[20] s0, ra
-
-	POP[20] s0, ra
-	JR RA
-	ORI v0, r0, .scrApi_Done2
 }
 
 #new:Function $ScrAPI_getFacingDirectionAngle {

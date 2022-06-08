@@ -24,6 +24,11 @@
 #define .gate5Switch3Flag 12
 #define .gate5Switch4Flag 13
 
+#define .gate5Switch1Flag2 14
+#define .gate5Switch2Flag2 15
+#define .gate5Switch3Flag2 16
+#define .gate5Switch4Flag2 17
+
 #new:Header $Header {
 	[MainScript] $Script_Main
 	[Background] 80200000
@@ -138,6 +143,10 @@
 	Set *AreaFlag[.gate5Switch2Flag] = 0
 	Set *AreaFlag[.gate5Switch3Flag] = 0
 	Set *AreaFlag[.gate5Switch4Flag] = 0
+	Set *AreaFlag[.gate5Switch1Flag2] = 0
+	Set *AreaFlag[.gate5Switch2Flag2] = 0
+	Set *AreaFlag[.gate5Switch3Flag2] = 0
+	Set *AreaFlag[.gate5Switch4Flag2] = 0
 	Return
 	End
 }
@@ -145,10 +154,10 @@
 #new:Script $Gate5 {
 	Thread
 		Loop
-			If *AreaFlag[.gate5Switch2Flag] == 1
-				If *AreaFlag[.gate5Switch3Flag] == 1
-					If *AreaFlag[.gate5Switch4Flag] == 1
-						If *AreaFlag[.gate5Switch1Flag] == 1
+			If *AreaFlag[.gate5Switch2Flag2] == 1
+				If *AreaFlag[.gate5Switch3Flag2] == 1
+					If *AreaFlag[.gate5Switch4Flag2] == 1
+						If *AreaFlag[.gate5Switch1Flag2] == 1
 							Call ModifyColliderFlags ( .ORFlags ~Collider:gate5 .collisionInActiveFlag ) %turn gate collision off
 							Set *Var0 0
 							Set *Var1 0
@@ -171,72 +180,80 @@
 }
 
 #new:Script $Script_SwitchGroup5Switch1 {
-	If *AreaFlag[.gate5Switch2Flag] == 0
-		If *AreaFlag[.gate5Switch3Flag] == 0
-			If *AreaFlag[.gate5Switch4Flag] == 0
-				Set *AreaFlag[.gate5Switch1Flag] 1
-			Else
-				Exec $ClearAllGate5SwitchFlag
-			EndIf
+	If *AreaFlag[.gate5Switch1Flag2] == 1
+		Return
+	EndIf
+	If *AreaFlag[.gate5Switch3Flag2] == 0
+		If *AreaFlag[.gate5Switch4Flag2] == 0
+			Set *AreaFlag[.gate5Switch1Flag2] 1
 		Else
-			Exec $ClearAllGate5SwitchFlag
+			ExecWait $ClearAllGate5SwitchFlag
 		EndIf
 	Else
-		Exec $ClearAllGate5SwitchFlag
+		ExecWait $ClearAllGate5SwitchFlag
 	EndIf
 	Return
 	End
 }
 
 #new:Script $Script_SwitchGroup5Switch2 {
-	If *AreaFlag[.gate5Switch1Flag] == 1
-		If *AreaFlag[.gate5Switch3Flag] == 0
-			If *AreaFlag[.gate5Switch4Flag] == 0
-				Set *AreaFlag[.gate5Switch2Flag] 1
+	If *AreaFlag[.gate5Switch2Flag2] == 1
+		Return
+	EndIf
+	If *AreaFlag[.gate5Switch1Flag2] == 1
+		If *AreaFlag[.gate5Switch3Flag2] == 0
+			If *AreaFlag[.gate5Switch4Flag2] == 0
+				Set *AreaFlag[.gate5Switch2Flag2] 1
 			Else
-				Exec $ClearAllGate5SwitchFlag
+				ExecWait $ClearAllGate5SwitchFlag
 			EndIf
 		Else
-			Exec $ClearAllGate5SwitchFlag
+			ExecWait $ClearAllGate5SwitchFlag
 		EndIf
 	Else
-		Exec $ClearAllGate5SwitchFlag
+		ExecWait $ClearAllGate5SwitchFlag
 	EndIf
 	Return
 	End
 }
 
 #new:Script $Script_SwitchGroup5Switch3 {
-	If *AreaFlag[.gate5Switch1Flag] == 1
-		If *AreaFlag[.gate5Switch2Flag] == 1
-			If *AreaFlag[.gate5Switch4Flag] == 0
-				Set *AreaFlag[.gate5Switch3Flag] 1
+	If *AreaFlag[.gate5Switch3Flag2] == 1
+		Return
+	EndIf
+	If *AreaFlag[.gate5Switch1Flag2] == 1
+		If *AreaFlag[.gate5Switch2Flag2] == 1
+			If *AreaFlag[.gate5Switch4Flag2] == 0
+				Set *AreaFlag[.gate5Switch3Flag2] 1
 			Else
-				Exec $ClearAllGate5SwitchFlag
+				ExecWait $ClearAllGate5SwitchFlag
 			EndIf
 		Else
-			Exec $ClearAllGate5SwitchFlag
+			ExecWait $ClearAllGate5SwitchFlag
 		EndIf
 	Else
-		Exec $ClearAllGate5SwitchFlag
+		ExecWait $ClearAllGate5SwitchFlag
 	EndIf
 	Return
 	End
 }
 
 #new:Script $Script_SwitchGroup5Switch4 {
-	If *AreaFlag[.gate5Switch1Flag] == 1
-		If *AreaFlag[.gate5Switch2Flag] == 1
-			If *AreaFlag[.gate5Switch3Flag] == 1
-				Set *AreaFlag[.gate5Switch4Flag] 1
+	If *AreaFlag[.gate5Switch4Flag2] == 1
+		Return
+	EndIf
+	If *AreaFlag[.gate5Switch1Flag2] == 1
+		If *AreaFlag[.gate5Switch2Flag2] == 1
+			If *AreaFlag[.gate5Switch3Flag2] == 1
+				Set *AreaFlag[.gate5Switch4Flag2] 1
 			Else
-				Exec $ClearAllGate5SwitchFlag
+				ExecWait $ClearAllGate5SwitchFlag
 			EndIf
 		Else
-			Exec $ClearAllGate5SwitchFlag
+			ExecWait $ClearAllGate5SwitchFlag
 		EndIf
 	Else
-		Exec $ClearAllGate5SwitchFlag
+		ExecWait $ClearAllGate5SwitchFlag
 	EndIf
 	Return
 	End
