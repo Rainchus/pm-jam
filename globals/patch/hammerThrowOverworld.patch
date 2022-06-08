@@ -285,9 +285,10 @@ Facing Right[END]
 		Return
 	EndSwitch
 
-
+	Call DisablePlayerInput ( .True )
     Call $setHammerThrowBool ( .True )
     Call $getHammerUpgradeValue ( *Var1 )
+	Call GetPlayerPos ( *Var8 *Var9 *VarF )
 	Thread
 		Switch  *Var1
 		Case  ==  .Item:Nothing % 0
@@ -296,14 +297,24 @@ Facing Right[END]
 			Wait 6`
 			Call  SetPlayerAnimation  ( 00010034 )
 			Wait 12`
-			Call  SetPlayerAnimation  ( 00010002 ) %set idle animation
+			Call GetPlayerPos ( *VarB *VarC *VarD )
+			If *Var8 == *VarB %if X pos is the same
+				If *VarF == *VarD %if Z pos is the same
+					Call  SetPlayerAnimation  ( 00010002 ) %set idle animation
+				EndIf
+			EndIf
 		Case  ==  .Item:Jump % 1
 			% Call  CreateVirtualEntity   ( *VarA $EntityModelScript_802A3D00 ) %create stone hammer sprite
 			Call  SetPlayerAnimation  ( 00010035 )
 			Wait 6`
 			Call  SetPlayerAnimation  ( 00010036 )
 			Wait 12`
-			Call  SetPlayerAnimation  ( 00010002 ) %set idle animation
+			Call GetPlayerPos ( *VarB *VarC *VarD )
+			If *Var8 == *VarB %if X pos is the same
+				If *VarF == *VarD %if Z pos is the same
+					Call  SetPlayerAnimation  ( 00010002 ) %set idle animation
+				EndIf
+			EndIf
 		EndSwitch
 	EndThread
 	Wait 11`
@@ -345,6 +356,7 @@ Facing Right[END]
 		Loop
 			Call $ScrAPI_checkIfSwitchHit ( *Var7 )
 			If *Var7 == 1 %switch has been hit
+				Call DisablePlayerInput ( .False )
 				Call  $clearHammerThrowVirtualEntityIndex
 				Call  $setHammerThrowBool ( .False )
 				Call $ScrApi_SetSwitchHitBool ( .False )
@@ -357,6 +369,7 @@ Facing Right[END]
     Call  SetVirtualEntityJumpGravity   ( *VarA *Fixed[1.3] )
     Add   *Var2  00000005
 	Add   *Var1  FFFFFFC0 %-40
+	Call DisablePlayerInput ( .False )
     Call  VirtualEntityJumpTo   ( *VarA *Var0 *Var1 *Var2  25` )
     %Call  VirtualEntityLandJump ( *VarA )
     Call  DeleteVirtualEntity   ( *VarA )

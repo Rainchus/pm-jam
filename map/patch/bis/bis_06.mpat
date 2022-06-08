@@ -18,7 +18,7 @@
 % #define .swooper3DeathFlag 8
 % #define .swooper4DeathFlag 9
 
-
+%i cant come up with a better implementation...2 flags for each switch it is
 #define .gate5Switch1Flag 10
 #define .gate5Switch2Flag 11
 #define .gate5Switch3Flag 12
@@ -151,7 +151,7 @@
 	End
 }
 
-#new:Script $Gate5 {
+#new:Script $Gate5OpenCheck {
 	Thread
 		Loop
 			If *AreaFlag[.gate5Switch2Flag2] == 1
@@ -336,7 +336,7 @@
     % EndThread
 	Exec $MakeEntities
 	Exec $CheckIfFallenOOB
-	Exec $Gate5
+	Exec $Gate5OpenCheck
     Exec $Script_SetupMusic
     Exec $Script_EnterMap
     Return
