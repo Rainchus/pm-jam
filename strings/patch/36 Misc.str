@@ -29,16 +29,13 @@ fell swoop.[Wait][End]
 
 #message:36:004
 {
-[Style Right]A peculiar puzzle piece that[BR]
-somehow contains the knowledge of a [BR]
-new move for Starlow: Cloak.[Wait][End]
+[Style Right]An attack piece that gives[BR]
+Starlow the ability to cloak Mario.[Wait][End]
 }
 
 #message:36:005
 {
-[Style Right]A peculiar puzzle piece that[BR]
-somehow contains the knowledge of a [BR]
-new move for Starlow: Supernova.[Wait][End]
+[Style Right][Style Right]An attack piece that gives[BR]Starlow the Supernova ability.[Wait][End]
 }
 
 #message:30:006
