@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Map name="bis_06" author="unnamed" background="hos_bg" textures="bon_tex">
 	<Editor>
-		<Camera pos="1346.306519,211.978287,-425.476349" pitch="31.239979" yaw="359.839508"/>
+		<Camera pos="1342.320801,259.489807,-1437.466553" pitch="80.000000" yaw="0.319149"/>
 		<Camera pos="1342.153076,65536.000000,0.912498"/>
 		<Camera pos="65536.000000,-3.994605,194.083405"/>
 		<Camera pos="1968.902588,-105.778732,65536.000000"/>
@@ -131,7 +131,7 @@
 		</Node>
 	</ZoneTree>
 	<MarkerTree>
-		<Node name="Root" id="11">
+		<Node name="Root" id="12">
 			<Node name="Gate1Switch1" id="FFFFFFFF"/>
 			<Node name="Gate2Switch1" id="0"/>
 			<Node name="Gate2Switch2" id="1"/>
@@ -148,9 +148,10 @@
 			<Node name="Gate5Switch3" id="B"/>
 			<Node name="Gate5Switch4" id="C"/>
 			<Node name="ItemBox" id="D"/>
-			<Node name="ItemBox" id="E"/>
+			<Node name="Pipe" id="E"/>
 			<Node name="Entry0" id="F"/>
 			<Node name="RespawnMarker" id="10"/>
+			<Node name="Entry1" id="11"/>
 		</Node>
 	</MarkerTree>
 	<LightSets>
@@ -5336,7 +5337,10 @@
 	</Zones>
 	<Markers>
 		<Marker ver="4" type="Root">
-			<MapObject name="Root" id="11"/>
+			<MapObject name="Root" id="12"/>
+		</Marker>
+		<Marker ver="4" type="Entry" pos="1346,122,-1446" yaw="180.000000">
+			<MapObject name="Entry1" id="11"/>
 		</Marker>
 		<Marker ver="4" type="Position" pos="1340,0,1347" yaw="0.000000">
 			<MapObject name="RespawnMarker" id="10"/>
@@ -5345,7 +5349,7 @@
 			<MapObject name="Entry0" id="F"/>
 		</Marker>
 		<Marker ver="4" type="Entity" pos="1347,90,-1447" yaw="0.000000">
-			<MapObject name="ItemBox" id="E"/>
+			<MapObject name="Pipe" id="E"/>
 			<Entity type="802EAF80" flag="" hasAreaFlag="true" areaFlag="0" destMap="machi" destUseID="false" destEntry="" pipeEntry=""/>
 		</Marker>
 		<Marker ver="4" type="Entity" pos="1347,167,-1361" yaw="-90.000000">

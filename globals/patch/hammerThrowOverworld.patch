@@ -356,9 +356,8 @@ Facing Right[END]
 		Loop
 			Call $ScrAPI_checkIfSwitchHit ( *Var7 )
 			If *Var7 == 1 %switch has been hit
-				Call DisablePlayerInput ( .False )
-				Call  $clearHammerThrowVirtualEntityIndex
-				Call  $setHammerThrowBool ( .False )
+				Call $clearHammerThrowVirtualEntityIndex
+				Call $setHammerThrowBool ( .False )
 				Call $ScrApi_SetSwitchHitBool ( .False )
 				Return
 			EndIf

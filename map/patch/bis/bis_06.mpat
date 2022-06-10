@@ -33,11 +33,12 @@
 	[MainScript] $Script_Main
 	[Background] 80200000
 	[EntryList] $EntryList
-	[EntryCount] 1
+	[EntryCount] 2
 }
 
 #new:EntryList $EntryList {
 	~Vec4f:Entry0
+	~Vec4f:Entry1
 }
 
 #new:Function_Init $Function_Init {
@@ -311,7 +312,36 @@
 	Call  AssignAreaFlag    ( .gate5Switch4Flag )
 	Bind  $Script_SwitchGroup5Switch4 .Trigger:AreaFlagSet *AreaFlag[.gate5Switch4Flag] 00000001 00000000
 
+	Call MakeEntity ( .Entity:RedBlock ~Vec4d:ItemBox .Item:AttackPiece1 80000000 )
+	Call AssignBlockFlag   ( *Flag_block_bis_06 )
 
+	Call  MakeEntity    ( .Entity:BlueWarpPipe ~Vec4d:Pipe ~Entry:Entry1 $Script_802549D0 ~Index:*Flag_block_bis_06 80000000 )
+	
+
+
+	Return
+	End
+}
+
+#new:ASCII $Ascii_bis_04 {
+	"bis_04"
+}
+
+#new:Script $Script_802549D0 {
+    0:  Call  GotoMap   ( $Ascii_bis_04 00000000 )
+   14:  Wait  100`
+   20:  Return
+   28:  End
+}
+
+#new:Script $SetSwoopersOffScreen { %why is npcid an index and the normal swooper marker not? good question
+	Loop
+		Call SetNpcPos ( .NpcID:Swooper_01 -3000` 0 0 )
+		Call SetNpcPos ( .NpcID:Swooper_02 -3000` 0 0 )
+		Call SetNpcPos ( .NpcID:Swooper_03 -3000` 0 0 )
+		Call SetNpcPos ( .NpcID:Swooper_04 -3000` 0 0 )
+		Wait 1
+	EndLoop
 	Return
 	End
 }
@@ -325,6 +355,7 @@
     Call SetCamLeadPlayer   ( .Cam:Default .False )
 	Call MakeTransformGroup    ( ~Model:Gate1Group )
 	Call MakeNpcs ( .False $NpcGroupList_Swoopers )
+	Exec $SetSwoopersOffScreen
 	Set *GameByte[009] 1 %first strike always kills enemy
     % Set *Var0 1
     % Thread
