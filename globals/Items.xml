@@ -12,7 +12,7 @@
 	<Item index="009" nameMsg="00-000" desc1Msg="00-000" desc2Msg="00-000" typeFlags="1020" targetFlags="0002" name="BigMap" hudElement="Present" itemEntity="Placeholder"/>
 	<Item index="00A" nameMsg="36-000" desc1Msg="36-004" desc2Msg="36-004" typeFlags="1008" targetFlags="0002" name="AttackPiece1" autoGraphics="item/key/dojo_card_1" hudElement="DojoCard1"/>
 	<Item index="00B" nameMsg="36-002" desc1Msg="36-005" desc2Msg="36-005" typeFlags="1008" targetFlags="0002" name="AttackPiece2" autoGraphics="item/key/dojo_card_2" hudElement="DojoCard2"/>
-	<Item index="00C" nameMsg="26-0E4" desc1Msg="23-0E4" desc2Msg="25-0E4" typeFlags="1008" targetFlags="0002" name="ThirdDegreeCard" hudElement="DojoCard3" itemEntity="DojoCard3"/>
+	<Item index="00C" nameMsg="26-0E4" desc1Msg="36-006" desc2Msg="36-007" typeFlags="1008" targetFlags="0002" name="MiracleCure" hudElement="DojoCard3" itemEntity="DojoCard3"/>
 	<Item index="00D" nameMsg="26-0E5" desc1Msg="23-0E5" desc2Msg="25-0E5" typeFlags="1008" targetFlags="0002" name="FourthDegreeCard" hudElement="DojoCard4" itemEntity="DojoCard4"/>
 	<Item index="00E" nameMsg="26-0E6" desc1Msg="23-0E6" desc2Msg="25-0E6" typeFlags="1008" targetFlags="0002" name="Diploma" hudElement="DojoCard5" itemEntity="DojoCard5"/>
 	<Item index="00F" nameMsg="26-0E7" desc1Msg="23-0E7" desc2Msg="25-0E7" typeFlags="1008" targetFlags="0002" name="UltraStone"/>

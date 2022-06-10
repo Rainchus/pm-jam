@@ -38,15 +38,15 @@ Starlow the ability to cloak Mario.[Wait][End]
 [Style Right][Style Right]An attack piece that gives[BR]Starlow the Supernova ability.[Wait][End]
 }
 
-#message:30:006
+#message:36:006
 {
 [Color 0x2D] Star Cloak[END]
 }
 
-#message:30:007
+#message:36:007
 {
-Make Mario transparent so he[BR]
-can avoid enemy attacks.[End]
+[Style Right]A mystical cure created by[BR]
+Dr. Toadley many years ago.[Wait][End]
 }
 
 #message:30:008
