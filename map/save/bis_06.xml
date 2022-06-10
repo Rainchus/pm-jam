@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Map name="bis_06" author="unnamed" background="hos_bg" textures="bon_tex">
 	<Editor>
-		<Camera pos="1342.320801,259.489807,-1437.466553" pitch="80.000000" yaw="0.319149"/>
+		<Camera pos="821.571594,241.600540,-1361.139893" pitch="9.999999" yaw="90.000000"/>
 		<Camera pos="1342.153076,65536.000000,0.912498"/>
 		<Camera pos="65536.000000,-3.994605,194.083405"/>
 		<Camera pos="1968.902588,-105.778732,65536.000000"/>
@@ -5352,7 +5352,7 @@
 			<MapObject name="Pipe" id="E"/>
 			<Entity type="802EAF80" flag="" hasAreaFlag="true" areaFlag="0" destMap="machi" destUseID="false" destEntry="" pipeEntry=""/>
 		</Marker>
-		<Marker ver="4" type="Entity" pos="1347,167,-1361" yaw="-90.000000">
+		<Marker ver="4" type="Entity" pos="1347,156,-1361" yaw="-90.000000">
 			<MapObject name="ItemBox" id="D"/>
 			<Entity type="802EA564" flag="" callback="false" item="Mushroom"/>
 		</Marker>

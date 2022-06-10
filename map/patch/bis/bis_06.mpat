@@ -334,14 +334,16 @@
    28:  End
 }
 
-#new:Script $SetSwoopersOffScreen { %why is npcid an index and the normal swooper marker not? good question
+#new:Script $checkIfStarlowUpgradeString {
 	Loop
-		Call SetNpcPos ( .NpcID:Swooper_01 -3000` 0 0 )
-		Call SetNpcPos ( .NpcID:Swooper_02 -3000` 0 0 )
-		Call SetNpcPos ( .NpcID:Swooper_03 -3000` 0 0 )
-		Call SetNpcPos ( .NpcID:Swooper_04 -3000` 0 0 )
+		If *Flag_block_bis_06 == 1
+			%Call ShowMessageAtScreenPos    ( 001D00DA  160`  40` ) % This is a Super Block. With this, you can upgrade  ...
+			Call $upgradeStarlow ()
+			BreakLoop
+		EndIf
 		Wait 1
 	EndLoop
+	
 	Return
 	End
 }
@@ -355,7 +357,6 @@
     Call SetCamLeadPlayer   ( .Cam:Default .False )
 	Call MakeTransformGroup    ( ~Model:Gate1Group )
 	Call MakeNpcs ( .False $NpcGroupList_Swoopers )
-	Exec $SetSwoopersOffScreen
 	Set *GameByte[009] 1 %first strike always kills enemy
     % Set *Var0 1
     % Thread
@@ -367,6 +368,7 @@
     % EndThread
 	Exec $MakeEntities
 	Exec $CheckIfFallenOOB
+	Exec $checkIfStarlowUpgradeString
 	Exec $Gate5OpenCheck
     Exec $Script_SetupMusic
     Exec $Script_EnterMap

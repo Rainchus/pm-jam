@@ -48,7 +48,7 @@
 }
 
 #new:NpcGroupList $NpcGroupList_Swoopers {
-      00000005 %amount of NPC groups
+      00000001 %amount of NPC groups
       $NpcGroup_Swooper1 %npc group
       $NpcGroup_Swooper2 %npc group
       $NpcGroup_Swooper3 %npc group

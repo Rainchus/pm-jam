@@ -27,6 +27,19 @@
     NOP
 }
 
+#export:Function $upgradeStarlow {
+     LI t0, 8010F2AC %goombario partner struct
+     LBU t1, 0001 (t0) %load upgrade
+     ORI t2, r0, 2
+     BEQ t1, t2, .skipUpgrade
+     NOP
+     ADDIU t1, t1, 1
+     SB t1, 0001 (t0) %store +1 ugprade
+     .skipUpgrade
+     JR RA
+     ORI v0, r0, 2
+}
+
 #export:Function $Scr_API_ClearStatCustom { %actorIndex(or actorSelf), boost type(0 for atk, 1 for def)
      PUSH s0, ra
      LW s0, 000C (a0) %load script arg ptr
