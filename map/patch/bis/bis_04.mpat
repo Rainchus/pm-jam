@@ -109,7 +109,7 @@
     Call SetCamPerspective  ( .Cam:Default 00000003 00000019 00000010 00001000 )
     Call SetCamBGColor      ( .Cam:Default 00000000 00000000 00000000 )
     Call SetCamEnabled      ( .Cam:Default .True)
-	Call MakeNpcs ( .False $NpcGroupList_Swoopers )
+	Call MakeNpcs ( .False $NpcGroupList )
     % Set *Var0 1
     % Thread
     %     Loop
@@ -185,9 +185,9 @@
 
 #new:Script $Cutscene2 { %StoryProgress A1
 	Call DisablePlayerInput (.True)
-    Call SetPlayerPos (-60` 0` 60`)
+    Call SetPlayerPos (-60` 0` 60` )
 	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowHTalk .Anim:StarlowHIdle 0 .NpcID:Challenge 00330014)
-	Call SpeakToPlayer (.NpcID:Nuts .Anim:NutsTalk .Anim:NutsIdle 0 00330015 )
+	Call SpeakToPlayer (.NpcID:Nuts .Anim:NutsTalk .Anim:NutsIdle 00000005 00330015 )
 	%NPc drop down from pipe
 	Call SetNpcAnimation (.NpcID:SGoombule .Anim:GoombuleRun)
 	%Npc Move to Mario
