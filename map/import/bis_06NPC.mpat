@@ -12,9 +12,9 @@
 #define .swooper4DeathFlag 9
 
 #new:Script $Script_NpcAI_Swooper {
-    0:  Call  $Function_SwooperOverworldAI    ( $AISettings_Swooper )
-   10:  Return
-   18:  End
+      Call  $Function_SwooperOverworldAI    ( $AISettings_Swooper )
+      Return
+      End
 }
 
 #new:Script $Script_DefeatSwooper1 {
@@ -112,7 +112,7 @@
 #new:NpcGroup $NpcGroup_Swooper3 {
 	.NpcID:Swooper_00 $NpcSettings_Swooper3 ~Vec3f:Swooper3
 	00200C08 %flags
-    00000000 00000000 00000000 0000005A
+      00000000 00000000 00000000 0000005A
 	~Items:5:VoltShroom:A ~HP:Standard:2 ~FP:Standard:2 ~CoinBonus:0:4
 	~Movement:Swooper3
 	~AnimationTable:Swooper3 % .Sprite:Swooper
@@ -142,7 +142,7 @@
 #new:NpcGroup $NpcGroup_Swooper4 {
 	.NpcID:Swooper_00 $NpcSettings_Swooper4 ~Vec3f:Swooper4
 	00200C08 %flags
-    00000000 00000000 00000000 0000005A
+      00000000 00000000 00000000 0000005A
 	~Items:5:VoltShroom:A ~HP:Standard:2 ~FP:Standard:2 ~CoinBonus:0:4
 	~Movement:Swooper4
 	~AnimationTable:Swooper4 % .Sprite:Swooper
@@ -172,7 +172,7 @@
 #new:NpcGroup $NpcGroup_Swooper5 {
 	.NpcID:Swooper_00 $NpcSettings_Swooper5 ~Vec3f:Swooper5
 	00200C08 %flags
-    00000000 00000000 00000000 0000005A
+      00000000 00000000 00000000 0000005A
 	~Items:5:VoltShroom:A ~HP:Standard:2 ~FP:Standard:2 ~CoinBonus:0:4
 	~Movement:Swooper5
 	~AnimationTable:Swooper5 % .Sprite:Swooper
