@@ -1,4 +1,4 @@
-#message:33:(Nuts1)
+#message:33:001
 {
 [Style Right]O traveler, what treads you[BR]
 back to these roads?[Pause 5] It has[BR]
@@ -6,14 +6,14 @@ been a globin since you two[BR]
 passed by here![Wait][END]
 }
 
-#message:33:(Starlow2)
+#message:33:002
 {
 [Style Right]This guy again!?[Pause 5] All he cares[BR]
 about is his stupid trivia...[Pause 30][BR]
 Let’s make this quick.[Wait][END]
 }
 
-#message:33:(Starlow3)
+#message:33:003
 {
 [Style Right]Hi Nutsoglobin![Pause 5] As, uh, good[BR]
 as it is to see you, we’re[BR]
@@ -24,7 +24,7 @@ we're trapped again.[Pause 5] It’s a[BR]
 whole mess...[Wait][End]
 }
 
-#message:33:(Nuts4)
+#message:33:004
 {
 [Style Right]My globin! Crazy tale mister[BR]
 plumber man...[Pause 30] Well, I may be[BR]
@@ -33,17 +33,17 @@ assistance to you globins in your[BR][Wait][Next]
 efforts to escape![Wait][END]
 }
 
-#message:33:(Challenge5)
+#message:33:005
 {
 [Style Right]As may I![Wait][END]
 }
 
-#message:33:(Starlow6)
+#message:33:006
 {
 [Style Right]Challenge Globin???[END]
 }
 
-#message:33:(Challenge7)
+#message:33:007
 {
 [Style Right]Yes, little globin, it is I - the[BR]
 globin of the challenge.[Pause 5][BR]
@@ -54,28 +54,28 @@ the last time you've seen us.[Pause 5] We[BR]
 have been busy, though.[END]
 }
 
-#message:33:(Nuts8)
+#message:33:008
 {
 [Style Right]We've prepared challenges for[BR]
 you globins, in the chance that[BR]
 you'd ever return.[END]
 }
 
-#message:33:(Challenge9)
+#message:33:009
 {
 [Style Right]Oh yes, many challenges, yes.[Pause 5][BR]
 These globins will have to be[BR]
 fierce to succeed.[Wait][END]
 }
 
-#message:33:(Starlow10)
+#message:33:00A
 {
 [Style Right]That's cool, I guess.[Pause 5] But we[BR]
 kinda have to get out of here...[Pause 30][BR]
 What's in it for us?[Wait][END]
 }
 
-#message:33:(Nuts11)
+#message:33:00B
 {
 [Style Right]Perhaps we can show you the[BR]
 proper path to prosperity![Pause 5][BR]
@@ -85,28 +85,28 @@ But, if you don’t complete[BR]
 our challenges...[END]
 }
 
-#message:33:(Challenge12)
+#message:33:00C
 {
 [Style Right]If you don't complete our[BR]
 challenges, you're never[BR]
 getting out of here.[Wait][END]
 }
 
-#message:33:(Starlow13)
+#message:33:00D
 {
 [Style Right]Uh...alright.[Pause 5]Well, we trumped[BR]
 you guys last time, so this[BR]
 should be a piece of cake![Wait][End]
 }
 
-#message:33:(Starlow14)
+#message:33:00E
 {
 [Style Right]Hopefully it’ll be a better[BR]
 piece of cake than the one[BR]
 that brought us here...[Wait][END]
 }
 
-#message:33:(Challenge15)
+#message:33:00F
 {
 [Style Right]Oh![Pause 5] I forgot you globins have[BR]
 some experience![Pause 5] Good, GOOD!!![BR]
@@ -117,45 +117,45 @@ skills and endurance, hoping to[BR]
 triumph against these foes.[Pause 5][BR]
 We’ve refined our battles to-[End]
 }
-#message:33:(Starlow16)
+#message:33:020
 {
 [Style Right]Seriously, we get it.[Pause 5] Battles,[BR]
 strength, yadda yadda.[Pause 5] Can[BR]
 we just get this over with?[Wait][END]
 }
 
-#message:33:(Challenge17)
+#message:33:021
 {
 [Style Right]Get this over with?[Pause 5] Why didn’t[BR]
 you say so?[END]
 }
 
-#message:33:(Starlow18)
+#message:33:022
 {
 [Style Right]Uh, I just did.[END]
 }
 
-#message:33:(Challenge19)
+#message:33:023
 {
 [Style Right]Mighty forces clashing at the[BR]
 speed of globin![Pause 5] Will you have[BR]
 the strength to prevail?[Pause 5][BR]The Gauntlet starts...[Pause 5]NOW!![END]
 }
-#message:33:(Starlow20)
+#message:33:024
 {
 [Style Right]Phew. That was easy! Are[BR]
 those really your strongest[BR]
 foes?[Wait][END]
 }
 
-#message:33:(Nuts21)
+#message:33:025
 {
 [Style Right]Not in the slightest, little[BR]
 globin.[Pause 5] Try these ones out,[BR]
 maybe you’ll change your mind![Wait][END]
 }
 
-#message:33:(Challenge22)
+#message:33:026
 {
 [Style Right]Congratulations! You’ve[BR]
 performed well enough that we[BR]
@@ -164,26 +164,26 @@ Not just any globin, but a[BR]
 spinny, twisty globin![Wait][END]
 }
 
-#message:33:(Nuts23)
+#message:33:027
 {
 [Style Right]Yes, this globin will allow you[BR]
 to travel vast distances, just[BR]
 by pressing and holding [Z]![Wait][END]
 }
 
-#message:33:(Starlow24)
+#message:33:028
 {
 [Style Right][Z]...?[Pause 10] What are you[Shake] TALKING[BR]ABOUT!?[Wait][END][/fx]
 }
 
-#message:33:(Nuts25)
+#message:33:029
 {
 [Style Right]You'll know.[Pause 5] Ahem.[Pause 30][BR]
 [Shake]NUT.[Pause 30][Size 18]SO.[Pause 30][BR]
 [Size 24]GLOBIN!!!![Pause 30][Wait][END][/fx]
 }
 
-#message:33:(UpgradeSpin)
+#message:33:02A
 {
 [Style Narrate][Rainbow]Mario learned Spin Jump![/fx][BR]
 Use [Z] to spin, and if you spin off[BR]
@@ -191,7 +191,7 @@ a ledge, Mario will twirl through the[BR]
 air and across large gaps easily.[Wait][End]
 }
 
-#message:33:(Challenge26)
+#message:33:02B
 {
 [Style Right]To try out your new globin,[BR]
 dive down this long-ish pipe into[BR]
@@ -199,7 +199,7 @@ a new place that we devised![BR]
 We spent a long-ish time on it...[Wait][END]
 }
 
-#message:33:(Nuts27)
+#message:33:02C
 {
 [Style Right]It may help you in your future[BR]challenges, so give it a shot.[BR]
 When you’re ready for the[BR]
@@ -207,14 +207,14 @@ next-ish one, speak with me!
 [Wait][END]
 }
 
-#message:33:(Challenge28)
+#message:33:02D
 {
 [Style Right]Wow! You globins are making[BR]
 quick-ish work of these.[BR]Nutsoglobin! How many fights[BR]
 are left?[Wait][END]
 }
 
-#message:33:(Nuts29)
+#message:33:02E
 {
 [Style Right]I don’t know, I just want to[BR]
 get these over with so I can[BR]
@@ -225,7 +225,7 @@ ride their brain trains![Pause 5][BR]
 Is that so much-ish to ask?[Wait][End]
 }
 
-#message:33:(Challenge30)
+#message:33:02F
 {
 [Style Right]Well, they’re not done,[BR]
 regardless. Globins, ready[BR]
@@ -233,46 +233,46 @@ yourself for the next[BR]
 frightful-ish beast![Wait][END]
 }
 
-#message:33:(Challenge31)
+#message:33:030
 {
 [Style Right]W-Wow...You globins really[BR]
 are making short-ish work of[BR]
 these fights...[Wait][END]
 }
 
-#message:33:(Nuts32)
+#message:33:031
 {
 [Style Right]We prepared these for months.[BR]
 Your power really is huge-ish![Wait][END]
 }
 
-#message:33:(Challenge32)
+#message:33:032
 {
 [Style Right]One more battle awaits, but[BR]
 before that, we’ve got one[BR]
 more ability to bestow.[Wait][END]
 }
 
-#message:33:(Starlow33)
+#message:33:033
 {
 [Style Right]Seriously? Why couldn’t you[BR]
 have given us these before the[BR]
 fights?[Wait][END]
 }
 
-#message:33:(Challenge34)
+#message:33:034
 {
 [Style Right]Oh. I guess we could have done[BR]
 that.[Pause 5] More fun to see you globins[BR]
 squirm-ish, though![Wait][END]
 }
 
-#message:33:(Starlow34)
+#message:33:035
 {
 [Style Right]Ugh...[Wait][END]
 }
 
-#message:33:(Challenge35)
+#message:33:036
 {
 This next ability will allow you[BR]
 to toss your hammer with[BR]
@@ -280,13 +280,13 @@ tremendous-ish force! Press [R][BR]
 to hurl it high-ish![Wait][END]
 }
 
-#message:33:(Nuts36)
+#message:33:037
 {
 [Style Right][Shake]NUT.[Pause 30][Size 18]SO.[Pause 30][BR]
 [Size 24]GLOBIN!!!![Pause 30][Wait][END][/fx][END]
 }
 
-#message:33:(UpgradeHammer)
+#message:33:038
 {
 [Style Narrate][Rainbow]Mario learned Hammer Throw![/fx][BR][Pause 5]
 Use [R] to throw your hammer high[BR]
@@ -294,7 +294,7 @@ into the air![Pause 5] It can hit many[BR]
 objects, like switches and foes.[Wait][END]
 }
 
-#message:33:(Challenge37)
+#message:33:039
 {
 [Style Right]We've prepared another area[BR]
 for you to try this new skill.[BR]
@@ -303,38 +303,38 @@ your final fight awaits.[BR][Wait][Next]Come talk to me when you globins[BR]
 are ready to prove your might.[Wait][END]
 }
 
-#message:33:(Nuts38)
+#message:33:03A
 {
 [Style Right]Huh.[Pause 5] You weren’t supposed to[BR]
 win that one...[END]
 }
 
-#message:33:(Challenge39)
+#message:33:03B
 {
 [Style Right]Well done, as it turns out-[END]
 }
 
-#message:33:(Guardian40)
+#message:33:03C
 {
 [Style Right][Shake]ALERT! ALERT! ALERT![/fx][END]
 }
 
-#message:33:(Nuts41)
+#message:33:03D
 {
 [Style Right]Oh globins...[END]
 }
 
-#message:33:(Starlow42)
+#message:33:03F
 {
 [Style Right]Aw man, not the Guardian![Wait][END]
 }
 
-#message:33:(Starlow43)
+#message:33:040
 {
 [Style Right]You defend this place, right?[Wait][END]
 }
 
-#message:33:(Guardian44)
+#message:33:041
 {
 [Style Right]Hmm...it appears I have seen[BR]
 you before.[Pause 5] I apologize.[Pause 5][BR]
@@ -342,7 +342,7 @@ My retrieval protocol has grown[BR]
 stagnant in these past years.[Wait][END]
 }
 
-#message:33:(Starlow45)
+#message:33:042
 {
 [Style Right]It’s alright, just don’t start[BR]
 attacking us again, please![BR]
@@ -354,7 +354,7 @@ want to escape faster than[BR]
 last time...[Wait][END]
 }
 
-#message:33:(Guardian46)
+#message:33:043
 {
 [Style Right]Look around...[Pause 30]Permission granted.[BR]
 Do not overstep your bounds,[BR]
@@ -362,12 +362,12 @@ however. I must remove you[BR]
 if you tamper with any memories.[Wait][END]
 }
 
-#message:33:(Starlow47)
+#message:33:044
 {
 [Style Right]Deemed...important?[END]
 }
 
-#message:33:(Guardian48)
+#message:33:045
 {
 [Style Right]Yes. Such as those pertaining[BR]
 to things like the Koopa family[BR]
@@ -376,25 +376,25 @@ Bowser’s mint condition[BR][Wait][Next]Chanterelle vinyls, and the[BR]
 Miracle Cure.[Wait][END]
 }
 
-#message:33:(Starlow49)
+#message:33:046
 {
 [Style Right]Chanterelle makes viny-[Pause 10][BR]
 [Size 25][Shake]THE MIRACLE CURE??[/fx][END]
 }
 
-#message:33:(Guardian50)
+#message:33:047
 {
 [Style Right]Affirmative.[END]
 }
 
-#message:33:(Starlow51)
+#message:33:048
 {
 [Style Right]That might be our ticket[BR]
 out of here.[Pause 5] Pretty please can[BR]
 we look at them?[Wait][END]
 }
 
-#message:33:(Guardian52)
+#message:33:049
 {
 [Style Right]I see.[Pause 5] As stated, the Miracle[BR]
 Cure is strictly off-limits.[Pause 5] I[BR]
@@ -402,20 +402,20 @@ apologize, but I must defend the[BR]
 mind of my master with obedience.[Wait][END]
 }
 
-#message:33:(Guardian53)
+#message:33:04A
 {
 [Style Right]Please do not take this[BR]
 personally.[END]
 }
 
-#message:33:(Starlow54)
+#message:33:04B
 {
 [Style Right]We’ve done this before, we[BR]
 can do it again.[Pause 5] Let’s kick[BR]
 some tail.[Pause 5] [Shake][Size 20]IT’S SHOWTIME!![/fx][Wait][END]
 }
 
-#message:33:(Starlow55)
+#message:33:04C
 {
 [Style Right]Huff...[Pause 5]puff...[Pause 5]whew...[Pause 5][BR]
 We did it.[Pause 15][BR]
@@ -427,7 +427,7 @@ the way to the cure![Pause 5] We did win[BR]
 fair and square.[Wait][END]
 }
 
-#message:33:(Starlow56)
+#message:33:04D
 {
 [Shake]ERROR.[Pause 10][BR]
 ERROR.[Pause 10][BR]
@@ -435,12 +435,12 @@ OBSERVATION PROTOCOL NOT[BR]
 PERMITTED.[END][/fx]
 }
 
-#message:33:(Starlow57)
+#message:33:04E
 {
 [Style Right]Uh, everything alright?[END]
 }
 
-#message:33:(Guardian58)
+#message:33:04F
 {
 [Style Right][Shake]VIRUS NOT CONTAINED.[BR]
 MALICIOUS ENTITIES STILL[BR]
@@ -448,35 +448,35 @@ PRESENT. BEGIN RECONSTITUTION[BR]
 PHASE.[Wait][END][/fx]
 }
 
-#message:33:(Starlow59)
+#message:33:050
 {
 [Style Right]Yikes![Pause 5] Let’s nab the Miracle[BR]
 Cure recipe and get out of[BR]
 here before things get worse![Wait][END]
 }
 
-#message:33:(Starlow60)
+#message:33:051
 {
 [Style Right]We should probably get that.[BR]
 Who knows what the Guardian[BR]
 is going to do![END]
 }
 
-#message:33:(Peach70)
+#message:33:052
 {
 [Style Epilogue][Style Right]
 Mario, Starlow![Pause 10] You’re Back!
 [END]
 }
 
-#message:33:(Broque71)
+#message:33:053
 {
 [Style Epilogue][Style Right]
 Ah, Mon Friends![Pause 10] It is zee[BR]
 best to seeings you![Wait][END]
 }
 
-#message:33:(Bowser72)
+#message:33:054
 {
 [Style Right]Yeah, yeah. Glad you’re out of[BR]
 my system in one piece.[Pause 10] Now,[BR]
@@ -484,17 +484,20 @@ where’s that next course, Peach?[Pause 10][BR]
 Gwahahaha![Wait][END]
 }
 
-#message:33:(End)
+#message:33:055
 {
 [Style Narrate][SaveColor][CenterX 160][SetPosY 18] [Color:14]Fin.[RestoreColor][END]
 }
 
-#message:33:(NewString)
+#message:33:056
 {
-[END]
+[Style Sign]There were supposed to be more[BR]
+Swoopers here, but we couldn't[BR]
+figure out a huge bug.[BR]
+So here's a sign instead :)[END]
 }
 
-#message:33:(NewString)
+#message:33:057
 {
 [END]
 }
