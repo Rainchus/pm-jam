@@ -21,7 +21,7 @@
 {
 	PUSH    RA
 	LIA     A0, 800B0CF0
-	LIA     A1, "kkj_tex"
+	LIA     A1, "kmr_tex"
 	JAL     800654F0 % sprintf
 	RESERVED
 	CLEAR  V0
@@ -73,14 +73,22 @@
 #new:Script $Cutscene {
     Call DisablePartnerAI ( 0 ) %disable flying partner ai (value 1 would disable walking partner AI)
 	Call DisablePlayerInput (.True)
-    Call DisablePlayerPhysics ( 1 )
+	Call DisablePlayerPhysics (.True )
+	Call SetPlayerPos ( 0` -300` -0` )
+	Call TeleportPartnerToPlayer ()
+	Call SetNpcAnimation ( .NpcID:MarioNPC .Anim:MarioNPCTumble )
+	Call SetNpcAnimation (.NpcID:Starlow .Anim:StarlowFreeze)
+	Call SetNpcPos ( .NpcID:Starlow -20` 200 0 )
+	Call SetNpcPos ( .NpcID:MarioNPC 20` 200 0 )
+	Call PlaySound ( .Sound:Falling )
     Thread
-        Call NpcFlyTo (.NpcID:Starlow 0` 25` -12` 60` 0` .Easing:Linear)	
+		Wait 20`
+        Call NpcFlyTo (.NpcID:Starlow -20` -100` 0` 90` 0` .Easing:Linear)	
     EndThread
     Thread
 		Set *VarD 0`
 		Loop
-            Call SetNpcRotation (.NpcID:Starlow *VarD 0` 0`)
+            Call SetNpcRotation (.NpcID:Starlow 0` 0` *VarD )
 			Add   *VarD  12`
 			If  *VarD  >  359`
 			  Set   *VarD 0`
@@ -89,20 +97,21 @@
         EndLoop
 	EndThread
     Thread
-        Call NpcFlyTo (.NpcID:MarioNPC 0` 25` -12` 60` 0` .Easing:Linear)	
+        Call NpcFlyTo (.NpcID:MarioNPC 20` -100` 0` 90` 0` .Easing:Linear)	
     EndThread
     Thread
 		Set *VarD 0`
 		Loop
-            Call SetNpcRotation (.NpcID:MarioNPC *VarD 0` 0`)
-			Add   *VarD  12`
+            Call SetNpcRotation (.NpcID:MarioNPC 0` 0` *VarD )
+			Add   *VarD  6`
 			If  *VarD  >  359`
 			  Set   *VarD 0`
 			EndIf
 			Wait 1`
         EndLoop
 	EndThread
-
+	Wait 90`
+	%insert cod to load bis_04
     End
     Return
 }
