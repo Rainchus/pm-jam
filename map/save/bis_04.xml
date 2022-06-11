@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Map name="bis_04" author="unnamed" background="obk_bg" textures="kmr_tex">
 	<Editor>
-		<Camera pos="-136.373169,349.497009,121.560913" pitch="10.319991" yaw="286.880005"/>
-		<Camera pos="200.106750,65536.000000,-83.197334"/>
+		<Camera pos="75.193398,188.807388,508.276245" pitch="42.000011" yaw="358.880127"/>
+		<Camera pos="200.106750,65536.000000,14.088737"/>
 		<Camera pos="65536.000000,1237.749268,-812.513672"/>
 		<Camera pos="270.127808,55.716232,65536.000000"/>
 	</Editor>
 	<ModelTree>
-		<Node name="Root" id="49">
+		<Node name="Root" id="47">
 			<Node name="Computer *" id="7">
 				<Node name="Beveled CubeModel" id="0"/>
 				<Node name="ConeModel" id="1"/>
@@ -80,8 +80,6 @@
 			<Node name="CylinderModel" id="44"/>
 			<Node name="Radial GridModel" id="45"/>
 			<Node name="Planar GridModel" id="46"/>
-			<Node name="ex_w_floor" id="47"/>
-			<Node name="ex_w_edge" id="48"/>
 		</Node>
 	</ModelTree>
 	<ColliderTree>
@@ -110,7 +108,7 @@
 		</Node>
 	</ZoneTree>
 	<MarkerTree>
-		<Node name="Root" id="11">
+		<Node name="Root" id="13">
 			<Node name="Entrances" id="FFFFFFFF"/>
 			<Node name="MainEntry" id="0"/>
 			<Node name="Nuts" id="1"/>
@@ -129,6 +127,8 @@
 			<Node name="ChallengeScenePos" id="E"/>
 			<Node name="NutsScenePos" id="F"/>
 			<Node name="EnemyScenePos" id="10"/>
+			<Node name="ChallengePipe1" id="11"/>
+			<Node name="ChallengePipe2" id="12"/>
 		</Node>
 	</MarkerTree>
 	<LightSets>
@@ -137,81 +137,9 @@
 	</LightSets>
 	<Models>
 		<Model ver="2" type="ROOT" lightset="0">
-			<MapObject name="Root" id="49"/>
+			<MapObject name="Root" id="47"/>
 			<BoundingBox empty="false" min="-1028,-344,-649" max="1027,672,273"/>
 			<PropertyList>
-			</PropertyList>
-		</Model>
-		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="ex_w_edge" id="48"/>
-			<ShapeMesh ver="3" texture="kmr_berosaidetif">
-				<DisplayList>
-					<F3DEX2 cmd="E7000000,0"/>
-					<F3DEX2 cmd="D9FDFFFF,0"/>
-					<F3DEX2 cmd="D9FFFFFF,200400"/>
-					<TriangleBatch ver="0">
-						<VertexTable>
-							<Vertex xyz="-390,-20,94"/>
-							<Vertex xyz="-390,0,94" uv="0,512"/>
-							<Vertex xyz="-390,0,15" uv="2560,512"/>
-							<Vertex xyz="-390,-20,94"/>
-							<Vertex xyz="-390,0,15" uv="2560,512"/>
-							<Vertex xyz="-390,-20,15" uv="2560,0"/>
-							<Vertex xyz="-320,0,94" uv="2560,512"/>
-							<Vertex xyz="-390,0,94" uv="0,512"/>
-							<Vertex xyz="-390,-20,94"/>
-							<Vertex xyz="-320,0,94" uv="2560,512"/>
-							<Vertex xyz="-390,-20,94"/>
-							<Vertex xyz="-330,-20,94" uv="2048,0"/>
-							<Vertex xyz="-390,-20,15" uv="512,0"/>
-							<Vertex xyz="-390,0,15" uv="512,512"/>
-							<Vertex xyz="-320,0,15" uv="-2048,512"/>
-							<Vertex xyz="-390,-20,15" uv="512,0"/>
-							<Vertex xyz="-320,0,15" uv="-2048,512"/>
-							<Vertex xyz="-334,-20,15" uv="-1536,0"/>
-						</VertexTable>
-						<TriangleList>
-							<Triangle ijk="0,1,2"/>
-							<Triangle ijk="3,4,5"/>
-							<Triangle ijk="6,7,8"/>
-							<Triangle ijk="9,10,11"/>
-							<Triangle ijk="12,13,14"/>
-							<Triangle ijk="15,16,17"/>
-						</TriangleList>
-					</TriangleBatch>
-				</DisplayList>
-			</ShapeMesh>
-			<PropertyList>
-				<Property v="5C,0,1"/>
-				<Property v="5F,0,0"/>
-			</PropertyList>
-		</Model>
-		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="ex_w_floor" id="47"/>
-			<ShapeMesh ver="3" texture="kmr_mac_house3tif">
-				<DisplayList>
-					<F3DEX2 cmd="E7000000,0"/>
-					<F3DEX2 cmd="D9FDFFFF,0"/>
-					<F3DEX2 cmd="D9FFFFFF,200400"/>
-					<TriangleBatch ver="0">
-						<VertexTable>
-							<Vertex xyz="-390,0,15" uv="2604,-5055" rgba="180,17,86,255"/>
-							<Vertex xyz="-390,0,94" uv="1509,-5687" rgba="180,17,86,255"/>
-							<Vertex xyz="-320,0,94" uv="949,-4717" rgba="180,17,86,255"/>
-							<Vertex xyz="-390,0,15" uv="2604,-5055" rgba="180,17,86,255"/>
-							<Vertex xyz="-320,0,94" uv="949,-4717" rgba="180,17,86,255"/>
-							<Vertex xyz="-320,0,15" uv="2044,-4085" rgba="180,17,86,255"/>
-						</VertexTable>
-						<TriangleList>
-							<Triangle ijk="0,1,2"/>
-							<Triangle ijk="3,4,5"/>
-						</TriangleList>
-					</TriangleBatch>
-				</DisplayList>
-			</ShapeMesh>
-			<PropertyList>
-				<Property v="5C,0,1"/>
-				<Property v="5F,0,0"/>
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
@@ -22800,7 +22728,15 @@
 	</Zones>
 	<Markers>
 		<Marker ver="4" type="Root">
-			<MapObject name="Root" id="11"/>
+			<MapObject name="Root" id="13"/>
+		</Marker>
+		<Marker ver="4" type="Entity" pos="49,0,170" yaw="-180.000000">
+			<MapObject name="ChallengePipe2" id="12"/>
+			<Entity type="802EAF80" flag="" hasAreaFlag="true" areaFlag="0" destMap="machi" destUseID="false" destEntry="" pipeEntry=""/>
+		</Marker>
+		<Marker ver="4" type="Entity" pos="-51,0,170" yaw="-180.000000">
+			<MapObject name="ChallengePipe1" id="11"/>
+			<Entity type="802EAF80" flag="" hasAreaFlag="true" areaFlag="0" destMap="machi" destUseID="false" destEntry="" pipeEntry=""/>
 		</Marker>
 		<Marker ver="4" type="Position" pos="92,0,21" yaw="-180.000000">
 			<MapObject name="EnemyScenePos" id="10"/>
