@@ -48,13 +48,11 @@
 }
 
 #new:NpcGroupList $NpcGroupList_Swoopers {
-      00000001 %amount of NPC groups
-      $NpcGroup_Swooper1 %npc group
-      $NpcGroup_Swooper2 %npc group
-      $NpcGroup_Swooper3 %npc group
-      $NpcGroup_Swooper4 %npc group
-      $NpcGroup_Swooper5 %npc group
-      00000000 %battleID
+      00000001 $NpcGroup_Swooper1 0
+      % 00000001 $NpcGroup_Swooper2 0
+      % 00000001 $NpcGroup_Swooper3 0
+      % 00000001 $NpcGroup_Swooper4 0
+      % 00000001 $NpcGroup_Swooper5 0
 
       %terminate list
 	00000000 00000000 00000000

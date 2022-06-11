@@ -269,20 +269,18 @@
     00000000 00000000 00000000 00000000 % no tattle string
 }
 
-#new:NpcGroupList $NpcGroupList_Swoopers {
-    0000000B %amount of NPC groups
-    $NpcGroup_Starlow %npc group
-    $NpcGroup_MarioNPC
-    $NpcGroup_Nuts
-    $NpcGroup_Challenge
-    $NpcGroup_Guardian
-    $NpcGroup_Blitty
-    $NpcGroup_Goombule
-    $NpcGroup_SGoombule
-    $NpcGroup_Protobatter
-    $NpcGroup_Tenderling
-    $NpcGroup_Chuboomba
-    00000000 %battleID
+#new:NpcGroupList $NpcGroupList {
+    00000001 $NpcGroup_Starlow 0
+    00000001 $NpcGroup_MarioNPC 0
+    00000001 $NpcGroup_Nuts 0
+    00000001 $NpcGroup_Challenge 0
+    00000001 $NpcGroup_Guardian 0
+    00000001 $NpcGroup_Blitty 0
+    00000001 $NpcGroup_Goombule 0
+    00000001 $NpcGroup_SGoombule 0
+    00000001 $NpcGroup_Protobatter 0
+    00000001 $NpcGroup_Tenderling 0
+    00000001 $NpcGroup_Chuboomba 0
 
     %terminate list
     00000000 00000000 00000000
