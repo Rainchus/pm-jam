@@ -138,7 +138,7 @@
 	Call SetNpcAnimation (.NpcID:Challenge .Anim:ChallengeClosedIdle)
 	%Have challenge Globin Fly In
 	Call SetNpcAnimation (.NpcID:Challenge .Anim:ChallengeOpen)
-	Wait `24
+	Wait 24`
 	Call SetNpcAnimation (.NpcID:Challenge .Anim:ChallengeIdle)
 	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChallengeIdle 0 00330005)
 	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowFTalk .Anim:StarlowFIdle 0 .NpcID:Challenge 00330006)
@@ -183,12 +183,12 @@
 #new:Script $Cutscene3{
 	Call DisablePlayerInput (.True)
     Call SetPlayerPos (-60` 0` 60`)
-	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChalengeIdle 0 00330016 )
+	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChallengeIdle 0 00330016 )
 	Call SpeakToPlayer (.NpcID:Nuts .Anim:NutsTalk .Anim:NutsIdle 0 00330017 )
 	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowFTalk .Anim:StarlowFIdle 0 .NpcID:Challenge 00330018)
 	Call SpeakToPlayer (.NpcID:Nuts .Anim:NutsTalk .Anim:NutsIdle 0 00330019 )
 	%Show Upgrade Text
-	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChalengeIdle 0 0033001A )
+	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChallengeIdle 0 0033001A )
 	Call SpeakToPlayer (.NpcID:Nuts .Anim:NutsTalk .Anim:NutsIdle 0 0033001B )
 	Call DisablePlayerInput (.False)
 
@@ -243,7 +243,7 @@
 		End
 }
 
-#new:Script $Cutscene5{
+#new:Script $Cutscene6{
 	Call DisablePlayerInput (.True)
     Call SetPlayerPos (-60` 0` 60`)
 	Call SpeakToPlayer (.NpcID:Nuts .Anim:NutsTalk .Anim:NutsIdle 0 00330029)
@@ -271,14 +271,14 @@
     End
 }
 
-#new:Script $Cutscene6{
+#new:Script $Cutscene7{
 	Call DisablePlayerInput (.True)
     Call SetPlayerPos (-60` 0` 60`)
 	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowHTalk .Anim:StarlowHIdle 0 .NpcID:Guardian 00330037)
 	%MarioMem should do this: Call SpeakToPlayer (.NpcID:Guardian .Anim:GuardianMain .Anim:GuardianMain 0 00330038)
 	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowNTalk .Anim:StarlowNIdle 0 .NpcID:Guardian 00330037)
 	Call SpeakToPlayer (.NpcID:Guardian .Anim:GuardianMain .Anim:GuardianMain 0 00330038)
-	Call SetNpcAnimation ( #npcID animation )
+	%Call SetNpcAnimation ( #npcID animation )
 	Call SpeakToPlayer (.NpcID:Starlow .Anim:StarlowFTalk .Anim:StarlowFIdle 0 00330037)
 	%coords of miracle cure spawn Call PlayerMoveTo ( goalX goalZ time )
 
