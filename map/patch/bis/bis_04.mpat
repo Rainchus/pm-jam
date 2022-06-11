@@ -1,4 +1,5 @@
 #import SpriteAnimations.mpat
+#import bis_04NPC.mpat
 
 #define .NpcID:Starlow 0
 #define .NpcID:MarioNPC 1
@@ -104,10 +105,11 @@
 
 
 #new:Script $Script_Main {
-    Set   *GB_WorldLocation  .Location:GoombaRoad
-    Call  SetCamPerspective  ( .Cam:Default 00000003 00000019 00000010 00001000 )
-    Call  SetCamBGColor      ( .Cam:Default 00000000 00000000 00000000 )
-    Call  SetCamEnabled      ( .Cam:Default .True
+    Set  *GB_WorldLocation  .Location:GoombaRoad
+    Call SetCamPerspective  ( .Cam:Default 00000003 00000019 00000010 00001000 )
+    Call SetCamBGColor      ( .Cam:Default 00000000 00000000 00000000 )
+    Call SetCamEnabled      ( .Cam:Default .True)
+	Call MakeNpcs ( .False $NpcGroupList_Swoopers )
     % Set *Var0 1
     % Thread
     %     Loop
@@ -119,13 +121,28 @@
     Exec $Script_SetupMusic
 	Exec $TexturePanning
     Exec $Script_EnterMap
-    Exec $Cutscene1
+	Switch *GB_StoryProgress
+	Case == FFFFFFA0
+		Exec $Cutscene1
+	Case == FFFFFFA1
+		Exec $Cutscene2
+	Case == FFFFFFA2
+		Exec $Cutscene3
+	Case == FFFFFFA3
+		Exec $Cutscene4
+	Case == FFFFFFA4
+		Exec $Cutscene5
+	Case == FFFFFFA5
+		Exec $Cutscene6
+	Case == FFFFFFA6
+		Exec $Cutscene7
+	EndSwitch
     Return
     End
 }
 
 
-#new:Script $Cutscene1{
+#new:Script $Cutscene1 { %StoryProgress A0
 	Call DisablePlayerInput (.True)
     Call PlayerMoveTo (-60` 0` 60`)
 	Call SpeakToPlayer (.NpcID:Nuts .Anim:NutsTalk .Anim:NutsIdle 0 00330001 )
@@ -166,7 +183,7 @@
     End
 }
 
-#new:Script $Cutscene2{
+#new:Script $Cutscene2 { %StoryProgress A1
 	Call DisablePlayerInput (.True)
     Call SetPlayerPos (-60` 0` 60`)
 	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowHTalk .Anim:StarlowHIdle 0 .NpcID:Challenge 00330014)
@@ -180,7 +197,7 @@
     End
 }
 
-#new:Script $Cutscene3{
+#new:Script $Cutscene3 { %StoryProgress A2
 	Call DisablePlayerInput (.True)
     Call SetPlayerPos (-60` 0` 60`)
 	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChallengeIdle 0 00330016 )
@@ -203,7 +220,7 @@
     	End
 }
 
-#new:Script $Cutscene4{
+#new:Script $Cutscene4 { %StoryProgress A3
 	Call DisablePlayerInput (.True)
     Call SetPlayerPos (-60` 0` 60`)
 	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChallengeIdle 0 0033001C)
@@ -218,7 +235,7 @@
     End
 }
 
-#new:Script $Cutscene5{
+#new:Script $Cutscene5 { %StoryProgress A4
 	Call DisablePlayerInput (.True)
     Call SetPlayerPos (-60` 0` 60`)
 	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChallengeIdle 0 0033001F)
@@ -243,7 +260,7 @@
 		End
 }
 
-#new:Script $Cutscene6{
+#new:Script $Cutscene6 { %StoryProgress A5
 	Call DisablePlayerInput (.True)
     Call SetPlayerPos (-60` 0` 60`)
 	Call SpeakToPlayer (.NpcID:Nuts .Anim:NutsTalk .Anim:NutsIdle 0 00330029)
@@ -271,7 +288,7 @@
     End
 }
 
-#new:Script $Cutscene7{
+#new:Script $Cutscene7 { %StoryProgress A6
 	Call DisablePlayerInput (.True)
     Call SetPlayerPos (-60` 0` 60`)
 	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowHTalk .Anim:StarlowHIdle 0 .NpcID:Guardian 00330037)

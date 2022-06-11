@@ -338,7 +338,7 @@
 	Call  SetCamBGColor      ( .Cam:Default 00000000 00000000 00000000 )
 	Call  SetCamEnabled      ( .Cam:Default .True)
 	Call  SetCamLeadPlayer   ( .Cam:Default .False )
-	Call MakeNpcs ( .False $AllNpcs )
+	Call  MakeNpcs ( .False $AllNpcs )
 	Exec  $Script_SetupMusic
 	Exec  $MainCutscene
 	Return

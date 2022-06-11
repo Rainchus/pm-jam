@@ -1,0 +1,289 @@
+% #define .NpcID:Starlow 0
+% #define .NpcID:MarioNPC 1
+% #define .NpcID:Nuts 2
+% #define .NpcID:Challenge 3
+% #define .NpcID:Guardian 4
+% #define .NpcID:Blitty 5
+% #define .NpcID:Goombule 6 
+% #define .NpcID:SGoombule 7
+% #define .NpcID:Protobatter 8
+% #define .NpcID:Tenderling 9
+% #define .NpcID:Chuboomba A
+
+#new:Script $Script_Init_Starlow {
+    Return
+    End
+}
+
+#new:NpcSettings $NpcSettings_Starlow {
+    00000000 00140014 00000000 00000000 0 0 00000000 8007809C
+    00000800 00000000 00160000
+}
+
+#new:NpcGroup $NpcGroup_Starlow {
+    .NpcID:Starlow $NpcSettings_Starlow ~Vec3f:Starlow
+    00200C08 %flags
+    $Script_Init_Starlow
+    00000000 00000000 0000005A
+    ~Items:5:VoltShroom:A ~HP:Standard:2 ~FP:Standard:2 ~CoinBonus:0:4
+    ~Movement:Starlow
+    ~AnimationTable:Starlow % .Sprite:Swooper
+    00000000 00000000 00000000 00000000 % no tattle string
+}
+
+
+
+#new:Script $Script_Init_MarioNPC {
+    Return
+    End
+}
+
+#new:NpcSettings $NpcSettings_MarioNPC {
+    00000000 00140014 00000000 00000000 0 0 00000000 8007809C
+    00000800 00000000 00160000
+}
+
+#new:NpcGroup $NpcGroup_MarioNPC {
+    .NpcID:MarioNPC $NpcSettings_MarioNPC ~Vec3f:MarioNPC
+    00200C08 %flags
+    $Script_Init_MarioNPC
+    00000000 00000000 0000005A
+    ~Items:5:VoltShroom:A ~HP:Standard:2 ~FP:Standard:2 ~CoinBonus:0:4
+    ~Movement:MarioNPC
+    ~AnimationTable:MarioNPC % .Sprite:Swooper
+    00000000 00000000 00000000 00000000 % no tattle string
+}
+
+
+
+
+#new:Script $Script_Init_Nuts {
+    Return
+    End
+}
+
+#new:NpcSettings $NpcSettings_Nuts {
+    00000000 00140014 00000000 00000000 0 0 00000000 8007809C
+    00000800 00000000 00160000
+}
+
+#new:NpcGroup $NpcGroup_Nuts {
+    .NpcID:Nuts $NpcSettings_Nuts ~Vec3f:Nuts
+    00200C08 %flags
+    $Script_Init_Nuts
+    00000000 00000000 0000005A
+    ~Items:5:VoltShroom:A ~HP:Standard:2 ~FP:Standard:2 ~CoinBonus:0:4
+    ~Movement:Nuts
+    ~AnimationTable:Nuts % .Sprite:Swooper
+    00000000 00000000 00000000 00000000 % no tattle string
+}
+
+
+
+
+#new:Script $Script_Init_Challenge {
+    Return
+    End
+}
+
+#new:NpcSettings $NpcSettings_Challenge {
+    00000000 00140014 00000000 00000000 0 0 00000000 8007809C
+    00000800 00000000 00160000
+}
+
+#new:NpcGroup $NpcGroup_Challenge {
+    .NpcID:Challenge $NpcSettings_Challenge ~Vec3f:Challenge
+    00200C08 %flags
+    $Script_Init_Challenge
+    00000000 00000000 0000005A
+    ~Items:5:VoltShroom:A ~HP:Standard:2 ~FP:Standard:2 ~CoinBonus:0:4
+    ~Movement:Challenge
+    ~AnimationTable:Challenge % .Sprite:Swooper
+    00000000 00000000 00000000 00000000 % no tattle string
+}
+
+
+
+
+
+#new:Script $Script_Init_Guardian {
+    Return
+    End
+}
+
+#new:NpcSettings $NpcSettings_Guardian {
+    00000000 00140014 00000000 00000000 0 0 00000000 8007809C
+    00000800 00000000 00160000
+}
+
+#new:NpcGroup $NpcGroup_Guardian {
+    .NpcID:Guardian $NpcSettings_Guardian ~Vec3f:Guardian
+    00200C08 %flags
+    $Script_Init_Guardian
+    00000000 00000000 0000005A
+    ~Items:5:VoltShroom:A ~HP:Standard:2 ~FP:Standard:2 ~CoinBonus:0:4
+    ~Movement:Guardian
+    ~AnimationTable:Guardian % .Sprite:Swooper
+    00000000 00000000 00000000 00000000 % no tattle string
+}
+
+
+
+
+#new:Script $Script_Init_Blitty {
+    Return
+    End
+}
+
+#new:NpcSettings $NpcSettings_Blitty {
+    00000000 00140014 00000000 00000000 0 0 00000000 8007809C
+    00000800 00000000 00160000
+}
+
+#new:NpcGroup $NpcGroup_Blitty {
+    .NpcID:Blitty $NpcSettings_Blitty ~Vec3f:Blitty
+    00200C08 %flags
+    $Script_Init_Blitty
+    00000000 00000000 0000005A
+    ~Items:5:VoltShroom:A ~HP:Standard:2 ~FP:Standard:2 ~CoinBonus:0:4
+    ~Movement:Blitty
+    ~AnimationTable:Blitty % .Sprite:Swooper
+    00000000 00000000 00000000 00000000 % no tattle string
+}
+
+
+
+
+#new:Script $Script_Init_Goombule {
+    Return
+    End
+}
+
+#new:NpcSettings $NpcSettings_Goombule {
+    00000000 00140014 00000000 00000000 0 0 00000000 8007809C
+    00000800 00000000 00160000
+}
+
+#new:NpcGroup $NpcGroup_Goombule {
+    .NpcID:Goombule $NpcSettings_Goombule ~Vec3f:Goombule
+    00200C08 %flags
+    $Script_Init_Goombule
+    00000000 00000000 0000005A
+    ~Items:5:VoltShroom:A ~HP:Standard:2 ~FP:Standard:2 ~CoinBonus:0:4
+    ~Movement:Goombule
+    ~AnimationTable:Goombule % .Sprite:Swooper
+    00000000 00000000 00000000 00000000 % no tattle string
+}
+
+
+
+#new:Script $Script_Init_SGoombule {
+    Return
+    End
+}
+
+#new:NpcSettings $NpcSettings_SGoombule {
+    00000000 00140014 00000000 00000000 0 0 00000000 8007809C
+    00000800 00000000 00160000
+}
+
+#new:NpcGroup $NpcGroup_SGoombule {
+    .NpcID:SGoombule $NpcSettings_SGoombule ~Vec3f:SGoombule
+    00200C08 %flags
+    $Script_Init_SGoombule
+    00000000 00000000 0000005A
+    ~Items:5:VoltShroom:A ~HP:Standard:2 ~FP:Standard:2 ~CoinBonus:0:4
+    ~Movement:SGoombule
+    ~AnimationTable:SGoombule % .Sprite:Swooper
+    00000000 00000000 00000000 00000000 % no tattle string
+}
+
+
+
+
+#new:Script $Script_Init_Protobatter {
+    Return
+    End
+}
+
+#new:NpcSettings $NpcSettings_Protobatter {
+    00000000 00140014 00000000 00000000 0 0 00000000 8007809C
+    00000800 00000000 00160000
+}
+
+#new:NpcGroup $NpcGroup_Protobatter {
+    .NpcID:Protobatter $NpcSettings_Protobatter ~Vec3f:Protobatter
+    00200C08 %flags
+    $Script_Init_Protobatter
+    00000000 00000000 0000005A
+    ~Items:5:VoltShroom:A ~HP:Standard:2 ~FP:Standard:2 ~CoinBonus:0:4
+    ~Movement:Protobatter
+    ~AnimationTable:Protobatter % .Sprite:Swooper
+    00000000 00000000 00000000 00000000 % no tattle string
+}
+
+
+
+
+#new:Script $Script_Init_Tenderling {
+    Return
+    End
+}
+
+#new:NpcSettings $NpcSettings_Tenderling {
+    00000000 00140014 00000000 00000000 0 0 00000000 8007809C
+    00000800 00000000 00160000
+}
+
+#new:NpcGroup $NpcGroup_Tenderling {
+    .NpcID:Tenderling $NpcSettings_Tenderling ~Vec3f:Tenderling
+    00200C08 %flags
+    $Script_Init_Tenderling
+    00000000 00000000 0000005A
+    ~Items:5:VoltShroom:A ~HP:Standard:2 ~FP:Standard:2 ~CoinBonus:0:4
+    ~Movement:Tenderling
+    ~AnimationTable:Tenderling % .Sprite:Swooper
+    00000000 00000000 00000000 00000000 % no tattle string
+}
+
+
+
+#new:Script $Script_Init_Chuboomba {
+    Return
+    End
+}
+
+#new:NpcSettings $NpcSettings_Chuboomba {
+    00000000 00140014 00000000 00000000 0 0 00000000 8007809C
+    00000800 00000000 00160000
+}
+
+#new:NpcGroup $NpcGroup_Chuboomba {
+    .NpcID:Chuboomba $NpcSettings_Chuboomba ~Vec3f:Chuboomba
+    00200C08 %flags
+    $Script_Init_Chuboomba
+    00000000 00000000 0000005A
+    ~Items:5:VoltShroom:A ~HP:Standard:2 ~FP:Standard:2 ~CoinBonus:0:4
+    ~Movement:Chuboomba
+    ~AnimationTable:Chuboomba % .Sprite:Swooper
+    00000000 00000000 00000000 00000000 % no tattle string
+}
+
+#new:NpcGroupList $NpcGroupList_Swoopers {
+    0000000B %amount of NPC groups
+    $NpcGroup_Starlow %npc group
+    $NpcGroup_MarioNPC
+    $NpcGroup_Nuts
+    $NpcGroup_Challenge
+    $NpcGroup_Guardian
+    $NpcGroup_Blitty
+    $NpcGroup_Goombule
+    $NpcGroup_SGoombule
+    $NpcGroup_Protobatter
+    $NpcGroup_Tenderling
+    $NpcGroup_Chuboomba
+    00000000 %battleID
+
+    %terminate list
+    00000000 00000000 00000000
+}
