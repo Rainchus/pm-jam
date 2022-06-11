@@ -12,6 +12,8 @@
 #define .Anim:StarlowNTalk 00010008
 #define .Anim:StarlowAIdle 00010009
 #define .Anim:StarlowATalk 0001000A
+#define .Anim:StarlowMIdle 0001000B
+#define .Anim:StarlowMTalk 0001000C
 #define .Anim:StarlowFIdle 0001000D
 #define .Anim:StarlowFTalk 0001000E
 #define .Anim:StarlowFreeze 0001000F
@@ -48,3 +50,19 @@
 
 #define .Anim:GoombuleIdle 00260001
 #define .Anim:GoombuleRun 00260003
+
+#define .Anim:SGoombuleIdle 00270001
+#define .Anim:SGoombuleRun 00270003
+
+#define .Anim:NutsIdle 00120001
+#define .Anim:NutsTalk 00120002
+
+#define .Anim:GuardianMain 00120001
+#define .Anim:GuardianTurn 00120002
+#define .Anim:GuardianSpin 00120003
+
+#define .Anim:ChallengeIdle 00130002
+#define .Anim:ChallengeTalk 00130004
+#define .Anim:ChallengeOpen 00130006
+#define .Anim:ChallengeClose 00130007
+#define .Anim:ChallengeClosedIdle 00130001

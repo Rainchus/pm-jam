@@ -126,23 +126,173 @@
 
 
 #new:Script $Cutscene1{
-    Call DisablePartnerAI ( 0 ) %disable flying partner ai (value 1 would disable walking partner AI)
 	Call DisablePlayerInput (.True)
     Call PlayerMoveTo (-60` 0` 60`)
-    Call NpcFlyTo (.NpcID:Starlow ~Vec3d:StarlowScenePos 60` 0` .Easing:CosInOut)
-    Wait 40`
-    %Starlow says something
-    Call NpcFlyTo (.NpcID:Nuts ~Vec3d:NutsScenePos 60` 0` .Easing:CosInOut)
-    %Nutsoglobin says something
-    Call NpcFlyTo (.NpcID:Challenge ~Vec3d:NutsScenePos 60` 0` .Easing:CosInOut)
-    %Conversation ensues
-    Call SetNpcPos(.NpcID:Goombule 92` 150` 21` )
-    Call NpcFlyTo (.NpcID:Goombule ~Vec3d:EnemyScenePos 60` 0` .Easing:QuarticIn)
-    Call SetPlayerAnimation (.PlayerAnim:ReadyJump)
-    Wait 10`
-    Call SetNpcAnimation (.NpcID:Starlow .Anim:StarlowAIdle)
-    Call SetNpcAnimation (.NpcID:Goombule .Anim:GoombuleRun)
-    Call NpcMoveTo (.NpcID:Goombule ~Vec3d:MarioScenePos)
+	Call SpeakToPlayer (.NpcID:Nuts .Anim:NutsTalk .Anim:NutsIdle 0 00330001 )
+	%Starlow Turn to Mario
+	Call SpeakToPlayer (.NpcID:Starlow .Anim:StarlowATalk .Anim:StarlowAIdle 0 00330002)
+	%Starlow Turn Back To Npcs
+	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowATalk .Anim:StarlowAIdle 0 .NpcID:Nuts 00330003)
+	Call SetNpcAnimation ( .NpcID:Starlow .Anim:StarlowNIdle )
+	Call SpeakToPlayer (.NpcID:Nuts .Anim:NutsTalk .Anim:NutsIdle 0 00330004)
+	Call SetNpcAnimation (.NpcID:Challenge .Anim:ChallengeClosedIdle)
+	%Have challenge Globin Fly In
+	Call SetNpcAnimation (.NpcID:Challenge .Anim:ChallengeOpen)
+	Wait `24
+	Call SetNpcAnimation (.NpcID:Challenge .Anim:ChallengeIdle)
+	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChallengeIdle 0 00330005)
+	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowFTalk .Anim:StarlowFIdle 0 .NpcID:Challenge 00330006)
+	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChallengeIdle 0 00330007)
+	Call SpeakToPlayer (.NpcID:Nuts .Anim:NutsTalk .Anim:NutsIdle 0 00330008 )
+	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChallengeIdle 0 00330009)
+	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowNTalk .Anim:StarlowNIdle 0 .NpcID:Challenge 0033000A)
+	Call SpeakToPlayer (.NpcID:Nuts .Anim:NutsTalk .Anim:NutsIdle 0 0033000B )
+	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChallengeIdle 0 0033000C)
+	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowNTalk .Anim:StarlowNIdle 0 .NpcID:Challenge 0033000D)
+	%Starlow Turn Towards Mario
+	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowATalk .Anim:StarlowAIdle 0 .NpcID:Challenge 0033000E)
+	%Starlow Turn Back to the NPCs
+	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChallengeIdle 0 0033000F)
+	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowATalk .Anim:StarlowAIdle 0 .NpcID:Challenge 00330010)
+	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChallengeIdle 0 00330011)
+	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowATalk .Anim:StarlowAIdle 0 .NpcID:Challenge 00330012)
+	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChallengeIdle 0 00330013)
+	%NPc drop down from pipe
+	Call SetNpcAnimation (.NpcID:Goombule .Anim:GoombuleRun)
+	%Npc Move to Mario
+	%Encounter Begins
+	%Story Byte Set
+    Return
+    End
+}
+
+#new:Script $Cutscene2{
+	Call DisablePlayerInput (.True)
+    Call SetPlayerPos (-60` 0` 60`)
+	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowHTalk .Anim:StarlowHIdle 0 .NpcID:Challenge 00330014)
+	Call SpeakToPlayer (.NpcID:Nuts .Anim:NutsTalk .Anim:NutsIdle 0 00330015 )
+	%NPc drop down from pipe
+	Call SetNpcAnimation (.NpcID:SGoombule .Anim:GoombuleRun)
+	%Npc Move to Mario
+	%Encounter Begins
+	%Story Byte Set
+    Return
+    End
+}
+
+#new:Script $Cutscene3{
+	Call DisablePlayerInput (.True)
+    Call SetPlayerPos (-60` 0` 60`)
+	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChalengeIdle 0 00330016 )
+	Call SpeakToPlayer (.NpcID:Nuts .Anim:NutsTalk .Anim:NutsIdle 0 00330017 )
+	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowFTalk .Anim:StarlowFIdle 0 .NpcID:Challenge 00330018)
+	Call SpeakToPlayer (.NpcID:Nuts .Anim:NutsTalk .Anim:NutsIdle 0 00330019 )
+	%Show Upgrade Text
+	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChalengeIdle 0 0033001A )
+	Call SpeakToPlayer (.NpcID:Nuts .Anim:NutsTalk .Anim:NutsIdle 0 0033001B )
+	Call DisablePlayerInput (.False)
+
+	%wait for interact with Nutsoglobin
+		%Show string giving the player a choice of what to do
+		%NPc drop down from pipe
+		Call SetNpcAnimation (.NpcID:SGoombule .Anim:GoombuleRun)
+		%Npc Move to Mario
+		%Encounter Begins
+		%Story Byte Set
+   		Return
+    	End
+}
+
+#new:Script $Cutscene4{
+	Call DisablePlayerInput (.True)
+    Call SetPlayerPos (-60` 0` 60`)
+	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChallengeIdle 0 0033001C)
+	Call SpeakToPlayer (.NpcID:Nuts .Anim:NutsTalk .Anim:NutsIdle 0 0033001D)
+	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChallengeIdle 0 0033001E)
+	%NPc drop down from pipe
+	Call SetNpcAnimation (.NpcID:SGoombule .Anim:GoombuleRun)
+	%Npc Move to Mario
+	%Encounter Begins
+	%Story Byte Set
+    Return
+    End
+}
+
+#new:Script $Cutscene5{
+	Call DisablePlayerInput (.True)
+    Call SetPlayerPos (-60` 0` 60`)
+	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChallengeIdle 0 0033001F)
+	Call SpeakToPlayer (.NpcID:Nuts .Anim:NutsTalk .Anim:NutsIdle 0 00330020)
+	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChallengeIdle 0 00330021)
+	Call SetNpcAnimation (.NpcID:Starlow .Anim:StarlowAIdle)
+	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowATalk .Anim:StarlowAIdle 0 .NpcID:Challenge 00330022)
+	Call SpeakToPlayer (.NpcID:Nuts .Anim:NutsTalk .Anim:NutsIdle 0 00330023)
+	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowATalk .Anim:StarlowAIdle 0 .NpcID:Challenge 00330024)
+	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChallengeIdle 0 00330025)
+	Call SpeakToPlayer (.NpcID:Nuts .Anim:NutsTalk .Anim:NutsIdle 0 00330026)
+	%Display Upgrade String
+	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChallengeIdle 0 00330028)
+	
+	%Wait for Interact with Challenge Globin
+		%NPc drop down from pipe
+		Call SetNpcAnimation (.NpcID:SGoombule .Anim:GoombuleRun)
+		%Npc Move to Mario
+		%Encounter Begins
+		%Story Byte Set
+		Return
+		End
+}
+
+#new:Script $Cutscene5{
+	Call DisablePlayerInput (.True)
+    Call SetPlayerPos (-60` 0` 60`)
+	Call SpeakToPlayer (.NpcID:Nuts .Anim:NutsTalk .Anim:NutsIdle 0 00330029)
+	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChallengeIdle 0 0033002A)
+	Call SpeakToPlayer (.NpcID:Guardian .Anim:GuardianMain .Anim:GuardianMain 0 0033002B)
+	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowHTalk .Anim:StarlowHIdle 0 .NpcID:Challenge 0033002C)
+	%Guardian Spins and teleports a few times around the player
+	Call SpeakToPlayer (.NpcID:Guardian .Anim:GuardianMain .Anim:GuardianMain 0 0033002D)
+	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowNTalk .Anim:StarlowNIdle 0 .NpcID:Challenge 0033002E)
+	Call SpeakToPlayer (.NpcID:Guardian .Anim:GuardianMain .Anim:GuardianMain 0 0033002F)
+	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowNTalk .Anim:StarlowNIdle 0 .NpcID:Challenge 00330030)
+	Call SpeakToPlayer (.NpcID:Guardian .Anim:GuardianMain .Anim:GuardianMain 0 00330031)
+	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowNTalk .Anim:StarlowNIdle 0 .NpcID:Challenge 00330032)
+	Call SpeakToPlayer (.NpcID:Guardian .Anim:GuardianMain .Anim:GuardianMain 0 00330033)
+	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowNTalk .Anim:StarlowNIdle 0 .NpcID:Challenge 00330034)
+	Call SpeakToPlayer (.NpcID:Guardian .Anim:GuardianMain .Anim:GuardianMain 0 00330035)
+	%Power Up Sound, See if you can make an effect obscure the Guardian for a moment
+	%Spawn in Mario Memory
+	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowMTalk .Anim:StarlowMIdle 0 .NpcID:Challenge 00330036)
+
+	%Npc Move to Mario
+	%Encounter Begins
+	%Story Byte Set
+    Return
+    End
+}
+
+#new:Script $Cutscene6{
+	Call DisablePlayerInput (.True)
+    Call SetPlayerPos (-60` 0` 60`)
+	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowHTalk .Anim:StarlowHIdle 0 .NpcID:Guardian 00330037)
+	%MarioMem should do this: Call SpeakToPlayer (.NpcID:Guardian .Anim:GuardianMain .Anim:GuardianMain 0 00330038)
+	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowNTalk .Anim:StarlowNIdle 0 .NpcID:Guardian 00330037)
+	Call SpeakToPlayer (.NpcID:Guardian .Anim:GuardianMain .Anim:GuardianMain 0 00330038)
+	Call SetNpcAnimation ( #npcID animation )
+	Call SpeakToPlayer (.NpcID:Starlow .Anim:StarlowFTalk .Anim:StarlowFIdle 0 00330037)
+	%coords of miracle cure spawn Call PlayerMoveTo ( goalX goalZ time )
+
+	SetF    *Var[0] *Fixed[25.0]  % speed
+	SetF    *Var[1] *Fixed[255.0] % fully dark
+	ExecWait $Script_FadeScreenOut
+
+	%Play a bunch of sounds
+	Call  FadeOutMusic  ( 00000000 500` ) % usually between 500-1000
+	Call  ClearAmbientSounds ( 250` )
+	Call SetMusicTrack ( 0 .Song:PeachsCastleParty 0 8 )
+	Call FadeInMusic ( 0 .Song:PeachsCastleParty 0 5` 0 0 )
+	
+	%final messages Call ShowMessageAtScreenPos ( stringID screenPosX screenPosY )
 
     Return
     End
