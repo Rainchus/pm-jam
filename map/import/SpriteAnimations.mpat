@@ -54,6 +54,9 @@
 #define .Anim:SGoombuleIdle 00270001
 #define .Anim:SGoombuleRun 00270003
 
+#define .Anim:TenderlingIdle 00290001
+#define .Anim:TenderlingRun 00290003
+
 #define .Anim:NutsIdle 00120001
 #define .Anim:NutsTalk 00120002
 

@@ -39,6 +39,7 @@ false	% reversed
 
 161 = Falling
 162 = HitGround
+163 = Pipe
 
 172 = Squeak
 

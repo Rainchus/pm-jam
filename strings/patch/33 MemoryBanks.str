@@ -10,7 +10,7 @@ passed by here![Wait][END]
 {
 [Style Right]This guy again!?[Pause 5] All he cares[BR]
 about is his stupid trivia...[Pause 30][BR]
-Let’s make this quick.[Wait][END]
+Let's make this quick.[Wait][END]
 }
 
 #message:33:003
@@ -40,7 +40,7 @@ efforts to escape![Wait][END]
 
 #message:33:006
 {
-[Style Right]Challenge Globin???[END]
+[Style Right]Challenge Globin???[Wait][END]
 }
 
 #message:33:007
@@ -51,14 +51,14 @@ Nutsoglobin and I have had to[BR]
 pass the time here[Pause 5].[BR][Wait][Next]
 We've been very lonely since[BR]
 the last time you've seen us.[Pause 5] We[BR]
-have been busy, though.[END]
+have been busy, though.[Wait][END]
 }
 
 #message:33:008
 {
 [Style Right]We've prepared challenges for[BR]
 you globins, in the chance that[BR]
-you'd ever return.[END]
+you'd ever return.[Wait][END]
 }
 
 #message:33:009
@@ -94,14 +94,14 @@ getting out of here.[Wait][END]
 
 #message:33:00D
 {
-[Style Right]Uh...alright.[Pause 5]Well, we trumped[BR]
+[Style Right]Uh...alright.[Pause 5] Well, we trumped[BR]
 you guys last time, so this[BR]
 should be a piece of cake![Wait][End]
 }
 
 #message:33:00E
 {
-[Style Right]Hopefully it’ll be a better[BR]
+[Style Right]Hopefully it'll be a better[BR]
 piece of cake than the one[BR]
 that brought us here...[Wait][END]
 }
@@ -115,7 +115,7 @@ spectacular, then![BR][Wait][Next]
 You’ll test the limits of your[BR]
 skills and endurance, hoping to[BR]
 triumph against these foes.[Pause 5][BR]
-We’ve refined our battles to-[Wait][End]
+We’ve refined our battles to-[END]
 }
 #message:33:010
 {

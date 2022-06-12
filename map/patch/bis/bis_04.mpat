@@ -111,7 +111,7 @@
     Exec $Script_EnterMap
 	Switch *GB_StoryProgress
 	Case == FFFFFFA0
-		Exec $Cutscene1
+		Exec $Cutscene3
 	Case == FFFFFFA1
 		Exec $Cutscene2
 	Case == FFFFFFA2
@@ -132,17 +132,42 @@
 
 #new:Script $Cutscene1 { %StoryProgress A0
 	Call DisablePlayerInput (.True)
-	%make mario fall from the sky
-    Call PlayerMoveTo (-60` 0` 60`)
+	Call DisablePartnerAI ( 0 ) %disable flying partner ai (value 1 would disable walking partner AI)
+	Call DisablePlayerInput (.True)
+	Call DisablePlayerPhysics (.True )
+	Call SetPlayerPos ( 0` -300` -0` )
+	Call TeleportPartnerToPlayer ()
+	Call SetNpcPos (.NpcID:Goombule 92` 150` 21` )
+	Call SetNpcAnimation (.NpcID:MarioNPC .Anim:MarioNPCFall)
+	Call NpcFlyTo ( .NpcID:MarioNPC ~Vec3d:MarioScenePos 60` 0 .Easing:Linear)
+	Call SetNpcPos (.NpcID:MarioNPC 0` -300` -0` )
+	Call SetPlayerPos(~Vec3d:MarioScenePos)
+	Call InterpPlayerYaw ( 90` 1` )
+	Call SetPlayerAnimation (.PlayerAnim:FallDown)
+	Call PlaySoundAtNpc (.NpcID:MarioNPC .Sound:HitGround 0 )
+	Call PlayEffect (~FX:SmokeImpact:Large ~Vec3d:MarioScenePos 00000020 00000004 00000000 0000000A 00000000 00000000 00000000 00000000 00000000)
+	Call SetNpcAnimation(.NpcID:Starlow .Anim:StarlowFreeze)
+	Call NpcFlyTo ( .NpcID:Starlow ~Vec3d:StarlowScenePos 60` 0 .Easing:QuadraticOut)
+	Call SetNpcAnimation (.NpcID:Starlow .Anim:StarlowNIdle)
+	Call SetPlayerAnimation (.PlayerAnim:GetUp)
+	Wait 10`
+	Call SetPlayerAnimation (.PlayerAnim:DustOff)
+	Wait 15`
+	Call InterpPlayerYaw ( -90` 8` )
+	Wait 15`
+	Call InterpPlayerYaw ( 90` 8` )
+	Wait 15`
+	Call NpcFlyTo ( .NpcID:Nuts ~Vec3d:NutsScenePos 40` 0 .Easing:CosInOut )
+	Wait 4`
 	Call SpeakToPlayer (.NpcID:Nuts .Anim:NutsTalk .Anim:NutsIdle 0 00330001 )
-	%Starlow Turn to Mario
+	Call InterpPlayerYaw ( -90` 8` )
 	Call SpeakToPlayer (.NpcID:Starlow .Anim:StarlowATalk .Anim:StarlowAIdle 0 00330002)
-	%Starlow Turn Back To Npcs
+	Call InterpPlayerYaw ( 90` 8` )
 	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowATalk .Anim:StarlowAIdle 0 .NpcID:Nuts 00330003)
 	Call SetNpcAnimation ( .NpcID:Starlow .Anim:StarlowNIdle )
 	Call SpeakToPlayer (.NpcID:Nuts .Anim:NutsTalk .Anim:NutsIdle 0 00330004)
 	Call SetNpcAnimation (.NpcID:Challenge .Anim:ChallengeClosedIdle)
-	%Have challenge Globin Fly In
+	Call NpcFlyTo (.NpcID:Challenge ~Vec3d:ChallengeScenePos 40` 0 .Easing:CosInOut )
 	Call SetNpcAnimation (.NpcID:Challenge .Anim:ChallengeOpen)
 	Wait 24`
 	Call SetNpcAnimation (.NpcID:Challenge .Anim:ChallengeIdle)
@@ -155,17 +180,22 @@
 	Call SpeakToPlayer (.NpcID:Nuts .Anim:NutsTalk .Anim:NutsIdle 0 0033000B )
 	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChallengeIdle 0 0033000C)
 	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowNTalk .Anim:StarlowNIdle 0 .NpcID:Challenge 0033000D)
-	%Starlow Turn Towards Mario
 	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowATalk .Anim:StarlowAIdle 0 .NpcID:Challenge 0033000E)
-	%Starlow Turn Back to the NPCs
 	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChallengeIdle 0 0033000F)
 	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowATalk .Anim:StarlowAIdle 0 .NpcID:Challenge 00330010)
 	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChallengeIdle 0 00330011)
 	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowATalk .Anim:StarlowAIdle 0 .NpcID:Challenge 00330012)
 	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChallengeIdle 0 00330013)
-	%NPc drop down from pipe
+	Wait 10`
+	Call SetNpcPos (.NpcID:Goombule 92` 150` 21` )
+	Call PlaySoundAtNpc (.NpcID:Goombule .Sound:Pipe 0 )
+	Call NpcFlyTo (.NpcID:Goombule ~Vec3d:EnemyScenePos 15` 0 .Easing:Linear )
+	Call PlaySound (.Sound:HitGround)
+	Call PlayEffect (~FX:SmokeImpact:Large ~Vec3d:EnemyScenePos 00000020 00000004 00000000 0000000A 00000000 00000000 00000000 00000000 00000000)
+	Wait 45`
+	Call SetPlayerAnimation (.PlayerAnim:BeforeJump)
 	Call SetNpcAnimation (.NpcID:Goombule .Anim:GoombuleRun)
-	%Npc Move to Mario
+	Call NpcMoveTo (.NpcID:Goombule -60` 0` 25` )
 	%Encounter Begins
 	Set *Flag_Goombule_Fight 1
 	%Story Byte Set
@@ -174,13 +204,27 @@
 }
 
 #new:Script $Cutscene2 { %StoryProgress A1
+	Call DisablePartnerAI ( 0 )
 	Call DisablePlayerInput (.True)
-    Call SetPlayerPos (-60` 0` 60` )
+	Call DisablePlayerPhysics (.True )
+	Call SetPlayerPos(0` -100` 0`)
+	Call TeleportPartnerToPlayer ()
+	Call SetPlayerPos(~Vec3d:MarioScenePos)
+	Call SetNpcPos (.NpcID:Starlow ~Vec3d:StarlowScenePos)
+	Call SetNpcPos (.NpcID:Challenge ~Vec3d:ChallengeScenePos )
+	Call SetNpcPos (.NpcID:Nuts ~Vec3d:NutsScenePos  )
 	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowHTalk .Anim:StarlowHIdle 0 .NpcID:Challenge 00330014)
 	Call SpeakToPlayer (.NpcID:Nuts .Anim:NutsTalk .Anim:NutsIdle 00000005 00330015 )
-	%NPc drop down from pipe
-	Call SetNpcAnimation (.NpcID:SGoombule .Anim:GoombuleRun)
-	%Npc Move to Mario
+	Wait 10`
+	Call SetNpcPos (.NpcID:SGoombule 92` 150` 21` )
+	Call PlaySoundAtNpc (.NpcID:SGoombule .Sound:Pipe 0 )
+	Call NpcFlyTo (.NpcID:SGoombule ~Vec3d:EnemyScenePos 15` 0 .Easing:Linear )
+	Call PlaySound (.Sound:HitGround)
+	Call PlayEffect (~FX:SmokeImpact:Large ~Vec3d:EnemyScenePos 00000020 00000004 00000000 0000000A 00000000 00000000 00000000 00000000 00000000)
+	Wait 30`
+	Call SetPlayerAnimation (.PlayerAnim:BeforeJump)
+	Call SetNpcAnimation (.NpcID:SGoombule .Anim:SGoombuleRun)
+	Call NpcMoveTo (.NpcID:SGoombule -60` 0` 25` )
 	%Encounter Begins
 	%Story Byte Set
     Return
@@ -188,15 +232,22 @@
 }
 
 #new:Script $Cutscene3 { %StoryProgress A2
+	Call DisablePartnerAI ( 0 )
 	Call DisablePlayerInput (.True)
-    Call SetPlayerPos (-60` 0` 60`)
+	Call DisablePlayerPhysics (.True )
+	Call SetPlayerPos(0` -100` 0`)
+	Call TeleportPartnerToPlayer ()
+	Call SetPlayerPos(~Vec3d:MarioScenePos)
+	Call SetNpcPos (.NpcID:Starlow ~Vec3d:StarlowScenePos)
+	Call SetNpcPos (.NpcID:Challenge ~Vec3d:ChallengeScenePos )
+	Call SetNpcPos (.NpcID:Nuts ~Vec3d:NutsScenePos  )
 	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChallengeIdle 0 00330016 )
 	Call SpeakToPlayer (.NpcID:Nuts .Anim:NutsTalk .Anim:NutsIdle 0 00330017 )
 	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowFTalk .Anim:StarlowFIdle 0 .NpcID:Challenge 00330018)
 	Call SpeakToPlayer (.NpcID:Nuts .Anim:NutsTalk .Anim:NutsIdle 0 00330019 )
-	%Show Upgrade Text
-	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChallengeIdle 0 0033001A )
-	Call SpeakToPlayer (.NpcID:Nuts .Anim:NutsTalk .Anim:NutsIdle 0 0033001B )
+	Call SpeakToNpc (.NpcID:Tenderling .Anim:TenderlingIdle .Anim:TenderlingIdle 0 .NpcID:Starlow 0033001A )
+	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChallengeIdle 0 0033001B )
+	Call SpeakToPlayer (.NpcID:Nuts .Anim:NutsTalk .Anim:NutsIdle 0 0033001C )
 	Call DisablePlayerInput (.False)
 
 	%wait for interact with Nutsoglobin

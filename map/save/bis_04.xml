@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Map name="bis_04" author="unnamed" background="obk_bg" textures="kmr_tex">
 	<Editor>
-		<Camera pos="75.193398,188.807388,508.276245" pitch="42.000011" yaw="358.880127"/>
+		<Camera pos="38.602722,146.969849,274.702332" pitch="26.960022" yaw="2.720102"/>
 		<Camera pos="200.106750,65536.000000,14.088737"/>
 		<Camera pos="65536.000000,1237.749268,-812.513672"/>
 		<Camera pos="270.127808,55.716232,65536.000000"/>
@@ -22741,10 +22741,10 @@
 		<Marker ver="4" type="Position" pos="92,0,21" yaw="-180.000000">
 			<MapObject name="EnemyScenePos" id="10"/>
 		</Marker>
-		<Marker ver="4" type="Position" pos="54,40,0" yaw="180.000000">
+		<Marker ver="4" type="Position" pos="54,27,0" yaw="180.000000">
 			<MapObject name="NutsScenePos" id="F"/>
 		</Marker>
-		<Marker ver="4" type="Position" pos="20,47,-14" yaw="180.000000">
+		<Marker ver="4" type="Position" pos="20,34,-14" yaw="180.000000">
 			<MapObject name="ChallengeScenePos" id="E"/>
 		</Marker>
 		<Marker ver="4" type="Position" pos="-104,35,0" yaw="180.000000">
@@ -22753,12 +22753,12 @@
 		<Marker ver="4" type="Position" pos="-60,0,0" yaw="-180.000000">
 			<MapObject name="MarioScenePos" id="C"/>
 		</Marker>
-		<Marker ver="4" type="NPC" pos="2,396,0" yaw="0.000000">
+		<Marker ver="4" type="NPC" pos="-200,396,0" yaw="0.000000">
 			<MapObject name="Starlow" id="B"/>
 			<Movement type="Stationary" data="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
 			<Sprite sprite="1" palette="0" animations="1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
 		</Marker>
-		<Marker ver="4" type="NPC" pos="2,437,0" yaw="0.000000">
+		<Marker ver="4" type="NPC" pos="-100,437,0" yaw="0.000000">
 			<MapObject name="MarioNPC" id="A"/>
 			<Movement type="Stationary" data="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
 			<Sprite sprite="D3" palette="0" animations="1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
@@ -22808,7 +22808,7 @@
 			<Movement type="Stationary" data="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
 			<Sprite sprite="12" palette="0" animations="1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
 		</Marker>
-		<Marker ver="4" type="Entry" pos="-350,0,55" yaw="90.000000">
+		<Marker ver="4" type="Entry" pos="0,0,0" yaw="90.000000">
 			<MapObject name="MainEntry" id="0"/>
 		</Marker>
 		<Marker ver="4" type="Group">
