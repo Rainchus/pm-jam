@@ -186,11 +186,14 @@
 	EndIf
 	If *AreaFlag[.gate5Switch3Flag2] == 0
 		If *AreaFlag[.gate5Switch4Flag2] == 0
+			Call PlaySoundAtModel (~Model:FinalSwitchCube .Sound:Correct 0)
 			Set *AreaFlag[.gate5Switch1Flag2] 1
 		Else
+			Call PlaySoundAtModel (~Model:FinalSwitchCube .Sound:Wrong 0)
 			ExecWait $ClearAllGate5SwitchFlag
 		EndIf
 	Else
+		Call PlaySoundAtModel (~Model:FinalSwitchCube .Sound:Wrong 0)
 		ExecWait $ClearAllGate5SwitchFlag
 	EndIf
 	Return
@@ -204,14 +207,18 @@
 	If *AreaFlag[.gate5Switch1Flag2] == 1
 		If *AreaFlag[.gate5Switch3Flag2] == 0
 			If *AreaFlag[.gate5Switch4Flag2] == 0
+				Call PlaySoundAtModel (~Model:FinalSwitchCube .Sound:Correct 0)
 				Set *AreaFlag[.gate5Switch2Flag2] 1
 			Else
+				Call PlaySoundAtModel (~Model:FinalSwitchCube .Sound:Wrong 0)
 				ExecWait $ClearAllGate5SwitchFlag
 			EndIf
 		Else
+			Call PlaySoundAtModel (~Model:FinalSwitchCube .Sound:Wrong 0)
 			ExecWait $ClearAllGate5SwitchFlag
 		EndIf
 	Else
+		Call PlaySoundAtModel (~Model:FinalSwitchCube .Sound:Wrong 0)
 		ExecWait $ClearAllGate5SwitchFlag
 	EndIf
 	Return
@@ -225,14 +232,18 @@
 	If *AreaFlag[.gate5Switch1Flag2] == 1
 		If *AreaFlag[.gate5Switch2Flag2] == 1
 			If *AreaFlag[.gate5Switch4Flag2] == 0
+				Call PlaySoundAtModel (~Model:FinalSwitchCube .Sound:Correct 0)
 				Set *AreaFlag[.gate5Switch3Flag2] 1
 			Else
+				Call PlaySoundAtModel (~Model:FinalSwitchCube .Sound:Wrong 0)
 				ExecWait $ClearAllGate5SwitchFlag
 			EndIf
 		Else
+			Call PlaySoundAtModel (~Model:FinalSwitchCube .Sound:Wrong 0)
 			ExecWait $ClearAllGate5SwitchFlag
 		EndIf
 	Else
+		Call PlaySoundAtModel (~Model:FinalSwitchCube .Sound:Wrong 0)
 		ExecWait $ClearAllGate5SwitchFlag
 	EndIf
 	Return
@@ -246,14 +257,18 @@
 	If *AreaFlag[.gate5Switch1Flag2] == 1
 		If *AreaFlag[.gate5Switch2Flag2] == 1
 			If *AreaFlag[.gate5Switch3Flag2] == 1
+				Call PlaySoundAtModel (~Model:FinalSwitchCube .Sound:Correct 0)
 				Set *AreaFlag[.gate5Switch4Flag2] 1
 			Else
+				Call PlaySoundAtModel (~Model:FinalSwitchCube .Sound:Wrong 0)
 				ExecWait $ClearAllGate5SwitchFlag
 			EndIf
 		Else
+			Call PlaySoundAtModel (~Model:FinalSwitchCube .Sound:Wrong 0)
 			ExecWait $ClearAllGate5SwitchFlag
 		EndIf
 	Else
+		Call PlaySoundAtModel (~Model:FinalSwitchCube .Sound:Wrong 0)
 		ExecWait $ClearAllGate5SwitchFlag
 	EndIf
 	Return

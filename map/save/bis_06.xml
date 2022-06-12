@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Map name="bis_06" author="unnamed" background="hos_bg" textures="bon_tex">
 	<Editor>
-		<Camera pos="821.571594,241.600540,-1361.139893" pitch="9.999999" yaw="90.000000"/>
+		<Camera pos="1310.051880,149.151627,-530.452942" pitch="30.639982" yaw="2.160019"/>
 		<Camera pos="1342.153076,65536.000000,0.912498"/>
 		<Camera pos="65536.000000,-3.994605,194.083405"/>
 		<Camera pos="1968.902588,-105.778732,65536.000000"/>
@@ -38,7 +38,7 @@
 				<Node name="ConeModel" id="1A"/>
 				<Node name="CubeModel" id="1B"/>
 				<Node name="CubeModel" id="1C"/>
-				<Node name="CubeModel" id="1D"/>
+				<Node name="FinalSwitchCube" id="1D"/>
 				<Node name="CubeModel" id="1E"/>
 				<Node name="ConeModel" id="1F"/>
 				<Node name="CubeModel" id="20"/>
@@ -1421,7 +1421,7 @@
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">
-			<MapObject name="CubeModel" id="1D"/>
+			<MapObject name="FinalSwitchCube" id="1D"/>
 			<ShapeMesh ver="3" texture="bon_platmain">
 				<DisplayList>
 					<F3DEX2 cmd="E7000000,0"/>

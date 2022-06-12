@@ -139,7 +139,7 @@
 }
 
 
-#new:Script $Cutscene1 { %StoryProgress A0
+#new:Script $Cutscene1 { %StoryProgress A0 - CUTSCENE DONE
 	Call DisablePlayerInput (.True)
 	Call DisablePartnerAI ( 0 ) %disable flying partner ai (value 1 would disable walking partner AI)
 	Call DisablePlayerInput (.True)
@@ -197,6 +197,7 @@
 	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChallengeIdle 0 00330013)
 	Wait 10`
 	Call SetNpcPos (.NpcID:Goombule 92` 150` 21` )
+	Call SetNpcYaw (.NpcID:Goombule -90` )
 	Call PlaySoundAtNpc (.NpcID:Goombule .Sound:Pipe 0 )
 	Call NpcFlyTo (.NpcID:Goombule ~Vec3d:EnemyScenePos 15` 0 .Easing:Linear )
 	Call PlaySound (.Sound:HitGround)
@@ -213,7 +214,7 @@
     End
 }
 
-#new:Script $Cutscene2 { %StoryProgress A1
+#new:Script $Cutscene2 { %StoryProgress A1 - CUTSCENE DONE
 	Call DisablePartnerAI ( 0 )
 	Call DisablePlayerInput (.True)
 	Call DisablePlayerPhysics (.True )
@@ -228,6 +229,7 @@
 	Call SpeakToPlayer (.NpcID:Nuts .Anim:NutsTalk .Anim:NutsIdle 00000005 00330015 )
 	Wait 10`
 	Call SetNpcPos (.NpcID:SGoombule 92` 150` 21` )
+	Call SetNpcYaw (.NpcID:SGoombule -90` )
 	Call PlaySoundAtNpc (.NpcID:SGoombule .Sound:Pipe 0 )
 	Call NpcFlyTo (.NpcID:SGoombule ~Vec3d:EnemyScenePos 15` 0 .Easing:Linear )
 	Call PlaySound (.Sound:HitGround)
@@ -286,7 +288,7 @@
     	End
 }
 
-#new:Script $Cutscene4 { %StoryProgress A3
+#new:Script $Cutscene4 { %StoryProgress A3 - CUTSCENE DONE
 	Call DisablePartnerAI ( 0 )
 	Call DisablePlayerInput (.True)
 	Call DisablePlayerPhysics (.True )
@@ -305,6 +307,7 @@
 	Wait 10`
 	Call SetNpcPos (.NpcID:Tenderling 92` 150` 21` )
 	Call PlaySoundAtNpc (.NpcID:Tenderling .Sound:Pipe 0 )
+	Call SetNpcYaw (.NpcID:Tenderling -90` )
 	Call NpcFlyTo (.NpcID:Tenderling ~Vec3d:EnemyScenePos 15` 0 .Easing:Linear )
 	Call PlaySound (.Sound:HitGround)
 	Call PlayEffect (~FX:SmokeImpact:Large ~Vec3d:EnemyScenePos 00000020 00000004 00000000 0000000A 00000000 00000000 00000000 00000000 00000000)
@@ -346,7 +349,7 @@
 		End
 }
 
-#new:Script $Cutscene6 { %StoryProgress A5
+#new:Script $Cutscene6 { %StoryProgress A5 - CUTSCENE DONE
 	Call DisablePartnerAI ( 0 )
 	Call DisablePlayerInput (.True)
 	Call DisablePlayerPhysics (.True )
@@ -411,7 +414,7 @@
     End
 }
 
-#new:Script $Cutscene7 { %StoryProgress A6
+#new:Script $Cutscene7 { %StoryProgress A6 - CUTSCENE DONE MINUS LAST CRASHING BIT
 	Call DisablePartnerAI ( 0 )
 	Call DisablePlayerInput (.True)
 	Call DisablePlayerPhysics (.True )
