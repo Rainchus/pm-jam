@@ -382,7 +382,7 @@
         EndIf
         Wait  1`
     EndLoop
-    Call  StartBossBattle   ( 2 ) %normal battle music
+    Call  StartBossBattle   ( 5 ) %normal battle music
     Return
     End
 }
