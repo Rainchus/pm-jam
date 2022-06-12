@@ -280,7 +280,7 @@
     00000001 $NpcGroup_Challenge 0
     00000001 $NpcGroup_Guardian 0
     00000001 $NpcGroup_Blitty 0
-    00000001 $NpcGroup_Goombule 002F0000
+    00000001 $NpcGroup_Goombule 0
     00000001 $NpcGroup_SGoombule 0
     00000001 $NpcGroup_Protobatter 0
     00000001 $NpcGroup_Tenderling 0

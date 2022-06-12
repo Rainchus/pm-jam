@@ -1,0 +1,183 @@
+#import MarioMemory.bpat
+#import LuigiMemory.bpat
+#import Protobatter.bpat
+#import Tenderling.bpat
+#import Chuboomba.bpat
+#import enemy/00_Goomba.bpat
+#import enemy/00_SpikedGoomba.bpat
+
+#new:Formation $Formation_00_0 {
+	$00_Goomba 00000001 0000000A 00000000 00000000 00000000 00000000
+	$00_SpikedGoomba 00000002 00000009 00000000 00000000 00000000 00000000
+}
+
+#new:Formation $Formation_01_0 {
+	$00_SpikedGoomba 00000001 0000000A 00000000 00000000 00000000 00000000
+	$Protobatter 00000002 00000009 00000000 00000000 00000000 00000000
+}
+
+#new:Formation $Formation_02_0 {
+	$Tenderling 00000001 0000000A 00000000 00000000 00000000 00000000
+	$Protobatter 00000002 00000009 00000000 00000000 00000000 00000000
+    $Tenderling 00000003 00000008 00000000 00000000 00000000 00000000
+}
+
+#new:Formation $Formation_03_0 {
+	$Tenderling 00000001 0000000A 00000000 00000000 00000000 00000000
+	$00_SpikedGoomba 00000002 00000009 00000000 00000000 00000000 00000000
+    $Chuboomba 00000003 00000008 00000000 00000000 00000000 00000000
+}
+
+#new:Formation $Formation_04_0 {
+	$Protobatter 00000001 0000000A 00000000 00000000 00000000 00000000
+	$Tenderling 00000002 00000009 00000000 00000000 00000000 00000000
+    $00_Goomba 00000003 00000008 00000000 00000000 00000000 00000000
+    $Chuboomba 00000004 00000007 00000000 00000000 00000000 00000000
+}
+
+#new:Formation $Formation_05_0 {
+	$MarioMemory 00000001 0000000A 00000000 00000000 00000000 00000000
+	$LuigiMemory 00000002 00000009 00000000 00000000 00000000 00000000
+}
+
+@ $FormationTable {
+    $SJIS_80220FD8 00000001 $Formation_00_0 $Stage_8022066C 00000000
+    $SJIS_80220FCC 00000002 $Formation_01 $Stage_8022066C 00000000
+    $SJIS_80220FC0 00000003 $Formation_02 $Stage_8022066C 00000000
+    $SJIS_80220FA8 00000002 $Formation_03 $Stage_8022066C 00000000
+    $SJIS_80220F9C 00000004 $Formation_04 $Stage_8022066C 00000000
+    $SJIS_80220F84 00000002 $Formation_05 $Stage_8022066C 00000000
+    $SJIS_80220F58 00000004 $Formation_06 $Stage_8022066C 00000000
+    $SJIS_80220F48 00000001 $Formation_07 $Stage_8022066C 00000000
+    $SJIS_80220F38 00000002 $Formation_08 $Stage_8022066C 00000000
+    $SJIS_80220F28 00000003 $Formation_09 $Stage_8022066C 00000000
+    $SJIS_80220F18 00000001 $Formation_0A $Stage_8022066C 00000000
+    $SJIS_80220F00 00000002 $Formation_0B $Stage_8022066C 00000000
+    00000000 00000000 00000000 00000000 00000000
+}
+
+#new:ForegroundModelList $ForegroundModelList {
+	00000000
+}
+
+#new:Script $Script_BeforeBattle {
+	Call	SetSpriteShading	( FFFFFFFF )
+	Call	SetCamBGColor		( 00000001 00000000 00000000 00000000 )
+    Return
+    End
+}
+
+#new:Script $Script_AfterBattle {
+    Return
+    End
+}
+
+#new:ASCII $ASCII_BIS04 {
+    "bis_04"
+}
+
+#new:ASCII $ASCII_Texture {
+	"kmr_tex"
+}
+
+#new:ASCII $ASCII_Shape {
+	"bis_bt01_shape"
+}
+
+#new:ASCII $ASCII_Hit {
+	"bis_bt01_hit"
+}
+
+@ $Script_BeforeBattle_80220188 {
+    Call  SetSpriteShading  ( FFFFFFFF )
+    Return
+    End
+}
+
+@ $ForegroundModelList_80220660 {
+	00000000
+}
+
+@ $Stage_8022066C
+{
+	$ASCII_80221084  % kmr_tex
+	$ASCII_Shape  % kmr_bt04_shape
+	$ASCII_Hit  % kmr_bt04_hit
+	$Script_BeforeBattle_802205D8
+	$Script_AfterBattle_80220650
+	"obk_bg"
+	0
+	00000000
+	00000000
+	00000000
+}
+
+% #new:Stage $Stage {
+% 	$ASCII_Texture  % nok_tex
+% 	$ASCII_Shape  % nok_bt01_shape
+% 	$ASCII_Hit  % nok_bt01_hit
+% 	$Script_BeforeBattle
+% 	$Script_AfterBattle
+% 	"obk_bg"  % nok_bg
+% 	$ForegroundModelList
+% 	00000000
+% 	00000000
+% 	00000000
+% }
+
+% @ $StageTable {
+%     $ASCII_80221004 $Stage_8021FDD0
+%     $ASCII_80220FFC $Stage_8022021C
+%     $ASCII_80220FF4 $Stage_8022066C
+%     $ASCII_80220FEC $Stage_80220A78
+%     $ASCII_80220FE4 $Stage_80220ECC
+%     00000000 00000000
+% }
+@ $Script_8021FEF8 {
+    Return
+    End
+}
+@ $Script_8021FE00 {
+    Return
+    End
+}
+@ $Script_80220030 {
+    Return
+    End
+}
+@ $Script_80220250 {
+    Return
+    End
+}
+@ $Script_80220348 {
+    Return
+    End
+}
+@ $Script_80220480 {
+    Return
+    End
+}
+@ $Script_802206A0 {
+    Return
+    End
+}
+@ $Script_80220798 {
+    Return
+    End
+}
+@ $Script_802208D0 {
+    Return
+    End
+}
+@ $Script_80220AA0 {
+    Return
+    End
+}
+@ $Script_80220B98 {
+    Return
+    End
+}
+@ $Script_80220CD0 {
+    Return
+    End
+}

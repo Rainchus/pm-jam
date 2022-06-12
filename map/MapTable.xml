@@ -576,6 +576,7 @@
 		<Map name="bis_04" nickname="Memory Bank"/>
 		<Map name="bis_05" nickname="Spin Jump Bonus"/>
 		<Map name="bis_06" nickname="Hammer Throw Bonus"/>
+		<Stage name="bis_bt01" nickname="bisBattleMap"/>
 	</Area>
 	<Resource name="mac_tex" compressed="false"/>
 	<Resource name="tik_tex" compressed="false"/>
