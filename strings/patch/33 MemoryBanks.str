@@ -305,8 +305,8 @@ are ready to prove your might.[Wait][END]
 
 #message:33:02A
 {
-[Style Right]Huh.[Pause 5] You weren’t supposed to[BR]
-win that one...[END]
+[Style Right]Huh.[Pause 5] You weren't supposed to[BR]
+win that one...[Wait][END]
 }
 
 #message:33:02B
@@ -321,7 +321,7 @@ win that one...[END]
 
 #message:33:02D
 {
-[Style Right]Oh globins...[END]
+[Style Right]Oh globins...[Wait][END]
 }
 
 #message:33:02E
@@ -331,7 +331,8 @@ win that one...[END]
 
 #message:33:02F
 {
-[Style Right]You defend this place, right?[Wait][END]
+[Style Right]You defend this place, right?[BR]
+Remember us?[Wait][END]
 }
 
 #message:33:030
@@ -344,7 +345,7 @@ stagnant in these past years.[Wait][END]
 
 #message:33:031
 {
-[Style Right]It’s alright, just don’t start[BR]
+[Style Right]It's alright, just don't start[BR]
 attacking us again, please![BR]
 We were just dealing with these[BR]
 two...[BR][Wait][Next]
@@ -364,7 +365,7 @@ if you tamper with any memories.[Wait][END]
 
 #message:33:033
 {
-[Style Right]Deemed...important?[END]
+[Style Right]Tamper with...memories?[Wait][END]
 }
 
 #message:33:034
@@ -379,12 +380,12 @@ Miracle Cure.[Wait][END]
 #message:33:035
 {
 [Style Right]Chanterelle makes viny-[Pause 10][BR]
-[Size 25][Shake]THE MIRACLE CURE??[/fx][END]
+[Size 25][Shake]THE MIRACLE CURE??[/fx][Wait][END]
 }
 
 #message:33:036
 {
-[Style Right]Affirmative.[END]
+[Style Right]Affirmative.[Wait][END]
 }
 
 #message:33:037
@@ -405,13 +406,13 @@ mind of my master with obedience.[Wait][END]
 #message:33:039
 {
 [Style Right]Please do not take this[BR]
-personally.[END]
+personally.[Wait][END]
 }
 
 #message:33:03A
 {
-[Style Right]We’ve done this before, we[BR]
-can do it again.[Pause 5] Let’s kick[BR]
+[Style Right]We've done this before, we[BR]
+can do it again.[Pause 5] Let's kick[BR]
 some tail.[Pause 5] [Shake][Size 20]IT’S SHOWTIME!![/fx][Wait][END]
 }
 

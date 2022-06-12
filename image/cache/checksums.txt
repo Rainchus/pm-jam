@@ -51,7 +51,7 @@ sra_bg
 title_bg
 284B63B4
 title_data
-D446B09C
+4933EB97
 yki_bg
 B30E90AE
 yos_bg
