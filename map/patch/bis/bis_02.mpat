@@ -66,6 +66,17 @@
 	End
 }
 
+#new:ASCII $Ascii_bis_03 {
+	"bis_03"
+}
+
+#new:Script $LeaveMap {
+    0:  Call  GotoMap   ( $Ascii_bis_03 00000000 )
+   14:  Wait  100`
+   20:  Return
+   28:  End
+}
+
 #new:NpcSettings $Bowser
 {
 	0 %unk_00
@@ -783,8 +794,8 @@
 			EndLoop
 	EndThread
 	Call EnableNpcShadow ( .NpcID:Peach 0 )
-	Wait 45`
-	%Call GotoMap ( "bis_03" 0` )
+	Wait 90`
+	Exec $LeaveMap
 
 	Return
 	End

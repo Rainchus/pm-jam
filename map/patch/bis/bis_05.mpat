@@ -1,5 +1,7 @@
 #import SpriteAnimations.mpat
 
+#define .oobYPositionRespawn -400
+
 #new:Header $Header
 {
 	[MainScript] $Script_Main
@@ -68,6 +70,20 @@
 
     Return
     End
+}
+
+#new:Script $CheckIfFallenOOB {
+	Thread
+		Loop
+			Call GetPlayerPos ( *Var0 *Var1 *Var2 )
+			If *Var1 < .oobYPositionRespawn
+				%Call SetPlayerPos ( ~Vec3d:RespawnMarker )
+			EndIf
+			Wait 1`
+		EndLoop
+	EndThread
+	Return
+	End
 }
 
 
@@ -156,5 +172,6 @@
     Exec $Script_EnterMap
     Exec $CheckPointRespawn
     Exec $FlagController
+    Exec $CheckIfFallenOOB
     End
 }
