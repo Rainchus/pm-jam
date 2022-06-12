@@ -91,6 +91,14 @@
 	End
 }
 
+#new:Function $setTitleScreenGameMode {
+	PUSH ra
+	JAL ~Func:set_game_mode
+	ORI a0, r0, 2 %GAME_MODE_TITLE_SCREEN
+	POP ra
+	JR RA
+	ORI v0, r0, 2
+	}
 
 #new:Script $Script_Main {
     Set  *GB_WorldLocation  .Location:GoombaRoad
@@ -108,6 +116,7 @@
     % EndThread
     Exec $Script_SetupMusic
 	Exec $TexturePanning
+	Call EnableModel ( ~Model:HideAll 0 )
     Exec $Script_EnterMap
 	Switch *GB_StoryProgress
 	Case == FFFFFFA0
@@ -121,7 +130,7 @@
 	Case == FFFFFFA4
 		Exec $Cutscene5
 	Case == FFFFFFA5
-		Exec $Cutscene6
+		Exec $Cutscene4
 	Case == FFFFFFA6
 		Exec $Cutscene7
 	EndSwitch
@@ -214,6 +223,7 @@
 	Call SetNpcPos (.NpcID:Starlow ~Vec3d:StarlowScenePos)
 	Call SetNpcPos (.NpcID:Challenge ~Vec3d:ChallengeScenePos )
 	Call SetNpcPos (.NpcID:Nuts ~Vec3d:NutsScenePos  )
+	Wait 30`
 	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowHTalk .Anim:StarlowHIdle 0 .NpcID:Challenge 00330014)
 	Call SpeakToPlayer (.NpcID:Nuts .Anim:NutsTalk .Anim:NutsIdle 00000005 00330015 )
 	Wait 10`
@@ -244,6 +254,7 @@
 	Call SetNpcPos (.NpcID:Starlow ~Vec3d:StarlowScenePos)
 	Call SetNpcPos (.NpcID:Challenge ~Vec3d:ChallengeScenePos )
 	Call SetNpcPos (.NpcID:Nuts ~Vec3d:NutsScenePos  )
+	Wait 30`
 	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChallengeIdle 0 00330016 )
 	Call SpeakToPlayer (.NpcID:Nuts .Anim:NutsTalk .Anim:NutsIdle 0 00330017 )
 	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowFTalk .Anim:StarlowFIdle 0 .NpcID:Challenge 00330018)
@@ -276,15 +287,31 @@
 }
 
 #new:Script $Cutscene4 { %StoryProgress A3
+	Call DisablePartnerAI ( 0 )
 	Call DisablePlayerInput (.True)
-    Call SetPlayerPos (-60` 0` 60`)
-	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChallengeIdle 0 0033001C)
-	Call SpeakToPlayer (.NpcID:Nuts .Anim:NutsTalk .Anim:NutsIdle 0 0033001D)
-	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChallengeIdle 0 0033001E)
-	%NPc drop down from pipe
-	Call SetNpcAnimation (.NpcID:SGoombule .Anim:GoombuleRun)
-	%Npc Move to Mario
-	%Encounter Begins
+	Call DisablePlayerPhysics (.True )
+	Call SetPlayerPos(0` -100` 0`)
+	Call TeleportPartnerToPlayer ()
+	Call SetPlayerPos(~Vec3d:MarioScenePos)
+	Call SetNpcPos (.NpcID:Starlow ~Vec3d:StarlowScenePos)
+	Call SetNpcPos (.NpcID:Challenge ~Vec3d:ChallengeScenePos )
+	Call SetNpcPos (.NpcID:Nuts ~Vec3d:NutsScenePos  )
+	Call SetNpcYaw (.NpcID:Nuts -90`)
+	Call SetNpcYaw (.NpcID:Challenge -90`)
+	Wait 30`
+	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChallengeIdle 0 0033001D)
+	Call SpeakToPlayer (.NpcID:Nuts .Anim:NutsTalk .Anim:NutsIdle 0 0033001E)
+	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChallengeIdle 0 0033001F)
+	Wait 10`
+	Call SetNpcPos (.NpcID:Tenderling 92` 150` 21` )
+	Call PlaySoundAtNpc (.NpcID:Tenderling .Sound:Pipe 0 )
+	Call NpcFlyTo (.NpcID:Tenderling ~Vec3d:EnemyScenePos 15` 0 .Easing:Linear )
+	Call PlaySound (.Sound:HitGround)
+	Call PlayEffect (~FX:SmokeImpact:Large ~Vec3d:EnemyScenePos 00000020 00000004 00000000 0000000A 00000000 00000000 00000000 00000000 00000000)
+	Wait 30`
+	Call SetPlayerAnimation (.PlayerAnim:BeforeJump)
+	Call SetNpcAnimation (.NpcID:Tenderling .Anim:TenderlingRun)
+	Call NpcMoveTo (.NpcID:Tenderling -60` 0` 25` )
 	Set *Flag_Tenderling_Fight 1
 	%Story Byte Set
 	Set *GB_StoryProgress FFFFFFA4
@@ -332,7 +359,7 @@
 	Wait 15`
 	Call SpeakToPlayer (.NpcID:Nuts .Anim:NutsTalk .Anim:NutsIdle 0 0033002A)
 	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChallengeIdle 0 0033002B)
-	Call SpeakToPlayer (.NpcID:Guardian .Anim:GuardianMain .Anim:GuardianMain 0 0033002C)
+	Call SpeakToNpc (.NpcID:Guardian .Anim:GuardianMain .Anim:GuardianMain 0 .NpcID:Challenge 0033002C)
 	Call SetNpcAnimation (.NpcID:Starlow .Anim:StarlowFIdle)
 	Call NpcFlyTo (.NpcID:Guardian ~Vec3d:GuardianScenePos 40` 0 .Easing:QuadraticOut )
 	Call SpeakToNpc (.NpcID:Nuts .Anim:NutsTalk .Anim:NutsIdle 0 .NpcID:Starlow 0033002D)
@@ -385,27 +412,72 @@
 }
 
 #new:Script $Cutscene7 { %StoryProgress A6
+	Call DisablePartnerAI ( 0 )
 	Call DisablePlayerInput (.True)
-    Call SetPlayerPos (-60` 0` 60`)
-	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowHTalk .Anim:StarlowHIdle 0 .NpcID:Guardian 00330037)
-	%MarioMem should do this: Call SpeakToPlayer (.NpcID:Guardian .Anim:GuardianMain .Anim:GuardianMain 0 00330038)
-	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowNTalk .Anim:StarlowNIdle 0 .NpcID:Guardian 00330037)
-	Call SpeakToPlayer (.NpcID:Guardian .Anim:GuardianMain .Anim:GuardianMain 0 00330038)
-	%Call SetNpcAnimation ( #npcID animation )
-	Call SpeakToPlayer (.NpcID:Starlow .Anim:StarlowFTalk .Anim:StarlowFIdle 0 00330037)
+	Call DisablePlayerPhysics (.True )
+	Call SetPlayerPos(0` -100` 0`)
+	Call TeleportPartnerToPlayer ()
+	Call SetPlayerPos(~Vec3d:MarioScenePos)
+	Call SetNpcPos (.NpcID:Starlow ~Vec3d:StarlowScenePos)
+	Call SetNpcPos (.NpcID:Challenge ~Vec3d:ChallengeScenePos )
+	Call SetNpcPos (.NpcID:Nuts ~Vec3d:NutsScenePos  )
+	Call SetNpcYaw (.NpcID:Nuts -90`)
+	Call SetNpcYaw (.NpcID:Challenge -90`)
+	Call SetNpcYaw (.NpcID:MemoryMario -90`)
+	Call SetNpcPos (.NpcID:Guardian 0` -150` 0`)
+	Call SetNpcPos (.NpcID:MemoryMario 0` 0` 18`)
+	Wait 15`
+	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowHTalk .Anim:StarlowHIdle 0 .NpcID:MemoryMario 0033003B)
+	Call SpeakToPlayer (.NpcID:MemoryMario .Anim:MemoryMarioIdle .Anim:MemoryMarioIdle 0 0033003C)
+	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowSTalk .Anim:StarlowSIdle 0 .NpcID:MemoryMario 0033003D)
+	Call SpeakToPlayer (.NpcID:MemoryMario .Anim:MemoryMarioIdle .Anim:MemoryMarioIdle 0 0033003E)
+	Call PlaySoundAtNpc (.NpcID:MemoryMario .Sound:SuperPower 0 )
+	Call SetNpcAnimation (.NpcID:MemoryMario .Anim:MemoryMarioShake )
+	Call SpeakToPlayer (.NpcID:Starlow .Anim:StarlowFTalk .Anim:StarlowFIdle 0 0033003F)
 	%coords of miracle cure spawn Call PlayerMoveTo ( goalX goalZ time )
 
 	SetF    *Var[0] *Fixed[25.0]  % speed
 	SetF    *Var[1] *Fixed[255.0] % fully dark
 	ExecWait $Script_FadeScreenOut
+	Call EnableModel ( ~Model:HideAll 1 )
+	Wait 30
+	Thread % Fade Screen Brightness
+    SetF    *Var[0] *Fixed[25.0] % speed
+    SetF    *Var[1] *Fixed[5.0]  % fully bright
+    ExecWait $Script_FadeScreenIn
+	EndThread
 
 	%Play a bunch of sounds
 	Call  FadeOutMusic  ( 00000000 500` ) % usually between 500-1000
 	Call  ClearAmbientSounds ( 250` )
 	Call SetMusicTrack ( 0 .Song:PeachsCastleParty 0 8 )
 	Call FadeInMusic ( 0 .Song:PeachsCastleParty 0 5` 0 0 )
-	
-	%final messages Call ShowMessageAtScreenPos ( stringID screenPosX screenPosY )
+	Wait 30`
+	Call PlaySoundAtNpc (.NpcID:Guardian .Sound:PowerUp 0 )
+	Wait 30`
+	Call PlaySoundAtNpc (.NpcID:Guardian .Sound:Glub 0 )
+	Call PlaySoundAtNpc (.NpcID:Guardian .Sound:Drip 0 )
+	Wait 30`
+	Call PlaySoundAtNpc (.NpcID:Guardian .Sound:Wind 0 )
+	Wait 30`
+	Call PlaySoundAtNpc (.NpcID:Guardian .Sound:Falling 0 )
+	Call StopSound (.Sound:Wind )
+	Wait 15`
+	Call PlaySoundAtNpc (.NpcID:Guardian .Sound:HitGround 0 )
+	Wait 30`
+
+	Call SpeakToNpc (.NpcID:Tenderling .Anim:TenderlingIdle .Anim:TenderlingIdle 0 .NpcID:MemoryMario 00330041)
+	Call SpeakToNpc (.NpcID:Tenderling .Anim:TenderlingIdle .Anim:TenderlingIdle 0 .NpcID:MemoryMario 00330042)
+	Call SpeakToNpc (.NpcID:Tenderling .Anim:TenderlingIdle .Anim:TenderlingIdle 0 .NpcID:MemoryMario 00330043)
+	Wait 30`
+	Call PlaySoundAtNpc (.NpcID:Guardian .Sound:Star 0 )
+	Call SpeakToNpc (.NpcID:Tenderling .Anim:TenderlingIdle .Anim:TenderlingIdle 0 .NpcID:MemoryMario 00330044)
+	Wait 10`
+	Call  FadeOutMusic  ( 00000000 500` ) % usually between 500-1000
+	Call  ClearAmbientSounds ( 250` )
+	Wait 10`
+
+	Call $setTitleScreenGameMode ()
 
     Return
     End

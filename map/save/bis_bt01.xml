@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Map name="bis_bt01" author="unnamed" background="obk_bg" textures="kmr_tex">
 	<Editor>
-		<Camera pos="-85.459709,99.616684,75.861465" pitch="21.959993" yaw="1.760168"/>
+		<Camera pos="-123.156250,133.284943,107.753128" pitch="-5.239996" yaw="34.400173"/>
 		<Camera pos="-59.161854,65536.000000,-180.032547"/>
 		<Camera pos="65536.000000,46.567158,-104.608704"/>
 		<Camera pos="255.962311,-16.048084,65536.000000"/>
@@ -371,7 +371,7 @@
 				</DisplayList>
 			</ShapeMesh>
 			<PropertyList>
-				<Property v="5C,0,11"/>
+				<Property v="5C,0,1"/>
 				<Property v="5F,0,0"/>
 			</PropertyList>
 		</Model>

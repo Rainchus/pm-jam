@@ -227,7 +227,7 @@ Is that so much-ish to ask?[Wait][End]
 
 #message:33:01F
 {
-[Style Right]Well, they’re not done,[BR]
+[Style Right]Well, they’re not done[BR]
 regardless. Globins, ready[BR]
 yourself for the next[BR]
 frightful-ish beast![Wait][END]
@@ -430,15 +430,15 @@ fair and square.[Wait][END]
 
 #message:33:03C
 {
-[Shake]ERROR.[Pause 10][BR]
+[Style Right][Shake]ERROR.[Pause 10][BR]
 ERROR.[Pause 10][BR]
 OBSERVATION PROTOCOL NOT[BR]
-PERMITTED.[END][/fx]
+PERMITTED.[Wait][END][/fx]
 }
 
 #message:33:03D
 {
-[Style Right]Uh, everything alright?[END]
+[Style Right]Uh, everything alright?[Wait][END]
 }
 
 #message:33:03E
@@ -466,8 +466,8 @@ is going to do![END]
 #message:33:041
 {
 [Style Epilogue][Style Right]
-Mario, Starlow![Pause 10] You’re Back!
-[END]
+Mario, Starlow![Pause 10] You're Back!
+[Wait][END]
 }
 
 #message:33:042
@@ -479,15 +479,15 @@ best to seeings you![Wait][END]
 
 #message:33:043
 {
-[Style Right]Yeah, yeah. Glad you’re out of[BR]
+[Style Right]Yeah, yeah. Glad you're out of[BR]
 my system in one piece.[Pause 10] Now,[BR]
-where’s that next course, Peach?[Pause 10][BR]
+where's that next course, Peach?[Pause 10][BR]
 Gwahahaha![Wait][END]
 }
 
 #message:33:044
 {
-[Style Narrate][SaveColor][CenterX 160][SetPosY 18] [Color:14]Fin.[RestoreColor][END]
+[Style Narrate][SaveColor][CenterX 150][SetPosY 18] [Color:14]Fin.[RestoreColor][Wait][END]
 }
 
 #message:33:045

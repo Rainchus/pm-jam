@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Map name="bis_04" author="unnamed" background="obk_bg" textures="kmr_tex">
 	<Editor>
-		<Camera pos="-131.490387,178.752502,477.068176" pitch="-19.439985" yaw="357.119507"/>
+		<Camera pos="0.000000,105.181442,369.666626" pitch="10.000000" yaw="0.000000"/>
 		<Camera pos="200.106750,65536.000000,14.088737"/>
-		<Camera pos="65536.000000,1237.749268,-812.513672"/>
+		<Camera pos="65536.000000,-45.132263,407.542053"/>
 		<Camera pos="270.127808,55.716232,65536.000000"/>
 	</Editor>
 	<ModelTree>
-		<Node name="Root" id="47">
+		<Node name="Root" id="48">
 			<Node name="Computer *" id="7">
 				<Node name="Beveled CubeModel" id="0"/>
 				<Node name="ConeModel" id="1"/>
@@ -80,6 +80,7 @@
 			<Node name="CylinderModel" id="44"/>
 			<Node name="Radial GridModel" id="45"/>
 			<Node name="Planar GridModel" id="46"/>
+			<Node name="HideAll" id="47"/>
 		</Node>
 	</ModelTree>
 	<ColliderTree>
@@ -139,9 +140,35 @@
 	</LightSets>
 	<Models>
 		<Model ver="2" type="ROOT" lightset="0">
-			<MapObject name="Root" id="47"/>
-			<BoundingBox empty="false" min="-1028,-344,-649" max="1027,672,273"/>
+			<MapObject name="Root" id="48"/>
+			<BoundingBox empty="false" min="-1028,-518,-649" max="1027,672,537"/>
 			<PropertyList>
+			</PropertyList>
+		</Model>
+		<Model ver="2" type="MODEL" lightset="0">
+			<MapObject name="HideAll" id="47"/>
+			<ShapeMesh ver="3" texture="">
+				<DisplayList>
+					<F3DEX2 cmd="E7000000,0"/>
+					<F3DEX2 cmd="D9FDFFFF,0"/>
+					<F3DEX2 cmd="D9FFFFFF,200400"/>
+					<TriangleBatch ver="0">
+						<VertexTable>
+							<Vertex xyz="-895,-518,537" uv="-512,512" rgba="0,0,0,-1"/>
+							<Vertex xyz="895,518,-62" uv="512,-512" rgba="0,0,0,-1"/>
+							<Vertex xyz="-895,518,-62" uv="-512,-512" rgba="0,0,0,-1"/>
+							<Vertex xyz="895,-518,537" uv="512,512" rgba="0,0,0,-1"/>
+						</VertexTable>
+						<TriangleList>
+							<Triangle ijk="0,1,2"/>
+							<Triangle ijk="1,0,3"/>
+						</TriangleList>
+					</TriangleBatch>
+				</DisplayList>
+			</ShapeMesh>
+			<PropertyList>
+				<Property v="5C,0,1"/>
+				<Property v="5F,0,0"/>
 			</PropertyList>
 		</Model>
 		<Model ver="2" type="MODEL" lightset="0">

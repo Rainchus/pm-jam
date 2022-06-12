@@ -11,6 +11,8 @@
 #define .Anim:StarlowNIdle 00010007
 #define .Anim:StarlowNTalk 00010008
 #define .Anim:StarlowAIdle 00010009
+#define .Anim:StarlowSIdle 00010005
+#define .Anim:StarlowSTalk 00010006
 #define .Anim:StarlowATalk 0001000A
 #define .Anim:StarlowMIdle 0001000B
 #define .Anim:StarlowMTalk 0001000C
@@ -54,11 +56,18 @@
 #define .Anim:SGoombuleIdle 00270001
 #define .Anim:SGoombuleRun 00270003
 
+#define .Anim:ProtobatterIdle 00280001
+#define .Anim:ProtobatterRun 00280003
+
 #define .Anim:TenderlingIdle 00290001
 #define .Anim:TenderlingRun 00290003
 
 #define .Anim:NutsIdle 00120001
 #define .Anim:NutsTalk 00120002
+
+#define .Anim:MemoryMarioIdle 00A20001
+#define .Anim:MemoryMarioRun 00A20002
+#define .Anim:MemoryMarioShake 00A20012
 
 #define .Anim:GuardianMain 00120001
 #define .Anim:GuardianTurn 00120002
