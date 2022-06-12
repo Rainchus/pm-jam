@@ -1,14 +1,16 @@
-% #define .NpcID:Starlow 0
-% #define .NpcID:MarioNPC 1
-% #define .NpcID:Nuts 2
-% #define .NpcID:Challenge 3
-% #define .NpcID:Guardian 4
-% #define .NpcID:Blitty 5
-% #define .NpcID:Goombule 6 
-% #define .NpcID:SGoombule 7
-% #define .NpcID:Protobatter 8
-% #define .NpcID:Tenderling 9
-% #define .NpcID:Chuboomba A
+#define .NpcID:Starlow 0
+#define .NpcID:MarioNPC 1
+#define .NpcID:Nuts 2
+#define .NpcID:Challenge 3
+#define .NpcID:Guardian 4
+#define .NpcID:Blitty 5
+#define .NpcID:Goombule 6 
+#define .NpcID:SGoombule 7
+#define .NpcID:Protobatter 8
+#define .NpcID:Tenderling 9
+#define .NpcID:Chuboomba A
+
+#define .goombuleFightStartVarIndex 0
 
 #new:Script $Script_Init_Starlow {
     Return
@@ -155,6 +157,8 @@
 
 
 #new:Script $Script_Init_Goombule {
+    Call  SetSelfVar    ( .NpcID:Goombule 00000000 )
+    Call  BindNpcIdle   ( .Npc:Self $Script_Idle_Goombule )
     Return
     End
 }
@@ -276,7 +280,7 @@
     00000001 $NpcGroup_Challenge 0
     00000001 $NpcGroup_Guardian 0
     00000001 $NpcGroup_Blitty 0
-    00000001 $NpcGroup_Goombule 0
+    00000001 $NpcGroup_Goombule 002F0000
     00000001 $NpcGroup_SGoombule 0
     00000001 $NpcGroup_Protobatter 0
     00000001 $NpcGroup_Tenderling 0
@@ -284,4 +288,22 @@
 
     %terminate list
     00000000 00000000 00000000
+}
+
+
+#new:Script $Script_Idle_Goombule
+{
+    0:  Loop
+            If *Flag_Goombule_Fight == 1
+                Call  SetSelfVar    ( .goombuleFightStartVarIndex .True ) %should start fight
+            EndIf
+    C:  	Call  GetSelfVar    ( .goombuleFightStartVarIndex *Var0 )
+   20:  	If  *Var0  ==  00000001
+   30:  		BreakLoop
+   38:  	EndIf
+   40:  	Wait  1`
+   4C:  EndLoop
+   54:  Call  StartBossBattle   ( 2 ) %normal battle music
+   64:  Return
+   6C:  End
 }

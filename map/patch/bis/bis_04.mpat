@@ -1,18 +1,6 @@
 #import SpriteAnimations.mpat
 #import bis_04NPC.mpat
 
-#define .NpcID:Starlow 0
-#define .NpcID:MarioNPC 1
-#define .NpcID:Nuts 2
-#define .NpcID:Challenge 3
-#define .NpcID:Guardian 4
-#define .NpcID:Blitty 5
-#define .NpcID:Goombule 6 
-#define .NpcID:SGoombule 7
-#define .NpcID:Protobatter 8
-#define .NpcID:Tenderling 9
-#define .NpcID:Chuboomba A
-
 #new:Header $Header
 {
 	[MainScript] $Script_Main
@@ -179,6 +167,7 @@
 	Call SetNpcAnimation (.NpcID:Goombule .Anim:GoombuleRun)
 	%Npc Move to Mario
 	%Encounter Begins
+	Set *Flag_Goombule_Fight 1
 	%Story Byte Set
     Return
     End
