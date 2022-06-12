@@ -7,12 +7,13 @@
 	[MainScript] $Script_Main
 	[Background] 80200000
 	[EntryList] $EntryList
-	[EntryCount] 1
+	[EntryCount] 2
 }
 
 #new:EntryList $EntryList
 {
 	~Vec4f:MainEntry
+    ~Vec4f:Entry1
 }
 
 #new:Script $TexturePanningLava {
@@ -151,6 +152,32 @@
     End
 }
 
+#new:Script $Script_802549D0 {
+	Call  GotoMap   ( "bis_04" 00000000 )
+	Wait  100`
+	Return
+	End
+}
+
+#new:Script $Make_Entities {
+    Call MakeEntity    ( .Entity:BlueWarpPipe ~Vec4d:PipeExit ~Entry:Entry1 $Script_802549D0 ~Index:*Flag_block_bis_05 80000000 )
+	Call MakeEntity ( .Entity:RedBlock ~Vec4d:PowerBlock .Item:AttackPiece2 80000000 )
+	Call AssignBlockFlag   ( *Flag_block_bis_05 )
+    Return
+    End
+}
+
+#new:Script $testScript { %for some reason sticking this directly in script main breaks the game????
+    Exec $Make_Entities
+    Exec $Script_SetupMusic
+	Exec $TexturePanningLava
+    Exec $Script_EnterMap
+    Exec $CheckPointRespawn
+    Exec $FlagController
+    Exec $CheckIfFallenOOB
+    Return
+    End
+}
 
 #new:Script $Script_Main {
     Set   *GB_WorldLocation  .Location:GoombaRoad
@@ -167,11 +194,7 @@
     %         Call $ScrApi_XORVar ( *Var0 1 ) %Var0 ^ 1
     %     EndLoop
     % EndThread
-    Exec $Script_SetupMusic
-	Exec $TexturePanningLava
-    Exec $Script_EnterMap
-    Exec $CheckPointRespawn
-    Exec $FlagController
-    Exec $CheckIfFallenOOB
+    Exec $testScript
+    Return
     End
 }
