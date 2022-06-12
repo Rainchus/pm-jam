@@ -110,6 +110,31 @@
 	End
 }
 
+#new:Script $SetCheckpointFlag {
+    If *Flag_bis_05_checkpoint == 0
+        Set *Flag_bis_05_checkpoint 1
+    EndIf
+    Return
+    End
+}
+
+#new:Script $CheckPointRespawn {
+    Bind  $SetCheckpointFlag .Trigger:FloorTouch ~Collider:CheckPointCollider 00000001 00000000
+    Loop
+        Call GetPlayerPos ( *Var0 *Var1 *Var2 )
+        If *Var1 < -400` %fell oob
+            If *Flag_bis_05_checkpoint == 0
+                Call SetPlayerPos ( ~Vec3d:Check1 )
+            Else
+                Call SetPlayerPos ( ~Vec3d:Check2 )
+            EndIf
+        EndIf
+        Wait 1`
+    EndLoop
+    Return
+    End
+}
+
 
 #new:Script $Script_Main {
     Set   *GB_WorldLocation  .Location:GoombaRoad
@@ -117,6 +142,7 @@
     Call  SetCamBGColor      ( .Cam:Default 00000000 00000000 00000000 )
     Call  SetCamEnabled      ( .Cam:Default .True )
     Call  SetCamLeadPlayer   ( .Cam:Default .False )
+    Set *Flag_bis_05_checkpoint 0
     % Set *Var0 1
     % Thread
     %     Loop
@@ -128,6 +154,7 @@
     Exec $Script_SetupMusic
 	Exec $TexturePanningLava
     Exec $Script_EnterMap
+    Exec $CheckPointRespawn
     Exec $FlagController
     End
 }

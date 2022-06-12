@@ -13,7 +13,7 @@
 00A = Flag_EVT_0A = Flag_block_bis_05
 00B = Flag_EVT_0B = Flag_block_bis_06
 00C = Flag_EVT_0C = Flag_block_bis_06_pipe
-00D = Flag_EVT_0D = unused
+00D = Flag_EVT_0D = Flag_bis_05_checkpoint
 00E = Flag_EVT_0E = unused
 00F = Flag_EVT_0F = unused
 010 = Flag_EVT_10 = unused

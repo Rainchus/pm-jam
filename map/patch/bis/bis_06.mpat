@@ -317,8 +317,6 @@
 
 	Call  MakeEntity    ( .Entity:BlueWarpPipe ~Vec4d:Pipe ~Entry:Entry1 $Script_802549D0 ~Index:*Flag_block_bis_06 80000000 )
 	
-
-
 	Return
 	End
 }
@@ -328,10 +326,11 @@
 }
 
 #new:Script $Script_802549D0 {
-    0:  Call  GotoMap   ( $Ascii_bis_04 00000000 )
-   14:  Wait  100`
-   20:  Return
-   28:  End
+	Set *GameByte[009] 0 %turn off hook for hammer throw killing enemies
+	Call  GotoMap   ( $Ascii_bis_04 00000000 )
+	Wait  100`
+	Return
+	End
 }
 
 #new:Script $checkIfStarlowUpgradeString {
