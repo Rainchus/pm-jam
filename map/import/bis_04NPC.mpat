@@ -9,6 +9,7 @@
 #define .NpcID:Protobatter 8
 #define .NpcID:Tenderling 9
 #define .NpcID:Chuboomba A
+#define .NpcID:MemoryMario B
 
 #define .goombuleFightStartVarIndex 0
 
@@ -163,6 +164,41 @@
     End
 }
 
+#new:Script $Script_Init_SpikedGoombule {
+    Call  SetSelfVar    ( .NpcID:SGoombule 00000000 )
+    Call  BindNpcIdle   ( .Npc:Self $Script_Idle_SpikedGoombule )
+    Return
+    End
+}
+
+#new:Script $Script_Init_Protobatter {
+    Call  SetSelfVar    ( .NpcID:Protobatter 00000000 )
+    Call  BindNpcIdle   ( .Npc:Self $Script_Idle_Protobatter )
+    Return
+    End
+}
+
+#new:Script $Script_Init_Tenderling {
+    Call  SetSelfVar    ( .NpcID:Tenderling 00000000 )
+    Call  BindNpcIdle   ( .Npc:Self $Script_Idle_Tenderling )
+    Return
+    End
+}
+
+#new:Script $Script_Init_Chuboomba {
+    Call  SetSelfVar    ( .NpcID:Chuboomba 00000000 )
+    Call  BindNpcIdle   ( .Npc:Self $Script_Idle_Chuboomba )
+    Return
+    End
+}
+
+#new:Script $Script_Init_MemoryMario {
+    Call  SetSelfVar    ( .NpcID:MemoryMario 00000000 )
+    Call  BindNpcIdle   ( .Npc:Self $Script_Idle_MemoryMario )
+    Return
+    End
+}
+
 #new:NpcSettings $NpcSettings_Goombule {
     00000000 00140014 00000000 00000000 0 0 00000000 8007809C
     00000800 00000000 00160000
@@ -180,12 +216,6 @@
 }
 
 
-
-#new:Script $Script_Init_SGoombule {
-    Return
-    End
-}
-
 #new:NpcSettings $NpcSettings_SGoombule {
     00000000 00140014 00000000 00000000 0 0 00000000 8007809C
     00000800 00000000 00160000
@@ -194,20 +224,12 @@
 #new:NpcGroup $NpcGroup_SGoombule {
     .NpcID:SGoombule $NpcSettings_SGoombule ~Vec3f:SGoombule
     00200C08 %flags
-    $Script_Init_SGoombule
+    $Script_Init_SpikedGoombule
     00000000 00000000 0000005A
     ~Items:5:VoltShroom:A ~HP:Standard:2 ~FP:Standard:2 ~CoinBonus:0:4
     ~Movement:SGoombule
     ~AnimationTable:SGoombule % .Sprite:Swooper
     00000000 00000000 00000000 00000000 % no tattle string
-}
-
-
-
-
-#new:Script $Script_Init_Protobatter {
-    Return
-    End
 }
 
 #new:NpcSettings $NpcSettings_Protobatter {
@@ -226,14 +248,6 @@
     00000000 00000000 00000000 00000000 % no tattle string
 }
 
-
-
-
-#new:Script $Script_Init_Tenderling {
-    Return
-    End
-}
-
 #new:NpcSettings $NpcSettings_Tenderling {
     00000000 00140014 00000000 00000000 0 0 00000000 8007809C
     00000800 00000000 00160000
@@ -248,13 +262,6 @@
     ~Movement:Tenderling
     ~AnimationTable:Tenderling % .Sprite:Swooper
     00000000 00000000 00000000 00000000 % no tattle string
-}
-
-
-
-#new:Script $Script_Init_Chuboomba {
-    Return
-    End
 }
 
 #new:NpcSettings $NpcSettings_Chuboomba {
@@ -273,6 +280,22 @@
     00000000 00000000 00000000 00000000 % no tattle string
 }
 
+#new:NpcSettings $NpcSettings_MemoryMario {
+    00000000 00140014 00000000 00000000 0 0 00000000 8007809C
+    00000800 00000000 00160000
+}
+
+#new:NpcGroup $NpcGroup_MemoryMario {
+    .NpcID:MemoryMario $NpcSettings_MemoryMario ~Vec3f:MemoryMario
+    00200C08 %flags
+    $Script_Init_MemoryMario
+    00000000 00000000 0000005A
+    ~Items:5:VoltShroom:A ~HP:Standard:2 ~FP:Standard:2 ~CoinBonus:0:4
+    ~Movement:MemoryMario
+    ~AnimationTable:MemoryMario % .Sprite:Swooper
+    00000000 00000000 00000000 00000000 % no tattle string
+}
+
 #new:NpcGroupList $NpcGroupList {
     00000001 $NpcGroup_Starlow 0
     00000001 $NpcGroup_MarioNPC 0
@@ -280,30 +303,86 @@
     00000001 $NpcGroup_Challenge 0
     00000001 $NpcGroup_Guardian 0
     00000001 $NpcGroup_Blitty 0
-    00000001 $NpcGroup_Goombule 0
-    00000001 $NpcGroup_SGoombule 0
-    00000001 $NpcGroup_Protobatter 0
-    00000001 $NpcGroup_Tenderling 0
-    00000001 $NpcGroup_Chuboomba 0
+    00000001 $NpcGroup_Goombule 00000000
+    00000001 $NpcGroup_SGoombule 00010000
+    00000001 $NpcGroup_Protobatter 00020000
+    00000001 $NpcGroup_Tenderling 00030000
+    00000001 $NpcGroup_Chuboomba 00040000
+    00000001 $NpcGroup_MemoryMario 00050000
 
     %terminate list
     00000000 00000000 00000000
 }
 
 
-#new:Script $Script_Idle_Goombule
-{
-    0:  Loop
-            If *Flag_Goombule_Fight == 1
-                Call  SetSelfVar    ( .goombuleFightStartVarIndex .True ) %should start fight
-            EndIf
-    C:  	Call  GetSelfVar    ( .goombuleFightStartVarIndex *Var0 )
-   20:  	If  *Var0  ==  00000001
-   30:  		BreakLoop
-   38:  	EndIf
-   40:  	Wait  1`
-   4C:  EndLoop
-   54:  Call  StartBossBattle   ( 2 ) %normal battle music
-   64:  Return
-   6C:  End
+#new:Script $Script_Idle_Goombule {
+    Loop
+        If  *Flag_Goombule_Fight  ==  00000001
+            BreakLoop
+        EndIf
+        Wait  1`
+    EndLoop
+    Call  StartBossBattle   ( 2 ) %normal battle music
+    Return
+    End
+}
+
+#new:Script $Script_Idle_SpikedGoombule {
+    Loop
+        If  *Flag_SpikedGoombule_Fight  ==  00000001
+            BreakLoop
+        EndIf
+        Wait  1`
+    EndLoop
+    Call  StartBossBattle   ( 2 ) %normal battle music
+    Return
+    End
+}
+
+#new:Script $Script_Idle_Protobatter {
+    Loop
+        If  *Flag_Protobatter_Fight  ==  00000001
+            BreakLoop
+        EndIf
+        Wait  1`
+    EndLoop
+    Call  StartBossBattle   ( 2 ) %normal battle music
+    Return
+    End
+}
+
+#new:Script $Script_Idle_Tenderling {
+    Loop
+        If  *Flag_Tenderling_Fight  ==  00000001
+            BreakLoop
+        EndIf
+        Wait  1`
+    EndLoop
+    Call  StartBossBattle   ( 2 ) %normal battle music
+    Return
+    End
+}
+
+#new:Script $Script_Idle_Chuboomba {
+    Loop
+        If  *Flag_Chuboomba_Fight  ==  00000001
+            BreakLoop
+        EndIf
+        Wait  1`
+    EndLoop
+    Call  StartBossBattle   ( 2 ) %normal battle music
+    Return
+    End
+}
+
+#new:Script $Script_Idle_MemoryMario {
+    Loop
+        If  *Flag_MemoryMario_Fight  ==  00000001
+            BreakLoop
+        EndIf
+        Wait  1`
+    EndLoop
+    Call  StartBossBattle   ( 2 ) %normal battle music
+    Return
+    End
 }

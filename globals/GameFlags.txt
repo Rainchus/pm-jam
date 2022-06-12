@@ -15,11 +15,11 @@
 00C = Flag_EVT_0C = Flag_block_bis_06_pipe
 00D = Flag_EVT_0D = Flag_bis_05_checkpoint
 00E = Flag_EVT_0E = Flag_Goombule_Fight
-00F = Flag_EVT_0F = unused
-010 = Flag_EVT_10 = unused
-011 = Flag_EVT_11 = unused
-012 = Flag_EVT_12 = unused
-013 = Flag_EVT_13 = unused
+00F = Flag_EVT_0F = Flag_SpikedGoombule_Fight
+010 = Flag_EVT_10 = Flag_Protobatter_Fight
+011 = Flag_EVT_11 = Flag_Tenderling_Fight
+012 = Flag_EVT_12 = Flag_Chuboomba_Fight
+013 = Flag_EVT_13 = Flag_MemoryMario_Fight
 014 = Flag_EVT_14 = unused
 015 = Flag_EVT_15 = unused
 016 = Flag_EVT_16 = unused

@@ -111,7 +111,7 @@
     Exec $Script_EnterMap
 	Switch *GB_StoryProgress
 	Case == FFFFFFA0
-		Exec $Cutscene3
+		Exec $Cutscene1
 	Case == FFFFFFA1
 		Exec $Cutscene2
 	Case == FFFFFFA2
@@ -199,6 +199,7 @@
 	%Encounter Begins
 	Set *Flag_Goombule_Fight 1
 	%Story Byte Set
+	Set *GB_StoryProgress FFFFFFA1
     Return
     End
 }
@@ -226,7 +227,9 @@
 	Call SetNpcAnimation (.NpcID:SGoombule .Anim:SGoombuleRun)
 	Call NpcMoveTo (.NpcID:SGoombule -60` 0` 25` )
 	%Encounter Begins
+	Set *Flag_SpikedGoombule_Fight 1
 	%Story Byte Set
+	Set *GB_StoryProgress FFFFFFA2
     Return
     End
 }
@@ -256,7 +259,9 @@
 		Call SetNpcAnimation (.NpcID:SGoombule .Anim:GoombuleRun)
 		%Npc Move to Mario
 		%Encounter Begins
+		Set *Flag_Protobatter_Fight 1
 		%Story Byte Set
+		Set *GB_StoryProgress FFFFFFA3
    		Return
     	End
 }
@@ -271,7 +276,9 @@
 	Call SetNpcAnimation (.NpcID:SGoombule .Anim:GoombuleRun)
 	%Npc Move to Mario
 	%Encounter Begins
+	Set *Flag_Tenderling_Fight 1
 	%Story Byte Set
+	Set *GB_StoryProgress FFFFFFA4
     Return
     End
 }
@@ -296,7 +303,9 @@
 		Call SetNpcAnimation (.NpcID:SGoombule .Anim:GoombuleRun)
 		%Npc Move to Mario
 		%Encounter Begins
+		Set *Flag_Chuboomba_Fight 1
 		%Story Byte Set
+		Set *GB_StoryProgress FFFFFFA5
 		Return
 		End
 }
@@ -324,7 +333,9 @@
 
 	%Npc Move to Mario
 	%Encounter Begins
+	Set *Flag_MemoryMario_Fight 1
 	%Story Byte Set
+	Set *GB_StoryProgress FFFFFFA6
     Return
     End
 }
@@ -758,20 +769,20 @@
 	001A005E %tattleID
 }
 
-#new:NpcGroupList $AllNpcs
-{
-	1 $StarlowGroup 0 %number of NPCs in group, NPCGroup, BattleID
-	1 $MarioNPCGroup 0 %number of NPCs group, NPCGroup, BattleID
-	1 $NutsGroup 0 %number of NPCs group, NPCGroup, BattleID
-	1 $ChallengeGroup 0 %number of NPCs group, NPCGroup, BattleID
-	1 $GuardianGroup 0 %number of NPCs group, NPCGroup, BattleID
-	1 $BlittyGroup 0 %number of NPCs group, NPCGroup, BattleID
-    1 $GoombuleGroup 0 %number of NPCs group, NPCGroup, BattleID
-    1 $SGoombuleGroup 0 %number of NPCs group, NPCGroup, BattleID
-	1 $ProtobatterGroup 0 %number of NPCs group, NPCGroup, BattleID
-	1 $TenderlingGroup 0 %number of NPCs group, NPCGroup, BattleID
-	1 $ChuboombaGroup 0 %number of NPCs group, NPCGroup, BattleID
-	0 0 0 %terminating emptyList (essentially an END)
-}
+% #new:NpcGroupList $AllNpcs
+% {
+% 	1 $StarlowGroup 0 %number of NPCs in group, NPCGroup, BattleID
+% 	1 $MarioNPCGroup 0 %number of NPCs group, NPCGroup, BattleID
+% 	1 $NutsGroup 0 %number of NPCs group, NPCGroup, BattleID
+% 	1 $ChallengeGroup 0 %number of NPCs group, NPCGroup, BattleID
+% 	1 $GuardianGroup 0 %number of NPCs group, NPCGroup, BattleID
+% 	1 $BlittyGroup 0 %number of NPCs group, NPCGroup, BattleID
+%     1 $GoombuleGroup 0 %number of NPCs group, NPCGroup, BattleID
+%     1 $SGoombuleGroup 0 %number of NPCs group, NPCGroup, BattleID
+% 	1 $ProtobatterGroup 0 %number of NPCs group, NPCGroup, BattleID
+% 	1 $TenderlingGroup 0 %number of NPCs group, NPCGroup, BattleID
+% 	1 $ChuboombaGroup 0 %number of NPCs group, NPCGroup, BattleID
+% 	0 0 0 %terminating emptyList (essentially an END)
+% }
 
 
