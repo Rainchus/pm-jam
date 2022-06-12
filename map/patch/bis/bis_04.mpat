@@ -94,11 +94,11 @@
 #new:Function $setTitleScreenGameMode {
 	PUSH ra
 	JAL ~Func:set_game_mode
-	ORI a0, r0, 2 %GAME_MODE_TITLE_SCREEN
+	ORI a0, r0, 1 %GAME_MODE_TITLE_SCREEN
 	POP ra
 	JR RA
 	ORI v0, r0, 2
-	}
+}
 
 #new:Script $Script_Main {
     Set  *GB_WorldLocation  .Location:GoombaRoad

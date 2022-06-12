@@ -327,7 +327,7 @@
 	Call  AssignAreaFlag    ( .gate5Switch4Flag )
 	Bind  $Script_SwitchGroup5Switch4 .Trigger:AreaFlagSet *AreaFlag[.gate5Switch4Flag] 00000001 00000000
 
-	Call MakeEntity ( .Entity:RedBlock ~Vec4d:ItemBox .Item:AttackPiece1 80000000 )
+	Call MakeEntity ( .Entity:RedBlock ~Vec4d:ItemBox .Item:AttackPiece2 80000000 )
 	Call AssignBlockFlag   ( *Flag_block_bis_06 )
 
 	Call  MakeEntity    ( .Entity:BlueWarpPipe ~Vec4d:Pipe ~Entry:Entry1 $Script_802549D0 ~Index:*Flag_block_bis_06 80000000 )

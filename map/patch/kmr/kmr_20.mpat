@@ -7,6 +7,28 @@
 #define .sushieID 7
 #define .lakilesterID 8
 
+#new:Data $itemsToGive {
+	0080s %fire flower
+	0081s %
+	0s %terminate list
+}
+
+#new:Function $giveItemsLoop {
+	LI t0, $itemsToGive
+	LI t1, 8010F444
+	.loop
+	LH t2, 0 (t0)
+	BEQ t2, r0, .exit
+	NOP
+	SH t2, 0 (t1) %store item
+	ADDIU t0, t0, 2
+	BEQ r0, r0, .loop
+	ADDIU t1, t1, 2
+	.exit
+	JR RA
+	ORI v0, r0, 2
+}
+
 #new:Function $GiveBootsAndHammer {
 	LIO t0, 8010F290
 	ORI t1, r0, 0101
@@ -41,8 +63,9 @@
 
 @ $Script_8024FD70 { % First Play, go to starting castle room
 	%debug
+	Call $giveItemsLoop () %gives items defined in "$itemsToGive" array
 	Call GotoMap ("bis_05" 0)
-	Set *GB_StoryProgress FFFFFFA5
+	Set *GB_StoryProgress FFFFFFA6
 	Call $GivePartners ()
 	Call $GiveBootsAndHammer ()
 	Call $GiveActionCommands ()

@@ -177,13 +177,13 @@
 
 #new:Script $Make_Entities {
     Call MakeEntity    ( .Entity:BlueWarpPipe ~Vec4d:PipeExit ~Entry:Entry1 $Script_802549D0 ~Index:*Flag_block_bis_05 80000000 )
-	Call MakeEntity ( .Entity:RedBlock ~Vec4d:PowerBlock .Item:AttackPiece2 80000000 )
+	Call MakeEntity ( .Entity:RedBlock ~Vec4d:PowerBlock .Item:AttackPiece1 80000000 )
 	Call AssignBlockFlag   ( *Flag_block_bis_05 )
     Return
     End
 }
 
-#new:Script $testScript { %for some reason sticking this directly in script main breaks the game????
+#new:Script $runScripts { %for some reason sticking this directly in script main breaks the game????
     Exec $Make_Entities
     Exec $Script_SetupMusic
 	Exec $TexturePanningLava
@@ -191,8 +191,32 @@
     Exec $CheckPointRespawn
     Exec $FlagController
     Exec $CheckIfFallenOOB
+    Exec $checkIfStarlowUpgradeString
+    Call ModifyColliderFlags ( 00000003 ~Collider:Lava 00000002 )
+    Thread
+        Call  ResetFromLava ( $LavaResetList )
+    EndThread
     Return
     End
+}
+
+#new:LavaResetList $LavaResetList {
+	~Collider:Lava ~Vec3d:Check1 % -503.0 0.0 -63.0
+	FFFFFFFF 00000000 00000000 00000000
+}
+
+#new:Script $checkIfStarlowUpgradeString {
+	Loop
+		If *Flag_block_bis_05 == 1
+			%Call ShowMessageAtScreenPos    ( 001D00DA  160`  40` ) % This is a Super Block. With this, you can upgrade  ...
+			Call $upgradeStarlow ()
+			BreakLoop
+		EndIf
+		Wait 1
+	EndLoop
+	
+	Return
+	End
 }
 
 #new:Script $Script_Main {
@@ -202,6 +226,7 @@
     Call  SetCamEnabled      ( .Cam:Default .True )
     Call  SetCamLeadPlayer   ( .Cam:Default .False )
     Set *Flag_bis_05_checkpoint 0
+
     % Set *Var0 1
     % Thread
     %     Loop
@@ -210,7 +235,7 @@
     %         Call $ScrApi_XORVar ( *Var0 1 ) %Var0 ^ 1
     %     EndLoop
     % EndThread
-    Exec $testScript
+    Exec $runScripts
     Return
     End
 }
