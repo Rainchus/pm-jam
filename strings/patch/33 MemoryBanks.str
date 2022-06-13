@@ -500,16 +500,20 @@ So here's a sign instead :)[END]
 
 #message:33:046
 {
-[Style Right]Are you globins ready to[BR]
-resume your challenging?[Wait][End]
+[Style Right]I see it's time to resume[BR]
+the challenging![Pause 5] Good luck![Pause 5][BR]
+Even better: you've gained a[BR]
+new skill![Pause 5] Beast-ish attack![Wait][End]
 }
 
-#message:2F:047
+#message:33:047
 {
-	[Style Choice pos=115,90 size=110,46]
-	[StartChoice]
-	[Option 0]Let's do it![BR]
-	[Option 1]Wait a sec...[BR]
-	[EndChoice cancel=1][End][END]
+[Style Right]Marvelous! You globins truly[BR]
+are world class. I wish you were[BR]
+here more often to show off[BR]
+these world-class-ish skills.[BR][Wait][Next]
+Speaking of, how about those[BR]
+battle-ish skills, eh? Brace-ish[BR]
+yourselves for this next beast![Wait][End]
 }
 
