@@ -130,7 +130,7 @@
     Exec $Script_EnterMap
 	Switch *GB_StoryProgress
 		Case == FFFFFFA0
-			Exec $Cutscene1
+			Exec $Cutscene6
 		Case == FFFFFFA1
 			Exec $PostPipeCutscene1
 		Case == FFFFFFA2
@@ -406,9 +406,9 @@
 	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowFTalk .Anim:StarlowFIdle 0 .NpcID:Guardian 0033002E)
 	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowNTalk .Anim:StarlowNIdle 0 .NpcID:Guardian 0033002F)
 	Wait 15`
-	Call NpcFlyTo (.NpcID:Guardian -40` 24` 0` 20` 0 .Easing:CosInOut )
+	Call NpcFlyTo (.NpcID:Guardian -30` 54` 0` 20` 0 .Easing:CosInOut )
 	Wait 15`
-	Call NpcFlyTo (.NpcID:Guardian -80` 35` 0` 20` 0 .Easing:CosInOut )
+	Call NpcFlyTo (.NpcID:Guardian -80` 65` 0` 20` 0 .Easing:CosInOut )
 	Wait 15`
 	Call NpcFlyTo (.NpcID:Guardian ~Vec3d:GuardianScenePos 40` 0 .Easing:CosInOut )
 	Call SpeakToPlayer (.NpcID:Guardian .Anim:GuardianMain .Anim:GuardianMain 0 00330030)

@@ -736,8 +736,8 @@
         EndLoop
 	EndThread
 	Call EnableNpcShadow ( .NpcID:Starlow 0 )
-	Call SetNpcPos (.NpcID:Starlow 0` -150`  0` )
 	Wait 90`
+	Call SetNpcPos (.NpcID:Starlow 0` -150`  0` )
 	Call PlaySoundAtNpc (.NpcID:MarioNPC .Sound:Wind 0)
 	Call SetNpcAnimation (.NpcID:MarioNPC .Anim:MarioNPCFall)
 	Call NpcFlyTo (.NpcID:MarioNPC -43` 41` 100` 25` 0` .Easing:QuarticOut)
@@ -767,8 +767,8 @@
 			EndLoop
 	EndThread
 	Call EnableNpcShadow ( .NpcID:MarioNPC 0 )
-	Call SetNpcPos (.NpcID:MarioNPC 0` -150`  0` )
 	Wait 90`
+	Call SetNpcPos (.NpcID:MarioNPC 0` -150`  0` )
 	Call PlaySoundAtNpc (.NpcID:Peach .Sound:Wind 0)
 	Call NpcFlyTo (.NpcID:Peach -43` 41` 100` 25` 0` .Easing:QuarticOut)
 	Thread
@@ -796,8 +796,8 @@
 			EndLoop
 	EndThread
 	Call EnableNpcShadow ( .NpcID:Peach 0 )
-	Call SetNpcPos (.NpcID:Peach 0` -150`  0` )
 	Wait 90`
+	Call SetNpcPos (.NpcID:Peach 0` -150`  0` )
 	Call StopSound (.Sound:Wind )
 	Exec $LeaveMap
 
