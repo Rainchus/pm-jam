@@ -357,7 +357,7 @@
 }
 
 #new:NpcGroup $NpcGroup_MemorySequel {
-    .NpcID:Blitty $NpcSettings_MemorySequel ~Vec3f:MemorySequel
+    .NpcID:MemorySequel $NpcSettings_MemorySequel ~Vec3f:MemorySequel
     00200C08 %flags
     $Script_Init_MemorySequel
     00000000 00000000 0000005A
@@ -448,18 +448,6 @@
 }
 
 #new:Script $Script_Idle_MemoryMario {
-    % Loop
-    %     If  *Flag_MemoryMario_Fight  ==  00000001
-    %         BreakLoop
-    %     EndIf
-    %     Wait  1`
-    % EndLoop
-    % Call  StartBossBattle   ( 5 ) %normal battle music
-    Return
-    End
-}
-
-#new:Script $Script_Idle_MemoryMario_Sequel {
     Loop
         If  *Flag_MemoryMario_Fight  ==  00000001
             BreakLoop
@@ -467,6 +455,18 @@
         Wait  1`
     EndLoop
     Call  StartBossBattle   ( 5 ) %normal battle music
+    Return
+    End
+}
+
+#new:Script $Script_Idle_MemoryMario_Sequel {
+    % Loop
+    %     If  *Flag_MemoryMario_Fight  ==  00000001
+    %         BreakLoop
+    %     EndIf
+    %     Wait  1`
+    % EndLoop
+    % Call  StartBossBattle   ( 5 ) %normal battle music
     Return
     End
 }
