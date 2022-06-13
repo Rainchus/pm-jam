@@ -96,7 +96,7 @@
      JAL $getFPSAverage
      NOP
      MFC1 a0, f0
-     JAL $printFPS
+     %JAL $printFPS
      NOP
      LW ra, 008C (sp)
      LW ra, 008C (sp)

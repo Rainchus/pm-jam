@@ -121,7 +121,7 @@
 	Call $giveItemsLoop () %gives items defined in "$itemsToGive" array
 	Call $giveBadgesLoop ()
 	Call $setMarioStats ()
-	Call GotoMap ("bis_05" 0)
+	Call GotoMap ("bis_02" 0)
 	Set *GB_StoryProgress FFFFFFA0
 	%Call $GivePartners ()
 	Call $giveStarlow
