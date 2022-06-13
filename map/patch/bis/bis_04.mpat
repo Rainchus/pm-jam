@@ -495,25 +495,25 @@
 	Call SetMusicTrack ( 0 .Song:PeachsCastleParty 0 8 )
 	Call FadeInMusic ( 0 .Song:PeachsCastleParty 0 5` 0 0 )
 	Wait 60`
-	Call PlaySoundAtNpc (.NpcID:Guardian .Sound:PowerUp 0 )
+	Call PlaySoundAtNpc (.NpcID:Nuts .Sound:PowerUp 0 )
 	Wait 30`
-	Call PlaySoundAtNpc (.NpcID:Guardian .Sound:Glub 0 )
-	Call PlaySoundAtNpc (.NpcID:Guardian .Sound:Drip 0 )
+	Call PlaySoundAtNpc (.NpcID:Nuts .Sound:Glub 0 )
+	Call PlaySoundAtNpc (.NpcID:Nuts .Sound:Drip 0 )
 	Wait 30`
-	Call PlaySoundAtNpc (.NpcID:Guardian .Sound:Wind 0 )
+	Call PlaySoundAtNpc (.NpcID:Nuts .Sound:Wind 0 )
 	Wait 30`
-	Call PlaySoundAtNpc (.NpcID:Guardian .Sound:Falling 0 )
+	Call PlaySoundAtNpc (.NpcID:Nuts .Sound:Falling 0 )
 	Call StopSound (.Sound:Wind )
 	Wait 80`
-	Call PlaySoundAtNpc (.NpcID:Guardian .Sound:HitGround 0 )
+	Call PlaySoundAtNpc (.NpcID:Nuts .Sound:HitGround 0 )
 	Wait 60`
 
-	Call SpeakToNpc (.NpcID:Tenderling .Anim:TenderlingIdle .Anim:TenderlingIdle 0 .NpcID:MemoryMario 00330041)
-	Call SpeakToNpc (.NpcID:Tenderling .Anim:TenderlingIdle .Anim:TenderlingIdle 0 .NpcID:MemoryMario 00330042)
-	Call SpeakToNpc (.NpcID:Tenderling .Anim:TenderlingIdle .Anim:TenderlingIdle 0 .NpcID:MemoryMario 00330043)
+	Call SpeakToNpc (.NpcID:Nuts .Anim:NutsIdle .Anim:NutsTalk 0 .NpcID:Starlow 00330041)
+	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowNTalk .Anim:StarlowNIdle 0 .NpcID:Nuts 00330042)
+	Call SpeakToNpc (.NpcID:Nuts .Anim:NutsIdle .Anim:NutsTalk 0 .NpcID:Starlow 00330043)
 	Wait 30`
 	Call PlaySoundAtNpc (.NpcID:Guardian .Sound:Star 0 )
-	Call SpeakToNpc (.NpcID:Tenderling .Anim:TenderlingIdle .Anim:TenderlingIdle 0 .NpcID:MemoryMario 00330044)
+	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowNTalk .Anim:StarlowNIdle 0 .NpcID:Nuts 00330044)
 	Wait 10`
 	Call  FadeOutMusic  ( 00000000 500` ) % usually between 500-1000
 	Call  ClearAmbientSounds ( 250` )
