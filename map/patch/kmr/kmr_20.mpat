@@ -8,15 +8,23 @@
 #define .lakilesterID 8
 
 #new:Data $itemsToGive {
-	.Item:FireFlower
-	.Item:SnowmanDoll
+	.Item:Mushroom
+	.Item:SuperShroom
+	.Item:Melon
+	.Item:HoneySyrup
+	.Item:MapleSyrup
+	.Item:InsecticideHerb
+	.Item:PleaseComeBack
 	0 %terminate list
 }
 
 #new:Data $badgesToGive {
 	.Item:PowerJump
+	.Item:PowerSmash1
+	.Item:CloseCall
 	0 %terminate list
 }
+
 
 #new:Function $setMarioStats {
 	ORI t0, r0, 15` %HP value to set

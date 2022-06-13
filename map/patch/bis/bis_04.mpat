@@ -132,9 +132,9 @@
 		Case == FFFFFFA0
 			Exec $Cutscene1
 		Case == FFFFFFA1
-			Exec $Cutscene4
+			Exec $PostPipeCutscene1
 		Case == FFFFFFA2
-			Exec $Cutscene6
+			Exec $PostPipeCutscene2
 	EndSwitch
 	
     Return
@@ -274,14 +274,14 @@
 	Call SpeakToPlayer (.NpcID:Nuts .Anim:NutsTalk .Anim:NutsIdle 0 0033001C )
 	%PIPE RISES UP HERE
 	Set *Flag_bis_04_pipe_to_bis_05 1
-	%Call SetNpcPos (.NpcID:Starlow 0` -100` 0`)
-	%Call EnablePartnerAI ()
-	%Call TeleportPartnerToPlayer ()
-	%Call DisablePlayerPhysics (.False )
-	%Call DisablePlayerInput (.False) Do these ^^ once we've figured out how to make the interacting work
+	Call PlayerMoveTo ( 0` 100` 45` )
+	Wait 15`
+	Call PlayerJump ( -51` 38` 170` 16` )
+	Wait 30`
+	Call PlaySoundAtPlayer (.Sound:Pipe 0 )
+	Wait 4`
+	Exec $Script_bis_05_entry
 
-	%wait for interact with Nutsoglobin
-		%Show string giving the player a choice of what to do
 		Wait 10`
 		Call SetNpcPos (.NpcID:Protobatter 92` 150` 21` )
 		Call PlaySoundAtNpc (.NpcID:Protobatter .Sound:Pipe 0 )
@@ -375,34 +375,15 @@
 	Call PlayEffect (~FX:Sparkles:Star -60` 16` 0` 00000000 )
 	Wait 10`
 	Call PlaySoundAtNpc (.NpcID:Starlow .Sound:PowerUp 0)
+	Exec $unlockHammerThrow()
 	Call SpeakToNpc (.NpcID:Guardian .Anim:GuardianMain .Anim:GuardianMain 0 .NpcID:Nuts 00330028 )
 	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChallengeIdle 0 00330029)
 	
 	%PIPE RISES UP HERE
 	Set *Flag_bis_04_pipe_to_bis_06 1
-	%Call SetNpcPos (.NpcID:Starlow 0` -100` 0`)
-	%Call EnablePartnerAI ()
-	%Call TeleportPartnerToPlayer ()
-	%Call DisablePlayerPhysics (.False )
-	%Call DisablePlayerInput (.False) Do these ^^ once we've figured out how to make the interacting work
-
-	%Wait for Interact with Challenge Globin
-		%Show string giving the player a choice of what to do
-		Wait 10`
-		Call SetNpcPos (.NpcID:Chuboomba 92` 150` 21` )
-		Call PlaySoundAtNpc (.NpcID:Chuboomba .Sound:Pipe 0 )
-		Call SetNpcYaw (.NpcID:Chuboomba -90` )
-		Call NpcFlyTo (.NpcID:Chuboomba ~Vec3d:EnemyScenePos 15` 0 .Easing:Linear )
-		Call PlaySound (.Sound:HitGround)
-		Call PlayEffect (~FX:SmokeImpact:Large ~Vec3d:EnemyScenePos 00000020 00000004 00000000 0000000A 00000000 00000000 00000000 00000000 00000000)
-		Wait 30`
-		Call SetPlayerAnimation (.PlayerAnim:BeforeJump)
-		Wait 15`
-		Set *Flag_Chuboomba_Fight 1
-		%Story Byte Set
-		%Set *GB_StoryProgress FFFFFFA5
-		Return
-		End
+	Exec $Script_bis_06_entry
+	Return
+	End
 }
 
 #new:Script $Cutscene6 { %StoryProgress A5 - CUTSCENE DONE
@@ -542,6 +523,67 @@
 
     Return
     End
+}
+
+#new:Script $PostPipeCutscene1 {
+	Call DisablePartnerAI ( 0 )
+	Call DisablePlayerInput (.True)
+	Call DisablePlayerPhysics (.True )
+	Call SetPlayerPos(0` -100` 0`)
+	Call TeleportPartnerToPlayer ()
+	Call SetPlayerPos(~Vec3d:MarioScenePos)
+	Call SetNpcPos (.NpcID:Starlow ~Vec3d:StarlowScenePos)
+	Call SetNpcPos (.NpcID:Challenge ~Vec3d:ChallengeScenePos )
+	Call SetNpcPos (.NpcID:Nuts ~Vec3d:NutsScenePos  )
+	Call PlaySoundAtNpc (.NpcID:Guardian .Sound:Pipe 0 )
+	Wait 30`
+	Call SpeakToPlayer (.NpcID:Nuts .Anim:NutsTalk .Anim:NutsIdle 0 00330046)
+	Wait 10`
+	Call SetNpcPos (.NpcID:Protobatter 92` 150` 21` )
+	Call PlaySoundAtNpc (.NpcID:Protobatter .Sound:Pipe 0 )
+	Call SetNpcYaw (.NpcID:Protobatter -90` )
+	Call NpcFlyTo (.NpcID:Protobatter ~Vec3d:EnemyScenePos 15` 0 .Easing:Linear )
+	Call PlaySound (.Sound:HitGround)
+	Call PlayEffect (~FX:SmokeImpact:Large ~Vec3d:EnemyScenePos 00000020 00000004 00000000 0000000A 00000000 00000000 00000000 00000000 00000000)
+	Wait 30`
+	Call SetPlayerAnimation (.PlayerAnim:BeforeJump)
+	Wait 15`
+	Set *Flag_Protobatter_Fight 1
+	%Story Byte Set
+	%Set *GB_StoryProgress FFFFFFA3
+	   Return
+	End
+}
+
+
+#new:Script $PostPipeCutscene2 {
+	Call DisablePartnerAI ( 0 )
+	Call DisablePlayerInput (.True)
+	Call DisablePlayerPhysics (.True )
+	Call SetPlayerPos(0` -100` 0`)
+	Call TeleportPartnerToPlayer ()
+	Call SetPlayerPos(~Vec3d:MarioScenePos)
+	Call SetNpcPos (.NpcID:Starlow ~Vec3d:StarlowScenePos)
+	Call SetNpcPos (.NpcID:Challenge ~Vec3d:ChallengeScenePos )
+	Call SetNpcPos (.NpcID:Nuts ~Vec3d:NutsScenePos  )
+	Call PlaySoundAtNpc (.NpcID:Guardian .Sound:Pipe 0 )
+	Wait 30`
+	Call SpeakToPlayer (.NpcID:Nuts .Anim:NutsTalk .Anim:NutsIdle 0 00330047)
+	Wait 10`
+	Call SetNpcPos (.NpcID:Chuboomba 92` 150` 21` )
+	Call PlaySoundAtNpc (.NpcID:Chuboomba .Sound:Pipe 0 )
+	Call SetNpcYaw (.NpcID:Chuboomba -90` )
+	Call NpcFlyTo (.NpcID:Chuboomba ~Vec3d:EnemyScenePos 15` 0 .Easing:Linear )
+	Call PlaySound (.Sound:HitGround)
+	Call PlayEffect (~FX:SmokeImpact:Large ~Vec3d:EnemyScenePos 00000020 00000004 00000000 0000000A 00000000 00000000 00000000 00000000 00000000)
+	Wait 30`
+	Call SetPlayerAnimation (.PlayerAnim:BeforeJump)
+	Wait 15`
+	Set *Flag_Chuboomba_Fight 1
+	%Story Byte Set
+	%Set *GB_StoryProgress FFFFFFA5
+	   Return
+	End
 }
 
 #new:NpcSettings $MarioNPC
