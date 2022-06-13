@@ -16,11 +16,11 @@ Let's make this quick.[Wait][END]
 #message:33:003
 {
 [Style Right]Hi Nutsoglobin![Pause 5] As, uh, good[BR]
-as it is to see you, we’re[BR]
+as it is to see you, we're[BR]
 trying to find our way out.[BR]
 Bowser ate a Vacuum Shroom, [BR][Wait][Next]
 sucked us right up, and now[BR]
-we're trapped again.[Pause 5] It’s a[BR]
+we're trapped again.[Pause 5] It's a[BR]
 whole mess...[Wait][End]
 }
 
@@ -79,9 +79,9 @@ What's in it for us?[Wait][END]
 {
 [Style Right]Perhaps we can show you the[BR]
 proper path to prosperity![Pause 5][BR]
-Well, we don’t actually know how[BR]
+Well, we don't actually know how[BR]
 to get you out...[BR][Wait][Next]
-But, if you don’t complete[BR]
+But, if you don't complete[BR]
 our challenges...[WAIT][END]
 }
 
@@ -112,10 +112,10 @@ that brought us here...[Wait][END]
 some experience![Pause 5] Good, GOOD!!![BR]
 These fights will be extra[BR]
 spectacular, then![BR][Wait][Next]
-You’ll test the limits of your[BR]
+You'll test the limits of your[BR]
 skills and endurance, hoping to[BR]
 triumph against these foes.[Pause 5][BR]
-We’ve refined our battles to-[WAIT][END]
+We've refined our battles to-[WAIT][END]
 }
 #message:33:010
 {
@@ -126,7 +126,7 @@ we just get this over with?[Wait][END]
 
 #message:33:011
 {
-[Style Right]Get this over with?[Pause 5] Why didn’t[BR]
+[Style Right]Get this over with?[Pause 5] Why didn't[BR]
 you say so?[Wait][END]
 }
 
@@ -152,12 +152,12 @@ foes?[Wait][END]
 {
 [Style Right]Not in the slightest, little[BR]
 globin.[Pause 5] Try these ones out,[BR]
-maybe you’ll change your mind![Wait][END]
+maybe you'll change your mind![Wait][END]
 }
 
 #message:33:016
 {
-[Style Right]Congratulations! You’ve[BR]
+[Style Right]Congratulations! You've[BR]
 performed well enough that we[BR]
 want to reward you with a globin.[BR][Wait][Next]
 Not just any globin, but a[BR]
@@ -202,7 +202,7 @@ We spent a long-ish time on it...[Wait][END]
 #message:33:01C
 {
 [Style Right]It may help you in your future[BR]challenges, so give it a shot.[BR]
-When you’re ready for the[BR]
+When you're ready for the[BR]
 next-ish one, speak with me!
 [Wait][END]
 }
@@ -216,7 +216,7 @@ are left?[Wait][END]
 
 #message:33:01E
 {
-[Style Right]I don’t know, I just want to[BR]
+[Style Right]I don't know, I just want to[BR]
 get these over with so I can[BR]
 begin my quiz![BR][Wait][Next]
 I let you have all these little[BR]
@@ -227,7 +227,7 @@ Is that so much-ish to ask?[Wait][End]
 
 #message:33:01F
 {
-[Style Right]Well, they’re not done[BR]
+[Style Right]Well, they're not done[BR]
 regardless. Globins, ready[BR]
 yourself for the next[BR]
 frightful-ish beast![Wait][END]
@@ -249,13 +249,13 @@ Your power really is huge-ish![Wait][END]
 #message:33:022
 {
 [Style Right]One more battle awaits, but[BR]
-before that, we’ve got one[BR]
+before that, we've got one[BR]
 more ability to bestow.[Wait][END]
 }
 
 #message:33:023
 {
-[Style Right]Seriously? Why couldn’t you[BR]
+[Style Right]Seriously? Why couldn't you[BR]
 have given us these before the[BR]
 fights?[Wait][END]
 }
@@ -274,7 +274,7 @@ squirm-ish, though![Wait][END]
 
 #message:33:026
 {
-This next ability will allow you[BR]
+[Style Right]This next ability will allow you[BR]
 to toss your hammer with[BR]
 tremendous-ish force! Press [R][BR]
 to hurl it high-ish![Wait][END]
@@ -373,7 +373,7 @@ if you tamper with any memories.[Wait][END]
 [Style Right]Yes. Such as those pertaining[BR]
 to things like the Koopa family[BR]
 lineage, secret castle plans,[BR]
-Bowser’s mint condition[BR][Wait][Next]Chanterelle vinyls, and the[BR]
+Bowser's mint condition[BR][Wait][Next]Chanterelle vinyls, and the[BR]
 Miracle Cure.[Wait][END]
 }
 
@@ -413,7 +413,7 @@ personally.[Wait][END]
 {
 [Style Right]We've done this before, we[BR]
 can do it again.[Pause 5] Let's kick[BR]
-some tail.[Pause 5] [Shake][Size 20]IT’S SHOWTIME!![/fx][Wait][END]
+some tail.[Pause 5] [Shake][Size 20]IT'S SHOWTIME!![/fx][Wait][END]
 }
 
 #message:33:03B
@@ -421,7 +421,7 @@ some tail.[Pause 5] [Shake][Size 20]IT’S SHOWTIME!![/fx][Wait][END]
 [Style Right]Huff...[Pause 5]puff...[Pause 5]whew...[Pause 5][BR]
 We did it.[Pause 15][BR]
 We did it![Pause 20][BR]
-WE’RE GONNA BE FREE!!![BR][Wait][Next]
+WE'RE GONNA BE FREE!!![BR][Wait][Next]
 Okay Mr. Guardian, turn into[BR]
 your Peach form and show us[BR]
 the way to the cure![Pause 5] We did win[BR]
@@ -451,7 +451,7 @@ PHASE.[Wait][END][/fx]
 
 #message:33:03F
 {
-[Style Right]Yikes![Pause 5] Let’s nab the Miracle[BR]
+[Style Right]Yikes![Pause 5] Let's nab the Miracle[BR]
 Cure recipe and get out of[BR]
 here before things get worse![Wait][END]
 }

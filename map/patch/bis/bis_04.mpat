@@ -130,9 +130,9 @@
 	Case == FFFFFFA4
 		Exec $Cutscene5
 	Case == FFFFFFA5
-		Exec $Cutscene4
+		Exec $Cutscene6
 	Case == FFFFFFA6
-		Exec $Cutscene7
+		Exec $Cutscene5
 	EndSwitch
     Return
     End
@@ -246,7 +246,7 @@
     End
 }
 
-#new:Script $Cutscene3 { %StoryProgress A2
+#new:Script $Cutscene3 { %StoryProgress A2 - need to set dialogue option
 	Call DisablePartnerAI ( 0 )
 	Call DisablePlayerInput (.True)
 	Call DisablePlayerPhysics (.True )
@@ -269,18 +269,25 @@
 	Call SpeakToNpc (.NpcID:Tenderling .Anim:TenderlingIdle .Anim:TenderlingIdle 0 .NpcID:Nuts 0033001A )
 	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChallengeIdle 0 0033001B )
 	Call SpeakToPlayer (.NpcID:Nuts .Anim:NutsTalk .Anim:NutsIdle 0 0033001C )
-	Call DisablePlayerPhysics (.False )
-	Call DisablePlayerInput (.False)
-	Call SetNpcPos (.NpcID:Starlow 0` -100` 0`)
-	Call EnablePartnerAI ()
-	Call TeleportPartnerToPlayer ()
+	%PIPE RISES UP HERE
+	%Call SetNpcPos (.NpcID:Starlow 0` -100` 0`)
+	%Call EnablePartnerAI ()
+	%Call TeleportPartnerToPlayer ()
+	%Call DisablePlayerPhysics (.False )
+	%Call DisablePlayerInput (.False) Do these ^^ once we've figured out how to make the interacting work
 
 	%wait for interact with Nutsoglobin
 		%Show string giving the player a choice of what to do
-		%NPc drop down from pipe
-		%Call SetNpcAnimation (.NpcID:SGoombule .Anim:GoombuleRun)
-		%Npc Move to Mario
-		%Encounter Begins
+		Wait 10`
+		Call SetNpcPos (.NpcID:Protobatter 92` 150` 21` )
+		Call PlaySoundAtNpc (.NpcID:Protobatter .Sound:Pipe 0 )
+		Call SetNpcYaw (.NpcID:Protobatter -90` )
+		Call NpcFlyTo (.NpcID:Protobatter ~Vec3d:EnemyScenePos 15` 0 .Easing:Linear )
+		Call PlaySound (.Sound:HitGround)
+		Call PlayEffect (~FX:SmokeImpact:Large ~Vec3d:EnemyScenePos 00000020 00000004 00000000 0000000A 00000000 00000000 00000000 00000000 00000000)
+		Wait 30`
+		Call SetPlayerAnimation (.PlayerAnim:BeforeJump)
+		Wait 15`
 		Set *Flag_Protobatter_Fight 1
 		%Story Byte Set
 		Set *GB_StoryProgress FFFFFFA3
@@ -322,26 +329,55 @@
     End
 }
 
-#new:Script $Cutscene5 { %StoryProgress A4
+#new:Script $Cutscene5 { %StoryProgress A4 - need to set dialogue option
+	Call DisablePartnerAI ( 0 )
 	Call DisablePlayerInput (.True)
-    Call SetPlayerPos (-60` 0` 60`)
-	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChallengeIdle 0 0033001F)
-	Call SpeakToPlayer (.NpcID:Nuts .Anim:NutsTalk .Anim:NutsIdle 0 00330020)
-	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChallengeIdle 0 00330021)
+	Call DisablePlayerPhysics (.True )
+	Call SetPlayerPos(0` -100` 0`)
+	Call TeleportPartnerToPlayer ()
+	Call SetPlayerPos(~Vec3d:MarioScenePos)
+	Call SetNpcPos (.NpcID:Starlow ~Vec3d:StarlowScenePos)
+	Call SetNpcPos (.NpcID:Challenge ~Vec3d:ChallengeScenePos )
+	Call SetNpcPos (.NpcID:Nuts ~Vec3d:NutsScenePos  )
+	Call SetNpcYaw (.NpcID:Nuts -90`)
+	Call SetNpcYaw (.NpcID:Challenge -90`)
+	Wait 30`
+	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChallengeIdle 0 00330020)
+	Call SpeakToPlayer (.NpcID:Nuts .Anim:NutsTalk .Anim:NutsIdle 0 00330021)
+	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChallengeIdle 0 00330022)
 	Call SetNpcAnimation (.NpcID:Starlow .Anim:StarlowAIdle)
-	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowATalk .Anim:StarlowAIdle 0 .NpcID:Challenge 00330022)
-	Call SpeakToPlayer (.NpcID:Nuts .Anim:NutsTalk .Anim:NutsIdle 0 00330023)
-	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowATalk .Anim:StarlowAIdle 0 .NpcID:Challenge 00330024)
-	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChallengeIdle 0 00330025)
-	Call SpeakToPlayer (.NpcID:Nuts .Anim:NutsTalk .Anim:NutsIdle 0 00330026)
-	%Display Upgrade String
-	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChallengeIdle 0 00330028)
+	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowATalk .Anim:StarlowAIdle 0 .NpcID:Challenge 00330023)
+	Call SpeakToPlayer (.NpcID:Nuts .Anim:NutsTalk .Anim:NutsIdle 0 00330024)
+	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowATalk .Anim:StarlowAIdle 0 .NpcID:Challenge 00330025)
+	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChallengeIdle 0 00330026)
+	Call SpeakToPlayer (.NpcID:Nuts .Anim:NutsTalk .Anim:NutsIdle 0 00330027)
+	Wait 15`
+	Call PlaySoundAtNpc (.NpcID:Starlow .Sound:Star 0 )
+	Call PlayEffect (~FX:Sparkles:Star -60` 16` 0` 00000000 )
+	Wait 10`
+	Call PlaySoundAtNpc (.NpcID:Starlow .Sound:PowerUp 0)
+	Call SpeakToNpc (.NpcID:Tenderling .Anim:TenderlingIdle .Anim:TenderlingIdle 0 .NpcID:Nuts 00330028 )
+	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChallengeIdle 0 00330029)
 	
+	%PIPE RISES UP HERE
+	%Call SetNpcPos (.NpcID:Starlow 0` -100` 0`)
+	%Call EnablePartnerAI ()
+	%Call TeleportPartnerToPlayer ()
+	%Call DisablePlayerPhysics (.False )
+	%Call DisablePlayerInput (.False) Do these ^^ once we've figured out how to make the interacting work
+
 	%Wait for Interact with Challenge Globin
-		%NPc drop down from pipe
-		%Call SetNpcAnimation (.NpcID:SGoombule .Anim:GoombuleRun)
-		%Npc Move to Mario
-		%Encounter Begins
+		%Show string giving the player a choice of what to do
+		Wait 10`
+		Call SetNpcPos (.NpcID:Chuboomba 92` 150` 21` )
+		Call PlaySoundAtNpc (.NpcID:Chuboomba .Sound:Pipe 0 )
+		Call SetNpcYaw (.NpcID:Chuboomba -90` )
+		Call NpcFlyTo (.NpcID:Chuboomba ~Vec3d:EnemyScenePos 15` 0 .Easing:Linear )
+		Call PlaySound (.Sound:HitGround)
+		Call PlayEffect (~FX:SmokeImpact:Large ~Vec3d:EnemyScenePos 00000020 00000004 00000000 0000000A 00000000 00000000 00000000 00000000 00000000)
+		Wait 30`
+		Call SetPlayerAnimation (.PlayerAnim:BeforeJump)
+		Wait 15`
 		Set *Flag_Chuboomba_Fight 1
 		%Story Byte Set
 		Set *GB_StoryProgress FFFFFFA5
@@ -414,7 +450,7 @@
     End
 }
 
-#new:Script $Cutscene7 { %StoryProgress A6 - CUTSCENE DONE MINUS LAST CRASHING BIT
+#new:Script $Cutscene7 { %StoryProgress A6 - CUTSCENE DONE
 	Call DisablePartnerAI ( 0 )
 	Call DisablePlayerInput (.True)
 	Call DisablePlayerPhysics (.True )

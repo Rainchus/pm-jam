@@ -48,6 +48,33 @@
 	End
 }
 
+#new:Function $lockAirTimer {
+	LI t0, 8010F088
+	SH r0, 0 (t0)
+	JR RA
+	ORI v0, r0, 2
+}
+
+#new:Script $lockAirTimerScript {
+Loop
+  Call $lockAirTimer
+  Wait 1`
+EndLoop
+Return
+End
+}
+
+#new:ASCII $Ascii_bis_04 {
+	"bis_04"
+}
+
+#new:Script $MapChange {
+	Call  GotoMap   ( "bis_04" 00000000 )
+	Wait  100`
+	Return
+	End
+}
+
 #new:Script $Script_Main {
     Set   *GB_WorldLocation  .Location:GoombaRoad
     Call  SetCamPerspective  ( .Cam:Default 00000003 00000019 00000010 00001000 )
@@ -65,6 +92,7 @@
     Call MakeNpcs ( .False $NpcGroupList )
     Exec  $Script_SetupMusic
     Exec  $Script_EnterMap
+	Exec $lockAirTimerScript
     Exec $Cutscene
     Return
     End
@@ -88,7 +116,7 @@
     Thread
 		Set *VarD 0`
 		Loop
-            Call SetNpcRotation (.NpcID:Starlow 0` 0` *VarD )
+            Call SetNpcRotation (.NpcID:Starlow *VarD 0` 0` )
 			Add   *VarD  12`
 			If  *VarD  >  359`
 			  Set   *VarD 0`
@@ -102,7 +130,7 @@
     Thread
 		Set *VarD 0`
 		Loop
-            Call SetNpcRotation (.NpcID:MarioNPC 0` 0` *VarD )
+            Call SetNpcRotation (.NpcID:MarioNPC *VarD 0` 0`)
 			Add   *VarD  6`
 			If  *VarD  >  359`
 			  Set   *VarD 0`
@@ -110,8 +138,9 @@
 			Wait 1`
         EndLoop
 	EndThread
-	Wait 90`
-	%insert cod to load bis_04
+	Call SetPlayerPos ( 0` -300` -0` )
+	Wait 120`
+	Exec $MapChange
     End
     Return
 }
