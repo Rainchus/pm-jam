@@ -500,6 +500,16 @@ So here's a sign instead :)[END]
 
 #message:33:046
 {
-[END]
+[Style Right]Are you globins ready to[BR]
+resume your challenging?[Wait][End]
+}
+
+#message:2F:047
+{
+	[Style Choice pos=115,90 size=110,46]
+	[StartChoice]
+	[Option 0]Let's do it![BR]
+	[Option 1]Wait a sec...[BR]
+	[EndChoice cancel=1][End][END]
 }
 
