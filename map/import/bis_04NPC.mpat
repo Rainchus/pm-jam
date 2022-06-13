@@ -247,8 +247,8 @@
 }
 
 #new:Script $Script_Init_MemorySequel {
-    Call  SetSelfVar    ( .NpcID:MemoryMario 00000000 )
-    Call  BindNpcIdle   ( .Npc:Self $Script_Idle_MemoryMario )
+    Call  SetSelfVar    ( .NpcID:MemorySequel 00000000 )
+    Call  BindNpcIdle   ( .Npc:Self $Script_Idle_MemoryMario_Sequel )
     Call  BindNpcDefeat     ( .Npc:Self $Script_Defeat_MemoryMario )
     Return
     End
@@ -369,18 +369,18 @@
 
 #new:NpcGroupList $NpcGroupList {
     00000001 $NpcGroup_Starlow 0
-    00000001 $NpcGroup_MarioNPC 0
+    00000001 $NpcGroup_MarioNPC 00000000
     00000001 $NpcGroup_Nuts 0
     00000001 $NpcGroup_Challenge 0
-    00000001 $NpcGroup_Guardian 0
+    00000001 $NpcGroup_Guardian 00000000
     00000001 $NpcGroup_Blitty 0
-    00000001 $NpcGroup_Goombule 00000000
-    00000001 $NpcGroup_SGoombule 00010000
-    00000001 $NpcGroup_Protobatter 00020000
-    00000001 $NpcGroup_Tenderling 00030000
-    00000001 $NpcGroup_Chuboomba 00040000
-    00000001 $NpcGroup_MemoryMario 00050000
-    00000001 $NpcGroup_MemorySequel 0
+    00000001 $NpcGroup_Goombule 00010000
+    00000001 $NpcGroup_SGoombule 00020000
+    00000001 $NpcGroup_Protobatter 00030000
+    00000001 $NpcGroup_Tenderling 00040000
+    00000001 $NpcGroup_Chuboomba 00050000
+    00000001 $NpcGroup_MemoryMario 00000000
+    00000001 $NpcGroup_MemorySequel 00000000
 
     %terminate list
     00000000 00000000 00000000
@@ -448,6 +448,18 @@
 }
 
 #new:Script $Script_Idle_MemoryMario {
+    % Loop
+    %     If  *Flag_MemoryMario_Fight  ==  00000001
+    %         BreakLoop
+    %     EndIf
+    %     Wait  1`
+    % EndLoop
+    % Call  StartBossBattle   ( 5 ) %normal battle music
+    Return
+    End
+}
+
+#new:Script $Script_Idle_MemoryMario_Sequel {
     Loop
         If  *Flag_MemoryMario_Fight  ==  00000001
             BreakLoop
