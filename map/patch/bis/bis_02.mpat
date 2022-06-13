@@ -767,7 +767,7 @@
 			EndLoop
 	EndThread
 	Call EnableNpcShadow ( .NpcID:MarioNPC 0 )
-	Call SetNpcPos (.NpcID:MarioNpc 0` -150`  0` )
+	Call SetNpcPos (.NpcID:MarioNPC 0` -150`  0` )
 	Wait 90`
 	Call PlaySoundAtNpc (.NpcID:Peach .Sound:Wind 0)
 	Call NpcFlyTo (.NpcID:Peach -43` 41` 100` 25` 0` .Easing:QuarticOut)
