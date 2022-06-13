@@ -394,7 +394,7 @@
   474:  		ExecWait  DoNormalHit 
   480:  		Wait  10`
   48C:  		SetConst  *Var0  00000001 
-  49C:  		SetConst  *Var1  00270005 
+  49C:  		SetConst  *Var1  00270007 
   4AC:  		ExecWait  DoDeath 
   4B8:  		Return
   4C0:  	Case  ==  .Event:EndFirstStrike % 35
