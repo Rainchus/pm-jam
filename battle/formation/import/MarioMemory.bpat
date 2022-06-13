@@ -26,9 +26,9 @@
 #define .mushroomPart 3
 
 %Memory Mario stats
-#define .memoryMarioHP 50`b
-#define .marioJumpAttackDamage 6`
-#define .marioDashDamage 5`
+#define .memoryMarioHP 20`b
+#define .marioJumpAttackDamage 3`
+#define .marioDashDamage 4`
 
 #new:Actor $MarioMemory {
     % stats

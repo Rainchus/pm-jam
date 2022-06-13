@@ -20,10 +20,10 @@
 #define .hammerPart 2
 
 %Memory Luigi stats
-#define .luigiHP 50`b
-#define .hammerThrowDamage 5
-#define .luigiDashDamage 4
-#define .booDashDamage 3
+#define .luigiHP 20`b
+#define .hammerThrowDamage 4
+#define .luigiDashDamage 3
+#define .booDashDamage 2
 
 #new:Actor $LuigiMemory {
     % stats
