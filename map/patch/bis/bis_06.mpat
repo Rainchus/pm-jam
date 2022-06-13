@@ -310,6 +310,7 @@
 	% Call  MakeEntity    ( .Entity:BlueSwitch ~Vec4d:Gate4Switch1 80000000 )
 	% Call  AssignAreaFlag    ( .swooper0DeathFlag )
 	Bind  $Script_SwooperHit .Trigger:AreaFlagSet *AreaFlag[.swooper0DeathFlag] 00000001 00000000
+	Call  MakeEntity    ( .Entity:Signpost ~Vec4d:Sign 80000000 )
 
 	Call  MakeEntity    ( .Entity:RedSwitch ~Vec4d:Gate5Switch1 80000000 )
 	Call  AssignAreaFlag    ( .gate5Switch1Flag )

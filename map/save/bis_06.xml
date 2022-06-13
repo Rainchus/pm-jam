@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Map name="bis_06" author="unnamed" background="hos_bg" textures="bon_tex">
 	<Editor>
-		<Camera pos="1310.051880,149.151627,-530.452942" pitch="30.639982" yaw="2.160019"/>
+		<Camera pos="1428.072021,135.556747,90.090118" pitch="15.599998" yaw="358.000092"/>
 		<Camera pos="1342.153076,65536.000000,0.912498"/>
 		<Camera pos="65536.000000,-3.994605,194.083405"/>
 		<Camera pos="1968.902588,-105.778732,65536.000000"/>
@@ -131,7 +131,7 @@
 		</Node>
 	</ZoneTree>
 	<MarkerTree>
-		<Node name="Root" id="12">
+		<Node name="Root" id="13">
 			<Node name="Gate1Switch1" id="FFFFFFFF"/>
 			<Node name="Gate2Switch1" id="0"/>
 			<Node name="Gate2Switch2" id="1"/>
@@ -152,6 +152,7 @@
 			<Node name="Entry0" id="F"/>
 			<Node name="RespawnMarker" id="10"/>
 			<Node name="Entry1" id="11"/>
+			<Node name="Sign" id="12"/>
 		</Node>
 	</MarkerTree>
 	<LightSets>
@@ -5337,7 +5338,11 @@
 	</Zones>
 	<Markers>
 		<Marker ver="4" type="Root">
-			<MapObject name="Root" id="12"/>
+			<MapObject name="Root" id="13"/>
+		</Marker>
+		<Marker ver="4" type="Entity" pos="1340,0,-193" yaw="0.000000">
+			<MapObject name="Sign" id="12"/>
+			<Entity type="802EAFDC"/>
 		</Marker>
 		<Marker ver="4" type="Entry" pos="1346,122,-1446" yaw="180.000000">
 			<MapObject name="Entry1" id="11"/>
