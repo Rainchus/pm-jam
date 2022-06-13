@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Map name="bis_04" author="unnamed" background="obk_bg" textures="kmr_tex">
 	<Editor>
-		<Camera pos="32.309273,135.013153,148.783463" pitch="55.519974" yaw="239.679810"/>
+		<Camera pos="-85.351425,442.712585,-123.601875" pitch="17.439976" yaw="180.639786"/>
 		<Camera pos="200.106750,65536.000000,14.088737"/>
 		<Camera pos="65536.000000,-45.132263,407.542053"/>
 		<Camera pos="270.127808,55.716232,65536.000000"/>
@@ -109,7 +109,7 @@
 		</Node>
 	</ZoneTree>
 	<MarkerTree>
-		<Node name="Root" id="17">
+		<Node name="Root" id="18">
 			<Node name="Entrances" id="FFFFFFFF"/>
 			<Node name="MainEntry" id="0"/>
 			<Node name="Nuts" id="1"/>
@@ -134,6 +134,7 @@
 			<Node name="GuardianScenePos" id="14"/>
 			<Node name="ChallengePipe1Entry" id="15"/>
 			<Node name="ChallengePipe2Entry" id="16"/>
+			<Node name="MemorySequel" id="17"/>
 		</Node>
 	</MarkerTree>
 	<LightSets>
@@ -22759,7 +22760,12 @@
 	</Zones>
 	<Markers>
 		<Marker ver="4" type="Root">
-			<MapObject name="Root" id="17"/>
+			<MapObject name="Root" id="18"/>
+		</Marker>
+		<Marker ver="4" type="NPC" pos="0,400,0" yaw="0.000000">
+			<MapObject name="MemorySequel" id="17"/>
+			<Movement type="Stationary" data="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
+			<Sprite sprite="A2" palette="0" animations="1,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0"/>
 		</Marker>
 		<Marker ver="4" type="Entry" pos="47,38,170" yaw="-180.000000">
 			<MapObject name="ChallengePipe2Entry" id="16"/>
