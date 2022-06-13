@@ -325,7 +325,7 @@
    64:  	CaseOR  ==  .Event:HitCombo % 9
    70:  	CaseOR  ==  .Event:Hit % A
    7C:  		SetConst  *Var0  00000001 
-   8C:  		SetConst  *Var1  00260005 
+   8C:  		SetConst  *Var1  00260008 
    9C:  		ExecWait  DoNormalHit 
    A8:  	EndCaseGroup
    B0:  	Case  ==  .Event:BurnHit % E
@@ -390,11 +390,11 @@
   440:  	EndCaseGroup
   448:  	Case  ==  .Event:Death % 20
   454:  		SetConst  *Var0  00000001 
-  464:  		SetConst  *Var1  00260005 
+  464:  		SetConst  *Var1  00260008 
   474:  		ExecWait  DoNormalHit 
   480:  		Wait  10`
   48C:  		SetConst  *Var0  00000001 
-  49C:  		SetConst  *Var1  00260006 
+  49C:  		SetConst  *Var1  00260009 
   4AC:  		ExecWait  DoDeath 
   4B8:  		Return
   4C0:  	Case  ==  .Event:EndFirstStrike % 35
