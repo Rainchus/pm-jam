@@ -156,6 +156,8 @@
 #new:Script $SetCheckpointFlag {
     If *Flag_bis_05_checkpoint == 0
         Set *Flag_bis_05_checkpoint 1
+        Call PlayEffect ( ~FX:GoldShimmer:Rising 1148` 74` -149` 16` 32` 8`)
+        Call PlaySoundAtModel (~Model:BoxPlat2 .Sound:Check 0 )
     EndIf
     Return
     End
@@ -169,11 +171,13 @@
             If *Flag_bis_05_checkpoint == 0
                 Call SetPlayerPos ( ~Vec3d:Check1 )
                 Call PlaySoundAtModel (~Model:BoxPlat1 .Sound:Star 0 )
-                Call PlayEffect (~FX:Sparkles:Star -20` 16` 0` 00000000 )
+                Call PlayEffect (~FX:Sparkles:Star -3` 16` 0` 00000000 )
+                Call TeleportPartnerToPlayer ()
             Else
                 Call SetPlayerPos ( ~Vec3d:Check2 )
                 Call PlaySoundAtModel (~Model:BoxPlat2 .Sound:Star 0 )
                 Call PlayEffect (~FX:Sparkles:Star 1120` 86` -149` 00000000 )
+                Call TeleportPartnerToPlayer ()
             EndIf
         EndIf
         Wait 1`
