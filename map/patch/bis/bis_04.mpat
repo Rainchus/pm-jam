@@ -6,14 +6,12 @@
 	[MainScript] $Script_Main
 	[Background] 80200000
 	[EntryList] $EntryList
-	[EntryCount] 3
+	[EntryCount] 1
 }
 
 #new:EntryList $EntryList
 {
 	~Vec4f:MainEntry
-	~Vec4f:ChallengePipe1Entry
-	~Vec4f:ChallengePipe2Entry
 }
 
 
@@ -102,13 +100,6 @@
 	ORI v0, r0, 2
 }
 
-#new:Script $Make_Entities {
-	Call MakeEntity    ( .Entity:BlueWarpPipe ~Vec4d:ChallengePipe1 ~Entry:ChallengePipe1Entry $Script_bis_05_entry ~Index:*Flag_bis_04_pipe_to_bis_05 80000000 )
-	Call MakeEntity    ( .Entity:BlueWarpPipe ~Vec4d:ChallengePipe2 ~Entry:ChallengePipe2Entry $Script_bis_06_entry ~Index:*Flag_bis_04_pipe_to_bis_06 80000000 )
-	Return
-	End
-}
-
 #new:Script $Script_Main {
     Set  *GB_WorldLocation  .Location:GoombaRoad
     Call SetCamPerspective  ( .Cam:Default 00000003 00000019 00000010 00001000 )
@@ -123,7 +114,6 @@
     %         Call $ScrApi_XORVar ( *Var0 1 ) %Var0 ^ 1
     %     EndLoop
     % EndThread
-	Exec $Make_Entities
     Exec $Script_SetupMusic
 	Exec $TexturePanning
 	Call EnableModel ( ~Model:HideAll 0 )
@@ -142,7 +132,7 @@
 	Case == FFFFFFA5
 		Exec $Cutscene6
 	Case == FFFFFFA6
-		Exec $Cutscene5
+		Exec $Cutscene7
 	EndSwitch
     Return
     End
@@ -280,7 +270,6 @@
 	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChallengeIdle 0 0033001B )
 	Call SpeakToPlayer (.NpcID:Nuts .Anim:NutsTalk .Anim:NutsIdle 0 0033001C )
 	%PIPE RISES UP HERE
-	Set *Flag_bis_04_pipe_to_bis_05 1
 	%Call SetNpcPos (.NpcID:Starlow 0` -100` 0`)
 	%Call EnablePartnerAI ()
 	%Call TeleportPartnerToPlayer ()
@@ -340,21 +329,6 @@
     End
 }
 
-#new:Script $Script_bis_05_entry {
-	Call  GotoMap   ( "bis_05" 00000000 )
-	Wait  100`
-	Return
-	End
-}
-
-#new:Script $Script_bis_06_entry {
-	Call  GotoMap   ( "bis_06" 00000000 )
-	Wait  100`
-	Return
-	End
-}
-
-
 #new:Script $Cutscene5 { %StoryProgress A4 - need to set dialogue option
 	Call DisablePartnerAI ( 0 )
 	Call DisablePlayerInput (.True)
@@ -386,7 +360,6 @@
 	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChallengeIdle 0 00330029)
 	
 	%PIPE RISES UP HERE
-	Set *Flag_bis_04_pipe_to_bis_06 1
 	%Call SetNpcPos (.NpcID:Starlow 0` -100` 0`)
 	%Call EnablePartnerAI ()
 	%Call TeleportPartnerToPlayer ()
@@ -518,7 +491,7 @@
 	Call  ClearAmbientSounds ( 250` )
 	Call SetMusicTrack ( 0 .Song:PeachsCastleParty 0 8 )
 	Call FadeInMusic ( 0 .Song:PeachsCastleParty 0 5` 0 0 )
-	Wait 30`
+	Wait 60`
 	Call PlaySoundAtNpc (.NpcID:Guardian .Sound:PowerUp 0 )
 	Wait 30`
 	Call PlaySoundAtNpc (.NpcID:Guardian .Sound:Glub 0 )
@@ -528,9 +501,9 @@
 	Wait 30`
 	Call PlaySoundAtNpc (.NpcID:Guardian .Sound:Falling 0 )
 	Call StopSound (.Sound:Wind )
-	Wait 15`
+	Wait 80`
 	Call PlaySoundAtNpc (.NpcID:Guardian .Sound:HitGround 0 )
-	Wait 30`
+	Wait 60`
 
 	Call SpeakToNpc (.NpcID:Tenderling .Anim:TenderlingIdle .Anim:TenderlingIdle 0 .NpcID:MemoryMario 00330041)
 	Call SpeakToNpc (.NpcID:Tenderling .Anim:TenderlingIdle .Anim:TenderlingIdle 0 .NpcID:MemoryMario 00330042)
@@ -966,5 +939,4 @@
 % 	1 $ChuboombaGroup 0 %number of NPCs group, NPCGroup, BattleID
 % 	0 0 0 %terminating emptyList (essentially an END)
 % }
-
 
