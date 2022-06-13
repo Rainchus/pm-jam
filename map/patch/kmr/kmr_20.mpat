@@ -27,7 +27,7 @@
 
 
 #new:Function $setMarioStats {
-	ORI t0, r0, 15` %HP value to set
+	ORI t0, r0, 20` %HP value to set
 	LI t1, 8010F290
 	SB t0, 0002 (t1) %set HP
 	SB t0, 0003 (t1) %set max hp
@@ -76,6 +76,22 @@
 	ORI v0, r0, 2
 }
 
+#new:Function $equipBadgesLoop {
+	LI t0, $badgesToGive
+	LI t1, 8010F498
+	.loop
+	LW t2, 0 (t0)
+	BEQ t2, r0, .exit
+	NOP
+	SH t2, 0 (t1) %store item
+	ADDIU t0, t0, 4
+	BEQ r0, r0, .loop
+	ADDIU t1, t1, 2
+	.exit
+	JR RA
+	ORI v0, r0, 2	
+}
+
 #new:Function $GiveBootsAndHammer {
 	LIO t0, 8010F290
 	ORI t1, r0, 0101
@@ -120,6 +136,7 @@
 	%debug
 	Call $giveItemsLoop () %gives items defined in "$itemsToGive" array
 	Call $giveBadgesLoop ()
+	Call $equipBadgesLoop ()
 	Call $setMarioStats ()
 	Call GotoMap ("bis_02" 0)
 	Set *GB_StoryProgress FFFFFFA0

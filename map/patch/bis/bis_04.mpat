@@ -375,7 +375,7 @@
 	Call PlayEffect (~FX:Sparkles:Star -60` 16` 0` 00000000 )
 	Wait 10`
 	Call PlaySoundAtNpc (.NpcID:Starlow .Sound:PowerUp 0)
-	Exec $unlockHammerThrow()
+	Call $unlockHammerThrow()
 	Call SpeakToNpc (.NpcID:Guardian .Anim:GuardianMain .Anim:GuardianMain 0 .NpcID:Nuts 00330028 )
 	Call SpeakToPlayer (.NpcID:Challenge .Anim:ChallengeTalk .Anim:ChallengeIdle 0 00330029)
 	

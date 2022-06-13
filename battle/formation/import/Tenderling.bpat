@@ -281,7 +281,14 @@
 
     %tenderling hits mario
     Call SetGoalToTarget   ( .Actor:Self ) %move damage stars to correct location
-    Call EnemyDamageTarget ( .Actor:Self *Var0 ~Flags:DamageType:NoContact 00000000 00000000 .tenderlingRollDamage 00000020 )
+    Call EnemyTestTarget   ( .Actor:Self *Var3 ~Flags:DamageType:0 00000000 00000001 00000010 )
+    Switch  *Var3 
+        CaseOR  ==  .HitResult:Miss % 6
+        CaseOR  ==  .HitResult:Lucky % 5
+
+        Default
+            Call EnemyDamageTarget ( .Actor:Self *Var0 ~Flags:DamageType:NoContact 00000000 00000000 .tenderlingRollDamage 00000020 )
+    EndSwitch
 
     %tenderling rolls through mario
     Call SetTargetActor ( .Actor:Self .Actor:Player )
