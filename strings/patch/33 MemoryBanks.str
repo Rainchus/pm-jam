@@ -487,7 +487,7 @@ Gwahahaha![Wait][END]
 
 #message:33:044
 {
-[Style Narrate][SaveColor][CenterX 150][SetPosY 18] [Color:14]Fin.[RestoreColor][Wait][END]
+[Style Narrate][SaveColor][CenterX 135][SetPosY 18] [Color:14]Fin.[RestoreColor][Wait][END]
 }
 
 #message:33:045
