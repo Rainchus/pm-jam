@@ -8,20 +8,41 @@
 #define .lakilesterID 8
 
 #new:Data $itemsToGive {
-	0080s %fire flower
-	0081s %
-	0s %terminate list
+	.Item:FireFlower
+	.Item:SnowmanDoll
+	0 %terminate list
+}
+
+#new:Data $badgesToGive {
+	.Item:PowerJump
+	0 %terminate list
 }
 
 #new:Function $giveItemsLoop {
 	LI t0, $itemsToGive
 	LI t1, 8010F444
 	.loop
-	LH t2, 0 (t0)
+	LW t2, 0 (t0)
 	BEQ t2, r0, .exit
 	NOP
 	SH t2, 0 (t1) %store item
-	ADDIU t0, t0, 2
+	ADDIU t0, t0, 4
+	BEQ r0, r0, .loop
+	ADDIU t1, t1, 2
+	.exit
+	JR RA
+	ORI v0, r0, 2
+}
+
+#new:Function $giveBadgesLoop {
+	LI t0, $badgesToGive
+	LI t1, 8010F344
+	.loop
+	LW t2, 0 (t0)
+	BEQ t2, r0, .exit
+	NOP
+	SH t2, 0 (t1) %store item
+	ADDIU t0, t0, 4
 	BEQ r0, r0, .loop
 	ADDIU t1, t1, 2
 	.exit
@@ -61,12 +82,22 @@
     ORI v0, r0, 2
 }
 
+#new:Function $giveStarlow {
+	ORI t0, r0, 1
+	SAB t0, 8010F2A2 %set current partner
+	SAB t0, 8010F2AC %starlow bool on
+	JR RA
+	ORI v0, r0, 2
+}
+
 @ $Script_8024FD70 { % First Play, go to starting castle room
 	%debug
 	Call $giveItemsLoop () %gives items defined in "$itemsToGive" array
+	Call $giveBadgesLoop ()
 	Call GotoMap ("bis_05" 0)
-	Set *GB_StoryProgress FFFFFFA2
-	Call $GivePartners ()
+	Set *GB_StoryProgress FFFFFFA0
+	%Call $GivePartners ()
+	Call $giveStarlow
 	Call $GiveBootsAndHammer ()
 	Call $GiveActionCommands ()
 	Return
