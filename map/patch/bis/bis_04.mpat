@@ -204,8 +204,8 @@
 	Call PlayEffect (~FX:SmokeImpact:Large ~Vec3d:EnemyScenePos 00000020 00000004 00000000 0000000A 00000000 00000000 00000000 00000000 00000000)
 	Wait 45`
 	Call SetPlayerAnimation (.PlayerAnim:BeforeJump)
-	Call SetNpcAnimation (.NpcID:Goombule .Anim:GoombuleRun)
-	Call NpcMoveTo (.NpcID:Goombule -60` 0` 25` )
+	%Call SetNpcAnimation (.NpcID:Goombule .Anim:GoombuleRun)
+	%Call NpcMoveTo (.NpcID:Goombule -60` 0` 25` )
 	%Encounter Begins
 	Set *Flag_Goombule_Fight 1
 	%Story Byte Set
@@ -236,8 +236,8 @@
 	Call PlayEffect (~FX:SmokeImpact:Large ~Vec3d:EnemyScenePos 00000020 00000004 00000000 0000000A 00000000 00000000 00000000 00000000 00000000)
 	Wait 30`
 	Call SetPlayerAnimation (.PlayerAnim:BeforeJump)
-	Call SetNpcAnimation (.NpcID:SGoombule .Anim:SGoombuleRun)
-	Call NpcMoveTo (.NpcID:SGoombule -60` 0` 25` )
+	%Call SetNpcAnimation (.NpcID:SGoombule .Anim:SGoombuleRun)
+	%Call NpcMoveTo (.NpcID:SGoombule -60` 0` 25` )
 	%Encounter Begins
 	Set *Flag_SpikedGoombule_Fight 1
 	%Story Byte Set
@@ -278,7 +278,7 @@
 	%wait for interact with Nutsoglobin
 		%Show string giving the player a choice of what to do
 		%NPc drop down from pipe
-		Call SetNpcAnimation (.NpcID:SGoombule .Anim:GoombuleRun)
+		%Call SetNpcAnimation (.NpcID:SGoombule .Anim:GoombuleRun)
 		%Npc Move to Mario
 		%Encounter Begins
 		Set *Flag_Protobatter_Fight 1
@@ -313,8 +313,8 @@
 	Call PlayEffect (~FX:SmokeImpact:Large ~Vec3d:EnemyScenePos 00000020 00000004 00000000 0000000A 00000000 00000000 00000000 00000000 00000000)
 	Wait 30`
 	Call SetPlayerAnimation (.PlayerAnim:BeforeJump)
-	Call SetNpcAnimation (.NpcID:Tenderling .Anim:TenderlingRun)
-	Call NpcMoveTo (.NpcID:Tenderling -60` 0` 25` )
+	%Call SetNpcAnimation (.NpcID:Tenderling .Anim:TenderlingRun)
+	%Call NpcMoveTo (.NpcID:Tenderling -60` 0` 25` )
 	Set *Flag_Tenderling_Fight 1
 	%Story Byte Set
 	Set *GB_StoryProgress FFFFFFA4
@@ -339,7 +339,7 @@
 	
 	%Wait for Interact with Challenge Globin
 		%NPc drop down from pipe
-		Call SetNpcAnimation (.NpcID:SGoombule .Anim:GoombuleRun)
+		%Call SetNpcAnimation (.NpcID:SGoombule .Anim:GoombuleRun)
 		%Npc Move to Mario
 		%Encounter Begins
 		Set *Flag_Chuboomba_Fight 1

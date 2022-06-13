@@ -82,7 +82,7 @@ proper path to prosperity![Pause 5][BR]
 Well, we don’t actually know how[BR]
 to get you out...[BR][Wait][Next]
 But, if you don’t complete[BR]
-our challenges...[END]
+our challenges...[WAIT][END]
 }
 
 #message:33:00C
@@ -115,7 +115,7 @@ spectacular, then![BR][Wait][Next]
 You’ll test the limits of your[BR]
 skills and endurance, hoping to[BR]
 triumph against these foes.[Pause 5][BR]
-We’ve refined our battles to-[END]
+We’ve refined our battles to-[WAIT][END]
 }
 #message:33:010
 {
