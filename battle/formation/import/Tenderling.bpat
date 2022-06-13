@@ -17,12 +17,12 @@
 
 %Tenderling stats
 #define .tenderlingHP 8`b
-#define .tenderlingRollDamage 5`
+#define .tenderlingRollDamage 3`
 
 #new:Actor $Tenderling {
     % stats
     [Index]         D7b 
-    [Level]         5`b 
+    [Level]         4`b 
     [MaxHP]         .tenderlingHP
     [Coins]         1`b 
     [Flags]       00000000 

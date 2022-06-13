@@ -35,7 +35,7 @@
 #define .bulletPart 2
 
 %Protobatter stats
-#define .protoHP 8`b
+#define .protoHP 9`b
 #define .protoNormalDamageSpitHit 3`
 #define .protoLargeDamageHitSpit 4`
 #define .protoMaxDamageHitSpit 5`

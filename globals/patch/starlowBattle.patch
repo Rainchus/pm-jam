@@ -38,6 +38,17 @@
       0 0 0 0 0 0 0 0
 }
 
+#export:Function $getStarlowUpgrade {
+      PUSH ra
+      LW t0, 000C (a0)
+      LABU a2, 8010F2AD %starlow upgrade
+      JAL ~Func:set_variable
+      LW a1, 0000 (t0) %load Var to store to
+      POP ra
+      JR RA
+      ORI v0, r0, 2
+}
+
 #export:Function:Battle $Function_8023808C_Starlow
 {
     0:  LA        A0, 800DC070
@@ -1810,6 +1821,17 @@
   3B0:  Call  $Function_80238C88_ShellShot ( )
   3BC:  Switch  *Var0
   3C8:  	Case  >  00000000
+                  Call $getStarlowUpgrade (*VarF)
+                  Switch *VarF
+                        Case == 0
+                              Set *VarF 3
+                        Case == 1
+                              Set *VarF 4
+                        Case == 2
+                              Set *VarF 5
+                        Default
+                              Set *VarF 3
+                  EndSwitch
   3D4:  		Call  PartnerDamageEnemy    ( *Var0 ~Flags:DamageType:0 0000009F 00000000 *VarF 00000070 )
   3F8:  		Call  PlaySoundAtActor      ( .Actor:Partner 00000110 )
   40C:  	Default
