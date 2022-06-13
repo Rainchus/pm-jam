@@ -35,7 +35,7 @@
 #define .bulletPart 2
 
 %Protobatter stats
-#define .protoHP 8`b
+#define .protoHP 9`b
 #define .protoNormalDamageSpitHit 3`
 #define .protoLargeDamageHitSpit 4`
 #define .protoMaxDamageHitSpit 5`
@@ -429,6 +429,7 @@
 
 #new:Script $ProtobatterHitSpit { %protobatter hits spit with club at mario
     %initial spit animation
+    Call SetTargetActor    ( .Actor:Self .Actor:Player )
     Call SetAnimation ( .Actor:Self .protoPart .protoSpit )
     Wait 20`
 

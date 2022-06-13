@@ -16,6 +16,31 @@
 	-1
 }
 
+#export:Data $hammerThrowUnlocked {
+	0
+}
+
+#export:Function $unlockHammerThrow {
+	ORI t0, r0, 1
+	SAW t0, $hammerThrowUnlocked
+	JR RA
+	ORI v0, r0, 2
+}
+
+#new:Function $getHammerThrowUnlockedValue {
+	PUSH ra
+
+	LW t0, 000C (a0)
+	LW a1, 0000 (t0)
+	LAW a2, $hammerThrowUnlocked
+	JAL ~Func:set_variable
+	NOP
+
+	POP ra
+	JR RA
+	ORI v0, r0, 2
+}
+
 #new:Data $switchHitBool { 0 }
 #new:Data $enemyHitBool { 0 }
 #new:Data $enemyHitBoolInBattle { 0 }
@@ -189,6 +214,9 @@
     LAW t0, $hammerThrowActive
     BNE t0, r0, .exit
     NOP
+	LAW t0, $hammerThrowUnlocked
+	BEQ t0, r0, .exit
+	NOP
 	LI t0, .PlayerStatus
 	LBU t1, 00B4 (t0) %actionState
 	ORI t2, r0, .ACTION_STATE_IDLE
@@ -276,7 +304,7 @@ Facing Right[END]
 	ORI v0, r0, 2
 }
 
-#new:Script:Map $hammerThrowOverworld { %TODO: fix animation crashing
+#new:Script:Map $hammerThrowOverworld {
 	Call $ScrAPI_getFacingDirectionAngle ( *Var1 )
 	Switch *Var1
 	Case == 0

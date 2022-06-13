@@ -27,13 +27,13 @@
 
 
 #new:Function $setMarioStats {
-	ORI t0, r0, 20` %HP value to set
+	ORI t0, r0, 15` %HP value to set
 	LI t1, 8010F290
 	SB t0, 0002 (t1) %set HP
 	SB t0, 0003 (t1) %set max hp
 	SB t0, 0004 (t1) %set true max hp
 
-	ORI t0, r0, 20` %FP value to set
+	ORI t0, r0, 10` %FP value to set
 	SB t0, 0005 (t1) %set FP
 	SB t0, 0006 (t1) %set max fp
 	SB t0, 0007 (t1) %set true max fp
