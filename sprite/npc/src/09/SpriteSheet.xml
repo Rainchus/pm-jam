@@ -35,6 +35,7 @@
 		<Raster id="1A" name="charge1" palette="0" src="charge1.png"/>
 		<Raster id="1B" name="charge2" palette="0" src="charge2.png"/>
 		<Raster id="1C" name="dash" palette="0" src="dash.png"/>
+		<Raster id="1D" name="freeze" palette="0" src="freeze.png"/>
 	</RasterList>
 	<AnimationList>
 		<Animation name="still">
@@ -656,6 +657,20 @@
 			</Component>
 			<Component name="star" xyz="1,20,0">
 				<Command val="1000"/>
+			</Component>
+			<Component name="motion" xyz="0,0,0">
+			</Component>
+		</Animation>
+		<Animation name="freeze">
+			<Component name="body" xyz="0,-12,0">
+				<Command val="101D"/>
+			</Component>
+			<Component name="star" xyz="1,20,0">
+				<Command val="1000"/>
+				<Command val="4000"/>
+				<Command val="0"/>
+				<Command val="FFF4"/>
+				<Command val="2001"/>
 			</Component>
 			<Component name="motion" xyz="0,0,0">
 			</Component>
