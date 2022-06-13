@@ -128,7 +128,15 @@
 	Exec $TexturePanning
 	Call EnableModel ( ~Model:HideAll 0 )
     Exec $Script_EnterMap
-	Exec $Cutscene1
+	Switch *GB_StoryProgress
+		Case == FFFFFFA0
+			Exec $Cutscene1
+		Case == FFFFFFA1
+			Exec $Cutscene4
+		Case == FFFFFFA2
+			Exec $Cutscene6
+	EndSwitch
+	
     Return
     End
 }
@@ -204,7 +212,7 @@
 	%Encounter Begins
 	Set *Flag_Goombule_Fight 1
 	%Story Byte Set
-	Set *GB_StoryProgress FFFFFFA1
+	%Set *GB_StoryProgress FFFFFFA1
     Return
     End
 }
@@ -236,7 +244,7 @@
 	%Encounter Begins
 	Set *Flag_SpikedGoombule_Fight 1
 	%Story Byte Set
-	Set *GB_StoryProgress FFFFFFA2
+	%Set *GB_StoryProgress FFFFFFA2
     Return
     End
 }
@@ -286,7 +294,7 @@
 		Wait 15`
 		Set *Flag_Protobatter_Fight 1
 		%Story Byte Set
-		Set *GB_StoryProgress FFFFFFA3
+		%Set *GB_StoryProgress FFFFFFA3
    		Return
     	End
 }
@@ -320,7 +328,7 @@
 	%Call NpcMoveTo (.NpcID:Tenderling -60` 0` 25` )
 	Set *Flag_Tenderling_Fight 1
 	%Story Byte Set
-	Set *GB_StoryProgress FFFFFFA4
+	%Set *GB_StoryProgress FFFFFFA4
     Return
     End
 }
@@ -392,7 +400,7 @@
 		Wait 15`
 		Set *Flag_Chuboomba_Fight 1
 		%Story Byte Set
-		Set *GB_StoryProgress FFFFFFA5
+		%Set *GB_StoryProgress FFFFFFA5
 		Return
 		End
 }
@@ -457,7 +465,7 @@
 	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowMTalk .Anim:StarlowMIdle 0 .NpcID:Challenge 0033003A)
 	Set *Flag_MemoryMario_Fight 1
 	%Story Byte Set
-	Set *GB_StoryProgress FFFFFFA6
+	%Set *GB_StoryProgress FFFFFFA6
     Return
     End
 }

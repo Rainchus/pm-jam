@@ -343,6 +343,7 @@
 
 #new:Script $Script_802549D0 {
 	Set *GameByte[009] 0 %turn off hook for hammer throw killing enemies
+	Set *GB_StoryProgress FFFFFFA2
 	Call  GotoMap   ( $Ascii_bis_04 00000000 )
 	Wait  100`
 	Return

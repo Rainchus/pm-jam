@@ -188,6 +188,7 @@
 
 #new:Script $Script_802549D0 {
 	Call  GotoMap   ( "bis_04" 00000000 )
+    Set *GB_StoryProgress FFFFFFA1
 	Wait  100`
 	Return
 	End
