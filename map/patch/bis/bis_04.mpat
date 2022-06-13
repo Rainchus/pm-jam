@@ -130,7 +130,7 @@
     Exec $Script_EnterMap
 	Switch *GB_StoryProgress
 		Case == FFFFFFA0
-			Exec $Cutscene6
+			Exec $Cutscene1
 		Case == FFFFFFA1
 			Exec $PostPipeCutscene1
 		Case == FFFFFFA2
