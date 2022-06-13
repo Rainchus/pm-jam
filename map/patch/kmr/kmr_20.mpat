@@ -65,7 +65,7 @@
 	%debug
 	Call $giveItemsLoop () %gives items defined in "$itemsToGive" array
 	Call GotoMap ("bis_05" 0)
-	Set *GB_StoryProgress FFFFFFA6
+	Set *GB_StoryProgress FFFFFFA2
 	Call $GivePartners ()
 	Call $GiveBootsAndHammer ()
 	Call $GiveActionCommands ()

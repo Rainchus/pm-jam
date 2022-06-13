@@ -22,8 +22,8 @@
 013 = Flag_EVT_13 = Flag_MemoryMario_Fight
 014 = Flag_EVT_14 = Flag_bis_05_pipe
 015 = Flag_EVT_15 = Flag_bis_05_pipe_entry
-016 = Flag_EVT_16 = unused
-017 = Flag_EVT_17 = unused
+016 = Flag_EVT_16 = Flag_bis_04_pipe_to_bis_05
+017 = Flag_EVT_17 = Flag_bis_04_pipe_to_bis_06
 018 = Flag_EVT_18 = unused
 019 = Flag_EVT_19 = unused
 01A = Flag_EVT_1A = unused

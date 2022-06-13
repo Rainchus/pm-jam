@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Map name="bis_04" author="unnamed" background="obk_bg" textures="kmr_tex">
 	<Editor>
-		<Camera pos="0.000000,105.181442,369.666626" pitch="10.000000" yaw="0.000000"/>
+		<Camera pos="32.309273,135.013153,148.783463" pitch="55.519974" yaw="239.679810"/>
 		<Camera pos="200.106750,65536.000000,14.088737"/>
 		<Camera pos="65536.000000,-45.132263,407.542053"/>
 		<Camera pos="270.127808,55.716232,65536.000000"/>
@@ -109,7 +109,7 @@
 		</Node>
 	</ZoneTree>
 	<MarkerTree>
-		<Node name="Root" id="15">
+		<Node name="Root" id="17">
 			<Node name="Entrances" id="FFFFFFFF"/>
 			<Node name="MainEntry" id="0"/>
 			<Node name="Nuts" id="1"/>
@@ -132,6 +132,8 @@
 			<Node name="ChallengePipe2" id="12"/>
 			<Node name="MemoryMario" id="13"/>
 			<Node name="GuardianScenePos" id="14"/>
+			<Node name="ChallengePipe1Entry" id="15"/>
+			<Node name="ChallengePipe2Entry" id="16"/>
 		</Node>
 	</MarkerTree>
 	<LightSets>
@@ -154,10 +156,10 @@
 					<F3DEX2 cmd="D9FFFFFF,200400"/>
 					<TriangleBatch ver="0">
 						<VertexTable>
-							<Vertex xyz="-895,-518,537" uv="-512,512" rgba="0,0,0,-1"/>
-							<Vertex xyz="895,518,-62" uv="512,-512" rgba="0,0,0,-1"/>
-							<Vertex xyz="-895,518,-62" uv="-512,-512" rgba="0,0,0,-1"/>
-							<Vertex xyz="895,-518,537" uv="512,512" rgba="0,0,0,-1"/>
+							<Vertex xyz="-895,-518,537" uv="-512,512" rgba="0,0,0,255"/>
+							<Vertex xyz="895,518,-62" uv="512,-512" rgba="0,0,0,255"/>
+							<Vertex xyz="-895,518,-62" uv="-512,-512" rgba="0,0,0,255"/>
+							<Vertex xyz="895,-518,537" uv="512,512" rgba="0,0,0,255"/>
 						</VertexTable>
 						<TriangleList>
 							<Triangle ijk="0,1,2"/>
@@ -22757,7 +22759,13 @@
 	</Zones>
 	<Markers>
 		<Marker ver="4" type="Root">
-			<MapObject name="Root" id="15"/>
+			<MapObject name="Root" id="17"/>
+		</Marker>
+		<Marker ver="4" type="Entry" pos="47,38,170" yaw="-180.000000">
+			<MapObject name="ChallengePipe2Entry" id="16"/>
+		</Marker>
+		<Marker ver="4" type="Entry" pos="-51,38,170" yaw="-180.000000">
+			<MapObject name="ChallengePipe1Entry" id="15"/>
 		</Marker>
 		<Marker ver="4" type="Position" pos="0,34,18" yaw="180.000000">
 			<MapObject name="GuardianScenePos" id="14"/>
