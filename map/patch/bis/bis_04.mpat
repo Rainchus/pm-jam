@@ -128,22 +128,7 @@
 	Exec $TexturePanning
 	Call EnableModel ( ~Model:HideAll 0 )
     Exec $Script_EnterMap
-	Switch *GB_StoryProgress
-	Case == FFFFFFA0
-		Exec $Cutscene1
-	Case == FFFFFFA1
-		Exec $Cutscene2
-	Case == FFFFFFA2
-		Exec $Cutscene3
-	Case == FFFFFFA3
-		Exec $Cutscene4
-	Case == FFFFFFA4
-		Exec $Cutscene5
-	Case == FFFFFFA5
-		Exec $Cutscene6
-	Case == FFFFFFA6
-		Exec $Cutscene7
-	EndSwitch
+	Exec $Cutscene1
     Return
     End
 }

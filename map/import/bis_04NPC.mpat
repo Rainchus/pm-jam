@@ -155,11 +155,52 @@
 }
 
 
+#new:Script $Script_Defeat_Goombule {
+    % Set *Flag_bis_04_Fight1 1
+    Exec $Cutscene2
+    Return
+    End
+}
 
+#new:Script $Script_Defeat_SGoombule {
+    %Set *Flag_bis_04_Fight2 1
+    Exec $Cutscene3
+    Return
+    End
+}
+
+#new:Script $Script_Defeat_Protobatter {
+    %Set *Flag_bis_04_Fight3 1
+    Exec $Cutscene4
+    Return
+    End
+}
+
+#new:Script $Script_Defeat_Tenderling {
+    %Set *Flag_bis_04_Fight4 1
+    Exec $Cutscene5
+    Return
+    End
+}
+
+#new:Script $Script_Defeat_Chuboomba {
+    %Set *Flag_bis_04_Fight5 1
+    Exec $Cutscene6
+    Return
+    End
+}
+
+#new:Script $Script_Defeat_MemoryMario {
+    %Set *Flag_bis_04_Fight6 1
+    Exec $Cutscene7
+    Return
+    End
+}
 
 #new:Script $Script_Init_Goombule {
     Call  SetSelfVar    ( .NpcID:Goombule 00000000 )
     Call  BindNpcIdle   ( .Npc:Self $Script_Idle_Goombule )
+    Call  BindNpcDefeat     ( .Npc:Self $Script_Defeat_Goombule )
     Return
     End
 }
@@ -167,6 +208,7 @@
 #new:Script $Script_Init_SpikedGoombule {
     Call  SetSelfVar    ( .NpcID:SGoombule 00000000 )
     Call  BindNpcIdle   ( .Npc:Self $Script_Idle_SpikedGoombule )
+    Call  BindNpcDefeat     ( .Npc:Self $Script_Defeat_SGoombule )
     Return
     End
 }
@@ -174,6 +216,7 @@
 #new:Script $Script_Init_Protobatter {
     Call  SetSelfVar    ( .NpcID:Protobatter 00000000 )
     Call  BindNpcIdle   ( .Npc:Self $Script_Idle_Protobatter )
+    Call  BindNpcDefeat     ( .Npc:Self $Script_Defeat_Protobatter )
     Return
     End
 }
@@ -181,6 +224,7 @@
 #new:Script $Script_Init_Tenderling {
     Call  SetSelfVar    ( .NpcID:Tenderling 00000000 )
     Call  BindNpcIdle   ( .Npc:Self $Script_Idle_Tenderling )
+    Call  BindNpcDefeat     ( .Npc:Self $Script_Defeat_Tenderling )
     Return
     End
 }
@@ -188,6 +232,7 @@
 #new:Script $Script_Init_Chuboomba {
     Call  SetSelfVar    ( .NpcID:Chuboomba 00000000 )
     Call  BindNpcIdle   ( .Npc:Self $Script_Idle_Chuboomba )
+    Call  BindNpcDefeat     ( .Npc:Self $Script_Defeat_Chuboomba )
     Return
     End
 }
@@ -195,6 +240,7 @@
 #new:Script $Script_Init_MemoryMario {
     Call  SetSelfVar    ( .NpcID:MemoryMario 00000000 )
     Call  BindNpcIdle   ( .Npc:Self $Script_Idle_MemoryMario )
+    Call  BindNpcDefeat     ( .Npc:Self $Script_Defeat_MemoryMario )
     Return
     End
 }
