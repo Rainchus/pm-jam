@@ -518,7 +518,7 @@
 	Call  ClearAmbientSounds ( 250` )
 	Call SetMusicTrack ( 0 .Song:PeachsCastleParty 0 8 )
 	Call FadeInMusic ( 0 .Song:PeachsCastleParty 0 5` 0 0 )
-	Wait 30`
+	Wait 60`
 	Call PlaySoundAtNpc (.NpcID:Guardian .Sound:PowerUp 0 )
 	Wait 30`
 	Call PlaySoundAtNpc (.NpcID:Guardian .Sound:Glub 0 )
@@ -528,9 +528,9 @@
 	Wait 30`
 	Call PlaySoundAtNpc (.NpcID:Guardian .Sound:Falling 0 )
 	Call StopSound (.Sound:Wind )
-	Wait 15`
+	Wait 80`
 	Call PlaySoundAtNpc (.NpcID:Guardian .Sound:HitGround 0 )
-	Wait 30`
+	Wait 60`
 
 	Call SpeakToNpc (.NpcID:Tenderling .Anim:TenderlingIdle .Anim:TenderlingIdle 0 .NpcID:MemoryMario 00330041)
 	Call SpeakToNpc (.NpcID:Tenderling .Anim:TenderlingIdle .Anim:TenderlingIdle 0 .NpcID:MemoryMario 00330042)
