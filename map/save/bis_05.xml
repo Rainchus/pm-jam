@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Map name="bis_05" author="unnamed" background="yki_bg" textures="bon_tex">
 	<Editor>
-		<Camera pos="-79.456825,104.910110,139.540726" pitch="21.919985" yaw="2.561500"/>
+		<Camera pos="1138.084106,125.997437,-56.775749" pitch="-6.560019" yaw="5.441494"/>
 		<Camera pos="1535.263672,65536.000000,1217.205200"/>
 		<Camera pos="65536.000000,38.311310,470.388153"/>
 		<Camera pos="1096.726563,-12.634831,65536.000000"/>
