@@ -10,6 +10,7 @@
 #define .NpcID:Tenderling 9
 #define .NpcID:Chuboomba A
 #define .NpcID:MemoryMario B
+#define .NpcID:MemorySequel B
 
 #define .goombuleFightStartVarIndex 0
 
@@ -245,6 +246,14 @@
     End
 }
 
+#new:Script $Script_Init_MemorySequel {
+    Call  SetSelfVar    ( .NpcID:MemoryMario 00000000 )
+    Call  BindNpcIdle   ( .Npc:Self $Script_Idle_MemoryMario )
+    Call  BindNpcDefeat     ( .Npc:Self $Script_Defeat_MemoryMario )
+    Return
+    End
+}
+
 #new:NpcSettings $NpcSettings_Goombule {
     00000000 00140014 00000000 00000000 0 0 00000000 8007809C
     00000800 00000000 00160000
@@ -342,6 +351,22 @@
     00000000 00000000 00000000 00000000 % no tattle string
 }
 
+#new:NpcSettings $NpcSettings_MemorySequel {
+    00000000 00140014 00000000 00000000 0 0 00000000 8007809C
+    00000800 00000000 00160000
+}
+
+#new:NpcGroup $NpcGroup_MemorySequel {
+    .NpcID:Blitty $NpcSettings_MemorySequel ~Vec3f:MemorySequel
+    00200C08 %flags
+    $Script_Init_MemorySequel
+    00000000 00000000 0000005A
+    ~Items:5:VoltShroom:A ~HP:Standard:2 ~FP:Standard:2 ~CoinBonus:0:4
+    ~Movement:MemorySequel
+    ~AnimationTable:MemorySequel % .Sprite:Swooper
+    00000000 00000000 00000000 00000000 % no tattle string
+}
+
 #new:NpcGroupList $NpcGroupList {
     00000001 $NpcGroup_Starlow 0
     00000001 $NpcGroup_MarioNPC 0
@@ -355,6 +380,7 @@
     00000001 $NpcGroup_Tenderling 00030000
     00000001 $NpcGroup_Chuboomba 00040000
     00000001 $NpcGroup_MemoryMario 00050000
+    00000001 $NpcGroup_MemorySequel 0
 
     %terminate list
     00000000 00000000 00000000

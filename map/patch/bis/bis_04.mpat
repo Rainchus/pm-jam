@@ -128,7 +128,7 @@
 	Exec $TexturePanning
 	Call EnableModel ( ~Model:HideAll 0 )
     Exec $Script_EnterMap
-	Exec $Cutscene1
+	Exec $Cutscene7
     Return
     End
 }
@@ -475,15 +475,17 @@
 	Call SetNpcYaw (.NpcID:Nuts -90`)
 	Call SetNpcYaw (.NpcID:Challenge -90`)
 	Call SetNpcYaw (.NpcID:MemoryMario -90`)
+	Call SetNpcYaw (.NpcID:MemorySequel -90`)
 	Call SetNpcPos (.NpcID:Guardian 0` -150` 0`)
 	Call SetNpcPos (.NpcID:MemoryMario 0` 0` 18`)
+	Call SetNpcPos (.NpcID:MemorySequel 0` 0` 18`)
 	Wait 15`
 	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowHTalk .Anim:StarlowHIdle 0 .NpcID:MemoryMario 0033003B)
-	Call SpeakToPlayer (.NpcID:MemoryMario .Anim:MemoryMarioIdle .Anim:MemoryMarioIdle 0 0033003C)
+	Call SpeakToPlayer (.NpcID:MemorySequel .Anim:MemoryMarioIdle .Anim:MemoryMarioIdle 0 0033003C)
 	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowSTalk .Anim:StarlowSIdle 0 .NpcID:MemoryMario 0033003D)
-	Call SpeakToPlayer (.NpcID:MemoryMario .Anim:MemoryMarioIdle .Anim:MemoryMarioIdle 0 0033003E)
-	Call PlaySoundAtNpc (.NpcID:MemoryMario .Sound:SuperPower 0 )
-	Call SetNpcAnimation (.NpcID:MemoryMario .Anim:MemoryMarioShake )
+	Call SpeakToPlayer (.NpcID:MemorySequel .Anim:MemoryMarioIdle .Anim:MemoryMarioIdle 0 0033003E)
+	Call PlaySoundAtNpc (.NpcID:MemorySequel .Sound:SuperPower 0 )
+	Call SetNpcAnimation (.NpcID:MemorySequel .Anim:MemoryMarioShake )
 	Call SpeakToPlayer (.NpcID:Starlow .Anim:StarlowFTalk .Anim:StarlowFIdle 0 0033003F)
 	%coords of miracle cure spawn Call PlayerMoveTo ( goalX goalZ time )
 
