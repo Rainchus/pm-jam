@@ -381,6 +381,12 @@
 	
 	%PIPE RISES UP HERE
 	Set *Flag_bis_04_pipe_to_bis_06 1
+	Call PlayerMoveTo ( 0` 100` 45` )
+	Wait 15`
+	Call PlayerJump ( -51` 38` 170` 16` )
+	Wait 30`
+	Call PlaySoundAtPlayer (.Sound:Pipe 0 )
+	Wait 4`
 	Exec $Script_bis_06_entry
 	Return
 	End
@@ -512,7 +518,7 @@
 	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowNTalk .Anim:StarlowNIdle 0 .NpcID:Nuts 00330042)
 	Call SpeakToNpc (.NpcID:Nuts .Anim:NutsIdle .Anim:NutsTalk 0 .NpcID:Starlow 00330043)
 	Wait 30`
-	Call PlaySoundAtNpc (.NpcID:Guardian .Sound:Star 0 )
+	Call PlaySoundAtNpc (.NpcID:Nuts .Sound:Star 0 )
 	Call SpeakToNpc (.NpcID:Starlow .Anim:StarlowNTalk .Anim:StarlowNIdle 0 .NpcID:Nuts 00330044)
 	Wait 10`
 	Call  FadeOutMusic  ( 00000000 500` ) % usually between 500-1000
